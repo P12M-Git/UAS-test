@@ -1,0 +1,1047 @@
+/* Interaction and light-theme finishing layer. Imported last intentionally. */
+.strategyControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0;
+  font-size: 11px;
+}
+.strategyScroll {
+  overflow: auto;
+  max-height: 78vh;
+  border: 1px solid #aab4be;
+}
+.strategyRow {
+  display: grid;
+  grid-template-columns: 100px 55px 1fr;
+  min-height: 135px;
+  border-bottom: 1px solid #bec6cd;
+  background: #eef1f3;
+}
+.strategyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  min-height: 55px;
+  background: #e7ecf0;
+  font-size: 10px;
+}
+.strategyHeader > b {
+  padding: 8px;
+}
+.strategyAxis {
+  position: relative;
+  margin: 0 14px;
+}
+.strategyAxis > span {
+  position: absolute;
+  top: 8px;
+  font: 9px monospace;
+  transform: translateX(-50%);
+}
+.strategyFlags {
+  position: absolute;
+  bottom: 5px;
+  height: 7px;
+  width: 100%;
+  display: flex;
+}
+.strategyFlags i {
+  flex: 1;
+}
+.strategyCar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+}
+.strategyCar > b {
+  font-size: 30px;
+}
+.strategyCar > span {
+  font-size: 11px;
+}
+.strategyPositions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 9px;
+  border: 1px solid #bcc4ca;
+}
+.strategyPositions strong {
+  font-size: 18px;
+}
+.strategyTrack {
+  position: relative;
+  margin: 0 14px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(6.25% - 1px),
+    #cbd3da 6.25%
+  );
+}
+.strategyBlock {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #8d959e;
+  padding: 5px;
+  color: #101820;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  font-size: 10px;
+}
+.strategyBlock.focused {
+  outline: 2px solid #9829be;
+  outline-offset: -2px;
+}
+.strategyBlock > b {
+  font-size: 11px;
+}
+.strategyBlockTop {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+}
+.tyreIcons {
+  display: grid;
+  grid-template-columns: repeat(2, 9px);
+  gap: 3px;
+  flex-shrink: 0;
+}
+.tyreIcons i {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #273b49;
+  border-radius: 50%;
+  background: #aaa;
+}
+.tyreIcons.changed i {
+  background: #ed1825;
+}
+.tyreIcons.retained i {
+  background: #fff;
+}
+.strategyDetails {
+  padding: 15px;
+  margin: 12px 0;
+  border: 1px solid #aeb7bf;
+  background: #f5f7f9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.strategyDetails > button {
+  align-self: flex-end;
+}
+.performanceFocus > td,
+.performanceFocus .categoryShade {
+  background: #b148d1 !important;
+  color: white !important;
+}
+.performanceFocus .driver b,
+.performanceFocus .driver small {
+  color: white !important;
+}
+.categoryShade {
+  cursor: pointer;
+}
+.raceChecks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+  border: 1px solid #b9c3cb;
+  padding: 8px;
+}
+.raceChecks label {
+  font-size: 11px;
+}
+.raceCanvas {
+  width: 100%;
+  height: auto;
+  border: 1px solid #b9c3cb;
+  margin: 12px 0;
+}
+.raceAnalysis p {
+  font-size: 12px;
+  color: #425267;
+}
+.raceAnalysis .seasonControls {
+  flex-wrap: wrap;
+}
+.raceAnalysis input[type="number"],
+.raceAnalysis select {
+  padding: 7px;
+  background: #f6f7f8;
+  color: #17202a;
+  border: 1px solid #bac2ca;
+}
+.strategyStint {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 12px;
+  padding: 6px;
+  font-size: 11px;
+}
+.strategyStint > div {
+  position: relative;
+  height: 18px;
+  background: #dbe0e5;
+  overflow: hidden;
+}
+.strategyStint i {
+  position: absolute;
+  height: 100%;
+}
+.driver b {
+  color: #17202a;
+}
+.ranking th,
+.ranking td {
+  padding: 5px 8px;
+  text-align: center;
+}
+.ranking .driver {
+  justify-content: center;
+  text-align: center;
+}
+.carNumber {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 16px;
+  padding: 0 3px;
+  color: #fff !important;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  font:
+    800 9px var(--font-geist-mono),
+    monospace;
+  text-shadow: 0 1px 1px #0008;
+}
+.ranking .driver {
+  line-height: 1.05;
+}
+.ranking .driver small {
+  font-size: 7px;
+}
+.ranking .dist {
+  height: 17px;
+}
+.trackTimeline {
+  position: relative;
+  height: 11px;
+  margin-top: 5px;
+  border-bottom: 1px solid #8d98a2;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(25% - 1px),
+    #d4d9dd calc(25% - 1px) 25%
+  );
+}
+.trackTimeline > i {
+  position: absolute;
+  bottom: 3px;
+  height: 4px;
+  min-width: 1px;
+}
+.trackTimeline .running {
+  background: #173b63;
+}
+.trackTimeline .neutralized {
+  z-index: 2;
+  background: #f2c500;
+}
+.trackTimeline small {
+  position: absolute;
+  top: 7px;
+  color: #697580;
+  font:
+    6px var(--font-geist-mono),
+    monospace;
+}
+.trackTimeline small:first-of-type {
+  left: 0;
+}
+.trackTimeline small:last-of-type {
+  right: 0;
+}
+.lapCountCell {
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+.lapHeatHead,
+.lapHeatMini {
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+  text-align: center;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+.categoryShade,
+.categoryShade b,
+.categoryShade small {
+  color: #101820 !important;
+}
+.lapSample {
+  display: inline-block;
+  justify-self: center;
+  margin-top: 3px;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-weight: 800;
+}
+.eventPicker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  background: #eef0f2;
+}
+.eventPicker > b {
+  margin-right: 8px;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.eventPicker label {
+  padding: 4px 7px;
+  border: 1px solid #bdc4ca;
+  background: #f8f9fa;
+  font-size: 9px;
+}
+.eventPicker input {
+  margin-right: 5px;
+  accent-color: #173b63;
+}
+.focusDriver,
+tr.focusDriver > td,
+.focusEventTable td.focusDriver {
+  background: #ef2ac1 !important;
+  color: #fff !important;
+  font-weight: 800;
+}
+.seasonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  gap: 8px;
+  align-items: start;
+}
+.seasonEvent {
+  overflow: auto;
+  border: 1px solid #9ca6af;
+  background: #f7f8f9;
+}
+.seasonEvent h3 {
+  margin: 0;
+  padding: 7px;
+  text-align: center;
+  color: white;
+  background: #172a59;
+  font:
+    italic 700 13px Arial,
+    sans-serif;
+}
+.seasonChartWrap {
+  position: relative;
+  overflow-x: auto;
+  padding: 7px 5px 0;
+  background: #fff;
+  border-bottom: 1px solid #b9c0c7;
+}
+.seasonChartWrap > b {
+  display: block;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.7px;
+}
+.seasonChartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 22px;
+}
+.seasonChartHeader > b {
+  font-size: 9px;
+  letter-spacing: 0.7px;
+}
+.cutoffAudit {
+  margin-left: 10px;
+  padding: 2px 5px;
+  background: #d7ead0;
+  color: #166532;
+  font:
+    700 7px var(--font-geist-mono),
+    monospace;
+}
+.seasonChartHeader button {
+  position: absolute;
+  right: 3px;
+  padding: 3px 6px;
+  border: 1px solid #aeb7bf;
+  background: #edf0f2;
+  color: #173b63;
+  font-size: 7px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.seasonChartWrap.expanded {
+  position: fixed;
+  z-index: 1000;
+  inset: 18px;
+  padding: 14px;
+  border: 2px solid #173b63;
+  box-shadow: 0 0 0 100vmax rgba(12, 20, 30, 0.65);
+}
+.seasonChartWrap.expanded svg {
+  width: 100%;
+  height: calc(100vh - 105px);
+}
+.seasonChartWrap.expanded .seasonChartHeader button {
+  font-size: 10px;
+  padding: 6px 10px;
+}
+.seasonChartWrap svg {
+  display: block;
+  width: 100%;
+  height: 210px;
+  overflow: visible;
+}
+.seasonChartWrap svg text {
+  fill: #36424d;
+  font:
+    6px var(--font-geist-mono),
+    monospace;
+}
+.seasonChartWrap .driverAxis {
+  font-size: 5.5px;
+  text-anchor: end;
+}
+.chartGrid {
+  stroke: #d7dce0;
+  stroke-width: 1;
+}
+.chartLegend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 2px 4px 6px;
+  font-size: 7px;
+}
+.chartLegend i {
+  display: inline-block;
+  width: 16px;
+  margin-right: 3px;
+  border-top-width: 2px;
+}
+.seasonEvent th,
+.seasonEvent td,
+.focusEventTable th,
+.focusEventTable td {
+  padding: 4px 6px;
+  font-size: 9px;
+  border: 1px solid #c5cbd0;
+}
+.seasonCategoryMini {
+  table-layout: fixed;
+  border-bottom: 2px solid #172a59;
+}
+.seasonCategoryMini th,
+.seasonCategoryMini td {
+  padding: 5px 4px;
+  text-align: center;
+  font-size: 7px;
+}
+.seasonCategoryMini th {
+  background: #e1e5e8;
+  color: #3d4954;
+}
+.seasonCategoryMini td {
+  border-top: 3px solid #8994a3;
+  background: #fff;
+  font-weight: 800;
+}
+.seasonCategoryMini td small {
+  display: block;
+  margin-top: 2px;
+  font-size: 6px;
+}
+.seasonEvent .categoryDriverCell {
+  color: #101820;
+  font-weight: 700;
+}
+.seasonEvent tr.focusDriver .categoryDriverCell {
+  background: #ef2ac1 !important;
+  color: #fff;
+}
+.seasonControls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.seasonControls label {
+  display: grid;
+  gap: 4px;
+  min-width: 220px;
+  color: #5d6872;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.categoryTicks {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+  padding: 5px 8px;
+  border: 1px solid #b9c0c7;
+  background: #f8f9fa;
+}
+.categoryTicks legend {
+  padding: 0 4px;
+  color: #5d6872;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.categoryTicks label {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 3px;
+  color: #17202a;
+  font-size: 8px;
+  letter-spacing: 0;
+}
+.categoryTicks input {
+  margin: 0;
+  accent-color: #173b63;
+}
+.filters .filterCategoryTicks {
+  grid-column: 1 / -1;
+  min-height: 34px;
+  padding: 4px 8px;
+}
+.filters .filterCategoryTicks label {
+  display: flex;
+  min-width: 0;
+  width: auto;
+}
+.seasonControls select {
+  padding: 7px;
+  border: 1px solid #b9c0c7;
+  background: #f8f9fa;
+  color: #17202a;
+}
+.seasonControls .plotFilterToggle span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 31px;
+  padding: 0 8px;
+  border: 1px solid #b9c0c7;
+  background: #f8f9fa;
+  color: #17202a;
+  font-size: 9px;
+  letter-spacing: 0;
+}
+.plotFilterToggle input {
+  accent-color: #173b63;
+}
+@media (max-width: 1250px) {
+  .seasonGrid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+  }
+}
+.focusEventTable tbody th {
+  background: #173b63;
+  color: white;
+}
+.filters {
+  grid-template-columns: 1.2fr 1fr 1.2fr 1.2fr 1.1fr;
+}
+.brand b {
+  color: #101820;
+}
+.brand small {
+  color: #4f5c68;
+}
+th.sorted {
+  background: #bcc3ca;
+  color: #101820;
+  box-shadow: inset 0 -3px 0 #b4212d;
+}
+.sortSignal {
+  color: #b4212d;
+  margin-left: 7px;
+  font-size: 8px;
+}
+.contextMetric {
+  cursor: context-menu;
+}
+.contextMetric:hover {
+  background: #e0e4e8;
+}
+.contextMetric > span {
+  display: block;
+}
+.contextMetric small {
+  display: block;
+  margin-top: 3px;
+  font:
+    bold 8px var(--font-geist-mono),
+    monospace;
+}
+.deltaOrigin {
+  background: #cbd2d8 !important;
+  box-shadow: inset 3px 0 0 #173b63;
+}
+.deltaBetter {
+  color: #167346 !important;
+}
+.deltaWorse {
+  color: #b4212d !important;
+}
+.scatter {
+  overflow: hidden;
+  background-color: #f4f5f6;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 calc(13% - 1px), #cbd1d6 13%),
+    repeating-linear-gradient(90deg, transparent 0 calc(10% - 1px), #e0e3e6 10%);
+}
+.lapYAxis {
+  position: absolute;
+  z-index: 2;
+  inset: 0 auto 0 0;
+  width: 72px;
+  border-right: 1px solid #9da7b0;
+  background: #eef0f2dd;
+}
+.lapYAxis b {
+  position: absolute;
+  top: 43%;
+  left: -2px;
+  transform: rotate(-90deg);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+.lapYAxis span {
+  position: absolute;
+  right: 8px;
+  transform: translateY(50%);
+  font:
+    bold 9px var(--font-geist-mono),
+    monospace;
+  color: #344452;
+}
+.scatter > i {
+  z-index: 3;
+}
+.trafficChart {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 calc(15.33% - 1px),
+    #cbd1d6 15.33%
+  );
+  grid-template-columns: 74px repeat(4, 1fr);
+}
+.trafficChart .range {
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0 calc((100% / var(--traffic-lines)) - 1px),
+    #cbd1d6 calc(100% / var(--traffic-lines))
+  );
+}
+.categoryTrafficPlot {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #b8c0c7;
+  background: #f7f8f9;
+}
+.categoryTrafficLabels {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 5px;
+  font-size: 8px;
+}
+.categoryTrafficLabels i {
+  display: inline-block;
+  width: 14px;
+  height: 3px;
+  margin-right: 4px;
+}
+.categoryTrafficGrid {
+  display: grid;
+  grid-template-columns: 90px repeat(6, minmax(80px, 1fr));
+  overflow-x: auto;
+}
+.categoryTrafficGrid > strong {
+  padding: 4px;
+  text-align: center;
+  font-size: 8px;
+}
+.categoryMeanRow {
+  display: contents;
+}
+.categoryMeanRow > b {
+  align-self: center;
+  padding: 5px;
+  font-size: 8px;
+}
+.categoryMeanRow > span {
+  position: relative;
+  height: 68px;
+  border-left: 1px solid #e0e4e7;
+  border-bottom: 1px solid #d2d7db;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0 16px,
+    #e3e6e9 17px
+  );
+}
+.categoryMeanRow i {
+  position: absolute;
+  left: 12%;
+  width: 76%;
+  height: 3px;
+  box-shadow: 0 0 0 1px #fff;
+}
+.categoryTrafficTable th,
+.categoryTrafficTable td {
+  text-align: center;
+}
+.focusOpenButton {
+  float: right;
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  border: 0;
+  background: #173b63;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+}
+.seasonTabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  clear: both;
+  margin: 4px 0 14px;
+  border-bottom: 2px solid #172a59;
+}
+.seasonTabs button {
+  padding: 11px;
+  border: 1px solid #aeb7bf;
+  background: #e3e7ea;
+  color: #4d5965;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.seasonTabs button.active {
+  background: #172a59;
+  color: #fff;
+}
+.driverSummarySection {
+  padding: 14px;
+  border: 1px solid #aeb7bf;
+  background: #f1f3f5;
+}
+.focusModalHeader label {
+  display: grid;
+  gap: 3px;
+  color: #5d6872;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.focusModalHeader select {
+  min-width: 180px;
+  padding: 7px;
+  border: 1px solid #aeb7bf;
+  background: white;
+}
+.metricPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+  padding: 9px;
+  border: 1px solid #c5cbd0;
+  background: #fff;
+}
+.metricPicker button {
+  display: grid;
+  gap: 2px;
+  padding: 6px 8px;
+  border: 1px solid #b7c0c8;
+  background: #eceff1;
+  color: #394651;
+  font-size: 8px;
+  cursor: pointer;
+}
+.metricPicker button span {
+  color: #73808b;
+  font-size: 6px;
+  letter-spacing: 0.7px;
+}
+.metricPicker button.active {
+  border-color: #173b63;
+  background: #173b63;
+  color: white;
+}
+.metricPicker button.active span {
+  color: #bcd0e2;
+}
+.generalSummary thead th small {
+  display: block;
+  margin-bottom: 4px;
+  color: #b9c7d5;
+  font-size: 7px;
+}
+.focusModal {
+  position: fixed;
+  z-index: 1200;
+  inset: 24px;
+  overflow: auto;
+  padding: 16px;
+  background: #f1f3f5;
+  border: 2px solid #172a59;
+  box-shadow: 0 0 0 100vmax rgba(12, 20, 30, 0.7);
+}
+.focusModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.focusModalHeader h2 {
+  margin: 0;
+}
+.focusModalHeader button {
+  padding: 7px 10px;
+  border: 0;
+  background: #b4212d;
+  color: #fff;
+  font-weight: 800;
+}
+.generalSummary th,
+.generalSummary td {
+  padding: 15px 10px;
+  text-align: center;
+  font-weight: 800;
+  border: 1px solid #aeb7bf;
+}
+.generalSummary thead th,
+.generalSummary .groupHead th {
+  background: #172a59;
+  color: white;
+}
+.generalSummary tbody th {
+  background: #fff;
+  color: #17202a;
+  text-align: left;
+}
+.summaryBetter {
+  background: #d7ead0 !important;
+  color: #166532 !important;
+}
+.summaryWorse {
+  background: #f3caca !important;
+  color: #b4212d !important;
+}
+.yAxis b {
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  left: -12px;
+}
+.yAxis span {
+  font-size: 9px;
+  color: #253746;
+}
+.focusHero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(110deg, #f8f9fa, #dfe4e8);
+  border: 1px solid var(--line);
+  border-left: 4px solid #173b63;
+}
+.focusHero p {
+  color: #596673;
+  margin: 5px 0 0;
+}
+.focusHero > div:last-child {
+  display: grid;
+  text-align: right;
+}
+.focusHero > div:last-child span,
+.focusCards span {
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  color: #66727d;
+}
+.focusHero strong {
+  font:
+    28px var(--font-geist-mono),
+    monospace;
+  color: #b4212d;
+}
+.focusCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.focusCards > div {
+  display: grid;
+  gap: 7px;
+  padding: 18px;
+  background: #f5f6f7;
+  border: 1px solid var(--line);
+  border-top: 3px solid #173b63;
+}
+.focusCards strong {
+  font:
+    20px var(--font-geist-mono),
+    monospace;
+}
+.focusCards small {
+  color: #68727d;
+}
+@media (max-width: 900px) {
+  .focusCards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .lapYAxis {
+    width: 60px;
+  }
+}
+.trafficOverlayLegend {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 6px 8px;
+  border: 1px solid #b8c0c7;
+  border-bottom: 0;
+  background: #f7f8f9;
+  font-size: 8px;
+}
+.trafficOverlayLegend i {
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.trafficOverlayLegend .driverMeanLegend {
+  background: #b4212d;
+}
+.range .categoryMeanLine {
+  position: absolute;
+  z-index: 4;
+  left: 12%;
+  width: 76%;
+  height: 2px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0.9;
+}
+.range > b {
+  z-index: 6;
+}
+.range > i {
+  z-index: 5;
+}
+.trafficStdChart {
+  display: grid;
+  grid-template-columns: 74px repeat(4, 1fr);
+  gap: 12px;
+  height: 245px;
+  padding: 18px 25px;
+  margin-bottom: 12px;
+  border: 1px solid #b8c0c7;
+  background: #f5f6f7;
+}
+.stdYAxis {
+  position: relative;
+  margin-bottom: 34px;
+  border-right: 1px solid #aeb6be;
+}
+.stdYAxis b {
+  position: absolute;
+  top: 42%;
+  left: -10px;
+  transform: rotate(-90deg);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.stdYAxis span {
+  position: absolute;
+  right: 7px;
+  transform: translateY(50%);
+  color: #43515d;
+  font:
+    8px var(--font-geist-mono),
+    monospace;
+}
+.stdGroup {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  text-align: center;
+}
+.stdRange {
+  position: relative;
+  border-bottom: 1px solid #53616d;
+  background: repeating-linear-gradient(
+    to top,
+    transparent 0 calc((100% / var(--traffic-lines, 6)) - 1px),
+    #d6dbe0 calc(100% / var(--traffic-lines, 6))
+  );
+}
+.stdRange i {
+  position: absolute;
+  left: 12%;
+  width: 76%;
+  height: 2px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.stdRange .selectedStdLine {
+  z-index: 5;
+  left: 38%;
+  width: 24%;
+  height: 3px;
+  background: #b4212d;
+}
+.stdGroup strong {
+  margin-top: 7px;
+  font:
+    17px var(--font-geist-mono),
+    monospace;
+}
+.stdGroup > span {
+  color: #63707c;
+  font-size: 8px;
+}

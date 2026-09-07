@@ -6,10 +6,10 @@ import {
   fitLaps,
   average,
   overlaps,
-  raceTimeBounds,
 } from "../src/analysis/stints";
 import { CONFIG } from "../src/config";
 import RaceStrategy from "./race-strategy";
+import { trackEvolution, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
 const time = (n: number) =>
   Number.isFinite(n)
     ? `${Math.floor(n / 60)}:${(n % 60).toFixed(3).padStart(6, "0")}`
@@ -43,7 +43,7 @@ export default function RaceAnalysis({
     stints.find((s) => s.driver === driver);
   const usage =
     tyreUsage === "reference" ? refStint?.tyreStint : Number(tyreUsage);
-  const yBounds = useMemo(() => raceTimeBounds(stints, cls), [stints, cls]);
+  const [showEvolution, setShowEvolution] = useState(false);
   let filtered = stints.filter(
     (s) =>
       (cls === "All" || s.className === cls) &&
@@ -72,6 +72,13 @@ export default function RaceAnalysis({
     );
     return { ...s, clean, fit: fitLaps(clean) };
   });
+  const evolution = useMemo(() => {
+    const clean = stints.filter(s => cls === "All" || s.className === cls).flatMap(s => s.clean);
+    const best = new Map<string, number>();
+    clean.forEach(l => best.set(l.className, Math.min(best.get(l.className) ?? Infinity, l.lapTime!)));
+    return trackEvolution(clean.filter(l => !cap || l.lapTime! <= best.get(l.className)! * percent / 100));
+  }, [stints, cls, cap, percent]);
+  const evolutionVisible = (showEvolution || mode === "evolution") && ["lap", "elapsed"].includes(axis);
   const toggles = (
     label: string,
     options: string[],
@@ -128,7 +135,7 @@ export default function RaceAnalysis({
             className={tab === t ? "active" : ""}
             onClick={() => {
               setTab(t);
-              if (t === "Tyre conditions") setAxis("stint");
+              if (t === "Tyre conditions") { setAxis("stint"); setShowEvolution(false); if (mode === "evolution") setMode("laps"); }
             }}
           >
             {t}
@@ -157,11 +164,20 @@ export default function RaceAnalysis({
           <>
             <label>
               DISPLAY
-              <select value={mode} onChange={(e) => setMode(e.target.value)}>
+              <select value={mode} onChange={(e) => {
+                setMode(e.target.value);
+                if (e.target.value === "evolution" && !["lap", "elapsed"].includes(axis)) setAxis("lap");
+              }}>
                 <option value="laps">Lap-time traces</option>
                 <option value="both">Laps + stint fits</option>
                 <option value="fit">Only fitted stint lines</option>
+                <option value="evolution">Track evolution — 3-lap moving average</option>
               </select>
+            </label>
+            <label>
+              <span><input type="checkbox" checked={showEvolution} disabled={mode === "evolution"}
+                onChange={e => { setShowEvolution(e.target.checked); if (!["lap", "elapsed"].includes(axis)) setAxis("lap"); }} />
+                Overlay track evolution</span>
             </label>
             <label>
               <span>
@@ -188,8 +204,8 @@ export default function RaceAnalysis({
               <select value={axis} onChange={(e) => setAxis(e.target.value)}>
                 <option value="lap">Race lap</option>
                 <option value="elapsed">Race elapsed (minutes)</option>
-                <option value="age">Tyre age (laps)</option>
-                <option value="stint">Lap within full-tank stint</option>
+                <option value="age" disabled={mode === "evolution" || showEvolution}>Tyre age (laps)</option>
+                <option value="stint" disabled={mode === "evolution" || showEvolution}>Lap within full-tank stint</option>
               </select>
             </label>
           </>
@@ -220,6 +236,12 @@ export default function RaceAnalysis({
           eligible stint average excluded. Positive = slower each lap.
         </p>
       )}
+      {evolutionVisible && <p>
+        Track evolution: pooled clean lap times from race laps n−2, n−1 and n, across the entire class
+        (LMP2 includes Pro-Am). Same stint cleaning and optional percentage cutoff; driver/car/FIA selections
+        do not restrict the class reference. Gaps without three consecutive eligible lap bins are not connected.
+        This is observed field pace, also affected by fuel, tyres and drivers—not a correction for those effects.
+      </p>}
       {tab === "Tyre conditions" && (
         <div>
           <label>
@@ -308,7 +330,7 @@ export default function RaceAnalysis({
           driver={driver}
           mode={mode}
           axis={axis}
-          yBounds={yBounds}
+          evolution={evolutionVisible ? evolution : []}
         />
       )}
       <div className="raceChecks" aria-label="Driver colour legend">
@@ -413,13 +435,13 @@ function RaceCanvas({
   driver,
   mode,
   axis,
-  yBounds,
+  evolution,
 }: {
   rows: Stint[];
   driver: string;
   mode: string;
   axis: string;
-  yBounds: [number, number];
+  evolution: EvolutionSeries[];
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -427,7 +449,16 @@ function RaceCanvas({
     if (!el) return;
     const ctx = el.getContext("2d");
     if (!ctx) return;
-    const [minY, maxY] = yBounds;
+    const xValue = (l: Lap, s: Stint) => axis === "elapsed" ? (l.elapsed ?? NaN)/60
+      : axis === "age" ? (l.tyreAge ?? NaN)
+      : axis === "stint" ? l.lapNumber-s.laps[0].lapNumber+1 : l.lapNumber;
+    const visibleRows = mode === "evolution" ? [] : rows.map(s => ({ ...s, clean:s.clean.filter(l=>Number.isFinite(xValue(l,s))) }));
+    const visibleEvolution = evolution.map(s => ({...s, points:s.points.filter(p => Number.isFinite(axis === "elapsed" ? p.elapsed : p.lap))}));
+    const values = visibleRows.flatMap(s => s.clean.flatMap(l => [
+      ...(mode !== "fit" ? [l.lapTime!] : []),
+      ...(mode !== "laps" && Number.isFinite(s.fit.slope) ? [s.fit.intercept+s.fit.slope*l.lapNumber] : []),
+    ])).concat(visibleEvolution.flatMap(s=>s.points.map(p=>p.time)));
+    const [minY, maxY] = visibleTimeBounds(values);
     const w = 1400,
       h = Math.max(530, (maxY - minY) * 20 + 120),
       plotBottom = h - 70,
@@ -441,7 +472,7 @@ function RaceCanvas({
         s.laps.map((l) => [l.id, s.laps[0].lapNumber] as const),
       ),
     );
-    const xValue = (l: Lap) =>
+    const pointX = (l: Lap) =>
       axis === "elapsed"
         ? (l.elapsed ?? NaN) / 60
         : axis === "age"
@@ -449,15 +480,15 @@ function RaceCanvas({
           : axis === "stint"
             ? l.lapNumber - (stintStart.get(l.id) ?? l.lapNumber) + 1
             : l.lapNumber;
-    const points = rows
+    const points = visibleRows
       .flatMap((s) => s.clean)
-      .filter((l) => Number.isFinite(xValue(l)));
-    if (!points.length) {
+      .filter((l) => Number.isFinite(pointX(l)));
+    if (!values.length) {
       ctx.fillStyle = "#17202a";
       ctx.fillText("No eligible laps for these filters", 80, 70);
       return;
     }
-    const maxX = Math.max(...points.map(xValue), 1);
+    const maxX = Math.max(...points.map(pointX), ...visibleEvolution.flatMap(s=>s.points.map(p=>axis === "elapsed" ? p.elapsed/60 : p.lap)), 1);
     const x = (v: number) => 85 + (v / maxX) * 1280,
       y = (v: number) => plotBottom - ((v - minY) / (maxY - minY)) * plotHeight;
     ctx.font = "13px Arial";
@@ -487,10 +518,10 @@ function RaceCanvas({
       720,
       h - 15,
     );
-    for (const s of [...rows].sort(
+    for (const s of [...visibleRows].sort(
       (a, b) => Number(a.driver === driver) - Number(b.driver === driver),
     )) {
-      const p = s.clean.filter((l) => Number.isFinite(xValue(l)));
+      const p = s.clean.filter((l) => Number.isFinite(pointX(l)));
       if (!p.length) continue;
       ctx.strokeStyle =
         s.driver === driver
@@ -504,13 +535,13 @@ function RaceCanvas({
         p.forEach((l, i) => {
           const prev = p[i - 1];
           if (!prev || l.lapNumber !== prev.lapNumber + 1)
-            ctx.moveTo(x(xValue(l)), y(l.lapTime!));
-          else ctx.lineTo(x(xValue(l)), y(l.lapTime!));
+            ctx.moveTo(x(pointX(l)), y(l.lapTime!));
+          else ctx.lineTo(x(pointX(l)), y(l.lapTime!));
         });
         ctx.stroke();
         p.forEach((l) => {
           ctx.beginPath();
-          ctx.arc(x(xValue(l)), y(l.lapTime!), 2, 0, Math.PI * 2);
+          ctx.arc(x(pointX(l)), y(l.lapTime!), 2, 0, Math.PI * 2);
           ctx.fill();
         });
       }
@@ -518,7 +549,7 @@ function RaceCanvas({
         ctx.setLineDash(mode === "both" ? [6, 4] : []);
         ctx.beginPath();
         p.forEach((l, i) => {
-          const px = x(xValue(l)),
+          const px = x(pointX(l)),
             py = y(s.fit.intercept + s.fit.slope * l.lapNumber);
           if (i === 0) ctx.moveTo(px, py);
           else ctx.lineTo(px, py);
@@ -527,7 +558,19 @@ function RaceCanvas({
         ctx.setLineDash([]);
       }
     }
-  }, [rows, driver, mode, axis, yBounds]);
+    visibleEvolution.forEach((s, index) => {
+      ctx.strokeStyle = ["#142d4e", "#d05a00", "#157767", "#a326cc"][index % 4];
+      ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = 4;
+      ctx.beginPath();
+      s.points.forEach((p,i) => {
+        const px = x(axis === "elapsed" ? p.elapsed/60 : p.lap), py = y(p.time);
+        if (!i || s.points[i-1].lap !== p.lap-1) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+      });
+      ctx.stroke();
+      s.points.forEach(p=>{ctx.beginPath();ctx.arc(x(axis === "elapsed" ? p.elapsed/60 : p.lap),y(p.time),2.5,0,Math.PI*2);ctx.fill();});
+      ctx.textAlign = "left"; ctx.fillText(`${s.name} · MA3`, 95, 20+index*15);
+    });
+  }, [rows, driver, mode, axis, evolution]);
   return (
     <canvas
       ref={canvas}

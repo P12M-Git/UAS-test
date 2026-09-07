@@ -238,6 +238,7 @@ export default function Home() {
             <h1>{view.toUpperCase()}</h1>
           </div>
           <div className="actions">
+            <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
             <button className="ghost" disabled={busy} onClick={() => input.current?.click()}>
               ＋ ADD SESSIONS
             </button>

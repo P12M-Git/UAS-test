@@ -16,6 +16,7 @@ import {
 import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
 import { overlaps } from "../src/analysis/stints";
+import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
   | "Overview"
@@ -1064,33 +1065,11 @@ function Traffic({
   drivers: string[];
   setDriver: (x: string) => void;
 }) {
-  const driverBest = Math.min(
-      ...laps
-        .filter((l) => l.clean && l.lapTime !== null)
-        .map((l) => l.lapTime!),
-    ),
-    selectedCategory = laps[0]?.category,
-    categoryBest = Math.min(
-      ...allLaps
-        .filter(
-          (l) =>
-            l.className === "LMP2" &&
-            l.category === selectedCategory &&
-            l.clean &&
-            l.lapTime !== null,
-        )
-        .map((l) => l.lapTime!),
-    ),
-    yMin = Number.isFinite(categoryBest) ? categoryBest : driverBest,
-    yMax = (Number.isFinite(categoryBest) ? categoryBest : driverBest) * 1.05,
-    green = laps.filter(
-      (l) =>
-        l.green &&
-        l.valid &&
-        l.lapNumber > 1 &&
-        l.lapTime !== null &&
-        l.lapTime <= yMax,
-    ),
+  const selectedCategory = laps[0]?.category,
+    selectedClass = laps[0]?.className || "LMP2",
+    { sample, yMin, yMax } = trafficSample(allLaps, selectedClass),
+    selectedIds = new Set(laps.map(l => l.id)),
+    green = sample.filter(l => selectedIds.has(l.id)),
     yPosition = (time: number) =>
       Math.max(4, Math.min(96, 4 + ((time - yMin) / (yMax - yMin || 1)) * 92)),
     ticks = Array.from(
@@ -1104,32 +1083,16 @@ function Traffic({
         )
         .map((l) => l.lapTime!);
       return { n, a };
-    }),
-    categoryFastest = new Map<string, number>();
-  allLaps
-    .filter((l) => l.className === "LMP2" && l.clean && l.lapTime !== null)
-    .forEach((l) =>
-      categoryFastest.set(
-        l.category,
-        Math.min(categoryFastest.get(l.category) ?? Infinity, l.lapTime!),
-      ),
-    );
+    });
   const categoryTraffic = ["Platinum", "Gold", "Silver", "Bronze"]
     .filter((category) => allLaps.some((l) => l.category === category))
     .map((category) => ({
       category,
       groups: [0, 1, 2, 3].map((n) => {
-        const a = allLaps
+        const a = sample
           .filter(
             (l) =>
-              l.className === "LMP2" &&
               l.category === category &&
-              l.green &&
-              l.valid &&
-              l.lapNumber > 1 &&
-              l.lapTime !== null &&
-              l.lapTime <=
-                (categoryFastest.get(l.category) ?? Infinity) * 1.05 &&
               (n === 3 ? l.overtakes.length >= 3 : l.overtakes.length === n),
           )
           .map((l) => l.lapTime!);
@@ -1154,7 +1117,7 @@ function Traffic({
       <SectionTitle
         n="04"
         title="Pace through traffic"
-        sub="Valid green laps within 105% of the fastest LMP2 driver in the selected FIA category"
+        sub="Valid green laps within 105% of each driver's own best clean lap; fixed class/event axis"
       />
       <div className="trafficOverlayLegend">
         <span>
@@ -1346,7 +1309,7 @@ function Traffic({
       <SectionTitle
         n="04A"
         title="Category traffic benchmark"
-        sub="LMP2 green laps within 105% of the fastest driver in each FIA category"
+        sub={`${selectedClass} green laps within 105% of each driver's own best clean lap`}
       />
       <div className="tableWrap">
         <table className="categoryTrafficTable">

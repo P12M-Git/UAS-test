@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: driver-performance
+    runtime: node
+    rootDir: .
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: AUTH_USERNAME
+        sync: false
+      - key: AUTH_PASSWORD_HASH
+        sync: false
+      - key: APP_ORIGIN
+        sync: false

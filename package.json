@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "node server/start.mjs --dev",
-    "build": "vinext build",
+    "build": "node server/build.mjs",
     "start": "node server/start.mjs",
     "test": "node --import tsx --test tests/*.test.ts",
+    "test:production": "node --test tests/production.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },

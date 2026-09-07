@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UAS Driver Insider",
+  title: "ELMS | Driver Performance",
   description: "Audit-ready motorsport race data visualisation and driver performance engineering.",
   icons: {
     icon: "/united-autosports-logo.jpg",

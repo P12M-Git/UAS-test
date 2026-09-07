@@ -1,4 +1,4 @@
-# UAS Driver Insider: basic private login
+# Driver Performance: basic private login
 
 Start with `npm run dev`. Both `dev` and `start` run the authentication gateway;
 do not expose `vinext dev/start` directly. The gateway protects the app, data files
@@ -19,4 +19,6 @@ Use `npm run build` and `npm start`, expose only PORT and one instance.
 Production cookies require HTTPS. Never publish the public folder independently
 as a static site: requests must always pass through the gateway.
 
-Render deployment is not configured or completed by this login change.
+See DEPLOYMENT.md and render.yaml for the production configuration. Production
+does not read .env.local: configure the private variables in Render. Use the
+repository root, never the archived Driver_Performance subfolder.

@@ -208,7 +208,7 @@ export default function Home() {
         <div className="brand">
           <img className="uas-logo" src="/united-autosports-logo.jpg" alt="United Autosports" width="250" height="78" />
           <div>
-            <b>UAS DRIVER INSIDER</b>
+            <b>DRIVER PERFORMANCE</b>
             <small>UNITED AUTOSPORTS</small>
           </div>
         </div>

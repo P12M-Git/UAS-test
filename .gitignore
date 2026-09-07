@@ -40,3 +40,12 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Generated outputs at any depth, including the archived app copy.
+**/node_modules/
+**/dist/
+**/.next/
+**/.vinext/
+**/.wrangler/
+*.tsbuildinfo
+# build/ contains the Sites Vite plugin: it is SOURCE and must remain tracked.

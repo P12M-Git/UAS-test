@@ -34,6 +34,11 @@ const localBindingConfig = {
 };
 
 export default defineConfig(async () => {
+  // Render runs Node, not a Cloudflare Worker. Keep the Sites/Worker source
+  // for the existing local development integration, not the production build.
+  if (process.env.UAS_BUILD_TARGET === "node") {
+    return { plugins: [vinext()] };
+  }
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= "false";

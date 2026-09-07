@@ -1,6 +1,18 @@
-# vinext-starter
+# ELMS Driver Performance
 
-A clean full-stack starter running on
+The current application lives at the **repository root** (`app/`, `src/`).
+`Driver_Performance/` is an archived copy; do not select it as Render's root.
+
+Start authenticated development with `npm run dev`. For production run
+`npm run build`, then `npm start`. Production requires private auth variables and
+an HTTPS `APP_ORIGIN`; it refuses stale or missing builds.
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for exact Render commands, required variables,
+the diagnosis and the per-file change summary. See [LOGIN.md](LOGIN.md) for login.
+
+## Original template integration reference
+
+The application uses
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
 Drizzle support.
 

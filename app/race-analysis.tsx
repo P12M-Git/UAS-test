@@ -1,0 +1,538 @@
+"use client";
+import { useMemo, useState, useRef, useEffect } from "react";
+import type { Lap } from "../src/models/race";
+import {
+  buildStints,
+  fitLaps,
+  average,
+  overlaps,
+  raceTimeBounds,
+} from "../src/analysis/stints";
+import { CONFIG } from "../src/config";
+import RaceStrategy from "./race-strategy";
+const time = (n: number) =>
+  Number.isFinite(n)
+    ? `${Math.floor(n / 60)}:${(n % 60).toFixed(3).padStart(6, "0")}`
+    : "—";
+const number = (n: number) => (Number.isFinite(n) ? n.toFixed(3) : "—");
+type Stint = ReturnType<typeof buildStints>[number];
+export default function RaceAnalysis({
+  laps,
+  driver,
+  setDriver,
+}: {
+  laps: Lap[];
+  driver: string;
+  setDriver: (s: string) => void;
+}) {
+  const stints = useMemo(() => buildStints(laps), [laps]);
+  const [cls, setCls] = useState("All"),
+    [cars, setCars] = useState<string[] | null>(null),
+    [cats, setCats] = useState<string[] | null>(null);
+  const [visibleDrivers, setVisibleDrivers] = useState<string[] | null>(null);
+  const [percent, setPercent] = useState(120),
+    [cap, setCap] = useState(false),
+    [mode, setMode] = useState("laps"),
+    [tab, setTab] = useState("Race plot");
+  const [anchor, setAnchor] = useState(""),
+    [parallel, setParallel] = useState(false),
+    [axis, setAxis] = useState("lap");
+  const [tyreUsage, setTyreUsage] = useState("reference");
+  const refStint =
+    stints.find((s) => s.id === anchor && s.driver === driver) ||
+    stints.find((s) => s.driver === driver);
+  const usage =
+    tyreUsage === "reference" ? refStint?.tyreStint : Number(tyreUsage);
+  const yBounds = useMemo(() => raceTimeBounds(stints, cls), [stints, cls]);
+  let filtered = stints.filter(
+    (s) =>
+      (cls === "All" || s.className === cls) &&
+      (cars === null || cars.includes(s.car)) &&
+      (visibleDrivers === null || visibleDrivers.includes(s.driver)) &&
+      (cats === null || cats.includes(s.category)),
+  );
+  if (tab === "Tyre conditions")
+    filtered = usage
+      ? filtered.filter(
+          (s) =>
+            (cls !== "All" ||
+              !refStint ||
+              s.className === refStint.className) &&
+            s.tyreStint === usage &&
+            !!s.tyreSet &&
+            (!parallel || (!!refStint && overlaps(s.laps, refStint.laps))),
+        )
+      : [];
+  const fastest = Math.min(
+    ...filtered.flatMap((s) => s.clean.map((l) => l.lapTime!)),
+  );
+  const plotted = filtered.map((s) => {
+    const clean = s.clean.filter(
+      (l) => !cap || l.lapTime! <= (fastest * percent) / 100,
+    );
+    return { ...s, clean, fit: fitLaps(clean) };
+  });
+  const toggles = (
+    label: string,
+    options: string[],
+    selected: string[] | null,
+    set: (s: string[] | null) => void,
+  ) => (
+    <fieldset className="raceChecks">
+      <legend>{label}</legend>
+      <label>
+        <input
+          type="checkbox"
+          checked={
+            selected === null || options.every((x) => selected.includes(x))
+          }
+          onChange={() =>
+            set(
+              selected === null || options.every((x) => selected.includes(x))
+                ? []
+                : null,
+            )
+          }
+        />
+        All
+      </label>
+      {options.map((x) => (
+        <label key={x}>
+          <input
+            type="checkbox"
+            checked={selected === null || selected.includes(x)}
+            onChange={() =>
+              set(
+                (selected ?? options).includes(x)
+                  ? (selected ?? options).filter((y) => y !== x)
+                  : [...(selected ?? options), x],
+              )
+            }
+          />
+          {x}
+        </label>
+      ))}
+    </fieldset>
+  );
+  return (
+    <section className="raceAnalysis">
+      <div className="seasonTabs">
+        {[
+          "Race plot",
+          "Strategy overview",
+          "Race Strategy",
+          "Tyre conditions",
+        ].map((t) => (
+          <button
+            key={t}
+            className={tab === t ? "active" : ""}
+            onClick={() => {
+              setTab(t);
+              if (t === "Tyre conditions") setAxis("stint");
+            }}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+      <div className="seasonControls">
+        <label>
+          CLASS
+          <select value={cls} onChange={(e) => setCls(e.target.value)}>
+            {["All", ...new Set(laps.map((l) => l.className))].map((x) => (
+              <option key={x}>{x}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          FOCUS DRIVER
+          <select value={driver} onChange={(e) => setDriver(e.target.value)}>
+            <option value="">None</option>
+            {[...new Set(laps.map((l) => l.driver))].map((x) => (
+              <option key={x}>{x}</option>
+            ))}
+          </select>
+        </label>
+        {tab !== "Race Strategy" && (
+          <>
+            <label>
+              DISPLAY
+              <select value={mode} onChange={(e) => setMode(e.target.value)}>
+                <option value="laps">Lap-time traces</option>
+                <option value="both">Laps + stint fits</option>
+                <option value="fit">Only fitted stint lines</option>
+              </select>
+            </label>
+            <label>
+              <span>
+                <input
+                  type="checkbox"
+                  checked={cap}
+                  onChange={(e) => setCap(e.target.checked)}
+                />
+                Y cutoff (% fastest visible)
+              </span>
+              <input
+                type="number"
+                min="100"
+                max="200"
+                step="0.5"
+                value={percent}
+                onChange={(e) =>
+                  setPercent(Math.max(100, Number(e.target.value) || 100))
+                }
+              />
+            </label>
+            <label>
+              X AXIS
+              <select value={axis} onChange={(e) => setAxis(e.target.value)}>
+                <option value="lap">Race lap</option>
+                <option value="elapsed">Race elapsed (minutes)</option>
+                <option value="age">Tyre age (laps)</option>
+                <option value="stint">Lap within full-tank stint</option>
+              </select>
+            </label>
+          </>
+        )}
+      </div>
+      {toggles(
+        "DRIVERS",
+        [...new Set(laps.map((l) => l.driver))],
+        visibleDrivers,
+        setVisibleDrivers,
+      )}
+      {toggles(
+        "FIA CATEGORY",
+        [...new Set(laps.map((l) => l.category))],
+        cats,
+        setCats,
+      )}
+      {toggles(
+        "CAR NUMBER",
+        [...new Set(laps.map((l) => l.carNumber))],
+        cars,
+        setCars,
+      )}
+      {tab !== "Race Strategy" && (
+        <p>
+          Lap Time DEG = linear fit of lap time against race lap, in s/lap.
+          In/out laps and neutralised laps excluded; then laps above 120% of the
+          eligible stint average excluded. Positive = slower each lap.
+        </p>
+      )}
+      {tab === "Tyre conditions" && (
+        <div>
+          <label>
+            REFERENCE STINT{" "}
+            <select
+              value={refStint?.id || ""}
+              onChange={(e) => setAnchor(e.target.value)}
+            >
+              {stints
+                .filter((s) => s.driver === driver)
+                .map((s) => (
+                  <option key={s.id} value={s.id}>
+                    #{s.car} {s.driver} · stint {s.ordinal} ·{" "}
+                    {s.tyreStint === 1
+                      ? "NEW TYRES"
+                      : s.tyreStint
+                        ? `TYRE USE ${s.tyreStint}`
+                        : "UNKNOWN TYRES"}
+                  </option>
+                ))}
+            </select>
+          </label>
+          <label>
+            TYRE CONDITION{" "}
+            <select
+              value={tyreUsage}
+              onChange={(e) => setTyreUsage(e.target.value)}
+            >
+              <option value="reference">Same as reference stint</option>
+              {[
+                ...new Set(
+                  stints
+                    .map((s) => s.tyreStint)
+                    .filter((n): n is number => n !== null),
+                ),
+              ]
+                .sort((a, b) => a - b)
+                .map((n) => (
+                  <option key={n} value={n}>
+                    {n === 1
+                      ? "New tyres — first stint"
+                      : `Used tyres — stint ${n}`}
+                  </option>
+                ))}
+            </select>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={parallel}
+              onChange={(e) => setParallel(e.target.checked)}
+            />
+            Overlapping race time only
+          </label>
+          <p>
+            Full tank at every stop. Compare complete stints by tyre usage:
+            first stint on new tyres, second stint on retained tyres, etc. Set
+            number does not restrict matching. Dirty laps are excluded; race
+            time and tyre age remain visible.
+          </p>
+          {!refStint?.tyreSet && (
+            <p>
+              Load processed_timing_database.csv from your dissertation:
+              original timing CSVs have no tyre-set data.
+            </p>
+          )}
+        </div>
+      )}
+      {!filtered.length && (
+        <p role="status">
+          No stints match the selected categories, cars and drivers. Select All
+          in a filter to restore that group.
+        </p>
+      )}
+      {tab === "Race Strategy" && (
+        <RaceStrategy
+          allLaps={laps}
+          stints={filtered}
+          driver={driver}
+          setDriver={setDriver}
+        />
+      )}
+      {tab !== "Strategy overview" && tab !== "Race Strategy" && (
+        <RaceCanvas
+          rows={plotted}
+          driver={driver}
+          mode={mode}
+          axis={axis}
+          yBounds={yBounds}
+        />
+      )}
+      <div className="raceChecks" aria-label="Driver colour legend">
+        {[
+          ...new Map(plotted.map((s) => [`${s.car}|${s.driver}`, s])).values(),
+        ].map((s) => (
+          <button
+            key={`${s.car}|${s.driver}`}
+            onClick={() => setDriver(s.driver)}
+            style={{
+              borderLeft: `6px solid ${CONFIG.CAR_COLOURS[s.car as keyof typeof CONFIG.CAR_COLOURS] || "#61788d"}`,
+              background: s.driver === driver ? "#b148d1" : "#f5f6f7",
+              color: s.driver === driver ? "white" : "#17202a",
+            }}
+          >
+            #{s.car} {s.driver}
+          </button>
+        ))}
+      </div>
+      {tab === "Strategy overview" &&
+        plotted.map((s) => (
+          <div className="strategyStint" key={s.id}>
+            <span>
+              #{s.car} {s.driver} · S{s.ordinal} · DEG {number(s.fit.slope)}{" "}
+              s/lap
+            </span>
+            <div>
+              <i
+                title={`${time(s.start)}–${time(s.end)}`}
+                style={{
+                  left: `${s.start / 144}%`,
+                  width: `${(s.end - s.start) / 144}%`,
+                  background:
+                    s.driver === driver
+                      ? "#a326cc"
+                      : CONFIG.CAR_COLOURS[
+                          s.car as keyof typeof CONFIG.CAR_COLOURS
+                        ] || "#61788d",
+                }}
+              />
+            </div>
+          </div>
+        ))}
+      {tab !== "Race Strategy" && (
+        <div className="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                {[
+                  "CAR / DRIVER",
+                  "STINT",
+                  "TYRE CONDITION",
+                  "TYRE USE",
+                  "TYRE AGE START",
+                  "RACE TIME",
+                  "USED / ALL",
+                  "AVG",
+                  "LAP TIME DEG (s/lap)",
+                ].map((h) => (
+                  <th key={h}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {plotted.map((s) => (
+                <tr
+                  key={s.id}
+                  className={s.driver === driver ? "performanceFocus" : ""}
+                >
+                  <td>
+                    #{s.car} {s.driver}
+                  </td>
+                  <td>{s.ordinal}</td>
+                  <td>
+                    {s.tyreStint === 1
+                      ? "NEW"
+                      : s.tyreStint
+                        ? "USED"
+                        : "UNKNOWN"}
+                  </td>
+                  <td>{s.tyreStint ?? "—"}</td>
+                  <td>{s.tyreAge ?? "—"}</td>
+                  <td>
+                    {time(s.start)}–{time(s.end)}
+                  </td>
+                  <td>
+                    {s.clean.length}/{s.laps.length}
+                  </td>
+                  <td>{time(average(s.clean.map((l) => l.lapTime!)))}</td>
+                  <td>{number(s.fit.slope)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}
+function RaceCanvas({
+  rows,
+  driver,
+  mode,
+  axis,
+  yBounds,
+}: {
+  rows: Stint[];
+  driver: string;
+  mode: string;
+  axis: string;
+  yBounds: [number, number];
+}) {
+  const canvas = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const el = canvas.current;
+    if (!el) return;
+    const ctx = el.getContext("2d");
+    if (!ctx) return;
+    const [minY, maxY] = yBounds;
+    const w = 1400,
+      h = Math.max(530, (maxY - minY) * 20 + 120),
+      plotBottom = h - 70,
+      plotHeight = h - 120;
+    el.width = w;
+    el.height = h;
+    ctx.fillStyle = "#f5f6f7";
+    ctx.fillRect(0, 0, w, h);
+    const stintStart = new Map(
+      rows.flatMap((s) =>
+        s.laps.map((l) => [l.id, s.laps[0].lapNumber] as const),
+      ),
+    );
+    const xValue = (l: Lap) =>
+      axis === "elapsed"
+        ? (l.elapsed ?? NaN) / 60
+        : axis === "age"
+          ? (l.tyreAge ?? NaN)
+          : axis === "stint"
+            ? l.lapNumber - (stintStart.get(l.id) ?? l.lapNumber) + 1
+            : l.lapNumber;
+    const points = rows
+      .flatMap((s) => s.clean)
+      .filter((l) => Number.isFinite(xValue(l)));
+    if (!points.length) {
+      ctx.fillStyle = "#17202a";
+      ctx.fillText("No eligible laps for these filters", 80, 70);
+      return;
+    }
+    const maxX = Math.max(...points.map(xValue), 1);
+    const x = (v: number) => 85 + (v / maxX) * 1280,
+      y = (v: number) => plotBottom - ((v - minY) / (maxY - minY)) * plotHeight;
+    ctx.font = "13px Arial";
+    ctx.textAlign = "right";
+    for (let v = minY; v <= maxY; v++) {
+      ctx.strokeStyle = "#ccd3d9";
+      ctx.beginPath();
+      ctx.moveTo(85, y(v));
+      ctx.lineTo(1365, y(v));
+      ctx.stroke();
+      ctx.fillStyle = "#17202a";
+      ctx.fillText(time(v), 78, y(v) + 4);
+    }
+    ctx.textAlign = "center";
+    for (let i = 0; i <= 10; i++) {
+      const v = (maxX * i) / 10;
+      ctx.fillText(v.toFixed(0), x(v), h - 45);
+    }
+    ctx.fillText(
+      axis === "lap"
+        ? "Race lap"
+        : axis === "age"
+          ? "Tyre age (laps)"
+          : axis === "stint"
+            ? "Lap within full-tank stint"
+            : "Race elapsed (minutes)",
+      720,
+      h - 15,
+    );
+    for (const s of [...rows].sort(
+      (a, b) => Number(a.driver === driver) - Number(b.driver === driver),
+    )) {
+      const p = s.clean.filter((l) => Number.isFinite(xValue(l)));
+      if (!p.length) continue;
+      ctx.strokeStyle =
+        s.driver === driver
+          ? "#a326cc"
+          : CONFIG.CAR_COLOURS[s.car as keyof typeof CONFIG.CAR_COLOURS] ||
+            "#55778e";
+      ctx.fillStyle = ctx.strokeStyle;
+      ctx.lineWidth = s.driver === driver ? 3.5 : 1;
+      if (mode !== "fit") {
+        ctx.beginPath();
+        p.forEach((l, i) => {
+          const prev = p[i - 1];
+          if (!prev || l.lapNumber !== prev.lapNumber + 1)
+            ctx.moveTo(x(xValue(l)), y(l.lapTime!));
+          else ctx.lineTo(x(xValue(l)), y(l.lapTime!));
+        });
+        ctx.stroke();
+        p.forEach((l) => {
+          ctx.beginPath();
+          ctx.arc(x(xValue(l)), y(l.lapTime!), 2, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+      if (mode !== "laps" && Number.isFinite(s.fit.slope)) {
+        ctx.setLineDash(mode === "both" ? [6, 4] : []);
+        ctx.beginPath();
+        p.forEach((l, i) => {
+          const px = x(xValue(l)),
+            py = y(s.fit.intercept + s.fit.slope * l.lapNumber);
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+  }, [rows, driver, mode, axis, yBounds]);
+  return (
+    <canvas
+      ref={canvas}
+      className="raceCanvas"
+      aria-label="Lap times and fitted stint degradation for the filtered drivers"
+    />
+  );
+}

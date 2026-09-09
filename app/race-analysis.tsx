@@ -35,6 +35,7 @@ export default function RaceAnalysis({
     [cars, setCars] = useState<string[] | null>(null),
     [cats, setCats] = useState<string[] | null>(null);
   const [visibleDrivers, setVisibleDrivers] = useState<string[] | null>(null);
+  const [overlayDrivers, setOverlayDrivers] = useState<string[] | null>([]);
   const [percent, setPercent] = useState(120),
     [cap, setCap] = useState(false),
     [mode, setMode] = useState("laps"),
@@ -75,9 +76,13 @@ export default function RaceAnalysis({
   const fastest = Math.min(
     ...filtered.flatMap((s) => s.clean.map((l) => l.lapTime!)),
   );
-  const plotted = filtered.map((s) => {
+  const plotStints=tab==="Race plot" ? [...new Map([...filtered,
+    ...stints.filter(s=>(cls==="All"||s.className===cls)&&(overlayDrivers===null||overlayDrivers.includes(s.driver)))
+  ].map(s=>[s.id,s])).values()] : filtered;
+  const plotFastest=Math.min(...plotStints.flatMap(s=>s.clean.map(l=>l.lapTime!)));
+  const plotted = plotStints.map((s) => {
     const clean = s.clean.filter(
-      (l) => !cap || l.lapTime! <= (fastest * percent) / 100,
+      (l) => !cap || l.lapTime! <= (plotFastest * percent) / 100,
     );
     return { ...s, clean, fit: fitLaps(clean) };
   });
@@ -205,6 +210,10 @@ export default function RaceAnalysis({
               {toggles("Evolution drivers", [...new Set(evolutionCandidates.map(s=>s.driver))].sort(), evolutionDrivers, setEvolutionDrivers)}
               <small>Categories preselect drivers; untick individual drivers to exclude them. These filters affect only track evolution.</small>
             </details>
+            {tab==="Race plot" && <details><summary>OVERLAY EXTRA DRIVERS</summary>
+              {toggles("Extra comparison drivers", [...new Set(stints.filter(s=>cls==="All"||s.className===cls).map(s=>s.driver))].sort(), overlayDrivers, setOverlayDrivers)}
+              <small>Added independently of car, category and main driver filters. Same class and clean-lap/cutoff rules. Focus remains purple.</small>
+            </details>}
             <label>
               <span>
                 <input
@@ -360,6 +369,7 @@ export default function RaceAnalysis({
           axis={axis}
           evolution={evolutionVisible ? evolution : []}
           colourMode={colourMode}
+          overlays={overlayDrivers===null?plotted.map(s=>s.driver):overlayDrivers}
         />
       )}
       {colourMode === "category" && tab !== "Race Strategy" && tab !== "Track evolution fit" && <div className="raceChecks" aria-label="FIA category colour legend">
@@ -471,6 +481,7 @@ function RaceCanvas({
   axis,
   evolution,
   colourMode,
+  overlays,
 }: {
   rows: Stint[];
   driver: string;
@@ -478,6 +489,7 @@ function RaceCanvas({
   axis: string;
   evolution: EvolutionSeries[];
   colourMode: ColourMode;
+  overlays: string[];
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -488,7 +500,7 @@ function RaceCanvas({
     const xValue = (l: Lap, s: Stint) => axis === "elapsed" ? (l.elapsed ?? NaN)/60
       : axis === "age" ? (l.tyreAge ?? NaN)
       : axis === "stint" ? l.lapNumber-s.laps[0].lapNumber+1 : l.lapNumber;
-    const visibleRows = mode === "evolution" ? [] : rows.map(s => ({ ...s, clean:s.clean.filter(l=>Number.isFinite(xValue(l,s))) }));
+    const visibleRows = rows.filter(s=>mode!=="evolution"||overlays.includes(s.driver)).map(s => ({ ...s, clean:s.clean.filter(l=>Number.isFinite(xValue(l,s))) }));
     const visibleEvolution = evolution.map(s => ({...s, points:s.points.filter(p => Number.isFinite(axis === "elapsed" ? p.elapsed : p.lap))}));
     const values = visibleRows.flatMap(s => s.clean.flatMap(l => [
       ...(mode !== "fit" ? [l.lapTime!] : []),
@@ -564,8 +576,8 @@ function RaceCanvas({
           ? "#a326cc"
           : seriesColour(s, colourMode);
       ctx.fillStyle = ctx.strokeStyle;
-      ctx.globalAlpha = driver && s.driver !== driver ? 0.6 : 1;
-      ctx.lineWidth = s.driver === driver ? 4 : 1.4;
+      ctx.globalAlpha = driver && s.driver !== driver && !overlays.includes(s.driver) ? 0.6 : 1;
+      ctx.lineWidth = s.driver === driver ? 4 : overlays.includes(s.driver) ? 3 : 1.4;
       if (mode !== "fit") {
         ctx.beginPath();
         p.forEach((l, i) => {
@@ -607,7 +619,7 @@ function RaceCanvas({
       s.points.forEach(p=>{ctx.beginPath();ctx.arc(x(axis === "elapsed" ? p.elapsed/60 : p.lap),y(p.time),2.5,0,Math.PI*2);ctx.fill();});
       ctx.textAlign = "left"; ctx.fillText(`${s.name} · MA3`, 95, 20+index*15);
     });
-  }, [rows, driver, mode, axis, evolution, colourMode]);
+  }, [rows, driver, mode, axis, evolution, colourMode, overlays]);
   return (
     <canvas
       ref={canvas}

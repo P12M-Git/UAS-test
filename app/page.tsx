@@ -1610,6 +1610,7 @@ function SeasonSummary({
   >("best");
   const [plot110Filter, setPlot110Filter] = useState(false);
   const [plotPercent, setPlotPercent] = useState(110);
+  const [excludedSeasonDrivers, setExcludedSeasonDrivers] = useState<string[]>([]);
   const [benchmarkLines, setBenchmarkLines] = useState<string[]>(["Gold avg", "Silver avg", "Gold top 10", "Silver top 10"]);
   const classes = ["All", ...new Set(laps.map((l) => l.className))];
   const categories = ["Platinum", "Gold", "Silver", "Bronze", "Unknown"].filter(
@@ -1737,12 +1738,21 @@ function SeasonSummary({
             title="Season pace summary"
             sub="One compact ranking per selected event; analysed driver highlighted in pink"
           />
+          <details><summary>DRIVERS · included in plots and category averages</summary>
+            <button onClick={()=>setExcludedSeasonDrivers([])}>Select all</button>
+            <div className="categoryTicks">{[...new Set(laps.filter(l=>selectedEvents.includes(l.event)
+              && (seasonClass==="All"||l.className===seasonClass)
+              && (seasonCategories.includes(l.category)||l.driver===driver)).map(l=>l.driver))].sort().map(name=><label key={name}>
+              <input type="checkbox" checked={!excludedSeasonDrivers.includes(name)} onChange={()=>setExcludedSeasonDrivers(prev=>prev.includes(name)?prev.filter(x=>x!==name):[...prev,name])}/>{name}
+            </label>)}</div>
+          </details>
           <div className="seasonGrid">
             {selectedEvents.map((event) => {
               const rows = driverMetrics(
                 laps.filter(
                   (l) =>
                     l.event === event &&
+                    !excludedSeasonDrivers.includes(l.driver) &&
                     (seasonClass === "All" || l.className === seasonClass) &&
                     (seasonCategories.includes(l.category) || l.driver === driver),
                 ),

@@ -916,3 +916,12 @@ tbody tr:hover {
     transparent 16%
   );
 }
+/* Keep cutoff exclusions readable even when category/focus colours are active. */
+.seasonEvent tr.seasonDiscarded > td,
+.seasonEvent tr.seasonDiscarded.focusDriver > td.categoryDriverCell {
+  background: #651f2b !important;
+  color: #fff !important;
+}
+.seasonEvent tr.seasonDiscarded.focusDriver > td:first-child {
+  box-shadow: inset 4px 0 #ef2ac1;
+}

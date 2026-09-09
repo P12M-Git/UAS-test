@@ -10,7 +10,7 @@ import {
 import { CONFIG } from "../src/config";
 import RaceStrategy from "./race-strategy";
 import TrackEvolutionFit from "./track-evolution-fit";
-import { trackEvolution, proDriverLaps, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
+import { trackEvolution, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
 const time = (n: number) =>
   Number.isFinite(n)
     ? `${Math.floor(n / 60)}:${(n % 60).toFixed(3).padStart(6, "0")}`
@@ -49,7 +49,9 @@ export default function RaceAnalysis({
   const usage =
     tyreUsage === "reference" ? refStint?.tyreStint : Number(tyreUsage);
   const [showEvolution, setShowEvolution] = useState(false);
-  const [showProEvolution, setShowProEvolution] = useState(false);
+  const [evolutionCats, setEvolutionCats] = useState<string[] | null>(null);
+  const [evolutionDrivers, setEvolutionDrivers] = useState<string[] | null>(null);
+  const evolutionCandidates=stints.filter(s=>(cls==="All"||s.className===cls)&&(evolutionCats===null||evolutionCats.includes(s.category)));
   const [colourMode, setColourMode] = useState<ColourMode>("car");
   let filtered = stints.filter(
     (s) =>
@@ -80,19 +82,14 @@ export default function RaceAnalysis({
     return { ...s, clean, fit: fitLaps(clean) };
   });
   const evolution = useMemo(() => {
-    const clean = stints.filter(s => cls === "All" || s.className === cls).flatMap(s => s.clean);
+    const clean = stints.filter(s => (cls === "All" || s.className === cls)
+      && (evolutionCats===null || evolutionCats.includes(s.category))
+      && (evolutionDrivers===null || evolutionDrivers.includes(s.driver))).flatMap(s => s.clean);
     const best = new Map<string, number>();
     clean.forEach(l => best.set(l.className, Math.min(best.get(l.className) ?? Infinity, l.lapTime!)));
     return trackEvolution(clean.filter(l => !cap || l.lapTime! <= best.get(l.className)! * percent / 100));
-  }, [stints, cls, cap, percent]);
-  const proEvolution = useMemo(() => {
-    const clean = proDriverLaps(stints.filter(s => cls === "All" || s.className === cls).flatMap(s => s.clean));
-    const fastest = Math.min(...clean.map(l => l.lapTime!));
-    return trackEvolution(clean.filter(l => !cap || l.lapTime! <= fastest * percent/100))
-      .map(s => ({...s, name: `${s.name} · Pro drivers (no Bronze)`}));
-  }, [stints, cls, cap, percent]);
+  }, [stints, cls, cap, percent, evolutionCats, evolutionDrivers]);
   const evolutionVisible = (showEvolution || mode === "evolution") && ["lap", "elapsed"].includes(axis);
-  const proEvolutionVisible = showProEvolution && ["lap", "elapsed"].includes(axis);
   const toggles = (
     label: string,
     options: string[],
@@ -150,7 +147,7 @@ export default function RaceAnalysis({
             className={tab === t ? "active" : ""}
             onClick={() => {
               setTab(t);
-              if (t === "Tyre conditions") { setAxis("stint"); setShowEvolution(false); setShowProEvolution(false); if (mode === "evolution") setMode("laps"); }
+              if (t === "Tyre conditions") { setAxis("stint"); setShowEvolution(false); if (mode === "evolution") setMode("laps"); }
             }}
           >
             {t}
@@ -196,16 +193,18 @@ export default function RaceAnalysis({
                 <option value="category">FIA category</option>
               </select>
             </label>
-            <label>
+            <details>
+              <summary>TRACK EVOLUTION · FILTERS</summary>
+              <label>
               <span><input type="checkbox" checked={showEvolution} disabled={mode === "evolution"}
                 onChange={e => { setShowEvolution(e.target.checked); if (!["lap", "elapsed"].includes(axis)) setAxis("lap"); }} />
                 Overlay track evolution</span>
             </label>
-            <label>
-              <span><input type="checkbox" checked={showProEvolution}
-                onChange={e => { setShowProEvolution(e.target.checked); if (!["lap", "elapsed"].includes(axis)) setAxis("lap"); }}/>
-                Track evolution pro drivers (LMP2, no Bronze)</span>
-            </label>
+              {toggles("Evolution categories", ["Platinum","Gold","Silver","Bronze","Unknown"], evolutionCats,
+                selected=>{setEvolutionCats(selected);setEvolutionDrivers(null);})}
+              {toggles("Evolution drivers", [...new Set(evolutionCandidates.map(s=>s.driver))].sort(), evolutionDrivers, setEvolutionDrivers)}
+              <small>Categories preselect drivers; untick individual drivers to exclude them. These filters affect only track evolution.</small>
+            </details>
             <label>
               <span>
                 <input
@@ -231,8 +230,8 @@ export default function RaceAnalysis({
               <select value={axis} onChange={(e) => setAxis(e.target.value)}>
                 <option value="lap">Race lap</option>
                 <option value="elapsed">Race elapsed (minutes)</option>
-                <option value="age" disabled={mode === "evolution" || showEvolution || showProEvolution}>Tyre age (laps)</option>
-                <option value="stint" disabled={mode === "evolution" || showEvolution || showProEvolution}>Lap within full-tank stint</option>
+                <option value="age" disabled={mode === "evolution" || showEvolution}>Tyre age (laps)</option>
+                <option value="stint" disabled={mode === "evolution" || showEvolution}>Lap within full-tank stint</option>
               </select>
             </label>
           </>
@@ -263,11 +262,10 @@ export default function RaceAnalysis({
           eligible stint average excluded. Positive = slower each lap.
         </p>
       )}
-      {proEvolutionVisible && <p>Pro drivers: LMP2 / Pro-Am without Bronze. Same clean-stint filter and 3-lap moving average; optional cutoff recalculated from this sample. Unknown ratings remain included because only Bronze is excluded.</p>}
       {evolutionVisible && <p>
-        Track evolution: pooled clean lap times from race laps n−2, n−1 and n, across the entire class
-        (LMP2 includes Pro-Am). Same stint cleaning and optional percentage cutoff; driver/car/FIA selections
-        do not restrict the class reference. Gaps without three consecutive eligible lap bins are not connected.
+        Track evolution: pooled clean lap times from race laps n−2, n−1 and n, using the categories and drivers selected in its filter menu
+        (LMP2 includes Pro-Am). Same stint cleaning and optional percentage cutoff, recalculated from this sample.
+        Gaps without three consecutive eligible lap bins are not connected.
         This is observed field pace, also affected by fuel, tyres and drivers—not a correction for those effects.
       </p>}
       {tab === "Tyre conditions" && (
@@ -360,7 +358,7 @@ export default function RaceAnalysis({
           driver={driver}
           mode={mode}
           axis={axis}
-          evolution={[...(evolutionVisible ? evolution : []), ...(proEvolutionVisible ? proEvolution : [])]}
+          evolution={evolutionVisible ? evolution : []}
           colourMode={colourMode}
         />
       )}

@@ -1724,7 +1724,7 @@ function SeasonSummary({
                   onChange={(e) => setPlot110Filter(e.target.checked)}
                 />
                 Exclude above <input aria-label="Season cutoff percentage" type="number" min="100" step="0.5" value={plotPercent}
-                  onChange={e=>{const n=Number(e.target.value);if(Number.isFinite(n)&&n>=100)setPlotPercent(n);}} />% of fastest displayed metric
+                  onChange={e=>{const n=Number(e.target.value);if(Number.isFinite(n)&&n>=100)setPlotPercent(n);}} />% of absolute session best lap (ignores display filters)
               </span>
             </label>
             <fieldset className="categoryTicks"><legend>REFERENCE LINES</legend>
@@ -1758,7 +1758,7 @@ function SeasonSummary({
                 ),
                 20,
               ).sort((a, b) => metricValue(a) - metricValue(b));
-              const fastest=Math.min(...rows.map(metricValue).filter(Number.isFinite));
+              const fastest=Math.min(...laps.filter(l=>l.event===event && l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0).map(l=>l.lapTime!));
               const discarded=(m:DriverMetric)=>plot110Filter && metricValue(m)>fastest*plotPercent/100;
               return (
                 <div className="seasonEvent" key={event}>
@@ -1770,6 +1770,7 @@ function SeasonSummary({
                     label={metricLabel}
                     cutoff110={plot110Filter}
                     percent={plotPercent}
+                    absoluteBest={fastest}
                     benchmarkLines={benchmarkLines}
                   />
                   <SeasonCategoryMini
@@ -1778,6 +1779,7 @@ function SeasonSummary({
                     value={metricValue}
                     cutoff110={plot110Filter}
                     percent={plotPercent}
+                    absoluteBest={fastest}
                   />
                   <table>
                     <thead>
@@ -1876,17 +1878,19 @@ function SeasonCategoryMini({
   value,
   cutoff110,
   percent,
+  absoluteBest,
 }: {
   rows: DriverMetric[];
   driver: string;
   value: (m: DriverMetric) => number;
   cutoff110: boolean;
   percent: number;
+  absoluteBest: number;
 }) {
   const finite = rows.filter((m) => Number.isFinite(value(m)));
   const first = Math.min(...finite.map(value));
   const visible = finite.filter(
-    (m) => !cutoff110 || value(m) <= first * percent/100,
+    (m) => !cutoff110 || value(m) <= absoluteBest * percent/100,
   );
   const selected = visible.find((m) => m.driver === driver);
   const categories = ["Platinum", "Gold", "Silver", "Bronze"].filter((c) =>
@@ -2365,6 +2369,7 @@ function SeasonPaceChart({
   label,
   cutoff110,
   percent,
+  absoluteBest,
   benchmarkLines,
 }: {
   rows: DriverMetric[];
@@ -2373,6 +2378,7 @@ function SeasonPaceChart({
   label: string;
   cutoff110: boolean;
   percent: number;
+  absoluteBest: number;
   benchmarkLines: string[];
 }) {
   const [expanded, setExpanded] = useState(false);
@@ -2384,9 +2390,8 @@ function SeasonPaceChart({
     return () => window.removeEventListener("keydown", close);
   }, [expanded]);
   const finite = rows.filter((m) => Number.isFinite(value(m)));
-  const fastest = Math.min(...finite.map(value));
   const valid = finite.filter(
-    (m) => !cutoff110 || value(m) <= fastest * percent/100,
+    (m) => !cutoff110 || value(m) <= absoluteBest * percent/100,
   );
   if (!valid.length) return null;
   const values = valid.map(value);

@@ -16,7 +16,7 @@ import {
 import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
 import { sharedTrackFraction } from "../src/analysis/stints";
-import { seasonComparison, absoluteSummaryDrivers } from "../src/analysis/season-comparison";
+import { seasonComparison, absoluteSummaryDrivers, summaryLapCount } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
@@ -1608,7 +1608,7 @@ function SeasonSummary({
   const [seasonMetric, setSeasonMetric] = useState<
     "best" | "best20" | "avg10" | "avg20"
   >("best");
-  const [plot1025Filter, setPlot1025Filter] = useState(false);
+  const [plot110Filter, setPlot110Filter] = useState(false);
   const classes = ["All", ...new Set(laps.map((l) => l.className))];
   const categories = ["Platinum", "Gold", "Silver", "Bronze", "Unknown"].filter(
     (x) => laps.some((l) => l.category === x),
@@ -1717,10 +1717,10 @@ function SeasonSummary({
               <span>
                 <input
                   type="checkbox"
-                  checked={plot1025Filter}
-                  onChange={(e) => setPlot1025Filter(e.target.checked)}
+                  checked={plot110Filter}
+                  onChange={(e) => setPlot110Filter(e.target.checked)}
                 />
-                Exclude &gt;102.5% of fastest
+                Exclude &gt;110% of fastest displayed metric
               </span>
             </label>
           </div>
@@ -1748,13 +1748,13 @@ function SeasonSummary({
                     driver={driver}
                     value={metricValue}
                     label={metricLabel}
-                    cutoff1025={plot1025Filter}
+                    cutoff110={plot110Filter}
                   />
                   <SeasonCategoryMini
                     rows={rows}
                     driver={driver}
                     value={metricValue}
-                    cutoff1025={plot1025Filter}
+                    cutoff110={plot110Filter}
                   />
                   <table>
                     <thead>
@@ -1813,7 +1813,7 @@ function SeasonSummary({
       )}
       {seasonSection === "events" && <>
         <SectionTitle n="07" title="Driver vs Gold / Silver — event summary"
-          sub="Independent absolute pace metrics; Best 20 requires 20 laps. Standard deviation uses all valid green laps, excluding pit-in/out. No percentage, display or FIA-category filters."/>
+          sub="Independent absolute pace metrics; Best 20 (Best 10 at Spa), full sample required. Standard deviation uses all valid green laps, excluding pit-in/out. No percentage, display or FIA-category filters."/>
         <div className="seasonGrid">
           {selectedEvents.map(event=><SeasonDriverComparison key={event} event={event} laps={laps} driver={driver}
             />)}
@@ -1829,7 +1829,8 @@ function SeasonDriverComparison({event,laps,driver}:{
   const selected=metrics.find(m=>m.driver===driver);
   const targetClass=selected?.className;
   const peers=metrics.filter(m=>m.className===targetClass);
-  const rows=seasonComparison(selected,peers);
+  const count=summaryLapCount(event);
+  const rows=seasonComparison(selected,peers,count);
   const deltaCell=(value:number)=><td style={Number.isFinite(value)?{
     backgroundColor:value<0?"#d8ecd2":value>0?"#f3cece":"#edf0f2",
     color:value<0?"#24662c":value>0?"#a32626":"#334155",fontWeight:700,
@@ -1842,24 +1843,24 @@ function SeasonDriverComparison({event,laps,driver}:{
         <td title={`N=${row.gold.count}`}>{format(row.gold.value)}</td>{deltaCell(row.gold.delta)}
         <td title={`N=${row.silver.count}`}>{format(row.silver.value)}</td>{deltaCell(row.silver.delta)}</tr>;
     })}</tbody>
-  </table></div><small>{targetClass || "Driver not present in this event/class"} · Best 20 sample: {selected?.used ?? 0} laps.
-    Total valid timed laps: {selected?.total ?? 0}. Pace: absolute, no flag/pit filters. STD: green laps only, no pit-in/out. No percentage filter. Fewer than 20 laps: AVG 20 unavailable.</small></div>;
+  </table></div><small>{targetClass || "Driver not present in this event/class"} · Best {count} sample: {selected?.used ?? 0} laps.
+    Total valid timed laps: {selected?.total ?? 0}. Pace: absolute, no flag/pit filters. STD: green laps only, no pit-in/out. No percentage filter. Fewer than {count} laps: AVG {count} unavailable.</small></div>;
 }
 function SeasonCategoryMini({
   rows,
   driver,
   value,
-  cutoff1025,
+  cutoff110,
 }: {
   rows: DriverMetric[];
   driver: string;
   value: (m: DriverMetric) => number;
-  cutoff1025: boolean;
+  cutoff110: boolean;
 }) {
   const finite = rows.filter((m) => Number.isFinite(value(m)));
   const first = Math.min(...finite.map(value));
   const visible = finite.filter(
-    (m) => !cutoff1025 || value(m) <= first * 1.025,
+    (m) => !cutoff110 || value(m) <= first * 1.10,
   );
   const selected = visible.find((m) => m.driver === driver);
   const categories = ["Platinum", "Gold", "Silver", "Bronze"].filter((c) =>
@@ -2336,13 +2337,13 @@ function SeasonPaceChart({
   driver,
   value,
   label,
-  cutoff1025,
+  cutoff110,
 }: {
   rows: DriverMetric[];
   driver: string;
   value: (m: DriverMetric) => number;
   label: string;
-  cutoff1025: boolean;
+  cutoff110: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
   useEffect(() => {
@@ -2355,7 +2356,7 @@ function SeasonPaceChart({
   const finite = rows.filter((m) => Number.isFinite(value(m)));
   const fastest = Math.min(...finite.map(value));
   const valid = finite.filter(
-    (m) => !cutoff1025 || value(m) <= fastest * 1.025,
+    (m) => !cutoff110 || value(m) <= fastest * 1.10,
   );
   if (!valid.length) return null;
   const values = valid.map(value);
@@ -2392,7 +2393,7 @@ function SeasonPaceChart({
     <div className={`seasonChartWrap ${expanded ? "expanded" : ""}`}>
       <div className="seasonChartHeader">
         <b>{label}</b>
-        {cutoff1025 && (
+        {cutoff110 && (
           <small className="cutoffAudit">
             BENCHMARK N={valid.length}/{finite.length} · RECALCULATED
           </small>

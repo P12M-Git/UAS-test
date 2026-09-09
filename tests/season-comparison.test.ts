@@ -1,9 +1,22 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { seasonComparison, absoluteSummaryDrivers } from "../src/analysis/season-comparison";
+import { seasonComparison, absoluteSummaryDrivers, summaryLapCount } from "../src/analysis/season-comparison";
 import type { Lap } from "../src/models/race";
 import type { DriverMetric } from "../src/analysis/driver_metrics";
 const m=(category:string,best:number,avgBest:number,stdAll=0.5)=>({category,best,avgBest,stdAll}) as DriverMetric;
+test("Spa averages exactly ten laps for driver and category top ten",()=>{
+  const laps=Array.from({length:20},(_,i)=>({event:"Spa-Francorchamps 2026",session:"Race",driver:"A",carNumber:"22",className:"LMP2",category:"Gold",lapTime:120+i,valid:true,green:true,pitIn:false,pitOut:false}) as Lap);
+  const selected=absoluteSummaryDrivers(laps)[0];
+  assert.equal(selected.used,10);
+  assert.equal(selected.avgBest,124.5);
+  const rows=seasonComparison(selected,[selected],summaryLapCount(laps[0].event));
+  assert.equal(rows[2].label,"AVG 10 laps");
+  assert.equal(rows[3].label,"AVG 10 laps TOP 10");
+  assert.equal(rows[3].gold.value,124.5);
+  assert.ok(Number.isNaN(absoluteSummaryDrivers(laps.slice(0,9))[0].avgBest));
+  assert.equal(absoluteSummaryDrivers(laps.map(l=>({...l,event:"Barcelona"})))[0].avgBest,129.5);
+  assert.equal(summaryLapCount("26ELMSR04_SPAF"),10);
+});
 test("season event table distinguishes fastest, mean best and top10 average",()=>{
   const selected=m("Silver",91,94,0.3);
   const peers=[m("Gold",90,92),m("Gold",94,96),m("Silver",92,95)];

@@ -2,27 +2,31 @@ import { mean, std, type DriverMetric } from "./driver_metrics";
 import type { Lap } from "../models/race";
 type ComparisonDriver = Pick<DriverMetric,"driver"|"car"|"className"|"category"|"best"|"avgBest"|"stdAll"|"total"|"used">;
 
+export const summaryLapCount = (event: string): 10 | 20 =>
+  /\bspa\b|SPAF/i.test(event) ? 10 : 20;
+
 export function absoluteSummaryDrivers(laps: Lap[]): ComparisonDriver[] {
   const groups=new Map<string,Lap[]>();
   for(const l of laps){const key=`${l.event}|${l.session}|${l.carNumber}|${l.driver}`;const rows=groups.get(key)||[];rows.push(l);groups.set(key,rows);}
   return [...groups.values()].map(rows=>{
     const first=rows[0],validRows=rows.filter(l=>l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0);
+    const count=summaryLapCount(first.event);
     const times=validRows.map(l=>l.lapTime!).sort((a,b)=>a-b);
     // Only STD excludes pit and non-green laps; absolute pace metrics stay unfiltered.
     const spreadTimes=validRows.filter(l=>l.green && !l.pitIn && !l.pitOut).map(l=>l.lapTime!);
     return {driver:first.driver,car:first.carNumber,className:first.className,category:first.category,
-      total:times.length,used:times.length>=20?20:0,best:times[0]??NaN,
-      avgBest:times.length>=20?mean(times.slice(0,20)):NaN,stdAll:std(spreadTimes)};
+      total:times.length,used:times.length>=count?count:0,best:times[0]??NaN,
+      avgBest:times.length>=count?mean(times.slice(0,count)):NaN,stdAll:std(spreadTimes)};
   });
 }
 
-export function seasonComparison(selected: ComparisonDriver | undefined, peers: ComparisonDriver[]) {
+export function seasonComparison(selected: ComparisonDriver | undefined, peers: ComparisonDriver[], count: 10 | 20 = 20) {
   const average=(rows:ComparisonDriver[],key:"best"|"avgBest"|"stdAll")=>mean(rows.map(m=>m[key]).filter(Number.isFinite));
   const definitions = [
     {label:"Best Race Lap", key:"best" as const, kind:"fastest"},
     {label:"AVG Fastest Lap", key:"best" as const, kind:"average"},
-    {label:"AVG 20 laps", key:"avgBest" as const, kind:"average"},
-    {label:"AVG 20 laps TOP 10", key:"avgBest" as const, kind:"top10"},
+    {label:`AVG ${count} laps`, key:"avgBest" as const, kind:"average"},
+    {label:`AVG ${count} laps TOP 10`, key:"avgBest" as const, kind:"top10"},
     {label:"ST deviation", key:"stdAll" as const, kind:"average"},
   ];
   return definitions.map(row=>{

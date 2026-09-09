@@ -5,6 +5,20 @@ import { DEFAULT_RACES, mergeRaceDatasets } from "../src/default-races";
 import { parseTimingCsv, applyDriverCategories } from "../src/parser/uraice_adapter";
 import { driverMetrics, performanceZ, mean } from "../src/analysis/driver_metrics";
 
+test("Barcelona hour-less elapsed times are unwrapped without changing the other races", () => {
+  for (const name of DEFAULT_RACES) {
+    const data = parseTimingCsv(readFileSync(`public/races/${name}`, "utf8"), name);
+    assert.ok(Math.max(...data.laps.map(l=>l.elapsed!))>14000, name);
+    const previous=new Map<string,number>();
+    for(const l of data.laps) {
+      if(previous.has(l.carNumber)) assert.ok(l.elapsed!>previous.get(l.carNumber)!, `${name} #${l.carNumber} lap ${l.lapNumber}`);
+      previous.set(l.carNumber,l.elapsed!);
+    }
+    if(name.includes("BARC"))assert.equal(data.laps.find(l=>l.carNumber==="10"&&l.lapNumber===20)!.elapsed,3639.4);
+    if(name.includes("SPAF"))assert.ok(Math.abs(data.laps.find(l=>l.carNumber==="10"&&l.lapNumber===1)!.elapsed!-145.717)<1e-9);
+  }
+});
+
 test("four bundled races load with valid timing data and imports preserve defaults", () => {
   const sets = DEFAULT_RACES.map(name => parseTimingCsv(readFileSync(`public/races/${name}`, "utf8"), name));
   sets.forEach(s => assert.ok(s.laps.length > 1000));

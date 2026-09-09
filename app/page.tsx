@@ -16,6 +16,7 @@ import {
 import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
 import { sharedTrackFraction } from "../src/analysis/stints";
+import { seasonComparison } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
@@ -1810,8 +1811,41 @@ function SeasonSummary({
           className={seasonClass}
         />
       )}
+      {seasonSection === "events" && <>
+        <SectionTitle n="07" title="Driver vs Gold / Silver — event summary"
+          sub="Fixed metrics per event, compared within the selected driver's class. Negative deltas are better; standard deviation compares consistency. Best 20 uses the existing fallback when fewer laps are available."/>
+        <div className="seasonGrid">
+          {selectedEvents.map(event=><SeasonDriverComparison key={event} event={event} laps={laps} driver={driver}
+            className={seasonClass} categories={seasonCategories} cutoff={plot1025Filter} displayValue={metricValue}/>)}
+        </div>
+      </>}
     </>
   );
+}
+function SeasonDriverComparison({event,laps,driver,className,categories,cutoff,displayValue}:{
+  event:string;laps:Lap[];driver:string;className:string;categories:string[];cutoff:boolean;displayValue:(m:DriverMetric)=>number;
+}) {
+  const metrics=useMemo(()=>driverMetrics(laps.filter(l=>l.event===event),20),[laps,event]);
+  const selected=metrics.find(m=>m.driver===driver && (className==="All" || m.className===className));
+  const targetClass=className==="All"?selected?.className:className;
+  const eligible=metrics.filter(m=>m.className===targetClass && categories.includes(m.category) && Number.isFinite(displayValue(m)));
+  const fastest=Math.min(...eligible.map(displayValue));
+  const peers=eligible.filter(m=>!cutoff || displayValue(m)<=fastest*1.025);
+  const rows=seasonComparison(selected,peers);
+  const deltaCell=(value:number)=><td style={Number.isFinite(value)?{
+    backgroundColor:value<0?"#d8ecd2":value>0?"#f3cece":"#edf0f2",
+    color:value<0?"#24662c":value>0?"#a32626":"#334155",fontWeight:700,
+  }:undefined}>{Number.isFinite(value)?`${value>0?"+":""}${value.toFixed(3)} s`:"—"}</td>;
+  return <div className="seasonEvent"><div className="tableWrap"><table aria-label={`${event} selected driver versus Gold and Silver`}>
+    <thead><tr><th>{event.toUpperCase()}</th><th>{selected && <CarNumber number={selected.car}/>} {driver || "SELECT DRIVER"}</th><th>Gold</th><th>Delta Gold</th><th>Silver</th><th>Delta Silver</th></tr></thead>
+    <tbody>{rows.map(row=>{
+      const format=(value:number)=>row.spread?Number.isFinite(value)?`${value.toFixed(3)} s`:"—":fmt(value);
+      return <tr key={row.label}><th scope="row">{row.label}</th><td>{format(row.value)}</td>
+        <td title={`N=${row.gold.count}`}>{format(row.gold.value)}</td>{deltaCell(row.gold.delta)}
+        <td title={`N=${row.silver.count}`}>{format(row.silver.value)}</td>{deltaCell(row.silver.delta)}</tr>;
+    })}</tbody>
+  </table></div><small>{targetClass || "Driver not present in this event/class"} · Best 20 sample: {selected?.used ?? 0} laps.
+    Category and plot-cutoff filters apply to references; selected driver remains the comparison subject.</small></div>;
 }
 function SeasonCategoryMini({
   rows,
@@ -1834,32 +1868,40 @@ function SeasonCategoryMini({
     visible.some((m) => m.category === c),
   );
   const delta = selected ? value(selected) - first : NaN;
+  const benchmarks = [
+    ...categories.map(category => ({ category, label: `${category.toUpperCase()} AVG`, top10: false })),
+    ...["Gold", "Silver"].map(category => ({ category, label: `TOP 10 ${category.toUpperCase()} AVG`, top10: true })),
+  ].map(benchmark => {
+    const all = visible.filter(m => m.category === benchmark.category).sort((a,b) => value(a)-value(b));
+    const group = benchmark.top10 ? all.slice(0,10) : all;
+    return { ...benchmark, count: group.length, average: mean(group.map(value)) };
+  });
+  const deltaLabel = (n: number) => Number.isFinite(n) ? `${n >= 0 ? "+" : ""}${n.toFixed(3)} s` : "—";
   return (
     <table className="seasonCategoryMini">
       <thead>
         <tr>
-          {categories.map((category) => (
-            <th key={category}>{category.toUpperCase()} AVG</th>
+          {benchmarks.map((benchmark) => (
+            <th key={benchmark.label}>{benchmark.label}</th>
           ))}
           <th>SELECTED DELTA TO P1</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          {categories.map((category) => {
-            const group = visible.filter((m) => m.category === category);
+          {benchmarks.map((benchmark) => {
             return (
               <td
-                key={category}
+                key={benchmark.label}
                 style={{
                   borderTopColor:
                     CONFIG.CATEGORY_COLOURS[
-                      category as keyof typeof CONFIG.CATEGORY_COLOURS
+                      benchmark.category as keyof typeof CONFIG.CATEGORY_COLOURS
                     ],
                 }}
-                title={`N=${group.length}`}
+                title={`N=${benchmark.count}${benchmark.top10 ? "; up to 10 fastest eligible drivers for the selected display metric" : ""}`}
               >
-                {fmt(mean(group.map(value)))} <small>N={group.length}</small>
+                {fmt(benchmark.average)} <small>N={benchmark.count}</small>
               </td>
             );
           })}
@@ -1868,6 +1910,16 @@ function SeasonCategoryMini({
               ? `+${delta.toFixed(3)} s`
               : "EXCLUDED / NO DATA"}
           </td>
+        </tr>
+        <tr aria-label="Selected driver deltas to category benchmarks">
+          {benchmarks.map(benchmark => {
+            const difference = selected ? value(selected)-benchmark.average : NaN;
+            return <td key={benchmark.label} className={Number.isFinite(difference) ? difference <= 0 ? "summaryBetter" : "summaryWorse" : ""}
+              title={selected ? `${selected.driver} minus ${benchmark.label}` : "Selected driver excluded or no data"}>
+              <small>DRIVER Δ</small> {deltaLabel(difference)}
+            </td>;
+          })}
+          <td><small>{selected?.driver || "EXCLUDED / NO DATA"}</small></td>
         </tr>
       </tbody>
     </table>

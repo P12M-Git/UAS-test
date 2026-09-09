@@ -140,10 +140,28 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
   const laps: Lap[] = [];
   byCar.forEach((rows, car) => {
     let cumulative = 0;
+    rows.sort((a,b)=>a.lapNumber-b.lapNumber);
+    // Some spreadsheet exports format cumulative time as mm:ss.s and discard
+    // the hour. Detect that format from backwards hour crossings per car.
+    const wrappedHours = rows.some((x,i) => {
+      if (!i || get(x.row,"ELAPSED").split(":").length !== 2) return false;
+      const before=timeToSeconds(get(rows[i-1].row,"ELAPSED")), after=timeToSeconds(get(x.row,"ELAPSED"));
+      return before!==null && after!==null && before-after>1800;
+    });
+    let previousElapsed: number | null = null;
     rows
       .sort((a, b) => a.lapNumber - b.lapNumber)
       .forEach((x, i) => {
         if (x.lapTime !== null) cumulative += x.lapTime;
+        let elapsed = timeToSeconds(get(x.row,"ELAPSED"));
+        if (wrappedHours && elapsed!==null && elapsed<3600 && get(x.row,"ELAPSED").split(":").length===2) {
+          const expected = previousElapsed===null ? cumulative : previousElapsed+(x.lapTime??0);
+          elapsed += Math.max(0,Math.round((expected-elapsed)/3600))*3600;
+          // Missing rows can hide an hour crossing; at minimum preserve order.
+          while (previousElapsed!==null && elapsed<previousElapsed) elapsed+=3600;
+        }
+        elapsed ??= x.lapTime===null ? null : cumulative;
+        if (elapsed!==null) previousElapsed=elapsed;
         let pitOut =
           /^(true|1)$/i.test(get(x.row, "IS_OUTLAP")) ||
           Boolean(get(x.row, "PIT_TIME")) ||
@@ -197,9 +215,7 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
           s1: x.s1,
           s2: x.s2,
           s3: x.s3,
-          elapsed:
-            timeToSeconds(get(x.row, "ELAPSED")) ??
-            (x.lapTime === null ? null : cumulative),
+          elapsed,
           position: null,
           classPosition: null,
           gapLeader: null,

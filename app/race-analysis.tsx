@@ -9,13 +9,18 @@ import {
 } from "../src/analysis/stints";
 import { CONFIG } from "../src/config";
 import RaceStrategy from "./race-strategy";
-import { trackEvolution, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
+import TrackEvolutionFit from "./track-evolution-fit";
+import { trackEvolution, proDriverLaps, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
 const time = (n: number) =>
   Number.isFinite(n)
     ? `${Math.floor(n / 60)}:${(n % 60).toFixed(3).padStart(6, "0")}`
     : "—";
 const number = (n: number) => (Number.isFinite(n) ? n.toFixed(3) : "—");
 type Stint = ReturnType<typeof buildStints>[number];
+type ColourMode = "car" | "category";
+const seriesColour = (s: Stint, mode: ColourMode) => mode === "category"
+  ? CONFIG.CATEGORY_COLOURS[s.category as keyof typeof CONFIG.CATEGORY_COLOURS] || CONFIG.CATEGORY_COLOURS.Unknown
+  : CONFIG.CAR_COLOURS[s.car as keyof typeof CONFIG.CAR_COLOURS] || "#61788d";
 export default function RaceAnalysis({
   laps,
   driver,
@@ -44,6 +49,8 @@ export default function RaceAnalysis({
   const usage =
     tyreUsage === "reference" ? refStint?.tyreStint : Number(tyreUsage);
   const [showEvolution, setShowEvolution] = useState(false);
+  const [showProEvolution, setShowProEvolution] = useState(false);
+  const [colourMode, setColourMode] = useState<ColourMode>("car");
   let filtered = stints.filter(
     (s) =>
       (cls === "All" || s.className === cls) &&
@@ -78,7 +85,14 @@ export default function RaceAnalysis({
     clean.forEach(l => best.set(l.className, Math.min(best.get(l.className) ?? Infinity, l.lapTime!)));
     return trackEvolution(clean.filter(l => !cap || l.lapTime! <= best.get(l.className)! * percent / 100));
   }, [stints, cls, cap, percent]);
+  const proEvolution = useMemo(() => {
+    const clean = proDriverLaps(stints.filter(s => cls === "All" || s.className === cls).flatMap(s => s.clean));
+    const fastest = Math.min(...clean.map(l => l.lapTime!));
+    return trackEvolution(clean.filter(l => !cap || l.lapTime! <= fastest * percent/100))
+      .map(s => ({...s, name: `${s.name} · Pro drivers (no Bronze)`}));
+  }, [stints, cls, cap, percent]);
   const evolutionVisible = (showEvolution || mode === "evolution") && ["lap", "elapsed"].includes(axis);
+  const proEvolutionVisible = showProEvolution && ["lap", "elapsed"].includes(axis);
   const toggles = (
     label: string,
     options: string[],
@@ -126,6 +140,7 @@ export default function RaceAnalysis({
       <div className="seasonTabs">
         {[
           "Race plot",
+          "Track evolution fit",
           "Strategy overview",
           "Race Strategy",
           "Tyre conditions",
@@ -135,7 +150,7 @@ export default function RaceAnalysis({
             className={tab === t ? "active" : ""}
             onClick={() => {
               setTab(t);
-              if (t === "Tyre conditions") { setAxis("stint"); setShowEvolution(false); if (mode === "evolution") setMode("laps"); }
+              if (t === "Tyre conditions") { setAxis("stint"); setShowEvolution(false); setShowProEvolution(false); if (mode === "evolution") setMode("laps"); }
             }}
           >
             {t}
@@ -160,7 +175,7 @@ export default function RaceAnalysis({
             ))}
           </select>
         </label>
-        {tab !== "Race Strategy" && (
+        {tab !== "Race Strategy" && tab !== "Track evolution fit" && (
           <>
             <label>
               DISPLAY
@@ -175,9 +190,21 @@ export default function RaceAnalysis({
               </select>
             </label>
             <label>
+              COLOUR BY
+              <select value={colourMode} onChange={e => setColourMode(e.target.value as ColourMode)}>
+                <option value="car">Car / team</option>
+                <option value="category">FIA category</option>
+              </select>
+            </label>
+            <label>
               <span><input type="checkbox" checked={showEvolution} disabled={mode === "evolution"}
                 onChange={e => { setShowEvolution(e.target.checked); if (!["lap", "elapsed"].includes(axis)) setAxis("lap"); }} />
                 Overlay track evolution</span>
+            </label>
+            <label>
+              <span><input type="checkbox" checked={showProEvolution}
+                onChange={e => { setShowProEvolution(e.target.checked); if (!["lap", "elapsed"].includes(axis)) setAxis("lap"); }}/>
+                Track evolution pro drivers (LMP2, no Bronze)</span>
             </label>
             <label>
               <span>
@@ -204,8 +231,8 @@ export default function RaceAnalysis({
               <select value={axis} onChange={(e) => setAxis(e.target.value)}>
                 <option value="lap">Race lap</option>
                 <option value="elapsed">Race elapsed (minutes)</option>
-                <option value="age" disabled={mode === "evolution" || showEvolution}>Tyre age (laps)</option>
-                <option value="stint" disabled={mode === "evolution" || showEvolution}>Lap within full-tank stint</option>
+                <option value="age" disabled={mode === "evolution" || showEvolution || showProEvolution}>Tyre age (laps)</option>
+                <option value="stint" disabled={mode === "evolution" || showEvolution || showProEvolution}>Lap within full-tank stint</option>
               </select>
             </label>
           </>
@@ -236,6 +263,7 @@ export default function RaceAnalysis({
           eligible stint average excluded. Positive = slower each lap.
         </p>
       )}
+      {proEvolutionVisible && <p>Pro drivers: LMP2 / Pro-Am without Bronze. Same clean-stint filter and 3-lap moving average; optional cutoff recalculated from this sample. Unknown ratings remain included because only Bronze is excluded.</p>}
       {evolutionVisible && <p>
         Track evolution: pooled clean lap times from race laps n−2, n−1 and n, across the entire class
         (LMP2 includes Pro-Am). Same stint cleaning and optional percentage cutoff; driver/car/FIA selections
@@ -324,16 +352,24 @@ export default function RaceAnalysis({
           setDriver={setDriver}
         />
       )}
-      {tab !== "Strategy overview" && tab !== "Race Strategy" && (
+      {tab === "Track evolution fit" && <TrackEvolutionFit stints={stints} visible={filtered} driver={driver} setDriver={setDriver}
+        cap={cap} percent={percent} setCap={setCap} setPercent={setPercent}/>}
+      {tab !== "Strategy overview" && tab !== "Race Strategy" && tab !== "Track evolution fit" && (
         <RaceCanvas
           rows={plotted}
           driver={driver}
           mode={mode}
           axis={axis}
-          evolution={evolutionVisible ? evolution : []}
+          evolution={[...(evolutionVisible ? evolution : []), ...(proEvolutionVisible ? proEvolution : [])]}
+          colourMode={colourMode}
         />
       )}
-      <div className="raceChecks" aria-label="Driver colour legend">
+      {colourMode === "category" && tab !== "Race Strategy" && tab !== "Track evolution fit" && <div className="raceChecks" aria-label="FIA category colour legend">
+        {Object.entries(CONFIG.CATEGORY_COLOURS).map(([category, colour]) => <span key={category}
+          style={{borderLeft:`8px solid ${colour}`, padding:"4px 10px", color:"#17202a"}}>{category}</span>)}
+        <span>Focus driver: thicker purple trace; other drivers muted.</span>
+      </div>}
+      {tab !== "Track evolution fit" && <div className="raceChecks" aria-label="Driver colour legend">
         {[
           ...new Map(plotted.map((s) => [`${s.car}|${s.driver}`, s])).values(),
         ].map((s) => (
@@ -341,15 +377,17 @@ export default function RaceAnalysis({
             key={`${s.car}|${s.driver}`}
             onClick={() => setDriver(s.driver)}
             style={{
-              borderLeft: `6px solid ${CONFIG.CAR_COLOURS[s.car as keyof typeof CONFIG.CAR_COLOURS] || "#61788d"}`,
+              borderLeft: `6px solid ${seriesColour(s, colourMode)}`,
               background: s.driver === driver ? "#b148d1" : "#f5f6f7",
               color: s.driver === driver ? "white" : "#17202a",
             }}
           >
             #{s.car} {s.driver}
+            {colourMode === "category" && ` · ${s.category}`}
           </button>
         ))}
       </div>
+      }
       {tab === "Strategy overview" &&
         plotted.map((s) => (
           <div className="strategyStint" key={s.id}>
@@ -366,15 +404,13 @@ export default function RaceAnalysis({
                   background:
                     s.driver === driver
                       ? "#a326cc"
-                      : CONFIG.CAR_COLOURS[
-                          s.car as keyof typeof CONFIG.CAR_COLOURS
-                        ] || "#61788d",
+                      : seriesColour(s, colourMode),
                 }}
               />
             </div>
           </div>
         ))}
-      {tab !== "Race Strategy" && (
+      {tab !== "Race Strategy" && tab !== "Track evolution fit" && (
         <div className="tableWrap">
           <table>
             <thead>
@@ -436,12 +472,14 @@ function RaceCanvas({
   mode,
   axis,
   evolution,
+  colourMode,
 }: {
   rows: Stint[];
   driver: string;
   mode: string;
   axis: string;
   evolution: EvolutionSeries[];
+  colourMode: ColourMode;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -526,10 +564,10 @@ function RaceCanvas({
       ctx.strokeStyle =
         s.driver === driver
           ? "#a326cc"
-          : CONFIG.CAR_COLOURS[s.car as keyof typeof CONFIG.CAR_COLOURS] ||
-            "#55778e";
+          : seriesColour(s, colourMode);
       ctx.fillStyle = ctx.strokeStyle;
-      ctx.lineWidth = s.driver === driver ? 3.5 : 1;
+      ctx.globalAlpha = driver && s.driver !== driver ? 0.6 : 1;
+      ctx.lineWidth = s.driver === driver ? 4 : 1.4;
       if (mode !== "fit") {
         ctx.beginPath();
         p.forEach((l, i) => {
@@ -541,7 +579,7 @@ function RaceCanvas({
         ctx.stroke();
         p.forEach((l) => {
           ctx.beginPath();
-          ctx.arc(x(pointX(l)), y(l.lapTime!), 2, 0, Math.PI * 2);
+          ctx.arc(x(pointX(l)), y(l.lapTime!), s.driver === driver ? 3 : 2, 0, Math.PI * 2);
           ctx.fill();
         });
       }
@@ -558,6 +596,7 @@ function RaceCanvas({
         ctx.setLineDash([]);
       }
     }
+    ctx.globalAlpha = 1;
     visibleEvolution.forEach((s, index) => {
       ctx.strokeStyle = ["#142d4e", "#d05a00", "#157767", "#a326cc"][index % 4];
       ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = 4;
@@ -570,7 +609,7 @@ function RaceCanvas({
       s.points.forEach(p=>{ctx.beginPath();ctx.arc(x(axis === "elapsed" ? p.elapsed/60 : p.lap),y(p.time),2.5,0,Math.PI*2);ctx.fill();});
       ctx.textAlign = "left"; ctx.fillText(`${s.name} · MA3`, 95, 20+index*15);
     });
-  }, [rows, driver, mode, axis, evolution]);
+  }, [rows, driver, mode, axis, evolution, colourMode]);
   return (
     <canvas
       ref={canvas}

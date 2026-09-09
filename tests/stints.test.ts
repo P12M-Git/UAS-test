@@ -4,6 +4,7 @@ import {
   fitLaps,
   buildStints,
   overlaps,
+  sharedTrackFraction,
   raceTimeBounds,
 } from "../src/analysis/stints";
 import { parseTimingCsv } from "../src/parser/uraice_adapter";
@@ -62,6 +63,17 @@ test("parallel comparison needs positive overlapping elapsed intervals in same e
   assert.equal(overlaps([lap(1, 90)], [lap(1, 80)]), true);
   assert.equal(overlaps([lap(1, 90)], [lap(2, 90)]), false);
   assert.equal(overlaps([lap(1, 90)], [lap(1, 90, { event: "other" })]), false);
+});
+test("parallel threshold uses reference time, unions duplicates and includes exactly 30 percent", () => {
+  const focus=[lap(1,100,{elapsed:100}),lap(2,100,{elapsed:300})];
+  const rival=[lap(1,60,{elapsed:60,carNumber:"9",driver:"B"})];
+  assert.equal(sharedTrackFraction(focus,rival),0.3);
+  assert.equal(sharedTrackFraction(rival,focus),1);
+  assert.equal(sharedTrackFraction([...focus,...focus],[...rival,...rival]),0.3);
+  assert.ok(sharedTrackFraction(focus,[{...rival[0],lapTime:59}])<0.3);
+  assert.equal(sharedTrackFraction(focus,[{...rival[0],event:"different"}]),0);
+  assert.equal(sharedTrackFraction(focus,[{...rival[0],carNumber:"22"}]),0);
+  assert.equal(sharedTrackFraction([],rival),0);
 });
 test("parallel excludes stationary pit dwell, different sessions and same-car driver changes", () => {
   const focus = [lap(1, 90, { elapsed: 190 })];

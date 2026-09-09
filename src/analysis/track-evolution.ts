@@ -4,6 +4,10 @@ import { average } from "./stints";
 export interface EvolutionPoint { lap: number; elapsed: number; time: number; count: number }
 export interface EvolutionSeries { name: string; points: EvolutionPoint[] }
 
+export function proDriverLaps(clean: Lap[]): Lap[] {
+  return clean.filter(l => /^lmp2/i.test(l.className) && l.category !== "Bronze");
+}
+
 // Input is the already-filtered clean stint sample, not raw race timing.
 // Pool all observations from race laps n-2, n-1, n; never mix classes/events.
 export function trackEvolution(clean: Lap[]): EvolutionSeries[] {

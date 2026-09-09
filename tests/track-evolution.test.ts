@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import type { Lap } from "../src/models/race";
-import { trackEvolution, visibleTimeBounds } from "../src/analysis/track-evolution";
+import { trackEvolution, proDriverLaps, visibleTimeBounds } from "../src/analysis/track-evolution";
 import { buildStints } from "../src/analysis/stints";
 const lap = (n:number, t:number, extra:Partial<Lap> = {}) => ({
   event:"R", session:"Race", className:"LMP2", driver:"A", carNumber:"22",
@@ -16,6 +16,14 @@ test("MA3 pools all observations and combines LMP2 Pro-Am, but separates classes
   assert.equal(result[0].points[0].time,94.5);
   assert.equal(result[0].points[0].count,4);
   assert.equal(result[1].points[0].time,123);
+});
+test("pro driver evolution excludes Bronze, not the entire Pro-Am class", () => {
+  const rows = [lap(1,90,{category:"Gold"}),lap(2,91,{category:"Silver",className:"LMP2 Pro-Am"}),
+    lap(3,92,{category:"Platinum"}),lap(3,110,{category:"Bronze"}),lap(3,140,{className:"GT3"})];
+  const pro = trackEvolution(proDriverLaps(rows));
+  assert.equal(pro.length,1);
+  assert.equal(pro[0].points[0].count,3);
+  assert.equal(pro[0].points[0].time,91);
 });
 test("MA3 uses the stint-cleaned sample and does not bridge missing lap bins", () => {
   const stints=buildStints([lap(1,90),lap(2,91),lap(3,92),lap(4,200,{green:false}),lap(5,93),lap(6,94),lap(7,95),lap(8,180),lap(9,120,{pitIn:true})]);

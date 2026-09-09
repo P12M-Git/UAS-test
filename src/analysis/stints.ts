@@ -13,8 +13,8 @@ export function fitLaps(laps: Lap[]) {
       : NaN;
   return { slope, intercept: my - slope * mx, n: laps.length };
 }
-export function overlaps(a: Lap[], b: Lap[]) {
-  const intervals = (laps: Lap[]) => laps.flatMap(l => {
+function trackIntervals(laps: Lap[]) {
+  return laps.flatMap(l => {
     if (l.elapsed === null || l.lapTime === null || !Number.isFinite(l.elapsed) ||
         !Number.isFinite(l.lapTime) || l.lapTime <= 0) return [];
     // Outlap duration includes stationary pit time. Without pit duration we
@@ -23,7 +23,9 @@ export function overlaps(a: Lap[], b: Lap[]) {
     const start = Math.max(0, l.elapsed - l.lapTime + (l.pitOut ? Math.max(0, l.pitDuration!) : 0));
     return start < l.elapsed ? [{ start, end: l.elapsed, event: `${l.event}|${l.session || "Race"}`, car: l.carNumber, driver: l.driver }] : [];
   }).sort((x, y) => x.event.localeCompare(y.event) || x.start - y.start);
-  const left = intervals(a), right = intervals(b);
+}
+export function overlaps(a: Lap[], b: Lap[]) {
+  const left = trackIntervals(a), right = trackIntervals(b);
   let i = 0, j = 0;
   while (i < left.length && j < right.length) {
     const x = left[i], y = right[j], eventOrder = x.event.localeCompare(y.event);
@@ -34,6 +36,31 @@ export function overlaps(a: Lap[], b: Lap[]) {
     if (x.end <= y.end) i++; else j++;
   }
   return false;
+}
+
+/** Shared time / reference driver's total observed on-track time (asymmetric). */
+export function sharedTrackFraction(reference: Lap[], candidate: Lap[]) {
+  const left = trackIntervals(reference), right = trackIntervals(candidate);
+  type Span = { event: string; start: number; end: number };
+  const duration = (spans: Span[]) => {
+    const sorted = [...spans].sort((a,b) => a.event.localeCompare(b.event) || a.start-b.start);
+    let total = 0, event = "", end = -Infinity;
+    for (const span of sorted) {
+      if (span.event !== event) { event = span.event; end = -Infinity; }
+      total += Math.max(0, span.end-Math.max(span.start,end));
+      end = Math.max(end,span.end);
+    }
+    return total;
+  };
+  const total = duration(left);
+  if (!total) return 0;
+  const shared: Span[] = [];
+  for (const a of left) for (const b of right) {
+    if (a.event !== b.event || (a.car === b.car && a.driver !== b.driver)) continue;
+    const start = Math.max(a.start,b.start), end = Math.min(a.end,b.end);
+    if (start < end) shared.push({event:a.event,start,end});
+  }
+  return Math.min(1,duration(shared)/total);
 }
 export function buildStints(laps: Lap[]) {
   const cars = new Map<string, Lap[]>();

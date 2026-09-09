@@ -15,7 +15,7 @@ import {
 } from "../src/analysis/driver_metrics";
 import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
-import { overlaps } from "../src/analysis/stints";
+import { sharedTrackFraction } from "../src/analysis/stints";
 import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
@@ -153,7 +153,7 @@ export default function Home() {
       rows.push(l);
       groups.set(key, rows);
     });
-    return new Set([...groups].filter(([, rows]) => overlaps(focus, rows)).map(([key]) => key));
+    return new Set([...groups].filter(([, rows]) => sharedTrackFraction(focus, rows) >= 0.3).map(([key]) => key));
   }, [sessionLaps, activeDriver, parallelOnly]);
   const performanceMetrics = parallelOnly
     ? allMetrics.filter(
@@ -315,9 +315,9 @@ export default function Home() {
                     checked={parallelOnly}
                     onChange={(e) => setParallelOnly(e.target.checked)}
                   />
-                  COMPARE WITH PARALLEL DRIVERS
+                  COMPARE WITH PARALLEL DRIVERS (≥30%)
                 </label>
-                {parallelOnly && <p className="parallel-note">Overlapping on-track time with {activeDriver}. Class/category filters apply; car/search filters are ignored to include rival cars. Timing-line estimate; pit dwell excluded where recorded.</p>}
+                {parallelOnly && <p className="parallel-note">Rivals must share at least 30% of {activeDriver}'s total observed on-track time. Class/category filters apply; car/search filters are ignored to include rival cars. Timing-line estimate; pit dwell excluded where recorded. Outlaps without pit duration are omitted.</p>}
                 <Ranking
                   metrics={performanceMetrics}
                   focusDriver={activeDriver}

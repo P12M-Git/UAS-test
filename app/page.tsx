@@ -1637,6 +1637,13 @@ function SeasonSummary({
       <DriverSelect {...{ drivers, driver, setDriver }} />
       <EventPicker {...{ events, selectedEvents, setSelectedEvents }} />
       <div className="seasonTabs">
+        <details><summary>MANUAL DRIVER EXCLUSIONS · {excludedSeasonDrivers.length} excluded</summary>
+          <button onClick={()=>setExcludedSeasonDrivers([])}>Restore all drivers</button>
+          <p>Untick a driver to exclude them from all season comparisons and benchmarks. The absolute cutoff reference stays fixed.</p>
+          <div className="categoryTicks">{[...new Set(laps.filter(l=>selectedEvents.includes(l.event)).map(l=>l.driver))].sort().map(name=><label key={name}>
+            <input type="checkbox" checked={!excludedSeasonDrivers.includes(name)} onChange={()=>setExcludedSeasonDrivers(prev=>prev.includes(name)?prev.filter(x=>x!==name):[...prev,name])}/>{name}
+          </label>)}</div>
+        </details>
         <button
           className={seasonSection === "events" ? "active" : ""}
           onClick={() => setSeasonSection("events")}
@@ -1738,33 +1745,25 @@ function SeasonSummary({
             title="Season pace summary"
             sub="One compact ranking per selected event; analysed driver highlighted in pink"
           />
-          <details><summary>DRIVERS · included in plots and category averages</summary>
-            <button onClick={()=>setExcludedSeasonDrivers([])}>Select all</button>
-            <div className="categoryTicks">{[...new Set(laps.filter(l=>selectedEvents.includes(l.event)
-              && (seasonClass==="All"||l.className===seasonClass)
-              && (seasonCategories.includes(l.category)||l.driver===driver)).map(l=>l.driver))].sort().map(name=><label key={name}>
-              <input type="checkbox" checked={!excludedSeasonDrivers.includes(name)} onChange={()=>setExcludedSeasonDrivers(prev=>prev.includes(name)?prev.filter(x=>x!==name):[...prev,name])}/>{name}
-            </label>)}</div>
-          </details>
           <div className="seasonGrid">
             {selectedEvents.map((event) => {
               const rows = driverMetrics(
                 laps.filter(
                   (l) =>
                     l.event === event &&
-                    !excludedSeasonDrivers.includes(l.driver) &&
                     (seasonClass === "All" || l.className === seasonClass) &&
                     (seasonCategories.includes(l.category) || l.driver === driver),
                 ),
                 20,
               ).sort((a, b) => metricValue(a) - metricValue(b));
               const fastest=Math.min(...laps.filter(l=>l.event===event && l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0).map(l=>l.lapTime!));
-              const discarded=(m:DriverMetric)=>plot110Filter && metricValue(m)>fastest*plotPercent/100;
+              const discarded=(m:DriverMetric)=>excludedSeasonDrivers.includes(m.driver) || (plot110Filter && metricValue(m)>fastest*plotPercent/100);
+              const includedRows=rows.filter(m=>!excludedSeasonDrivers.includes(m.driver));
               return (
                 <div className="seasonEvent" key={event}>
                   <h3>{event}</h3>
                   <SeasonPaceChart
-                    rows={rows}
+                    rows={includedRows}
                     driver={driver}
                     value={metricValue}
                     label={metricLabel}
@@ -1774,7 +1773,7 @@ function SeasonSummary({
                     benchmarkLines={benchmarkLines}
                   />
                   <SeasonCategoryMini
-                    rows={rows}
+                    rows={includedRows}
                     driver={driver}
                     value={metricValue}
                     cutoff110={plot110Filter}
@@ -1784,7 +1783,7 @@ function SeasonSummary({
                   <table>
                     <thead>
                       <tr>
-                        <th>#</th>
+                        <th>USE / #</th>
                         <th>DRIVER</th>
                         <th>{metricLabel}</th>
                         <th>LAPS</th>
@@ -1794,10 +1793,11 @@ function SeasonSummary({
                       {rows.map((m, i) => (
                         <tr
                           className={`${m.driver === driver ? "focusDriver" : ""} ${discarded(m)?"seasonDiscarded":""}`}
-                          title={discarded(m)?`Discarded from plot and benchmarks: above ${plotPercent}%`:undefined}
+                          title={excludedSeasonDrivers.includes(m.driver)?"Manually excluded":discarded(m)?`Discarded from plot and benchmarks: above ${plotPercent}%`:undefined}
                           key={m.key}
                         >
-                          <td>{i + 1}</td>
+                          <td><input type="checkbox" aria-label={`Include ${m.driver} in season comparisons`} checked={!excludedSeasonDrivers.includes(m.driver)}
+                            onChange={()=>setExcludedSeasonDrivers(prev=>prev.includes(m.driver)?prev.filter(x=>x!==m.driver):[...prev,m.driver])}/>{i + 1}</td>
                           <td
                             className="categoryDriverCell"
                             style={{
@@ -1831,7 +1831,7 @@ function SeasonSummary({
       )}
       {seasonSection === "driver" && (
         <GeneralDriverSummary
-          laps={laps}
+          laps={laps.filter(l=>!excludedSeasonDrivers.includes(l.driver))}
           events={selectedEvents}
           driver={driver}
           className={seasonClass}
@@ -1842,19 +1842,20 @@ function SeasonSummary({
           sub="Independent absolute pace metrics; Best 20 (Best 10 at Spa), full sample required. STD: valid green laps, no pit-in/out, at most 105% of the absolute fastest lap in the same event/session/car class. No display or FIA-category filters."/>
         <div className="seasonGrid">
           {selectedEvents.map(event=><SeasonDriverComparison key={event} event={event} laps={laps} driver={driver}
+            excludedDrivers={excludedSeasonDrivers}
             />)}
         </div>
       </>}
     </>
   );
 }
-function SeasonDriverComparison({event,laps,driver}:{
-  event:string;laps:Lap[];driver:string;
+function SeasonDriverComparison({event,laps,driver,excludedDrivers}:{
+  event:string;laps:Lap[];driver:string;excludedDrivers:string[];
 }) {
   const metrics=useMemo(()=>absoluteSummaryDrivers(laps.filter(l=>l.event===event)),[laps,event]);
-  const selected=metrics.find(m=>m.driver===driver);
+  const selected=metrics.find(m=>m.driver===driver && !excludedDrivers.includes(m.driver));
   const targetClass=selected?.className;
-  const peers=metrics.filter(m=>m.className===targetClass);
+  const peers=metrics.filter(m=>m.className===targetClass && !excludedDrivers.includes(m.driver));
   const count=summaryLapCount(event);
   const rows=seasonComparison(selected,peers,count);
   const deltaCell=(value:number)=><td style={Number.isFinite(value)?{

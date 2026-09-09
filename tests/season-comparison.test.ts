@@ -1,8 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { seasonComparison } from "../src/analysis/season-comparison";
+import { seasonComparison, absoluteSummaryDrivers } from "../src/analysis/season-comparison";
+import type { Lap } from "../src/models/race";
 import type { DriverMetric } from "../src/analysis/driver_metrics";
-const m=(category:string,best:number,avgBest:number,stdBest=0.5)=>({category,best,avgBest,stdBest}) as DriverMetric;
+const m=(category:string,best:number,avgBest:number,stdAll=0.5)=>({category,best,avgBest,stdAll}) as DriverMetric;
 test("season event table distinguishes fastest, mean best and top10 average",()=>{
   const selected=m("Silver",91,94,0.3);
   const peers=[m("Gold",90,92),m("Gold",94,96),m("Silver",92,95)];
@@ -15,4 +16,24 @@ test("season event table distinguishes fastest, mean best and top10 average",()=
   assert.equal(top[3].gold.value,94.5);assert.equal(top[3].gold.count,10);
   assert.ok(Number.isNaN(top[0].silver.value));
   assert.ok(Number.isNaN(seasonComparison(undefined,peers)[0].gold.delta));
+});
+test("absolute pace ignores clean/flag/pit filters and requires 20 laps",()=>{
+  const laps=Array.from({length:21},(_,i)=>({event:"R",session:"Race",driver:"A",carNumber:"22",className:"LMP2",category:"Gold",
+    lapNumber:i+1,lapTime:i===20?300:90+i,valid:true,clean:false,green:false,pitIn:true}) as Lap);
+  const result=absoluteSummaryDrivers(laps)[0];
+  assert.equal(result.best,90);assert.equal(result.avgBest,99.5);assert.equal(result.total,21);
+  assert.ok(Number.isNaN(result.stdAll));
+  assert.ok(Number.isNaN(absoluteSummaryDrivers(laps.slice(0,19))[0].avgBest));
+  assert.equal(absoluteSummaryDrivers([...laps,{...laps[0],lapTime:1,valid:false}])[0].best,90);
+});
+test("summary STD uses all green non-pit laps without a percentage or best-20 cut",()=>{
+  const base={event:"R",session:"Race",driver:"A",carNumber:"22",className:"LMP2",category:"Gold",
+    valid:true,clean:false,green:true,pitIn:false,pitOut:false} as Lap;
+  const laps=[{...base,lapNumber:1,lapTime:90},{...base,lapNumber:2,lapTime:110},
+    {...base,lapTime:300,pitIn:true},{...base,lapTime:310,pitOut:true},
+    {...base,lapTime:320,green:false},{...base,lapTime:1,valid:false}];
+  const result=absoluteSummaryDrivers(laps)[0];
+  assert.equal(result.stdAll,10);
+  assert.equal(result.total,5);
+  assert.equal(result.best,90);
 });

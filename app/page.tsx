@@ -16,7 +16,7 @@ import {
 import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
 import { sharedTrackFraction } from "../src/analysis/stints";
-import { seasonComparison } from "../src/analysis/season-comparison";
+import { seasonComparison, absoluteSummaryDrivers } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
@@ -1813,24 +1813,22 @@ function SeasonSummary({
       )}
       {seasonSection === "events" && <>
         <SectionTitle n="07" title="Driver vs Gold / Silver — event summary"
-          sub="Fixed metrics per event, compared within the selected driver's class. Negative deltas are better; standard deviation compares consistency. Best 20 uses the existing fallback when fewer laps are available."/>
+          sub="Independent absolute pace metrics; Best 20 requires 20 laps. Standard deviation uses all valid green laps, excluding pit-in/out. No percentage, display or FIA-category filters."/>
         <div className="seasonGrid">
           {selectedEvents.map(event=><SeasonDriverComparison key={event} event={event} laps={laps} driver={driver}
-            className={seasonClass} categories={seasonCategories} cutoff={plot1025Filter} displayValue={metricValue}/>)}
+            />)}
         </div>
       </>}
     </>
   );
 }
-function SeasonDriverComparison({event,laps,driver,className,categories,cutoff,displayValue}:{
-  event:string;laps:Lap[];driver:string;className:string;categories:string[];cutoff:boolean;displayValue:(m:DriverMetric)=>number;
+function SeasonDriverComparison({event,laps,driver}:{
+  event:string;laps:Lap[];driver:string;
 }) {
-  const metrics=useMemo(()=>driverMetrics(laps.filter(l=>l.event===event),20),[laps,event]);
-  const selected=metrics.find(m=>m.driver===driver && (className==="All" || m.className===className));
-  const targetClass=className==="All"?selected?.className:className;
-  const eligible=metrics.filter(m=>m.className===targetClass && categories.includes(m.category) && Number.isFinite(displayValue(m)));
-  const fastest=Math.min(...eligible.map(displayValue));
-  const peers=eligible.filter(m=>!cutoff || displayValue(m)<=fastest*1.025);
+  const metrics=useMemo(()=>absoluteSummaryDrivers(laps.filter(l=>l.event===event)),[laps,event]);
+  const selected=metrics.find(m=>m.driver===driver);
+  const targetClass=selected?.className;
+  const peers=metrics.filter(m=>m.className===targetClass);
   const rows=seasonComparison(selected,peers);
   const deltaCell=(value:number)=><td style={Number.isFinite(value)?{
     backgroundColor:value<0?"#d8ecd2":value>0?"#f3cece":"#edf0f2",
@@ -1845,7 +1843,7 @@ function SeasonDriverComparison({event,laps,driver,className,categories,cutoff,d
         <td title={`N=${row.silver.count}`}>{format(row.silver.value)}</td>{deltaCell(row.silver.delta)}</tr>;
     })}</tbody>
   </table></div><small>{targetClass || "Driver not present in this event/class"} · Best 20 sample: {selected?.used ?? 0} laps.
-    Category and plot-cutoff filters apply to references; selected driver remains the comparison subject.</small></div>;
+    Total valid timed laps: {selected?.total ?? 0}. Pace: absolute, no flag/pit filters. STD: green laps only, no pit-in/out. No percentage filter. Fewer than 20 laps: AVG 20 unavailable.</small></div>;
 }
 function SeasonCategoryMini({
   rows,

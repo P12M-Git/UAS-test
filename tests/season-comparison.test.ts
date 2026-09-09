@@ -39,14 +39,26 @@ test("absolute pace ignores clean/flag/pit filters and requires 20 laps",()=>{
   assert.ok(Number.isNaN(absoluteSummaryDrivers(laps.slice(0,19))[0].avgBest));
   assert.equal(absoluteSummaryDrivers([...laps,{...laps[0],lapTime:1,valid:false}])[0].best,90);
 });
-test("summary STD uses all green non-pit laps without a percentage or best-20 cut",()=>{
+test("summary STD excludes pit and flagged laps and applies a 105 percent cutoff",()=>{
   const base={event:"R",session:"Race",driver:"A",carNumber:"22",className:"LMP2",category:"Gold",
     valid:true,clean:false,green:true,pitIn:false,pitOut:false} as Lap;
   const laps=[{...base,lapNumber:1,lapTime:90},{...base,lapNumber:2,lapTime:110},
     {...base,lapTime:300,pitIn:true},{...base,lapTime:310,pitOut:true},
     {...base,lapTime:320,green:false},{...base,lapTime:1,valid:false}];
   const result=absoluteSummaryDrivers(laps)[0];
-  assert.equal(result.stdAll,10);
+  assert.equal(result.stdAll,0);
   assert.equal(result.total,5);
   assert.equal(result.best,90);
+});
+test("STD cutoff is shared across drivers but isolated by event, session and car class",()=>{
+  const base={event:"R",session:"Race",driver:"A",carNumber:"22",className:"LMP2",category:"Gold",
+    valid:true,green:true,pitIn:false,pitOut:false} as Lap;
+  const laps=[{...base,lapTime:100,driver:"Fastest"},
+    ...[104,105,106].map(lapTime=>({...base,lapTime})),
+    {...base,lapTime:1,event:"Other"},{...base,lapTime:1,session:"Qualifying"},
+    {...base,lapTime:1,className:"GT3"}];
+  const selected=absoluteSummaryDrivers(laps).find(m=>m.driver==="A"&&m.className==="LMP2")!;
+  assert.equal(selected.stdAll,0.5);
+  assert.equal(selected.total,3);
+  assert.equal(selected.best,104);
 });

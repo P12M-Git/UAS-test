@@ -6,14 +6,20 @@ export const summaryLapCount = (event: string): 10 | 20 =>
   /\bspa\b|SPAF/i.test(event) ? 10 : 20;
 
 export function absoluteSummaryDrivers(laps: Lap[]): ComparisonDriver[] {
+  const validTime=(l:Lap)=>l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0;
+  const cohort=(l:Lap)=>`${l.event}|${l.session}|${l.className}`;
+  const fastest=new Map<string,number>();
+  for(const l of laps)if(validTime(l))fastest.set(cohort(l),Math.min(fastest.get(cohort(l))??Infinity,l.lapTime!));
   const groups=new Map<string,Lap[]>();
-  for(const l of laps){const key=`${l.event}|${l.session}|${l.carNumber}|${l.driver}`;const rows=groups.get(key)||[];rows.push(l);groups.set(key,rows);}
+  for(const l of laps){const key=`${cohort(l)}|${l.carNumber}|${l.driver}`;const rows=groups.get(key)||[];rows.push(l);groups.set(key,rows);}
   return [...groups.values()].map(rows=>{
-    const first=rows[0],validRows=rows.filter(l=>l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0);
+    const first=rows[0],validRows=rows.filter(validTime);
     const count=summaryLapCount(first.event);
     const times=validRows.map(l=>l.lapTime!).sort((a,b)=>a-b);
-    // Only STD excludes pit and non-green laps; absolute pace metrics stay unfiltered.
-    const spreadTimes=validRows.filter(l=>l.green && !l.pitIn && !l.pitOut).map(l=>l.lapTime!);
+    // STD uses a common event/session/car-class reference, not each driver's best.
+    // Absolute pace metrics and total lap counts remain unfiltered.
+    const limit=(fastest.get(cohort(first))??NaN)*1.05;
+    const spreadTimes=validRows.filter(l=>l.green && !l.pitIn && !l.pitOut && l.lapTime!<=limit).map(l=>l.lapTime!);
     return {driver:first.driver,car:first.carNumber,className:first.className,category:first.category,
       total:times.length,used:times.length>=count?count:0,best:times[0]??NaN,
       avgBest:times.length>=count?mean(times.slice(0,count)):NaN,stdAll:std(spreadTimes)};

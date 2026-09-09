@@ -1813,7 +1813,7 @@ function SeasonSummary({
       )}
       {seasonSection === "events" && <>
         <SectionTitle n="07" title="Driver vs Gold / Silver — event summary"
-          sub="Independent absolute pace metrics; Best 20 (Best 10 at Spa), full sample required. Standard deviation uses all valid green laps, excluding pit-in/out. No percentage, display or FIA-category filters."/>
+          sub="Independent absolute pace metrics; Best 20 (Best 10 at Spa), full sample required. STD: valid green laps, no pit-in/out, at most 105% of the absolute fastest lap in the same event/session/car class. No display or FIA-category filters."/>
         <div className="seasonGrid">
           {selectedEvents.map(event=><SeasonDriverComparison key={event} event={event} laps={laps} driver={driver}
             />)}
@@ -1844,7 +1844,7 @@ function SeasonDriverComparison({event,laps,driver}:{
         <td title={`N=${row.silver.count}`}>{format(row.silver.value)}</td>{deltaCell(row.silver.delta)}</tr>;
     })}</tbody>
   </table></div><small>{targetClass || "Driver not present in this event/class"} · Best {count} sample: {selected?.used ?? 0} laps.
-    Total valid timed laps: {selected?.total ?? 0}. Pace: absolute, no flag/pit filters. STD: green laps only, no pit-in/out. No percentage filter. Fewer than {count} laps: AVG {count} unavailable.</small></div>;
+    Total valid timed laps: {selected?.total ?? 0}. Pace: absolute, no flag/pit/percentage filters. STD: green laps only, no pit-in/out, ≤105% of the event/session/car-class absolute best. Fewer than {count} laps: AVG {count} unavailable.</small></div>;
 }
 function SeasonCategoryMini({
   rows,

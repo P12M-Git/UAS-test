@@ -9,7 +9,7 @@
   --cyan: #51d9ff;
 }
 
-/* United Autosports light engineering theme */
+/* Light engineering theme */
 :root {
   --bg: #e5e7ea;
   --panel: #f5f6f7;
@@ -925,3 +925,6 @@ tbody tr:hover {
 .seasonEvent tr.seasonDiscarded.focusDriver > td:first-child {
   box-shadow: inset 4px 0 #ef2ac1;
 }
+.seasonAggregate { margin-top: 32px; padding: 16px; border: 1px solid #bfc8d0; }
+.seasonAggregate table { min-width: 1000px; width: 100%; }
+.seasonAggregate th, .seasonAggregate td { padding: 6px; text-align: center; }

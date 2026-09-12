@@ -1,4 +1,5 @@
 import { CONFIG } from "../config";
+import { driverIdentityKey, matchDriverCategoryKey } from "../models/driver-identity";
 import type {
   Category,
   Lap,
@@ -275,7 +276,7 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
   return { laps, diagnostics: [diagnostics] };
 }
 
-function csvRecords(text: string): string[][] {
+export function csvRecords(text: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [],
     cell = "",
@@ -328,9 +329,13 @@ function reconstructOrderAndPasses(laps: Lap[]) {
       l.carAhead = i ? group[i - 1].carNumber : null;
       l.carBehind = i < group.length - 1 ? group[i + 1].carNumber : null;
       l.cleanAir =
-        l.clean && l.gapAhead !== null
-          ? l.gapAhead > CONFIG.CLEAN_AIR_THRESHOLD_SECONDS
-          : null;
+        !l.clean || l.elapsed === null || !Number.isFinite(l.elapsed)
+          ? null
+          : i === 0
+            ? group.every(row=>row.elapsed!==null&&Number.isFinite(row.elapsed)) ? true : null
+            : l.gapAhead !== null
+              ? l.gapAhead > CONFIG.CLEAN_AIR_THRESHOLD_SECONDS
+              : null;
       l.trafficCount = l.cleanAir === false ? 1 : 0;
     });
     const classes = new Map<string, Lap[]>();
@@ -406,13 +411,45 @@ export async function parseFiles(files: File[]): Promise<RaceDataset> {
   };
 }
 
+export function eventSeason(lap:Pick<Lap,"event"|"sourceFile">):number|null {
+  for(const value of [lap.event,lap.sourceFile]){
+    const full=value?.match(/(?:^|\D)(20\d{2})(?!\d)/);
+    if(full)return Number(full[1]);
+    const code=value?.match(/(?:^|[^0-9])(\d{2})(?:ELMS|WEC|LMC|LM24|LEMANS)/i);
+    if(code)return 2000+Number(code[1]);
+  }
+  return null;
+}
 export function applyDriverCategories(laps: Lap[], tsv: string): Lap[] {
-  const normalise = (s: string) =>
-    s
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]/gi, "")
-      .toLowerCase();
+  const normalise = driverIdentityKey;
+  if(tsv.replace(/^\uFEFF/,"").startsWith("season,")){
+    const [headers,...rows]=csvRecords(tsv.replace(/^\uFEFF/,""));
+    const at=(row:string[],key:string)=>row[headers.indexOf(key)]||"";
+    const lookup=new Map<string,Category>();
+    for(const row of rows){
+      const season=Number(at(row,"season"));
+      const category=normaliseDriverCategory(at(row,"fia_category_full")||at(row,"fia_category"));
+      if(![2025,2026].includes(season)||category==="Unknown")continue;
+      for(const name of [at(row,"driver_name"),at(row,"driver_name_normalized")])if(name)
+        lookup.set(`${season}|${normalise(name)}`,category);
+    }
+    const yearKeys=new Map<number,string[]>();
+    for(const key of lookup.keys()){
+      const [year,name]=key.split("|");
+      const keys=yearKeys.get(Number(year))||[];keys.push(name);yearKeys.set(Number(year),keys);
+    }
+    const resolved=new Map<string,Category>();
+    return laps.map(l=>{
+      const year=eventSeason(l);
+      if(year===null||year<2025)return {...l,category:"Unknown"};
+      const cacheKey=`${year}|${normalise(l.driver)}`;
+      if(!resolved.has(cacheKey)){
+        const name=matchDriverCategoryKey(l.driver,yearKeys.get(year)||[]);
+        resolved.set(cacheKey,name?lookup.get(`${year}|${name}`)||"Unknown":"Unknown");
+      }
+      return {...l,category:resolved.get(cacheKey)!};
+    });
+  }
   const codes: Record<string, Category> = {
     P: "Platinum",
     G: "Gold",
@@ -435,7 +472,7 @@ export function applyDriverCategories(laps: Lap[], tsv: string): Lap[] {
   return laps.map((l) => ({
     ...l,
     category:
-      l.category !== "Unknown"
+      eventSeason(l)!==null && eventSeason(l)!<=2024 ? "Unknown" : l.category !== "Unknown"
         ? l.category
         : lookup.get(normalise(l.driver)) || "Unknown",
   }));

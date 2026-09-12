@@ -123,9 +123,9 @@ export function driverMetrics(laps: Lap[], mode: TopMode): DriverMetric[] {
       madBest: mad(bestTimes),
       madAll: mad(times),
       cleanAir: clean.filter((l) => l.cleanAir).length,
-      cleanAirPct: clean.length
-        ? (100 * clean.filter((l) => l.cleanAir).length) / clean.length
-        : 0,
+      cleanAirPct: clean.some(l=>l.cleanAir!==null)
+        ? (100 * clean.filter((l) => l.cleanAir === true).length) / clean.filter(l=>l.cleanAir!==null).length
+        : NaN,
       traffic: clean.filter((l) => l.cleanAir === false).length,
       overtakes: r.reduce((a, l) => a + l.overtakes.length, 0),
       zBest: mean(bestZ),

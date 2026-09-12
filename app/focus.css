@@ -1046,5 +1046,4 @@ th.sorted {
   font-size: 8px;
 }
 .brand { flex-direction: column; align-items: flex-start; gap: 10px; }
-.brand .uas-logo { display: block; width: 100%; max-width: 250px; height: auto; object-fit: contain; }
 .parallel-note { font-size: 12px; color: #334d67; margin: 8px 0; }

@@ -1,11 +1,24 @@
-import { mean, std, type DriverMetric } from "./driver_metrics";
+import { mean, std, driverMetrics, type DriverMetric } from "./driver_metrics";
 import type { Lap } from "../models/race";
 type ComparisonDriver = Pick<DriverMetric,"driver"|"car"|"className"|"category"|"best"|"avgBest"|"stdAll"|"total"|"used">;
 
-export const summaryLapCount = (event: string): 10 | 20 =>
-  /\bspa\b|SPAF/i.test(event) ? 10 : 20;
+export type SeasonLapCounts = Record<string,10|20>;
+export const summaryLapCount = (event: string, counts:SeasonLapCounts={}): 10 | 20 =>
+  counts[event] ?? (/\bspa\b|SPAF/i.test(event) ? 10 : 20);
 
-export function absoluteSummaryDrivers(laps: Lap[]): ComparisonDriver[] {
+// Keep traffic/consistency diagnostics intact, but share absolute pace values
+// with the multi-event and season comparison tables.
+export function summaryDriverMetrics(laps:Lap[], counts:SeasonLapCounts={}) {
+  return driverMetrics(laps,20).map(m=>{
+    const rows=laps.filter(l=>l.driver===m.driver&&l.carNumber===m.car&&l.className===m.className&&m.key===`${l.event}|${l.driver}|${l.carNumber}`);
+    const pace=absoluteSummaryDrivers(rows,counts)[0];
+    const times=rows.filter(l=>l.valid&&l.lapTime!==null&&Number.isFinite(l.lapTime)&&l.lapTime>0).map(l=>l.lapTime!).sort((a,b)=>a-b);
+    return {...m,best:pace?.best??NaN,avgBest:pace?.avgBest??NaN,used:pace?.used??0,
+      absoluteAvg10:times.length>=10?mean(times.slice(0,10)):NaN};
+  });
+}
+
+export function absoluteSummaryDrivers(laps: Lap[], counts:SeasonLapCounts={}): ComparisonDriver[] {
   const validTime=(l:Lap)=>l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0;
   const cohort=(l:Lap)=>`${l.event}|${l.session}|${l.className}`;
   const fastest=new Map<string,number>();
@@ -14,7 +27,7 @@ export function absoluteSummaryDrivers(laps: Lap[]): ComparisonDriver[] {
   for(const l of laps){const key=`${cohort(l)}|${l.carNumber}|${l.driver}`;const rows=groups.get(key)||[];rows.push(l);groups.set(key,rows);}
   return [...groups.values()].map(rows=>{
     const first=rows[0],validRows=rows.filter(validTime);
-    const count=summaryLapCount(first.event);
+    const count=summaryLapCount(first.event,counts);
     const times=validRows.map(l=>l.lapTime!).sort((a,b)=>a-b);
     // STD uses a common event/session/car-class reference, not each driver's best.
     // Absolute pace metrics and total lap counts remain unfiltered.

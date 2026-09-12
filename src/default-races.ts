@@ -14,7 +14,7 @@ export function loadDefaultRaces(): Promise<RaceDataset> {
       return response.text();
     };
     const [ratings, ...csvs] = await Promise.all([
-      get("/driver_categories.tsv"),
+      get("/driver_categories_by_season.csv"),
       ...DEFAULT_RACES.map(name => get(`/races/${name}`)),
     ]);
     const sets = csvs.map((csv, i) => parseTimingCsv(csv, DEFAULT_RACES[i]));

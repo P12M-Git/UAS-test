@@ -31,10 +31,15 @@ test('production gateway serves the current report, assets and private data', { 
       await new Promise(r => setTimeout(r, 250));
     }
     assert.ok(ready, logs);
-    const health = await fetch(`${base}/healthz`);
-    // Readiness can lag the gateway socket by a fraction of a second.
-    if (health.status === 503) await new Promise(r => setTimeout(r, 1000));
-    const status = await fetch(`${base}/healthz`);
+    // The login socket can be ready well before Vinext finishes starting.
+    let status;
+    for (let i = 0; i < 40; i++) {
+      if (child.exitCode !== null) throw new Error(logs);
+      status = await fetch(`${base}/healthz`, { signal: AbortSignal.timeout(4000) });
+      if (status.status === 200) break;
+      await status.text();
+      await new Promise(r => setTimeout(r, 250));
+    }
     assert.equal(status.status, 200, logs);
     const info = await status.json();
     assert.equal(info.status, 'ready');
@@ -56,7 +61,9 @@ test('production gateway serves the current report, assets and private data', { 
     assert.equal(response.headers.get('cache-control'), 'no-store');
     const html = await response.text();
     assert.ok(!html.includes('UAS Driver Insider'));
-    for (const label of ['DRIVER PERFORMANCE REPORT', 'Race Analysis', 'Overview', 'Driver Performance',
+    assert.ok(!html.includes('united-autosports-logo'));
+    assert.ok(html.includes('Pol RG'));
+    for (const label of ['DRIVER INSIDERS', 'Race Analysis', 'Overview', 'Driver Performance',
       'Lap Analysis', 'Traffic Performance', 'Season Summary', 'Category Benchmarks', 'Data / Session Info', 'SIGN OUT']) {
       assert.ok(html.includes(label), `Missing ${label}\n${logs}`);
     }

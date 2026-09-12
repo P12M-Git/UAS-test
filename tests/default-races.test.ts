@@ -4,6 +4,8 @@ import { readFileSync } from "node:fs";
 import { DEFAULT_RACES, mergeRaceDatasets } from "../src/default-races";
 import { parseTimingCsv, applyDriverCategories } from "../src/parser/uraice_adapter";
 import { driverMetrics, performanceZ, mean } from "../src/analysis/driver_metrics";
+import { summaryDriverMetrics } from "../src/analysis/season-comparison";
+import { aggregateSeason, seasonDelta } from "../src/analysis/season-aggregate";
 
 test("Barcelona hour-less elapsed times are unwrapped without changing the other races", () => {
   for (const name of DEFAULT_RACES) {
@@ -31,6 +33,33 @@ test("four bundled races load with valid timing data and imports preserve defaul
   const next = mergeRaceDatasets(base, { laps: [updated], diagnostics: [] });
   assert.equal(next.laps.length, base.laps.length);
   assert.equal(next.laps[0].tyreSet, "new");
+});
+test("driver summary pace and deltas match season comparison in all four races",()=>{
+ for(const name of DEFAULT_RACES){
+  const laps=applyDriverCategories(parseTimingCsv(readFileSync(`public/races/${name}`,"utf8"),name).laps,readFileSync("public/driver_categories.tsv","utf8"));
+  const summary=summaryDriverMetrics(laps);
+  for(const cls of new Set(laps.map(l=>l.className))){
+   const round=aggregateSeason(laps,[laps[0].event],[],cls)[0];
+   const goldAvg=mean(summary.filter(m=>m.className===cls&&m.category==="Gold"&&Number.isFinite(m.avgBest)).map(m=>m.avgBest).sort((a,b)=>a-b));
+   for(const m of round.drivers){
+    const match=summary.find(x=>x.driver===m.driver&&x.car===m.car)!;
+    assert.equal(match.avgBest,m.avgBest);assert.equal(match.best,m.best);
+    assert.equal(match.used,name.includes("SPAF")?10:20);
+    assert.equal(match.avgBest-goldAvg,seasonDelta(m.avgBest,round.references[2].value).seconds);
+   }
+  }
+ }
+});
+test("round sample override is shared by driver summary and season comparison",()=>{
+ const name=DEFAULT_RACES[0];
+ const laps=parseTimingCsv(readFileSync(`public/races/${name}`,"utf8"),name).laps;
+ const event=laps[0].event,counts:{[event:string]:10|20}={[event]:10};
+ const summary=summaryDriverMetrics(laps,counts);
+ for(const cls of new Set(laps.map(l=>l.className))){
+  const round=aggregateSeason(laps,[event],{},cls,counts)[0];
+  assert.equal(round.count,10);
+  for(const m of round.drivers){const match=summary.find(x=>x.driver===m.driver&&x.car===m.car)!;assert.equal(match.used,10);assert.equal(match.avgBest,m.avgBest);}
+ }
 });
 
 test("cached Z computation preserves the previous reference definition", () => {

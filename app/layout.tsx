@@ -14,12 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ELMS | Driver Performance",
+  title: "DRIVER INSIDERS - U.RAICE",
+  icons: { icon: "/favicon.svg" },
   description: "Audit-ready motorsport race data visualisation and driver performance engineering.",
-  icons: {
-    icon: "/united-autosports-logo.jpg",
-    shortcut: "/united-autosports-logo.jpg",
-  },
 };
 
 export default function RootLayout({

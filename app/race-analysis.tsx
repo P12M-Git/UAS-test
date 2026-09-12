@@ -9,6 +9,7 @@ import {
 } from "../src/analysis/stints";
 import { CONFIG } from "../src/config";
 import RaceStrategy from "./race-strategy";
+import GapInFront from "./gap-in-front";
 import TrackEvolutionFit from "./track-evolution-fit";
 import { trackEvolution, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
 const time = (n: number) =>
@@ -50,6 +51,7 @@ export default function RaceAnalysis({
   const usage =
     tyreUsage === "reference" ? refStint?.tyreStint : Number(tyreUsage);
   const [showEvolution, setShowEvolution] = useState(false);
+  const [threeMinuteY,setThreeMinuteY]=useState(true);
   const [evolutionCats, setEvolutionCats] = useState<string[] | null>(null);
   const [evolutionDrivers, setEvolutionDrivers] = useState<string[] | null>(null);
   const evolutionCandidates=stints.filter(s=>(cls==="All"||s.className===cls)&&(evolutionCats===null||evolutionCats.includes(s.category)));
@@ -142,6 +144,7 @@ export default function RaceAnalysis({
       <div className="seasonTabs">
         {[
           "Race plot",
+          "Gap in Front",
           "Track evolution fit",
           "Strategy overview",
           "Race Strategy",
@@ -177,8 +180,9 @@ export default function RaceAnalysis({
             ))}
           </select>
         </label>
-        {tab !== "Race Strategy" && tab !== "Track evolution fit" && (
+        {tab !== "Gap in Front" && tab !== "Race Strategy" && tab !== "Track evolution fit" && (
           <>
+            <label><input type="checkbox" checked={threeMinuteY} onChange={e=>setThreeMinuteY(e.target.checked)}/> Y maximum 3:00.000</label>
             <label>
               DISPLAY
               <select value={mode} onChange={(e) => {
@@ -246,12 +250,12 @@ export default function RaceAnalysis({
           </>
         )}
       </div>
-      {toggles(
+      <details><summary>DRIVERS · SELECT</summary>{toggles(
         "DRIVERS",
         [...new Set(laps.map((l) => l.driver))],
         visibleDrivers,
         setVisibleDrivers,
-      )}
+      )}</details>
       {toggles(
         "FIA CATEGORY",
         [...new Set(laps.map((l) => l.category))],
@@ -264,6 +268,7 @@ export default function RaceAnalysis({
         cars,
         setCars,
       )}
+      {tab === "Gap in Front" ? <GapInFront laps={laps} visible={filtered.flatMap(s=>s.laps)} focus={driver}/> : <>
       {tab !== "Race Strategy" && (
         <p>
           Lap Time DEG = linear fit of lap time against race lap, in s/lap.
@@ -369,6 +374,7 @@ export default function RaceAnalysis({
           axis={axis}
           evolution={evolutionVisible ? evolution : []}
           colourMode={colourMode}
+          threeMinuteY={threeMinuteY}
           overlays={overlayDrivers===null?plotted.map(s=>s.driver):overlayDrivers}
         />
       )}
@@ -377,7 +383,7 @@ export default function RaceAnalysis({
           style={{borderLeft:`8px solid ${colour}`, padding:"4px 10px", color:"#17202a"}}>{category}</span>)}
         <span>Focus driver: thicker purple trace; other drivers muted.</span>
       </div>}
-      {tab !== "Track evolution fit" && <div className="raceChecks" aria-label="Driver colour legend">
+      {tab !== "Track evolution fit" && <details><summary>DRIVER LEGEND / FOCUS</summary><div className="raceChecks" aria-label="Driver colour legend">
         {[
           ...new Map(plotted.map((s) => [`${s.car}|${s.driver}`, s])).values(),
         ].map((s) => (
@@ -394,7 +400,7 @@ export default function RaceAnalysis({
             {colourMode === "category" && ` · ${s.category}`}
           </button>
         ))}
-      </div>
+      </div></details>
       }
       {tab === "Strategy overview" &&
         plotted.map((s) => (
@@ -471,6 +477,7 @@ export default function RaceAnalysis({
           </table>
         </div>
       )}
+      </>}
     </section>
   );
 }
@@ -482,6 +489,7 @@ function RaceCanvas({
   evolution,
   colourMode,
   overlays,
+  threeMinuteY,
 }: {
   rows: Stint[];
   driver: string;
@@ -490,6 +498,7 @@ function RaceCanvas({
   evolution: EvolutionSeries[];
   colourMode: ColourMode;
   overlays: string[];
+  threeMinuteY: boolean;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -506,9 +515,10 @@ function RaceCanvas({
       ...(mode !== "fit" ? [l.lapTime!] : []),
       ...(mode !== "laps" && Number.isFinite(s.fit.slope) ? [s.fit.intercept+s.fit.slope*l.lapNumber] : []),
     ])).concat(visibleEvolution.flatMap(s=>s.points.map(p=>p.time)));
-    const [minY, maxY] = visibleTimeBounds(values);
+    const bounds=visibleTimeBounds(values);
+    const minY=threeMinuteY?Math.min(bounds[0],179):bounds[0], maxY=threeMinuteY?180:bounds[1];
     const w = 1400,
-      h = Math.max(530, (maxY - minY) * 20 + 120),
+      h = 650,
       plotBottom = h - 70,
       plotHeight = h - 120;
     el.width = w;
@@ -566,6 +576,7 @@ function RaceCanvas({
       720,
       h - 15,
     );
+    ctx.save();ctx.beginPath();ctx.rect(85,50,1280,plotHeight);ctx.clip();
     for (const s of [...visibleRows].sort(
       (a, b) => Number(a.driver === driver) - Number(b.driver === driver),
     )) {
@@ -606,8 +617,10 @@ function RaceCanvas({
         ctx.setLineDash([]);
       }
     }
+    ctx.restore();
     ctx.globalAlpha = 1;
     visibleEvolution.forEach((s, index) => {
+      ctx.save();ctx.beginPath();ctx.rect(85,50,1280,plotHeight);ctx.clip();
       ctx.strokeStyle = ["#142d4e", "#d05a00", "#157767", "#a326cc"][index % 4];
       ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = 4;
       ctx.beginPath();
@@ -617,9 +630,9 @@ function RaceCanvas({
       });
       ctx.stroke();
       s.points.forEach(p=>{ctx.beginPath();ctx.arc(x(axis === "elapsed" ? p.elapsed/60 : p.lap),y(p.time),2.5,0,Math.PI*2);ctx.fill();});
-      ctx.textAlign = "left"; ctx.fillText(`${s.name} · MA3`, 95, 20+index*15);
+      ctx.restore();ctx.textAlign = "left"; ctx.fillText(`${s.name} · MA3`, 95, 20+index*15);
     });
-  }, [rows, driver, mode, axis, evolution, colourMode, overlays]);
+  }, [rows, driver, mode, axis, evolution, colourMode, overlays, threeMinuteY]);
   return (
     <canvas
       ref={canvas}

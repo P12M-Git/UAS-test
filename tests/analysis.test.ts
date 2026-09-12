@@ -1,5 +1,6 @@
 import test from"node:test";import assert from"node:assert/strict";import{timeToSeconds,parseTimingCsv}from"../src/parser/uraice_adapter";import{mad,mean,selectionCount,std,performanceZ}from"../src/analysis/driver_metrics";import{categoryMetrics}from"../src/analysis/category_metrics";
 const head="NUMBER;LAP_NUMBER;LAP_TIME;S1_SECONDS;S2_SECONDS;S3_SECONDS;ELAPSED;DRIVER_NAME;PIT_TIME;CLASS;TEAM;FLAG_AT_FL;CROSSING_FINISH_LINE_IN_PIT";
+import { driverMetrics } from "../src/analysis/driver_metrics";
 const csv=(rows:string[])=>[head,...rows].join("\n");const row=(car:number,lap:number,time:number,elapsed:number,driver:string,flag="GF",pit="",cross="")=>`${car};${lap};${time};${time/3};${time/3};${time/3};${elapsed};${driver};${pit};LMP2;Team ${car};${flag};${cross}`;
 test("U.RAICE time strings convert to seconds",()=>assert.equal(timeToSeconds("1:32.500"),92.5));
 test("race lap 1 and pit-in/out laps are excluded",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(1,2,90,190,"A"),row(1,3,110,300,"A","GF","22"),row(1,4,90,390,"A")]),"26ELMSR01_BARC.csv");assert.equal(d.laps[0].clean,false);assert.equal(d.laps[1].pitIn,true);assert.equal(d.laps[2].pitOut,true)});
@@ -7,6 +8,16 @@ test("green flag filtering recognises SF",()=>{const d=parseTimingCsv(csv([row(1
 test("Best-20 fallback and manual Best-10",()=>{assert.equal(selectionCount(25,20),20);assert.equal(selectionCount(15,20),10);assert.equal(selectionCount(8,20),8);assert.equal(selectionCount(25,10),10)});
 test("population standard deviation and raw MAD",()=>{assert.equal(std([1,2,3]),Math.sqrt(2/3));assert.equal(mad([1,2,100]),1)});
 test("clean air threshold uses all-car timing order",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,101,"B"),row(1,2,90,190,"A"),row(2,2,93,194,"B")]),"race.csv");assert.equal(d.laps.find(l=>l.carNumber==="2"&&l.lapNumber===2)?.cleanAir,true)});
+test("clean-air leader counts as clear while a close follower does not",()=>{
+ const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,101,"B"),row(1,2,90,190,"A"),row(2,2,90,192,"B")]),"race.csv");
+ assert.equal(d.laps.find(l=>l.driver==="A"&&l.lapNumber===2)!.cleanAir,true);
+ assert.equal(driverMetrics(d.laps,20).find(m=>m.driver==="A")!.cleanAirPct,100);
+ assert.equal(driverMetrics(d.laps,20).find(m=>m.driver==="B")!.cleanAirPct,0);
+ const known=d.laps.find(l=>l.driver==="A"&&l.lapNumber===2)!;
+ const unknown={...known,id:"unknown",lapNumber:3,elapsed:280,cleanAir:null};
+ assert.equal(driverMetrics([known,unknown],20)[0].cleanAirPct,100);
+ assert.ok(Number.isNaN(driverMetrics([unknown],20)[0].cleanAirPct));
+});
 test("normal and multiclass crossing-order inversion is retained",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,90,90,"B"),row(1,2,100,200,"A"),row(2,2,100,190,"B"),row(1,3,90,290,"A"),row(2,3,110,300,"B")]),"race.csv");assert.deepEqual(d.laps.find(l=>l.carNumber==="1"&&l.lapNumber===3)?.overtakes,["2"])});
 test("pit transition position change is rejected",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,99,"B"),row(1,2,90,190,"A"),row(2,2,130,229,"B","GF","20")]),"race.csv");assert.equal(d.laps.find(l=>l.carNumber==="1"&&l.lapNumber===2)?.overtakes.length,0)});
 test("leave-one-driver-out z-score has faster-positive sign",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,100,"B"),row(3,1,100,100,"C"),row(1,2,89,189,"A"),row(2,2,90,190,"B"),row(3,2,92,192,"C")]),"race.csv");const a=d.laps.find(l=>l.driver==="A"&&l.lapNumber===2)!;assert.ok(performanceZ(a,d.laps)>0)});

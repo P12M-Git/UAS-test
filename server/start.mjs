@@ -61,7 +61,7 @@ const server = http.createServer(async (req, res) => {
       let html = '';
       upstream.on('data', chunk => { html += chunk; });
       upstream.on('end', () => {
-        const ready = upstream.statusCode === 200 && html.includes('DRIVER PERFORMANCE REPORT') && html.includes('Race Analysis');
+        const ready = upstream.statusCode === 200 && html.includes('DRIVER INSIDERS') && html.includes('Race Analysis');
         res.writeHead(ready ? 200 : 503, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ status: ready ? 'ready' : 'starting', build: buildInfo?.sourceHash.slice(0, 12) || 'development', commit: buildInfo?.commit || null }));
       });
@@ -100,7 +100,7 @@ const server = http.createServer(async (req, res) => {
     auth.logout(tokenFor(req));
     res.writeHead(303, { 'Set-Cookie': cookie('', 0), Location: '/login' }); res.end(); return;
   }
-  if (!auth.valid(tokenFor(req)) && path !== '/united-autosports-logo.jpg') {
+  if (!auth.valid(tokenFor(req))) {
     if (req.method === 'GET' && (path === '/' || path === '/login')) html(200);
     else if (req.headers.accept?.includes('text/html')) { res.writeHead(303, { Location: '/login' }); res.end(); }
     else { res.writeHead(401, { 'Content-Type': 'application/json' }); res.end('{"error":"Sign in required"}'); }

@@ -15,8 +15,10 @@ import {
 } from "../src/analysis/driver_metrics";
 import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
+import SeasonAggregate from "./season-aggregate";
+import DriverCategoryDatabase from "./driver-category-database";
 import { sharedTrackFraction } from "../src/analysis/stints";
-import { seasonComparison, absoluteSummaryDrivers, summaryLapCount } from "../src/analysis/season-comparison";
+import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
@@ -28,23 +30,25 @@ type View =
   | "Driver Focus"
   | "Season Summary"
   | "Category Benchmarks"
+  | "Driver Category Database"
   | "Data / Session Info";
 const views: View[] = [
-  "Race Analysis",
   "Overview",
+  "Race Analysis",
   "Driver Performance",
   "Lap Analysis",
   "Traffic Performance",
   "Season Summary",
   "Category Benchmarks",
   "Data / Session Info",
+  "Driver Category Database",
 ];
 const tips: Record<string, string> = {
   Clean:
     "Green-flag laps excluding race lap 1, pit-in laps, pit-out laps and invalid laps.",
   "Avg best": "Average of the driver's fastest N clean laps.",
   "Clean air":
-    "Percentage of clean laps where the nearest car ahead was more than 2.0 s away at the timing line.",
+    "Share of clean laps with known timing order: no car ahead, or gap greater than 2.0 s. Unknown observations excluded. Same-lap timing proxy; lapped traffic is not reconstructed.",
   Z: "Average standardised lap performance relative to other drivers in the same race/class. Positive is faster.",
   Overtakes:
     "Reconstructed order inversions, including lapped and multiclass cars; pit transitions are rejected.",
@@ -187,7 +191,7 @@ export default function Home() {
     setError("");
     try {
       const d = await parseFiles(files);
-      const categoryText = await fetch("/driver_categories.tsv").then((r) =>
+      const categoryText = await fetch("/driver_categories_by_season.csv").then((r) =>
         r.text(),
       );
       const categorised = applyDriverCategories(d.laps, categoryText);
@@ -207,10 +211,9 @@ export default function Home() {
     <main>
       <aside>
         <div className="brand">
-          <img className="uas-logo" src="/united-autosports-logo.jpg" alt="United Autosports" width="250" height="78" />
           <div>
-            <b>DRIVER PERFORMANCE</b>
-            <small>UNITED AUTOSPORTS</small>
+            <b>DRIVER INSIDERS - U.RAICE</b>
+            <small>© Pol RG</small>
           </div>
         </div>
         <nav>
@@ -236,7 +239,7 @@ export default function Home() {
       <section className="shell">
         <header>
           <div>
-            <p className="eyebrow">ELMS · DRIVER PERFORMANCE REPORT</p>
+            <p className="eyebrow">DRIVER INSIDERS - U.RAICE</p>
             <h1>{view.toUpperCase()}</h1>
           </div>
           <div className="actions">
@@ -252,7 +255,7 @@ export default function Home() {
               accept=".csv,text/csv"
               onChange={(e) => load([...(e.target.files || [])])}
             />
-            <button
+            {view !== "Driver Category Database" && <button
               className="primary"
               onClick={() =>
                 view.includes("Category")
@@ -261,11 +264,11 @@ export default function Home() {
               }
             >
               ⇩ EXPORT CSV
-            </button>
+            </button>}
           </div>
         </header>
         {error && <div className="alert">{error}</div>}
-        {!laps.length ? (
+        {view === "Driver Category Database" ? <DriverCategoryDatabase/> : !laps.length ? (
           <Empty busy={busy} open={() => input.current?.click()} />
         ) : (
           <>
@@ -1594,7 +1597,7 @@ function SeasonSummary({
   drivers: string[];
   setDriver: (x: string) => void;
 }) {
-  const [seasonSection, setSeasonSection] = useState<"events" | "driver">(
+  const [seasonSection, setSeasonSection] = useState<"events" | "driver" | "comparison">(
     "events",
   );
   const [seasonClass, setSeasonClass] = useState("All");
@@ -1610,7 +1613,13 @@ function SeasonSummary({
   >("best");
   const [plot110Filter, setPlot110Filter] = useState(false);
   const [plotPercent, setPlotPercent] = useState(110);
-  const [excludedSeasonDrivers, setExcludedSeasonDrivers] = useState<string[]>([]);
+  const [excludedByEvent, setExcludedByEvent] = useState<Record<string,string[]>>({});
+  const [lapCounts,setLapCounts]=useState<SeasonLapCounts>({});
+  const [exclusionEvent,setExclusionEvent]=useState("");
+  const editEvent=selectedEvents.includes(exclusionEvent)?exclusionEvent:selectedEvents[0]||"";
+  const toggleExcluded=(event:string,name:string)=>setExcludedByEvent(prev=>{
+    const names=prev[event]||[];return {...prev,[event]:names.includes(name)?names.filter(n=>n!==name):[...names,name]};
+  });
   const [benchmarkLines, setBenchmarkLines] = useState<string[]>(["Gold avg", "Silver avg", "Gold top 10", "Silver top 10"]);
   const classes = ["All", ...new Set(laps.map((l) => l.className))];
   const categories = ["Platinum", "Gold", "Silver", "Bronze", "Unknown"].filter(
@@ -1631,17 +1640,30 @@ function SeasonSummary({
         ? "20TH BEST LAP"
         : seasonMetric === "avg10"
           ? "BEST 10 AVG"
-          : "BEST 20 AVG";
+          : "BEST N AVG (ROUND SAMPLE)";
+  const effectiveExclusions:Record<string,string[]>={};
+  for(const event of selectedEvents){
+    const eventLaps=laps.filter(l=>l.event===event);
+    const best=Math.min(...eventLaps.filter(l=>l.valid&&l.lapTime!==null&&Number.isFinite(l.lapTime)&&l.lapTime>0).map(l=>l.lapTime!));
+    const cut=plot110Filter?summaryDriverMetrics(eventLaps,lapCounts).filter(m=>metricValue(m)>best*plotPercent/100).map(m=>m.driver):[];
+    const categoryExcluded=eventLaps.filter(l=>!seasonCategories.includes(l.category)&&l.driver!==driver).map(l=>l.driver);
+    effectiveExclusions[event]=[...new Set([...(excludedByEvent[event]||[]),...cut,...categoryExcluded])];
+  }
   return (
     <>
       <DriverSelect {...{ drivers, driver, setDriver }} />
       <EventPicker {...{ events, selectedEvents, setSelectedEvents }} />
       <div className="seasonTabs">
-        <details><summary>MANUAL DRIVER EXCLUSIONS · {excludedSeasonDrivers.length} excluded</summary>
-          <button onClick={()=>setExcludedSeasonDrivers([])}>Restore all drivers</button>
-          <p>Untick a driver to exclude them from all season comparisons and benchmarks. The absolute cutoff reference stays fixed.</p>
-          <div className="categoryTicks">{[...new Set(laps.filter(l=>selectedEvents.includes(l.event)).map(l=>l.driver))].sort().map(name=><label key={name}>
-            <input type="checkbox" checked={!excludedSeasonDrivers.includes(name)} onChange={()=>setExcludedSeasonDrivers(prev=>prev.includes(name)?prev.filter(x=>x!==name):[...prev,name])}/>{name}
+        <details><summary>ROUND SAMPLE · 10 / 20 LAPS</summary>
+          <p>Shared by Driver Summary, Focus and Comparison Drivers Season. Top 10 Gold/Silver still means ten drivers.</p>
+          {selectedEvents.map(event=><label key={event} style={{display:"block"}}>{event} <button onClick={()=>setLapCounts(prev=>({...prev,[event]:summaryLapCount(event,prev)===20?10:20}))}>Best {summaryLapCount(event,lapCounts)} laps · click to switch</button></label>)}
+        </details>
+        <details><summary>MANUAL DRIVER EXCLUSIONS · PER EVENT</summary>
+          <select aria-label="Exclusion event" value={editEvent} onChange={e=>setExclusionEvent(e.target.value)}>{selectedEvents.map(event=><option key={event}>{event}</option>)}</select>
+          <button onClick={()=>setExcludedByEvent(prev=>({...prev,[editEvent]:[]}))}>Restore drivers in this event</button>
+          <p>Exclusions apply only to the chosen event. Absolute cutoff references stay fixed.</p>
+          <div className="categoryTicks">{[...new Set(laps.filter(l=>l.event===editEvent).map(l=>l.driver))].sort().map(name=><label key={name}>
+            <input type="checkbox" checked={!(excludedByEvent[editEvent]||[]).includes(name)} onChange={()=>toggleExcluded(editEvent,name)}/>{name}
           </label>)}</div>
         </details>
         <button
@@ -1656,6 +1678,7 @@ function SeasonSummary({
         >
           DRIVER SUMMARY
         </button>
+        <button className={seasonSection==="comparison"?"active":""} onClick={()=>setSeasonSection("comparison")}>COMPARISON DRIVERS SEASON</button>
       </div>
       {seasonSection === "events" && (
         <>
@@ -1719,7 +1742,7 @@ function SeasonSummary({
                 <option value="best">Best race lap</option>
                 <option value="best20">Best 20 laps (20th lap)</option>
                 <option value="avg10">Best average 10 laps</option>
-                <option value="avg20">Best average 20 laps</option>
+                <option value="avg20">Best average N laps (round sample)</option>
               </select>
             </label>
             <label className="plotFilterToggle">
@@ -1747,14 +1770,15 @@ function SeasonSummary({
           />
           <div className="seasonGrid">
             {selectedEvents.map((event) => {
-              const rows = driverMetrics(
+              const excludedSeasonDrivers=excludedByEvent[event]||[];
+              const rows = summaryDriverMetrics(
                 laps.filter(
                   (l) =>
                     l.event === event &&
                     (seasonClass === "All" || l.className === seasonClass) &&
                     (seasonCategories.includes(l.category) || l.driver === driver),
                 ),
-                20,
+                lapCounts,
               ).sort((a, b) => metricValue(a) - metricValue(b));
               const fastest=Math.min(...laps.filter(l=>l.event===event && l.valid && l.lapTime!==null && Number.isFinite(l.lapTime) && l.lapTime>0).map(l=>l.lapTime!));
               const discarded=(m:DriverMetric)=>excludedSeasonDrivers.includes(m.driver) || (plot110Filter && metricValue(m)>fastest*plotPercent/100);
@@ -1763,7 +1787,8 @@ function SeasonSummary({
                 <div className="seasonEvent" key={event}>
                   <h3>{event}</h3>
                   <SeasonPaceChart
-                    rows={includedRows}
+                    rows={rows}
+                    excludedDrivers={excludedSeasonDrivers}
                     driver={driver}
                     value={metricValue}
                     label={metricLabel}
@@ -1797,7 +1822,7 @@ function SeasonSummary({
                           key={m.key}
                         >
                           <td><input type="checkbox" aria-label={`Include ${m.driver} in season comparisons`} checked={!excludedSeasonDrivers.includes(m.driver)}
-                            onChange={()=>setExcludedSeasonDrivers(prev=>prev.includes(m.driver)?prev.filter(x=>x!==m.driver):[...prev,m.driver])}/>{i + 1}</td>
+                            onChange={()=>toggleExcluded(event,m.driver)}/>{i + 1}</td>
                           <td
                             className="categoryDriverCell"
                             style={{
@@ -1831,32 +1856,37 @@ function SeasonSummary({
       )}
       {seasonSection === "driver" && (
         <GeneralDriverSummary
-          laps={laps.filter(l=>!excludedSeasonDrivers.includes(l.driver))}
+          laps={laps.filter(l=>!(effectiveExclusions[l.event]||[]).includes(l.driver))}
           events={selectedEvents}
           driver={driver}
           className={seasonClass}
+          lapCounts={lapCounts}
+          toggleLapCount={event=>setLapCounts(prev=>({...prev,[event]:summaryLapCount(event,prev)===20?10:20}))}
         />
       )}
+      {seasonSection === "comparison" && <SeasonAggregate laps={laps} events={selectedEvents} driver={driver} excluded={effectiveExclusions} className={seasonClass} lapCounts={lapCounts} shownCategories={seasonCategories} setShownCategories={setSeasonCategories} comparison/>}
       {seasonSection === "events" && <>
         <SectionTitle n="07" title="Driver vs Gold / Silver — event summary"
-          sub="Independent absolute pace metrics; Best 20 (Best 10 at Spa), full sample required. STD: valid green laps, no pit-in/out, at most 105% of the absolute fastest lap in the same event/session/car class. No display or FIA-category filters."/>
+          sub="Absolute best N pace: 10/20 selected per round, full sample required. Shared driver exclusions apply. STD: green laps, no pit-in/out, at most 105% of the absolute event/session/car-class best."/>
         <div className="seasonGrid">
           {selectedEvents.map(event=><SeasonDriverComparison key={event} event={event} laps={laps} driver={driver}
-            excludedDrivers={excludedSeasonDrivers}
+            excludedDrivers={effectiveExclusions[event]||[]}
+            lapCounts={lapCounts}
             />)}
         </div>
+        <SeasonAggregate laps={laps} events={selectedEvents} driver={driver} excluded={effectiveExclusions} className={seasonClass} lapCounts={lapCounts} shownCategories={seasonCategories} setShownCategories={setSeasonCategories}/>
       </>}
     </>
   );
 }
-function SeasonDriverComparison({event,laps,driver,excludedDrivers}:{
-  event:string;laps:Lap[];driver:string;excludedDrivers:string[];
+function SeasonDriverComparison({event,laps,driver,excludedDrivers,lapCounts}:{
+  event:string;laps:Lap[];driver:string;excludedDrivers:string[];lapCounts:SeasonLapCounts;
 }) {
-  const metrics=useMemo(()=>absoluteSummaryDrivers(laps.filter(l=>l.event===event)),[laps,event]);
+  const metrics=useMemo(()=>absoluteSummaryDrivers(laps.filter(l=>l.event===event),lapCounts),[laps,event,lapCounts]);
   const selected=metrics.find(m=>m.driver===driver && !excludedDrivers.includes(m.driver));
   const targetClass=selected?.className;
   const peers=metrics.filter(m=>m.className===targetClass && !excludedDrivers.includes(m.driver));
-  const count=summaryLapCount(event);
+  const count=summaryLapCount(event,lapCounts);
   const rows=seasonComparison(selected,peers,count);
   const deltaCell=(value:number)=><td style={Number.isFinite(value)?{
     backgroundColor:value<0?"#d8ecd2":value>0?"#f3cece":"#edf0f2",
@@ -1960,11 +1990,15 @@ function GeneralDriverSummary({
   events,
   driver,
   className,
+  lapCounts,
+  toggleLapCount,
 }: {
   laps: Lap[];
   events: string[];
   driver: string;
   className: string;
+  lapCounts: SeasonLapCounts;
+  toggleLapCount: (event:string)=>void;
 }) {
   const [summaryClass, setSummaryClass] = useState(className);
   const [selectedMetrics, setSelectedMetrics] = useState<string[]>([
@@ -2021,16 +2055,17 @@ function GeneralDriverSummary({
     const eventLaps = laps.filter((l) => l.event === event);
     const driverClass = eventLaps.find((l) => l.driver === driver)?.className;
     const targetClass = summaryClass === "All" ? driverClass : summaryClass;
-    const all = driverMetrics(
+    const all = summaryDriverMetrics(
       eventLaps.filter((l) => l.className === targetClass),
-      20,
+      lapCounts,
     );
     const selected = all.find((m) => m.driver === driver);
     const group = (cat: string) => all.filter((m) => m.category === cat);
-    const avg = (cat: string) => mean(group(cat).map((m) => m.avgBest));
+    const avg = (cat: string) => mean(group(cat).map((m) => m.avgBest).filter(Number.isFinite).sort((a,b)=>a-b));
     const top = (cat: string) =>
       mean(
         group(cat)
+          .filter(m=>Number.isFinite(m.avgBest))
           .sort((a, b) => a.avgBest - b.avgBest)
           .slice(0, 10)
           .map((m) => m.avgBest),
@@ -2057,11 +2092,11 @@ function GeneralDriverSummary({
       id: "avg10",
       label: "Best 10 avg",
       group: "PACE",
-      value: (r) => (r.selected ? mean(r.selected.times.slice(0, 10)) : NaN),
+      value: (r) => r.selected?.absoluteAvg10 ?? NaN,
     },
     {
       id: "avg20",
-      label: "Best 20 avg",
+      label: "Absolute best N avg (round sample)",
       group: "PACE",
       value: (r) => r.selected?.avgBest ?? NaN,
     },
@@ -2143,7 +2178,7 @@ function GeneralDriverSummary({
       value: (r) =>
         r.selected
           ? r.selected.avgBest -
-            Math.min(...r.group("Gold").map((m) => m.avgBest))
+            Math.min(...r.group("Gold").map((m) => m.avgBest).filter(Number.isFinite))
           : NaN,
     },
     {
@@ -2154,7 +2189,7 @@ function GeneralDriverSummary({
       value: (r) =>
         r.selected
           ? r.selected.avgBest -
-            Math.min(...r.group("Silver").map((m) => m.avgBest))
+            Math.min(...r.group("Silver").map((m) => m.avgBest).filter(Number.isFinite))
           : NaN,
     },
     {
@@ -2325,7 +2360,7 @@ function GeneralDriverSummary({
           <tbody>
             {rows.map((r) => (
               <tr key={r.event}>
-                <th>{r.event}</th>
+                <th>{r.event}<br/><button onClick={()=>toggleLapCount(r.event)}>Best {summaryLapCount(r.event,lapCounts)} laps ↔</button></th>
                 {r.selected ? (
                   active.map((m) => {
                     const v = m.value(r);
@@ -2372,6 +2407,7 @@ function SeasonPaceChart({
   percent,
   absoluteBest,
   benchmarkLines,
+  excludedDrivers,
 }: {
   rows: DriverMetric[];
   driver: string;
@@ -2381,8 +2417,13 @@ function SeasonPaceChart({
   percent: number;
   absoluteBest: number;
   benchmarkLines: string[];
+  excludedDrivers: string[];
 }) {
   const [expanded, setExpanded] = useState(false);
+  const [manualY,setManualY]=useState(false);
+  const [minInput,setMinInput]=useState("");
+  const [maxInput,setMaxInput]=useState("");
+  const parseAxis=(s:string)=>{const parts=s.trim().split(":").map(Number);return !s.trim()||parts.some(n=>!Number.isFinite(n))||parts.length>2?NaN:parts.length===2?parts[0]*60+parts[1]:parts[0];};
   useEffect(() => {
     if (!expanded) return;
     const close = (e: KeyboardEvent) =>
@@ -2392,18 +2433,20 @@ function SeasonPaceChart({
   }, [expanded]);
   const finite = rows.filter((m) => Number.isFinite(value(m)));
   const valid = finite.filter(
-    (m) => !cutoff110 || value(m) <= absoluteBest * percent/100,
+    (m) => !excludedDrivers.includes(m.driver) && (!cutoff110 || value(m) <= absoluteBest * percent/100),
   );
-  if (!valid.length) return null;
-  const values = valid.map(value);
+  if (!finite.length) return null;
+  const values = finite.map(value);
   const lo = Math.min(...values);
   const hi = Math.max(...values);
   const tickStep = 0.3;
-  const y0 = Math.floor(lo / tickStep) * tickStep;
-  const y1 = Math.max(y0 + tickStep, Math.ceil(hi / tickStep) * tickStep);
+  const requestedMin=parseAxis(minInput),requestedMax=parseAxis(maxInput);
+  const validManual=manualY&&requestedMin>=0&&requestedMax>requestedMin&&requestedMax-requestedMin<=600;
+  const y0 = validManual?requestedMin:Math.floor(lo / tickStep) * tickStep;
+  const y1 = validManual?requestedMax:Math.max(y0 + tickStep, Math.ceil(hi / tickStep) * tickStep);
   const yTicks = Array.from(
-    { length: Math.round((y1 - y0) / tickStep) + 1 },
-    (_, i) => y0 + i * tickStep,
+    { length: Math.max(0,Math.floor(y1/tickStep)-Math.ceil(y0/tickStep)+1) },
+    (_, i) => (Math.ceil(y0/tickStep)+i) * tickStep,
   );
   const h = 210;
   const top = 14;
@@ -2422,13 +2465,15 @@ function SeasonPaceChart({
     ["Silver avg", benchmark("Silver"), "#737b83", ""],
     ["Silver top 10", benchmark("Silver", true), "#363b40", "2 3"],
   ].filter(([name])=>benchmarkLines.includes(String(name))) as [string, number, string, string][];
-  const width = Math.max(520, valid.length * 22 + 58);
+  const width = Math.max(520, finite.length * 22 + 58);
   const plotW = width - 48;
-  const barW = Math.max(5, Math.min(13, plotW / valid.length - 4));
+  const barW = Math.max(5, Math.min(13, plotW / finite.length - 4));
   return (
     <div className={`seasonChartWrap ${expanded ? "expanded" : ""}`}>
       <div className="seasonChartHeader">
         <b>{label}</b>
+        <label><input type="checkbox" checked={manualY} onChange={e=>{setManualY(e.target.checked);if(!minInput)setMinInput(fmt(y0));if(!maxInput)setMaxInput(fmt(y1));}}/> Manual Y</label>
+        {manualY&&<span><input aria-label="Minimum lap time" placeholder="m:ss.000" value={minInput} onChange={e=>setMinInput(e.target.value)} style={{width:95}}/> – <input aria-label="Maximum lap time" placeholder="m:ss.000" value={maxInput} onChange={e=>setMaxInput(e.target.value)} style={{width:95}}/>{!validManual&&<small role="status">Enter min &lt; max (m:ss.000); using auto range.</small>}</span>}
         {cutoff110 && (
           <small className="cutoffAudit">
             BENCHMARK N={valid.length}/{finite.length} · RECALCULATED
@@ -2457,7 +2502,7 @@ function SeasonPaceChart({
         })}
         {lines.map(
           ([name, n, colour, dash]) =>
-            Number.isFinite(n) && (
+            Number.isFinite(n) && n>=y0 && n<=y1 && (
               <g key={name}>
                 <line
                   x1="44"
@@ -2474,11 +2519,12 @@ function SeasonPaceChart({
               </g>
             ),
         )}
-        {valid.map((m, i) => {
-          const x = 48 + (i * plotW) / valid.length;
-          const barTop = y(value(m));
+        {finite.map((m, i) => {
+          const discarded=!valid.includes(m);
+          const x = 48 + (i * plotW) / finite.length;
+          const barTop = Math.max(top,Math.min(top+plotH,y(value(m))));
           const colour =
-            m.driver === driver
+            discarded ? "#651f2b" : m.driver === driver
               ? "#ef2ac1"
               : CONFIG.CATEGORY_COLOURS[
                   m.category as keyof typeof CONFIG.CATEGORY_COLOURS
@@ -2500,7 +2546,7 @@ function SeasonPaceChart({
                 className="driverAxis"
                 transform={`translate(${x + barW / 2},${top + plotH + 5}) rotate(-55)`}
               >
-                #{m.car} {m.driver}
+                {discarded && <tspan style={{fill:"#c51f32"}}>✕ </tspan>}#{m.car} {m.driver}
               </text>
             </g>
           );

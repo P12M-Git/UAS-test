@@ -21,14 +21,16 @@ test("Barcelona hour-less elapsed times are unwrapped without changing the other
   }
 });
 
-test("four bundled races load with valid timing data and imports preserve defaults", () => {
+test("five bundled races including Le Mans load and imports preserve defaults", () => {
   const sets = DEFAULT_RACES.map(name => parseTimingCsv(readFileSync(`public/races/${name}`, "utf8"), name));
   sets.forEach(s => assert.ok(s.laps.length > 1000));
-  assert.equal(new Set(sets.flatMap(s => s.laps.map(l => l.event))).size, 4);
+  assert.equal(sets[4].laps[0].event,"Le Mans 2026");
+  assert.ok(Math.max(...sets[4].laps.map(l=>l.elapsed||0))>23*3600);
+  assert.equal(new Set(sets.flatMap(s => s.laps.map(l => l.event))).size, 5);
   const base = { laps: sets.flatMap(s => s.laps), diagnostics: sets.flatMap(s => s.diagnostics) };
   const merged = mergeRaceDatasets(base, sets[0]);
   assert.equal(merged.laps.length, base.laps.length);
-  assert.equal(merged.diagnostics.length, 4);
+  assert.equal(merged.diagnostics.length, 5);
   const updated = { ...sets[0].laps[0], tyreSet: "new" };
   const next = mergeRaceDatasets(base, { laps: [updated], diagnostics: [] });
   assert.equal(next.laps.length, base.laps.length);

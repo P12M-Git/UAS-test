@@ -16,7 +16,8 @@
   --line: #c4c9cf;
   --muted: #68727d;
   --text: #17202a;
-  --accent: #b4212d;
+  --accent: #142b50;
+  --sidebar-neon: #168bff;
   --cyan: #0d4c7c;
 }
 body {
@@ -51,15 +52,14 @@ td small {
   padding: 24px 34px 20px;
 }
 .primary {
-  background: #b4212d;
-  border-color: #b4212d;
+  background: var(--accent);
+  border-color: var(--accent);
   color: white;
 }
 .ghost {
   background: #f6f7f8;
   color: #1b2733;
 }
-.eyebrow,
 .fast,
 .positive {
   color: #a51f2b;
@@ -242,6 +242,17 @@ aside {
   color: var(--muted);
   letter-spacing: 1.2px;
 }
+.section-tabs { display:flex; gap:12px; flex-wrap:wrap; margin:12px 0 20px; }
+.section-tabs button { padding:10px 18px; border:1px solid #aab5c1; background:#e1e5ea; color:#17253b; }
+.section-tabs button[aria-selected="true"] { background:#bcc7d4; border-bottom:3px solid #293b55; font-weight:800; }
+.results-scroll { overflow:auto; max-height:75vh; }
+.results-table { width:100%; border-collapse:collapse; }
+.results-table th { position:sticky; top:0; z-index:1; background:#dce1e7; }
+.results-table td,.results-table th { padding:7px; text-align:center; border:1px solid #bac4cf; white-space:nowrap; }
+.results-table small { font-size:10px; }
+.results-focus td { background:#eadbf6; box-shadow:inset 0 2px #9951c6,inset 0 -2px #9951c6; }
+.results-car { display:inline-block; padding:3px; border:1px solid #333; color:white; text-shadow:0 1px 2px black,1px 0 2px black; font-weight:800; }
+.result-position { display:inline-block; padding:5px; min-width:38px; color:#14253a; border-radius:3px; }
 nav {
   display: flex;
   flex-direction: column;
@@ -829,6 +840,26 @@ em {
   }
 }
 
+/* Neon navigation with navy accents; data-category/delta colours stay semantic. */
+main > aside {
+  background: linear-gradient(160deg, #33afff 0%, var(--sidebar-neon) 55%, #0878f2 100%);
+  border-right: 1px solid #52bdff;
+  box-shadow: 3px 0 16px #168bff33;
+  color: #071d3a;
+}
+aside .brand b, aside .brand small, aside .method small, aside .method > span,
+aside .method b, aside nav button, aside nav button span { color: #071d3a; }
+aside nav button:hover, aside nav button.active {
+  background: #142b50;
+  color: #fff;
+  border-left-color: #9ce6ff;
+}
+aside nav button:hover span, aside nav button.active span { color: #9ce6ff; }
+aside .method { border-top-color: #102c5666; }
+aside .method .ghost { background: #142b50; border-color: #142b50; color: #fff; }
+aside button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.eyebrow { color: var(--accent); }
+
 /* Final light-theme overrides */
 main {
   background-color: #e5e7ea;
@@ -858,15 +889,14 @@ td small {
   padding: 24px 34px 20px;
 }
 .primary {
-  background: #b4212d;
-  border-color: #b4212d;
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
 }
 .ghost {
   background: #f6f7f8;
   color: #1b2733;
 }
-.eyebrow,
 .fast,
 .positive {
   color: #a51f2b;

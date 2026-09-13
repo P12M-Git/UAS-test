@@ -4,6 +4,7 @@ import type { RaceDataset } from "./models/race";
 export const DEFAULT_RACES = [
   "26ELMSR01_BARC.csv", "26ELMSR02_RICA.csv",
   "26ELMSR03_IMOL.csv", "26ELMSR04_SPAF.csv",
+  "26ELMSR00_LM24.csv",
 ];
 let defaults: Promise<RaceDataset> | undefined;
 export function loadDefaultRaces(): Promise<RaceDataset> {

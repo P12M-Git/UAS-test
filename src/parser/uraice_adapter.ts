@@ -35,12 +35,13 @@ export function timeToSeconds(value?: string): number | null {
 }
 
 function metadata(file: string) {
-  const m = file.match(/(\d{2})ELMSR(\d{2})_([A-Z]+)/i);
+  const m = file.match(/(\d{2})ELMSR(\d{2})_([A-Z0-9]+)/i);
   const names: Record<string, string> = {
     BARC: "Barcelona",
     RICA: "Le Castellet",
     IMOL: "Imola",
     SPAF: "Spa-Francorchamps",
+    LM24: "Le Mans",
   };
   return {
     event: m

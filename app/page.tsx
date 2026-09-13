@@ -17,12 +17,14 @@ import { categoryMetrics } from "../src/analysis/category_metrics";
 import RaceAnalysis from "./race-analysis";
 import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
+import Results from "./results";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
 import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
 type View =
   | "Overview"
+  | "Results"
   | "Race Analysis"
   | "Driver Performance"
   | "Lap Analysis"
@@ -35,13 +37,11 @@ type View =
 const views: View[] = [
   "Overview",
   "Race Analysis",
-  "Driver Performance",
   "Lap Analysis",
-  "Traffic Performance",
+  "Driver Performance",
   "Season Summary",
+  "Results",
   "Category Benchmarks",
-  "Data / Session Info",
-  "Driver Category Database",
 ];
 const tips: Record<string, string> = {
   Clean:
@@ -219,7 +219,7 @@ export default function Home() {
         <nav>
           {views.map((v, i) => (
             <button
-              className={view === v ? "active" : ""}
+              className={view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
               onClick={() => setView(v)}
               key={v}
             >
@@ -229,6 +229,7 @@ export default function Home() {
           ))}
         </nav>
         <div className="method">
+          <button className="ghost" onClick={()=>setView("Data / Session Info")}>DATABASE</button>
           <span>METHOD STATUS</span>
           <b>
             <i /> U.RAICE ADAPTER
@@ -240,7 +241,7 @@ export default function Home() {
         <header>
           <div>
             <p className="eyebrow">DRIVER INSIDERS - U.RAICE</p>
-            <h1>{view.toUpperCase()}</h1>
+            <h1>{["Data / Session Info","Driver Category Database"].includes(view)?"DATABASE":view==="Traffic Performance"?"DRIVER PERFORMANCE":view.toUpperCase()}</h1>
           </div>
           <div className="actions">
             <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
@@ -255,7 +256,7 @@ export default function Home() {
               accept=".csv,text/csv"
               onChange={(e) => load([...(e.target.files || [])])}
             />
-            {view !== "Driver Category Database" && <button
+            {view !== "Driver Category Database" && view !== "Results" && <button
               className="primary"
               onClick={() =>
                 view.includes("Category")
@@ -268,11 +269,20 @@ export default function Home() {
           </div>
         </header>
         {error && <div className="alert">{error}</div>}
+        {["Driver Performance","Traffic Performance"].includes(view) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
+          <button role="tab" aria-selected={view==="Driver Performance"} onClick={()=>setView("Driver Performance")}>Pure Performance</button>
+          <button role="tab" aria-selected={view==="Traffic Performance"} onClick={()=>setView("Traffic Performance")}>Traffic Performance</button>
+        </div>}
+        {["Data / Session Info","Driver Category Database"].includes(view) && <div className="section-tabs" role="tablist" aria-label="Database">
+          <button role="tab" aria-selected={view==="Data / Session Info"} onClick={()=>setView("Data / Session Info")}>Data / Session Info</button>
+          <button role="tab" aria-selected={view==="Driver Category Database"} onClick={()=>setView("Driver Category Database")}>Driver Category Database</button>
+        </div>}
         {view === "Driver Category Database" ? <DriverCategoryDatabase/> : !laps.length ? (
           <Empty busy={busy} open={() => input.current?.click()} />
         ) : (
           <>
             {view !== "Data / Session Info" &&
+              view !== "Results" &&
               view !== "Driver Focus" &&
               view !== "Race Analysis" &&
               view !== "Season Summary" && (
@@ -401,13 +411,17 @@ export default function Home() {
               />
             )}{" "}
             {view === "Category Benchmarks" && <Categories rows={cats} />}{" "}
+            {view === "Results" && <Results laps={laps}/>}
             {view === "Data / Session Info" && (
+              <>
+              <label>EVENT / RACE<select value={selectedEvent} onChange={e=>setEventFilter(e.target.value)}>{events.map(e=><option key={e}>{e}</option>)}</select></label>
               <DataInfo
                 rows={diagnostics.filter((r) =>
                   sessionLaps.some((l) => l.sourceFile === r.sourceFile),
                 )}
                 laps={sessionLaps}
               />
+              </>
             )}
           </>
         )}

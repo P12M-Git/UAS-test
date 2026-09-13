@@ -586,10 +586,10 @@ tr.focusDriver > td,
 th.sorted {
   background: #bcc3ca;
   color: #101820;
-  box-shadow: inset 0 -3px 0 #b4212d;
+  box-shadow: inset 0 -3px 0 var(--accent);
 }
 .sortSignal {
-  color: #b4212d;
+  color: var(--accent);
   margin-left: 7px;
   font-size: 8px;
 }
@@ -839,7 +839,7 @@ th.sorted {
 .focusModalHeader button {
   padding: 7px 10px;
   border: 0;
-  background: #b4212d;
+  background: var(--accent);
   color: #fff;
   font-weight: 800;
 }
@@ -904,7 +904,7 @@ th.sorted {
   font:
     28px var(--font-geist-mono),
     monospace;
-  color: #b4212d;
+  color: var(--accent);
 }
 .focusCards {
   display: grid;
@@ -954,7 +954,7 @@ th.sorted {
   vertical-align: middle;
 }
 .trafficOverlayLegend .driverMeanLegend {
-  background: #b4212d;
+  background: var(--accent);
 }
 .range .categoryMeanLine {
   position: absolute;
@@ -1033,7 +1033,7 @@ th.sorted {
   left: 38%;
   width: 24%;
   height: 3px;
-  background: #b4212d;
+  background: var(--accent);
 }
 .stdGroup strong {
   margin-top: 7px;

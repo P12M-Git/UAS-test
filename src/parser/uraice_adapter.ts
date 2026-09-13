@@ -1,4 +1,5 @@
 import { CONFIG } from "../config";
+import { eventLabel } from "../models/event-identity";
 import { driverIdentityKey, matchDriverCategoryKey } from "../models/driver-identity";
 import type {
   Category,
@@ -35,18 +36,8 @@ export function timeToSeconds(value?: string): number | null {
 }
 
 function metadata(file: string) {
-  const m = file.match(/(\d{2})ELMSR(\d{2})_([A-Z0-9]+)/i);
-  const names: Record<string, string> = {
-    BARC: "Barcelona",
-    RICA: "Le Castellet",
-    IMOL: "Imola",
-    SPAF: "Spa-Francorchamps",
-    LM24: "Le Mans",
-  };
   return {
-    event: m
-      ? `${names[m[3].toUpperCase()] || m[3]} 20${m[1]}`
-      : file.replace(/\.csv$/i, ""),
+    event: eventLabel(file),
     session: "Race",
   };
 }

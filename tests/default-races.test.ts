@@ -24,7 +24,7 @@ test("Barcelona hour-less elapsed times are unwrapped without changing the other
 test("five bundled races including Le Mans load and imports preserve defaults", () => {
   const sets = DEFAULT_RACES.map(name => parseTimingCsv(readFileSync(`public/races/${name}`, "utf8"), name));
   sets.forEach(s => assert.ok(s.laps.length > 1000));
-  assert.equal(sets[4].laps[0].event,"Le Mans 2026");
+  assert.equal(sets[4].laps[0].event,"WEC, LM24, 2026");
   assert.ok(Math.max(...sets[4].laps.map(l=>l.elapsed||0))>23*3600);
   assert.equal(new Set(sets.flatMap(s => s.laps.map(l => l.event))).size, 5);
   const base = { laps: sets.flatMap(s => s.laps), diagnostics: sets.flatMap(s => s.diagnostics) };

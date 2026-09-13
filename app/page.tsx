@@ -18,6 +18,7 @@ import RaceAnalysis from "./race-analysis";
 import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
+import { eventTheme } from "../src/models/event-identity";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
@@ -1052,7 +1053,7 @@ function EventPicker({
     <div className="eventPicker">
       <b>EVENTS INCLUDED</b>
       {events.map((event) => (
-        <label key={event}>
+        <label key={event} className={`event-badge ${eventTheme(event)}`}>
           <input
             type="checkbox"
             checked={selectedEvents.includes(event)}
@@ -1464,7 +1465,7 @@ function DriverFocus({
             <tr>
               <th>METRIC</th>
               {selectedEvents.map((e) => (
-                <th key={e}>{e}</th>
+                <th key={e} className={eventTheme(e)}>{e}</th>
               ))}
             </tr>
           </thead>
@@ -1799,7 +1800,7 @@ function SeasonSummary({
               const includedRows=rows.filter(m=>!excludedSeasonDrivers.includes(m.driver));
               return (
                 <div className="seasonEvent" key={event}>
-                  <h3>{event}</h3>
+                  <h3 className={`event-badge ${eventTheme(event)}`}>{event}</h3>
                   <SeasonPaceChart
                     rows={rows}
                     excludedDrivers={excludedSeasonDrivers}
@@ -1907,7 +1908,7 @@ function SeasonDriverComparison({event,laps,driver,excludedDrivers,lapCounts}:{
     color:value<0?"#24662c":value>0?"#a32626":"#334155",fontWeight:700,
   }:undefined}>{Number.isFinite(value)?`${value>0?"+":""}${value.toFixed(3)} s`:"—"}</td>;
   return <div className="seasonEvent"><div className="tableWrap"><table aria-label={`${event} selected driver versus Gold and Silver`}>
-    <thead><tr><th>{event.toUpperCase()}</th><th>{selected && <CarNumber number={selected.car}/>} {driver || "SELECT DRIVER"}</th><th>Gold</th><th>Delta Gold</th><th>Silver</th><th>Delta Silver</th></tr></thead>
+    <thead><tr><th className={eventTheme(event)}>{event.toUpperCase()}</th><th>{selected && <CarNumber number={selected.car}/>} {driver || "SELECT DRIVER"}</th><th>Gold</th><th>Delta Gold</th><th>Silver</th><th>Delta Silver</th></tr></thead>
     <tbody>{rows.map(row=>{
       const format=(value:number)=>row.spread?Number.isFinite(value)?`${value.toFixed(3)} s`:"—":fmt(value);
       return <tr key={row.label}><th scope="row">{row.label}</th><td>{format(row.value)}</td>
@@ -2374,7 +2375,7 @@ function GeneralDriverSummary({
           <tbody>
             {rows.map((r) => (
               <tr key={r.event}>
-                <th>{r.event}<br/><button onClick={()=>toggleLapCount(r.event)}>Best {summaryLapCount(r.event,lapCounts)} laps ↔</button></th>
+                <th className={eventTheme(r.event)}>{r.event}<br/><button onClick={()=>toggleLapCount(r.event)}>Best {summaryLapCount(r.event,lapCounts)} laps ↔</button></th>
                 {r.selected ? (
                   active.map((m) => {
                     const v = m.value(r);

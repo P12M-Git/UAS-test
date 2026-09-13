@@ -3,6 +3,7 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 import type { Lap } from "../src/models/race";
 import { mean } from "../src/analysis/driver_metrics";
 import { CONFIG } from "../src/config";
+import { eventTheme } from "../src/models/event-identity";
 import { absoluteSummaryDrivers, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { aggregateSeason, seasonDelta, seasonReferences, comparisonReference, exclusionsForEvent, type SeasonExclusions, type SeasonReference } from "../src/analysis/season-aggregate";
 
@@ -37,18 +38,18 @@ export default function SeasonAggregate({laps,events,driver,excluded,className,l
       <fieldset className="categoryTicks"><legend>SHOW DRIVER CATEGORIES</legend>{Object.keys(CONFIG.CATEGORY_COLOURS).map(cat=><label key={cat}><input type="checkbox" checked={shownCategories.includes(cat)} onChange={()=>setShownCategories(prev=>prev.includes(cat)?prev.filter(c=>c!==cat):[...prev,cat])}/>{cat}</label>)}</fieldset>
       <p>References use the selected metric within this car class. Category filters and per-event exclusions are shared with Driver Summary and remove drivers from benchmarks (focus stays visible).</p>
     </>}
-    <fieldset className="categoryTicks"><legend>EVENTS INCLUDED IN THIS SUMMARY</legend>{events.map(event=><label key={event}><input type="checkbox" checked={!omitted.includes(event)} onChange={()=>setOmitted(prev=>prev.includes(event)?prev.filter(e=>e!==event):[...prev,event])}/>{event}</label>)}</fieldset>
+    <fieldset className="categoryTicks"><legend>EVENTS INCLUDED IN THIS SUMMARY</legend>{events.map(event=><label key={event} className={`event-badge ${eventTheme(event)}`}><input type="checkbox" checked={!omitted.includes(event)} onChange={()=>setOmitted(prev=>prev.includes(event)?prev.filter(e=>e!==event):[...prev,event])}/>{event}</label>)}</fieldset>
     <p>{comparison&&metric==="best"?"Absolute best lap.":"Absolute best-N average: 10 or 20 as selected for each round; full sample required."} Category filters are shared; manual and cutoff exclusions apply separately per event. Each available event has equal weight. Missing or excluded data is not zero.</p>
     {!comparison?<div className="tableWrap"><table>
       <thead><tr><th>EVENT</th><th>{driver || "SELECT FOCUS DRIVER"} · AVG</th>{seasonReferences.map(ref=><th key={ref} colSpan={2}>{ref}</th>)}</tr>
         <tr><th/><th>Round sample</th>{seasonReferences.map(ref=><FragmentHeaders key={ref}/>)}</tr></thead>
-      <tbody>{focused.map(r=><tr key={r.event}><th>{r.event} · {r.count} laps</th><td>{r.selected?`#${r.selected.car} ${time(r.selected.avgBest)}`:"—"}</td>
+      <tbody>{focused.map(r=><tr key={r.event}><th className={eventTheme(r.event)}>{r.event} · {r.count} laps</th><td>{r.selected?`#${r.selected.car} ${time(r.selected.avgBest)}`:"—"}</td>
         {r.references.map(ref=>{const d=seasonDelta(r.selected?.avgBest??NaN,ref.value);return <ReferenceCells key={ref.label} reference={ref.value} drivers={ref.count} seconds={d.seconds}/>;})}</tr>)}
         <tr><th>MEAN EVENT DELTA</th><td>{focused.filter(r=>r.selected).length} events</td>{seasonReferences.map((ref,i)=>{
           const ds=focused.map(r=>seasonDelta(r.selected?.avgBest??NaN,r.references[i].value)).filter(d=>Number.isFinite(d.seconds));
           return <ReferenceCells key={ref} count={ds.length} seconds={mean(ds.map(d=>d.seconds))}/>;
         })}</tr></tbody></table></div>:<div className="tableWrap"><table>
-        <thead><tr><th>RANK</th><th>DRIVER</th><th>EVENTS</th>{rounds.map(r=><th key={r.event}>{r.event} · {metric==="best"?"1 lap":`${r.count} laps`}<br/>Gap s vs {referenceLabel}</th>)}<th>MEAN GAP s</th></tr></thead>
+        <thead><tr><th>RANK</th><th>DRIVER</th><th>EVENTS</th>{rounds.map(r=><th key={r.event} className={eventTheme(r.event)}>{r.event} · {metric==="best"?"1 lap":`${r.count} laps`}<br/>Gap s vs {referenceLabel}</th>)}<th>MEAN GAP s</th></tr></thead>
         <tbody>{ranked.map((row,i)=><tr key={row.name} className={row.name===driver?"focusDriver":""}><td>{Number.isFinite(row.seconds)?i+1:"—"}</td><td style={{background:row.name===driver?"#ef2ac1":CONFIG.CATEGORY_COLOURS[row.samples[0]?.metric.category as keyof typeof CONFIG.CATEGORY_COLOURS],color:"#17202a",fontWeight:700}}>
           {[...new Set(row.samples.map(s=>s.metric.car))].map(car=><CarBadge key={car} car={car}/>)} {row.name}</td><td>{row.valid}/{rounds.length}</td>
           {rounds.map(r=>{const s=row.samples.find(x=>x.event===r.event);return <td key={r.event} className={s&&Number.isFinite(s.seconds)?s.seconds<=0?"summaryBetter":"summaryWorse":""} title={s?`Driver: ${time(s.metric[metric])}; reference: ${time(s.reference)}`:undefined}>{s?signed(s.seconds," s"):"—"}</td>;})}

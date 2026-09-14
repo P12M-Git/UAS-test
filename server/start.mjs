@@ -107,6 +107,11 @@ const server = http.createServer(async (req, res) => {
     return;
   }
   if (path === '/login') { res.writeHead(303, { Location: '/' }); res.end(); return; }
+  if (path === '/auth/me') {
+    if (req.method !== 'GET') { res.writeHead(405, { Allow: 'GET' }); res.end(); return; }
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+    res.end(JSON.stringify({ username: auth.user(tokenFor(req)) })); return;
+  }
   if (!dev && staticFiles.has(path) && ['GET', 'HEAD'].includes(req.method)) {
     const file = staticFiles.get(path);
     res.writeHead(200, { 'Content-Type': contentTypes[extname(file)] || 'application/octet-stream', 'Content-Length': statSync(file).size });

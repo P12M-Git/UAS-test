@@ -861,6 +861,9 @@ aside button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .eyebrow { color: var(--accent); }
 
 /* Final light-theme overrides */
+.welcome-user { color:var(--accent); margin:24px 0 16px; font-size:24px; font-weight:700; }
+.signed-in-user { display:flex; flex-direction:column; gap:4px; padding:10px 0; overflow-wrap:anywhere; }
+.signed-in-user strong { color:#071d3a; font-size:15px; }
 .event-badge { padding:6px 10px; border-radius:3px; display:inline-flex; align-items:center; gap:6px; }
 .event-elms { background:#142b50 !important; color:#fff !important; }
 .event-wec { background:#ffd3a3 !important; color:#462b16 !important; }

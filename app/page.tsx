@@ -93,6 +93,15 @@ function download<T extends object>(name: string, rows: T[]) {
   URL.revokeObjectURL(a.href);
 }
 export default function Home() {
+  const [username, setUsername] = useState<string | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store', signal: controller.signal })
+      .then(response => response.ok ? response.json() : null)
+      .then(data => { if (typeof data?.username === 'string') setUsername(data.username); })
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
   const [laps, setLaps] = useState<Lap[]>([]),
     [diagnostics, setDiagnostics] = useState<ParseDiagnostics[]>([]),
     [view, setView] = useState<View>("Overview"),
@@ -230,6 +239,7 @@ export default function Home() {
           ))}
         </nav>
         <div className="method">
+          {username && <div className="signed-in-user"><small>SIGNED IN AS</small><strong>{username}</strong></div>}
           <button className="ghost" onClick={()=>setView("Data / Session Info")}>DATABASE</button>
           <span>METHOD STATUS</span>
           <b>
@@ -270,6 +280,7 @@ export default function Home() {
           </div>
         </header>
         {error && <div className="alert">{error}</div>}
+        {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
         {["Driver Performance","Traffic Performance"].includes(view) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
           <button role="tab" aria-selected={view==="Driver Performance"} onClick={()=>setView("Driver Performance")}>Pure Performance</button>
           <button role="tab" aria-selected={view==="Traffic Performance"} onClick={()=>setView("Traffic Performance")}>Traffic Performance</button>

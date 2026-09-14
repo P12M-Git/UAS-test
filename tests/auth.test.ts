@@ -12,7 +12,9 @@ test('multiple users have independent passwords, throttles and sessions; new con
   assert.equal(auth.login('first','another-test-password').status,401);
   const a=auth.login('first','test-only-password'),b=auth.login('second','another-test-password');
   assert.equal(a.status,200);assert.equal(b.status,200);
+  assert.equal(auth.user(a.token),'first');assert.equal(auth.user(b.token),'second');
   auth.logout(a.token);assert.equal(auth.valid(a.token),false);assert.equal(auth.valid(b.token),true);
+  assert.equal(auth.user(a.token),null);assert.equal(auth.user('fabricated'),null);
   for(let i=0;i<10;i++)assert.equal(auth.login('first','wrong').status,401);
   assert.equal(auth.login('first','test-only-password').status,429);
   assert.equal(auth.login('second','another-test-password').status,200);
@@ -35,6 +37,7 @@ test('login validates both credentials, sessions expire and logout revokes', () 
   const second = auth.login('test', 'test-only-password');
   time += 8 * 3600_000;
   assert.equal(auth.valid(second.token), false);
+  assert.equal(auth.user(second.token), null);
 });
 test('ten failed attempts are throttled and configuration fails closed', () => {
   const auth = createAuth({ username: 'test', passwordHash });

@@ -22,7 +22,7 @@ export function createAuth({ username, passwordHash, usersJson, now = Date.now }
   const sessions = new Map();
   const attempts = new Map(); // Bounded by configured users plus one unknown-user bucket.
   const digest = token => createHash('sha256').update(token).digest('hex');
-  const prune = () => { for (const [key, expires] of sessions) if (expires <= now()) sessions.delete(key); };
+  const prune = () => { for (const [key, session] of sessions) if (session.expires <= now()) sessions.delete(key); };
   return {
     login(name, password) {
       prune();
@@ -38,10 +38,11 @@ export function createAuth({ username, passwordHash, usersJson, now = Date.now }
       if (!valid || !users.has(name)) { attempt.failures++; return { status: 401 }; }
       attempt.failures = 0;
       const token = randomBytes(32).toString('hex');
-      sessions.set(digest(token), now() + 8 * 3600_000);
+      sessions.set(digest(token), { username: name, expires: now() + 8 * 3600_000 });
       return { status: 200, token };
     },
     valid(token = '') { prune(); return /^[a-f0-9]{64}$/.test(token) && sessions.has(digest(token)); },
+    user(token = '') { prune(); return /^[a-f0-9]{64}$/.test(token) ? sessions.get(digest(token))?.username ?? null : null; },
     logout(token = '') { sessions.delete(digest(token)); },
   };
 }

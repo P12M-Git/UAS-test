@@ -46,11 +46,15 @@ test('production gateway serves the current report, assets and private data', { 
     assert.equal(info.status, 'ready');
     assert.match(info.build, /^[a-f0-9]{12}$/);
     assert.equal((await fetch(`${base}/races/26ELMSR01_BARC.csv`)).status, 401);
+    assert.equal((await fetch(`${base}/auth/me`)).status, 401);
     const login = await fetch(`${base}/auth/login`, { method: 'POST', headers: { Origin: origin },
       body: new URLSearchParams({ username: 'production-test', password }), redirect: 'manual' });
     assert.equal(login.status, 303, logs);
     assert.match(login.headers.get('set-cookie'), /HttpOnly.*Secure/);
     const cookie = login.headers.get('set-cookie').split(';')[0];
+    const profile = await fetch(`${base}/auth/me`, { headers: { Cookie: cookie } });
+    assert.equal(profile.headers.get('cache-control'), 'no-store');
+    assert.deepEqual(await profile.json(), { username: 'production-test' });
     let response;
     for (let i = 0; i < 60; i++) {
       response = await fetch(base, { headers: { Cookie: cookie }, signal: AbortSignal.timeout(3000) });
@@ -78,6 +82,7 @@ test('production gateway serves the current report, assets and private data', { 
     }
     assert.equal((await fetch(`${base}/auth/logout`, { method: 'POST', headers: { Origin: origin, Cookie: cookie }, redirect: 'manual' })).status, 303);
     assert.equal((await fetch(`${base}/races/26ELMSR01_BARC.csv`, { headers: { Cookie: cookie } })).status, 401);
+    assert.equal((await fetch(`${base}/auth/me`, { headers: { Cookie: cookie } })).status, 401);
   } finally {
     // Gateway observes stdin EOF in this test so its child is stopped too.
     child.stdin.end();

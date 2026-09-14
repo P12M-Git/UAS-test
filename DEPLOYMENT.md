@@ -1,5 +1,24 @@
 # Driver Performance deployment (Render / Node)
 
+## September 2026: multiple users and Silverstone
+
+- Login now supports `AUTH_USERS_JSON`: a JSON object mapping exact, case-sensitive
+  usernames to scrypt `salt:hash` strings. All users have the same report access.
+- The requested Pol, Jonathan, Juan and Max accounts are prepared in the ignored
+  `.env.local` and `.env.render.local` files. No passwords or hashes are committed.
+- On the existing Render service, set `AUTH_USERS_JSON` to the JSON value from
+  `.env.render.local` (only the object, without the `AUTH_USERS_JSON=` prefix or
+  outer single quotes). Keep `APP_ORIGIN` and `NODE_ENV` unchanged.
+  Remove the old `AUTH_USERNAME` and `AUTH_PASSWORD_HASH` variables, then deploy
+  the updated source. The new JSON takes precedence; malformed JSON fails closed
+  rather than re-enabling the old password. Changing local files does not change Render.
+- Legacy single-user configuration remains supported only when `AUTH_USERS_JSON`
+  is absent. Sessions remain in-memory, expire after eight hours, and are revoked
+  on restart. Failed-login throttling is per account (10 attempts / 15 minutes).
+- `26ELMS505_SILV.csv` is the sixth bundled race, labelled
+  `ELMS, Silverstone, 2026`. Le Mans remains `WEC, LM24, 2026`.
+- Commands remain `npm ci --include=dev && npm run build` and `npm start`.
+
 ## Diagnosis: confirmed versus unverified
 
 The repository-root `app/page.tsx` contains the CURRENT **ELMS · DRIVER
@@ -75,8 +94,7 @@ are currently declared there and are required for build/start.
 
 | Variable | Value |
 | --- | --- |
-| `AUTH_USERNAME` | Your configured username, e.g. `Pol` |
-| `AUTH_PASSWORD_HASH` | Existing scrypt `salt:hash` value from local `.env.local`; transfer privately into Render, never commit it |
+| `AUTH_USERS_JSON` | Private JSON object of usernames and scrypt hashes; see multi-user setup above |
 | `APP_ORIGIN` | Exact HTTPS origin, e.g. `https://your-service.onrender.com`, with no trailing slash |
 | `NODE_ENV` | `production` |
 

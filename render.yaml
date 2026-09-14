@@ -11,9 +11,7 @@ services:
         value: "22"
       - key: NODE_ENV
         value: production
-      - key: AUTH_USERNAME
-        sync: false
-      - key: AUTH_PASSWORD_HASH
+      - key: AUTH_USERS_JSON
         sync: false
       - key: APP_ORIGIN
         sync: false

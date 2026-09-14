@@ -13,7 +13,7 @@ if (dev && existsSync('.env.local')) process.loadEnvFile('.env.local');
 const buildInfo = dev ? null : verifyBuild();
 const port = Number(process.env.PORT || 3000);
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be an integer from 1 to 65535');
-const auth = createAuth({ username: process.env.AUTH_USERNAME, passwordHash: process.env.AUTH_PASSWORD_HASH });
+const auth = createAuth({ usersJson: process.env.AUTH_USERS_JSON, username: process.env.AUTH_USERNAME, passwordHash: process.env.AUTH_PASSWORD_HASH });
 let publicOrigin;
 if (!dev) {
   const origin = new URL(process.env.APP_ORIGIN || 'invalid');

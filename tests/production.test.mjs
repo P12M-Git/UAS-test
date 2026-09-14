@@ -16,7 +16,8 @@ test('production gateway serves the current report, assets and private data', { 
   const child = spawn(process.execPath, ['server/start.mjs'], {
     cwd: root, windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, UAS_TEST_LIFECYCLE: '1', PORT: String(port), APP_ORIGIN: origin, AUTH_USERNAME: 'production-test',
-      AUTH_PASSWORD_HASH: `${salt}:${scryptSync(password, salt, 64).toString('hex')}` },
+      AUTH_PASSWORD_HASH: `${salt}:${scryptSync(password, salt, 64).toString('hex')}`,
+      AUTH_USERS_JSON: JSON.stringify({'production-test':`${salt}:${scryptSync(password,salt,64).toString('hex')}`}) },
   });
   let logs = '';
   child.stdout.on('data', c => { logs += c; });
@@ -70,7 +71,7 @@ test('production gateway serves the current report, assets and private data', { 
     const asset = html.match(/(?:src|href)="([^\"]+\.js[^\"]*)"/) || html.match(/import\s*["']([^"']+\.js)["']/);
     assert.ok(asset, 'No client JS in production HTML');
     assert.equal((await fetch(new URL(asset[1], base), { headers: { Cookie: cookie } })).status, 200, `Missing client asset ${asset[1]}`);
-    for (const name of ['26ELMSR01_BARC', '26ELMSR02_RICA', '26ELMSR03_IMOL', '26ELMSR04_SPAF', '26ELMSR00_LM24']) {
+    for (const name of ['26ELMSR01_BARC', '26ELMSR02_RICA', '26ELMSR03_IMOL', '26ELMSR04_SPAF', '26ELMSR00_LM24', '26ELMS505_SILV']) {
       const csv = await fetch(`${base}/races/${name}.csv`, { headers: { Cookie: cookie } });
       assert.equal(csv.status, 200, `CSV ${name}\n${logs}`);
       assert.match(await csv.text(), /LAP_NUMBER/);

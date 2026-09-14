@@ -5,7 +5,7 @@ export function eventChampionship(event:string):"ELMS"|"WEC" {
 export function eventTheme(event:string){return eventChampionship(event)==="WEC"?"event-wec":"event-elms";}
 export function eventLabel(file:string):string {
   const stem=file.replace(/\.csv$/i,"");
-  const code=stem.match(/(\d{2})(?:ELMS|WEC|LMC)(?:R\d{2})?[_ -]([A-Z0-9]+)/i);
+  const code=stem.match(/(\d{2})(?:ELMS|WEC|LMC)(?:R\d{2}|\d{3})?[_ -]([A-Z0-9]+)/i);
   const year=stem.match(/(?:^|\D)(20\d{2})(?!\d)/)?.[1] || (code?`20${code[1]}`:undefined);
   const names:Record<string,string>={BARC:"Barcelona",RICA:"Le Castellet",IMOL:"Imola",SPAF:"Spa-Francorchamps",SPA:"Spa-Francorchamps",SILV:"Silverstone",PORT:"Portimão"};
   const championship=eventChampionship(stem);

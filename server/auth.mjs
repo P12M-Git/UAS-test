@@ -6,22 +6,37 @@ export function verifyPassword(password, encoded) {
   const actual = scryptSync(password, salt, 64);
   return timingSafeEqual(actual, Buffer.from(hash, 'hex'));
 }
-export function createAuth({ username, passwordHash, now = Date.now }) {
-  if (!username || !passwordHash || !/^[a-f0-9]{32}:[a-f0-9]{128}$/.test(passwordHash)) {
-    throw new Error('Configure AUTH_USERNAME and AUTH_PASSWORD_HASH in .env.local or server environment.');
-  }
+export function createAuth({ username, passwordHash, usersJson, now = Date.now }) {
+  const configError = () => new Error('Configure AUTH_USERS_JSON as a non-empty username-to-scrypt-hash object, or legacy AUTH_USERNAME and AUTH_PASSWORD_HASH.');
+  let entries;
+  if (usersJson !== undefined) {
+    let parsed;
+    try { parsed = JSON.parse(usersJson); } catch { throw configError(); }
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw configError();
+    entries = Object.entries(parsed);
+  } else entries = [[username, passwordHash]];
+  if (!entries.length || entries.length > 100 || entries.some(([name, hash]) =>
+    typeof name !== 'string' || !name.trim() || name !== name.trim() || name.length > 100 ||
+    typeof hash !== 'string' || !/^[a-f0-9]{32}:[a-f0-9]{128}$/.test(hash))) throw configError();
+  const users = new Map(entries);
   const sessions = new Map();
-  let failures = 0, windowEnd = 0;
+  const attempts = new Map(); // Bounded by configured users plus one unknown-user bucket.
   const digest = token => createHash('sha256').update(token).digest('hex');
   const prune = () => { for (const [key, expires] of sessions) if (expires <= now()) sessions.delete(key); };
   return {
     login(name, password) {
       prune();
-      if (now() >= windowEnd) { failures = 0; windowEnd = now() + 15 * 60_000; }
-      if (failures >= 10) return { status: 429 };
-      const valid = verifyPassword(password, passwordHash);
-      if (!valid || name !== username) { failures++; return { status: 401 }; }
-      failures = 0;
+      const bucket = users.has(name) ? name : null;
+      let attempt = attempts.get(bucket);
+      if (!attempt || now() >= attempt.windowEnd) {
+        attempt = { failures: 0, windowEnd: now() + 15 * 60_000 }; attempts.set(bucket, attempt);
+      }
+      if (attempt.failures >= 10) return { status: 429 };
+      // Unknown usernames still incur the same password hashing cost.
+      const valid = typeof password === 'string' && password.length <= 256 &&
+        verifyPassword(password, users.get(name) || entries[0][1]);
+      if (!valid || !users.has(name)) { attempt.failures++; return { status: 401 }; }
+      attempt.failures = 0;
       const token = randomBytes(32).toString('hex');
       sessions.set(digest(token), now() + 8 * 3600_000);
       return { status: 200, token };

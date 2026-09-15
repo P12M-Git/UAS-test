@@ -588,6 +588,16 @@ th.sorted {
   color: #101820;
   box-shadow: inset 0 -3px 0 var(--accent);
 }
+.raceAnalysis > .seasonTabs { display:flex; flex-wrap:nowrap; overflow-x:auto; gap:4px; }
+.raceAnalysis > .seasonTabs button { flex:1 0 auto; padding:9px 14px; white-space:nowrap; }
+.raceAnalysis > .seasonControls { display:flex; flex-wrap:nowrap; align-items:center; gap:10px; overflow-x:auto; padding:10px 0; }
+.raceAnalysis > .seasonControls > * { flex:0 0 auto; }
+.raceAnalysis > .seasonControls select { max-width:200px; }
+.race-event-row { display:flex; gap:6px; overflow-x:auto; margin:8px 0 14px; }
+.race-event-row button { flex:0 0 auto; padding:10px 12px; background:#e2e7ec; color:#172b48; border:1px solid #b7c3ce; }
+.race-event-row button[aria-pressed="true"] { box-shadow:inset 0 -3px #229bff; font-weight:800; }
+.state.GREEN { background:#c8efd2 !important; color:#13552a !important; border:1px solid #63ad76; }
+td.lap-improved { background:#d7efdc !important; color:#13602b !important; font-weight:700; }
 .sortSignal {
   color: var(--accent);
   margin-left: 7px;

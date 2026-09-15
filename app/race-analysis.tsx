@@ -10,7 +10,6 @@ import {
 import { CONFIG } from "../src/config";
 import RaceStrategy from "./race-strategy";
 import GapInFront from "./gap-in-front";
-import TrackEvolutionFit from "./track-evolution-fit";
 import { trackEvolution, visibleTimeBounds, type EvolutionSeries } from "../src/analysis/track-evolution";
 const time = (n: number) =>
   Number.isFinite(n)
@@ -51,7 +50,7 @@ export default function RaceAnalysis({
   const usage =
     tyreUsage === "reference" ? refStint?.tyreStint : Number(tyreUsage);
   const [showEvolution, setShowEvolution] = useState(false);
-  const [threeMinuteY,setThreeMinuteY]=useState(true);
+  const [twoMinuteY,setTwoMinuteY]=useState(true);
   const [evolutionCats, setEvolutionCats] = useState<string[] | null>(null);
   const [evolutionDrivers, setEvolutionDrivers] = useState<string[] | null>(null);
   const evolutionCandidates=stints.filter(s=>(cls==="All"||s.className===cls)&&(evolutionCats===null||evolutionCats.includes(s.category)));
@@ -145,8 +144,6 @@ export default function RaceAnalysis({
         {[
           "Race plot",
           "Gap in Front",
-          "Track evolution fit",
-          "Strategy overview",
           "Race Strategy",
           "Tyre conditions",
         ].map((t) => (
@@ -180,9 +177,9 @@ export default function RaceAnalysis({
             ))}
           </select>
         </label>
-        {tab !== "Gap in Front" && tab !== "Race Strategy" && tab !== "Track evolution fit" && (
+        {tab !== "Gap in Front" && tab !== "Race Strategy" && (
           <>
-            <label><input type="checkbox" checked={threeMinuteY} onChange={e=>setThreeMinuteY(e.target.checked)}/> Y maximum 3:00.000</label>
+            <label><input type="checkbox" checked={twoMinuteY} onChange={e=>setTwoMinuteY(e.target.checked)}/> Y maximum 2:00.000</label>
             <label>
               DISPLAY
               <select value={mode} onChange={(e) => {
@@ -364,9 +361,7 @@ export default function RaceAnalysis({
           setDriver={setDriver}
         />
       )}
-      {tab === "Track evolution fit" && <TrackEvolutionFit stints={stints} visible={filtered} driver={driver} setDriver={setDriver}
-        cap={cap} percent={percent} setCap={setCap} setPercent={setPercent}/>}
-      {tab !== "Strategy overview" && tab !== "Race Strategy" && tab !== "Track evolution fit" && (
+      {tab !== "Race Strategy" && (
         <RaceCanvas
           rows={plotted}
           driver={driver}
@@ -374,16 +369,16 @@ export default function RaceAnalysis({
           axis={axis}
           evolution={evolutionVisible ? evolution : []}
           colourMode={colourMode}
-          threeMinuteY={threeMinuteY}
+          twoMinuteY={twoMinuteY}
           overlays={overlayDrivers===null?plotted.map(s=>s.driver):overlayDrivers}
         />
       )}
-      {colourMode === "category" && tab !== "Race Strategy" && tab !== "Track evolution fit" && <div className="raceChecks" aria-label="FIA category colour legend">
+      {colourMode === "category" && tab !== "Race Strategy" && <div className="raceChecks" aria-label="FIA category colour legend">
         {Object.entries(CONFIG.CATEGORY_COLOURS).map(([category, colour]) => <span key={category}
           style={{borderLeft:`8px solid ${colour}`, padding:"4px 10px", color:"#17202a"}}>{category}</span>)}
         <span>Focus driver: thicker purple trace; other drivers muted.</span>
       </div>}
-      {tab !== "Track evolution fit" && <details><summary>DRIVER LEGEND / FOCUS</summary><div className="raceChecks" aria-label="Driver colour legend">
+      {<details><summary>DRIVER LEGEND / FOCUS</summary><div className="raceChecks" aria-label="Driver colour legend">
         {[
           ...new Map(plotted.map((s) => [`${s.car}|${s.driver}`, s])).values(),
         ].map((s) => (
@@ -402,29 +397,7 @@ export default function RaceAnalysis({
         ))}
       </div></details>
       }
-      {tab === "Strategy overview" &&
-        plotted.map((s) => (
-          <div className="strategyStint" key={s.id}>
-            <span>
-              #{s.car} {s.driver} · S{s.ordinal} · DEG {number(s.fit.slope)}{" "}
-              s/lap
-            </span>
-            <div>
-              <i
-                title={`${time(s.start)}–${time(s.end)}`}
-                style={{
-                  left: `${s.start / 144}%`,
-                  width: `${(s.end - s.start) / 144}%`,
-                  background:
-                    s.driver === driver
-                      ? "#a326cc"
-                      : seriesColour(s, colourMode),
-                }}
-              />
-            </div>
-          </div>
-        ))}
-      {tab !== "Race Strategy" && tab !== "Track evolution fit" && (
+      {tab !== "Race Strategy" && (
         <div className="tableWrap">
           <table>
             <thead>
@@ -489,7 +462,7 @@ function RaceCanvas({
   evolution,
   colourMode,
   overlays,
-  threeMinuteY,
+  twoMinuteY,
 }: {
   rows: Stint[];
   driver: string;
@@ -498,7 +471,7 @@ function RaceCanvas({
   evolution: EvolutionSeries[];
   colourMode: ColourMode;
   overlays: string[];
-  threeMinuteY: boolean;
+  twoMinuteY: boolean;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -516,7 +489,7 @@ function RaceCanvas({
       ...(mode !== "laps" && Number.isFinite(s.fit.slope) ? [s.fit.intercept+s.fit.slope*l.lapNumber] : []),
     ])).concat(visibleEvolution.flatMap(s=>s.points.map(p=>p.time)));
     const bounds=visibleTimeBounds(values);
-    const minY=threeMinuteY?Math.min(bounds[0],179):bounds[0], maxY=threeMinuteY?180:bounds[1];
+    const minY=twoMinuteY?Math.min(bounds[0],119):bounds[0], maxY=twoMinuteY?120:bounds[1];
     const w = 1400,
       h = 650,
       plotBottom = h - 70,
@@ -551,6 +524,7 @@ function RaceCanvas({
       y = (v: number) => plotBottom - ((v - minY) / (maxY - minY)) * plotHeight;
     ctx.font = "13px Arial";
     ctx.textAlign = "right";
+    const labelStep = Math.max(1, Math.ceil((maxY-minY) / (plotHeight / 23)));
     for (let v = minY; v <= maxY; v++) {
       ctx.strokeStyle = "#ccd3d9";
       ctx.beginPath();
@@ -558,7 +532,7 @@ function RaceCanvas({
       ctx.lineTo(1365, y(v));
       ctx.stroke();
       ctx.fillStyle = "#17202a";
-      ctx.fillText(time(v), 78, y(v) + 4);
+      if (v % labelStep === 0) ctx.fillText(time(v), 78, y(v) + 4);
     }
     ctx.textAlign = "center";
     for (let i = 0; i <= 10; i++) {
@@ -632,7 +606,7 @@ function RaceCanvas({
       s.points.forEach(p=>{ctx.beginPath();ctx.arc(x(axis === "elapsed" ? p.elapsed/60 : p.lap),y(p.time),2.5,0,Math.PI*2);ctx.fill();});
       ctx.restore();ctx.textAlign = "left"; ctx.fillText(`${s.name} · MA3`, 95, 20+index*15);
     });
-  }, [rows, driver, mode, axis, evolution, colourMode, overlays, threeMinuteY]);
+  }, [rows, driver, mode, axis, evolution, colourMode, overlays, twoMinuteY]);
   return (
     <canvas
       ref={canvas}

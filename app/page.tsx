@@ -18,6 +18,7 @@ import RaceAnalysis from "./race-analysis";
 import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
+import { lapImprovements } from "../src/analysis/lap-improvements";
 import { eventTheme } from "../src/models/event-identity";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
@@ -364,17 +365,10 @@ export default function Home() {
               <>
                 <label>
                   EVENT / RACE{" "}
-                  <select
-                    value={selectedEvent}
-                    onChange={(e) => {
-                      setEventFilter(e.target.value);
-                      setDriver("");
-                    }}
-                  >
-                    {events.map((x) => (
-                      <option key={x}>{x}</option>
-                    ))}
-                  </select>
+                  <div className="race-event-row" role="group" aria-label="Select race">
+                    {events.map(x=><button key={x} type="button" aria-pressed={selectedEvent===x}
+                      className={selectedEvent===x?eventTheme(x):""} onClick={()=>{setEventFilter(x);setDriver("");}}>{x}</button>)}
+                  </div>
                 </label>
                 <RaceAnalysis
                   laps={sessionLaps}
@@ -913,6 +907,7 @@ function LapAnalysis({
   driver: string;
   setDriver: (x: string) => void;
 }) {
+  const improvements = useMemo(()=>lapImprovements(laps),[laps]);
   const usable = laps.filter((l) => l.lapTime !== null),
     cleanTimes = laps
       .filter((l) => l.clean && l.lapTime !== null)
@@ -1006,10 +1001,9 @@ function LapAnalysis({
             {laps.map((l) => (
               <tr key={l.id}>
                 <td>{l.lapNumber}</td>
-                <td className="mono">{fmt(l.lapTime)}</td>
-                <td>{fmt(l.s1)}</td>
-                <td>{fmt(l.s2)}</td>
-                <td>{fmt(l.s3)}</td>
+                {(["lapTime","s1","s2","s3"] as const).map(field=><td key={field}
+                  className={improvements.get(l.id)?.has(field)?"mono lap-improved":"mono"}
+                  title={improvements.get(l.id)?.has(field)?"New personal best in this session":undefined}>{fmt(l[field])}</td>)}
                 <td>P{l.position}</td>
                 <td>{num(l.gapAhead ?? NaN)}s</td>
                 <td>{num(l.gapBehind ?? NaN)}s</td>

@@ -5,7 +5,7 @@ export const CONFIG = {
   MINIMUM_SAMPLE_WARNING: 10,
   VSC_FCY_LAP_TIME_FACTOR: 1.2,
   CATEGORY_COLOURS: {
-    Platinum: "#8994a3",
+    Platinum: "#a9d8f5",
     Gold: "#e4b944",
     Silver: "#c7d0da",
     Bronze: "#b87333",

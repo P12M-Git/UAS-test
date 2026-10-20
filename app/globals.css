@@ -996,3 +996,9 @@ tbody tr:hover {
 .workspace-switch:hover { background:#e7edf4; }
 /* Keep labels, tables, forms and charts on one typeface across every view. */
 main, main * { font-family: Calibri, Carlito, Arial, sans-serif !important; }
+.brand { align-items:center; text-align:center; }
+.brand > div { width:100%; }
+.brand .brand-title { display:flex; flex-direction:column; align-items:center; gap:5px; text-align:center; line-height:1.25; }
+.brand-title > span { display:block; }
+.distribution-scale { display:flex; justify-content:space-between; gap:24px; margin-top:5px; line-height:1.4; }
+.distribution-scale small { position:static; color:var(--muted); }

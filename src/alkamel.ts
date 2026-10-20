@@ -11,6 +11,14 @@ export interface AlkamelRace {
   path: string;
 }
 
+export function compareRacesByRound(a: AlkamelRace, b: AlkamelRace): number {
+  const round = (race: AlkamelRace) => Number(race.path.split("/")[2]?.match(/^\d+/)?.[0] || 0);
+  const start = (race: AlkamelRace) => race.path.match(/\/(\d{12})_Race/i)?.[1] || "";
+  return a.year - b.year || a.championship.localeCompare(b.championship)
+    || round(a) - round(b) || start(a).localeCompare(start(b), undefined, { numeric: true })
+    || a.event.localeCompare(b.event, undefined, { numeric: true });
+}
+
 export const ALKAMEL_HOSTS: Record<Championship, string> = {
   ELMS: "elms.alkamelsystems.com",
   WEC: "fiawec.alkamelsystems.com",
@@ -137,7 +145,7 @@ export async function discoverRaces(fetcher: typeof fetch = fetch): Promise<Alka
       + (/Unofficial/i.test(path) ? 0 : 1);
     if (!previous || hour(race.path) >= hour(previous.path)) races.set(race.id, race);
   }
-  return [...races.values()].sort((a, b) => a.year - b.year || a.championship.localeCompare(b.championship) || a.event.localeCompare(b.event));
+  return [...races.values()].sort(compareRacesByRound);
 }
 
 export function validRacePath(path: string): boolean {

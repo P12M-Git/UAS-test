@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import type { AlkamelRace } from "../src/alkamel";
+import { compareRacesByRound, type AlkamelRace } from "../src/alkamel";
 import { eventLabel } from "../src/models/event-identity";
 
 export type WorkspaceRace = AlkamelRace & { status: string; error?: string };
@@ -15,12 +15,11 @@ export default function WorkspaceRaces({ races, selected, active, onSelect, onAc
   const [series, setSeries] = useState("ELMS");
   const [chosenYear, setYear] = useState("");
   const [search, setSearch] = useState("");
-  const seasons = [...new Set(races.filter(race => race.championship === series).map(race => race.season))].sort().reverse();
+  const seasons = [...new Set(races.filter(race => race.championship === series).map(race => race.season))].sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
   const year = seasons.includes(chosenYear) ? chosenYear : seasons[0] || "";
   const visible = races.filter(race => race.championship === series && race.season === year && race.event.toLowerCase().includes(search.toLowerCase()))
-    .sort((a, b) => Number(a.path.split("/")[2]?.match(/^\d+/)?.[0] || 0) - Number(b.path.split("/")[2]?.match(/^\d+/)?.[0] || 0)
-      || a.path.localeCompare(b.path, undefined, { numeric: true }));
-  const chosen = races.filter(race => selected.includes(race.id));
+    .sort(compareRacesByRound);
+  const chosen = races.filter(race => selected.includes(race.id)).sort(compareRacesByRound);
   const available = (race: WorkspaceRace) => race.status === "loaded" || race.status === "cached";
   const toggle = (id: string) => onSelect(selected.includes(id) ? selected.filter(value => value !== id) : [...selected, id]);
   return <section className="workspace-races" aria-label="Race selection">

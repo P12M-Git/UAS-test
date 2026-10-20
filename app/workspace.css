@@ -21,6 +21,8 @@ main.new-workspace.workspace-dark {
 .new-workspace :is(p,label,button,input,select,summary,td) { font-size:16px !important; }
 .new-workspace :is(small,legend,th,.eyebrow,.categoryBadge,.carNumber,.driverSelect label,.filters label) { font-size:14px !important; }
 .new-workspace .brand b { font-size:17px; }
+.new-workspace .theme-toggle { display:grid; place-items:center; width:46px; height:46px; padding:9px; }
+.new-workspace .theme-toggle svg { flex:none; }
 .new-workspace .welcome-user { text-align:center; margin:32px 0; font-size:30px; color:var(--text); }
 .new-workspace :is(.ghost,.workspace-switch,.section-tabs button) { color:var(--text); background:var(--panel); border:1px solid var(--line); }
 .new-workspace .primary { background:var(--panel-strong); color:var(--text); border-color:var(--line); }
@@ -31,17 +33,27 @@ main.new-workspace.workspace-dark {
 .new-workspace .filters { margin-top:16px; }
 .new-workspace .categoryTicks { border-color:var(--line); background:var(--panel); flex-wrap:wrap; gap:12px; padding:12px; }
 .new-workspace .categoryTicks :is(label,legend) { color:var(--muted); }
+.new-workspace .categoryTicks .category-filter-option { padding:7px 10px; border-radius:4px; gap:8px; color:#17202a; }
+.new-workspace .categoryTicks input { flex:none; margin:0; }
+.new-workspace .parallel-driver-toggle { display:inline-flex; align-items:center; gap:10px; margin:14px 0; line-height:1.4; }
+.new-workspace .parallel-driver-toggle input { flex:none; margin:0; }
 .new-workspace .tableWrap { background:var(--panel); border-color:var(--line); }
 .new-workspace th { color:var(--muted); background:var(--panel-strong); }
 .new-workspace td { color:var(--text); border-color:var(--line); }
 .new-workspace tbody tr:hover { background:var(--panel-strong); }
 .new-workspace .categoryShade, .new-workspace .categoryShade :is(b,small) { color:#17202a; }
-.new-workspace .ranking .driver { line-height:1.4; }
+.new-workspace .ranking .driver { display:flex; flex-direction:column; gap:6px; line-height:1.4; }
+.new-workspace .ranking .driver > span { display:none; }
+.new-workspace .ranking .driver > b { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; }
+.new-workspace .ranking .categoryShade { min-width:290px; white-space:normal; }
+.new-workspace .ranking .carNumber { height:auto; min-height:24px; min-width:28px; padding:3px 6px; line-height:1.25; flex:none; }
+.new-workspace .ranking th { letter-spacing:.04em; }
+.new-workspace .ranking :is(.chartHead,.paceDistributionCell) { min-width:420px; width:420px; }
 .new-workspace .ranking td { padding:14px 12px; }
-.new-workspace .ranking td:last-child { padding-bottom:38px; }
+.new-workspace .ranking td:last-child { padding:14px 20px; }
 .new-workspace .ranking .dist { height:30px; }
-.new-workspace .dist small { top:27px; color:var(--muted); }
-.new-workspace .trackTimeline { margin-top:24px; height:18px; }
+.new-workspace .distribution-scale small { position:static; color:var(--muted); }
+.new-workspace .trackTimeline { margin-top:16px; margin-bottom:22px; height:18px; }
 .new-workspace .trackTimeline small { top:16px; color:var(--muted); }
 .new-workspace .info { width:18px; height:18px; font-size:12px !important; }
 .new-workspace .trafficChart { background:var(--panel); }

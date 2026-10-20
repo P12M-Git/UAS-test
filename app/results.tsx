@@ -3,11 +3,11 @@ import {useMemo,useState} from "react";
 import type {Lap} from "../src/models/race";
 import {raceResults} from "../src/analysis/results";
 import {CONFIG} from "../src/config";
-import {eventTheme} from "../src/models/event-identity";
+import {compareEventsByRound,eventTheme} from "../src/models/event-identity";
 
-const colours:Record<string,string>={Platinum:"#a0aab7",Gold:"#f4cf63",Silver:"#d1d8df",Bronze:"#dca46d",Unknown:"#e2e5e9"};
+const colours:Record<string,string>={...CONFIG.CATEGORY_COLOURS};
 export default function Results({laps}:{laps:Lap[]}){
-  const rounds=useMemo(()=>raceResults(laps),[laps]);
+  const rounds=useMemo(()=>raceResults(laps).sort((a,b)=>compareEventsByRound(a.event,b.event)||a.session.localeCompare(b.session,undefined,{numeric:true})),[laps]);
   const [focus,setFocus]=useState(""),[className,setClass]=useState("All"),[positionMode,setPositionMode]=useState("class"),[search,setSearch]=useState("");
   const selected=rounds;
   const allDrivers=[...new Map(rounds.flatMap(r=>r.drivers).map(d=>[d.identity,d])).values()].sort((a,b)=>a.driver.localeCompare(b.driver));

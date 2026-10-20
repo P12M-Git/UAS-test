@@ -53,7 +53,7 @@ const tips: Record<string, string> = {
     "Green-flag laps excluding race lap 1, pit-in laps, pit-out laps and invalid laps.",
   "Avg best": "Average of the driver's fastest N clean laps.",
   "Clean air":
-    "Share of clean laps with known timing order: no car ahead, or gap greater than 2.0 s. Unknown observations excluded. Same-lap timing proxy; lapped traffic is not reconstructed.",
+    `Clean laps with a gap greater than ${CONFIG.CLEAN_AIR_THRESHOLD_SECONDS.toFixed(1)} s to the car ahead, or no car ahead. Based on timing-line gaps; observations without a known gap are excluded.`,
   Z: "Average standardised lap performance relative to other drivers in the same race/class. Positive is faster.",
   Overtakes:
     "Reconstructed order inversions, including lapped and multiclass cars; pit transitions are rejected.",
@@ -102,6 +102,7 @@ export default function Home() {
   const [workspaceActiveId, setWorkspaceActiveId] = useState("");
   const [workspaceTheme, setWorkspaceTheme] = useState<"light" | "dark">("light");
   const [raceCatalogue, setRaceCatalogue] = useState<AlkamelRace[]>([]);
+  const [driverCsv, setDriverCsv] = useState("");
   const [cacheVersion, setCacheVersion] = useState("");
   const knownRaces = useRef(new Set<string>());
   useEffect(() => {
@@ -139,7 +140,6 @@ export default function Home() {
       "Gold",
       "Silver",
       "Bronze",
-      "Unknown",
     ]),
     [eventFilter, setEventFilter] = useState(""),
     [search, setSearch] = useState(""),
@@ -153,10 +153,6 @@ export default function Home() {
   const chosenWorkspaceRaces = raceLoads.filter(race => workspaceRaceIds.includes(race.id));
   const activeWorkspaceRace = chosenWorkspaceRaces.find(race => race.id === workspaceActiveId && raceAvailable(race)) || chosenWorkspaceRaces.find(raceAvailable);
   const selectedEvent = newWorkspace ? (activeWorkspaceRace ? eventLabel(activeWorkspaceRace.sourceFile) : "") : eventFilter || events[0] || "";
-  const workspaceLaps = useMemo(() => {
-    const chosen = new Set(raceCatalogue.filter(race => workspaceRaceIds.includes(race.id)).map(race => eventLabel(race.sourceFile)));
-    return laps.filter(lap => chosen.has(lap.event));
-  }, [laps, raceCatalogue, workspaceRaceIds]);
   const sessionLaps = useMemo(() => laps.filter((l) => l.event === selectedEvent), [laps, selectedEvent]);
   const allMetrics = useMemo(() => driverMetrics(sessionLaps, mode), [sessionLaps, mode]);
   const metrics = useMemo(
@@ -186,7 +182,17 @@ export default function Home() {
       sortAsc,
     ],
   );
-  const activeDriver = sessionLaps.some(l => l.driver === driver) ? driver : sessionLaps[0]?.driver || "";
+  const eligibleDrivers = newWorkspace ? sessionLaps.filter(lap => lap.category !== "Unknown") : sessionLaps;
+  const eligibleDriverNames = useMemo(() => {
+    const cars = new Map<string, string>();
+    for (const lap of sessionLaps) {
+      if (newWorkspace && lap.category === "Unknown") continue;
+      const previous = cars.get(lap.driver);
+      if (!previous || lap.carNumber.localeCompare(previous, undefined, { numeric: true }) < 0) cars.set(lap.driver, lap.carNumber);
+    }
+    return [...cars.keys()].sort((a,b)=>cars.get(a)!.localeCompare(cars.get(b)!,undefined,{numeric:true})||a.localeCompare(b));
+  }, [sessionLaps, newWorkspace]);
+  const activeDriver = eligibleDrivers.some(l => l.driver === driver) ? driver : eligibleDriverNames[0] || "";
   const dlaps = sessionLaps.filter((l) => l.driver === activeDriver);
   const parallelNames = useMemo(() => {
     if (!parallelOnly) return new Set<string>();
@@ -212,8 +218,8 @@ export default function Home() {
       })
     : metrics;
   const cats = categoryMetrics(metrics);
-  const classes = ["All", ...new Set(sessionLaps.map((l) => l.className))],
-    teams = ["All", ...new Set(sessionLaps.map((l) => l.carNumber))];
+  const classes = ["All", ...[...new Set(sessionLaps.map((l) => l.className))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}))],
+    teams = ["All", ...[...new Set(sessionLaps.map((l) => l.carNumber))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}))];
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -224,6 +230,7 @@ export default function Home() {
       const ratingsResponse = await fetch("/driver_categories_all_series_2022_2026.csv");
       if (!ratingsResponse.ok) throw new Error(`Driver categories: HTTP ${ratingsResponse.status}`);
       const ratings = await ratingsResponse.text();
+      if (!cancelled) setDriverCsv(ratings);
       const version = await raceCacheVersion(ratings);
       let cached = new Map<string, RaceDataset>();
       try {
@@ -317,7 +324,7 @@ export default function Home() {
       <aside>
         <div className="brand">
           <div>
-            <b>DRIVER INSIDERS - U.RAICE</b>
+            <b className="brand-title"><span>DRIVER INSIDERS</span><span>U.RAICE</span></b>
             <small>© Pol RG</small>
           </div>
         </div>
@@ -353,7 +360,11 @@ export default function Home() {
             <h1>{["Data / Session Info","Driver Category Database"].includes(view)?"DATABASE":view==="Traffic Performance"?"DRIVER PERFORMANCE":view.toUpperCase()}</h1>
           </div>
           <div className="actions">
-            {newWorkspace && <button type="button" className="ghost" onClick={changeTheme} aria-label={workspaceTheme === "light" ? "Switch to dark mode" : "Switch to light mode"}>{workspaceTheme === "light" ? "Dark mode" : "Light mode"}</button>}
+            {newWorkspace && <button type="button" className="ghost theme-toggle" onClick={changeTheme} title={workspaceTheme === "light" ? "Dark mode" : "Light mode"} aria-label={workspaceTheme === "light" ? "Switch to dark mode" : "Switch to light mode"}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                {workspaceTheme === "light" ? <path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z" /> : <><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></>}
+              </svg>
+            </button>}
             <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
             {!newWorkspace && <button className="ghost" onClick={() => setView("Data / Session Info")}>
               ALKAMEL {raceLoads.filter(raceAvailable).length}/{raceLoads.length}
@@ -414,12 +425,12 @@ export default function Home() {
                   setSearch={setSearch}
                   mode={mode}
                   setMode={setMode}
-                  categories={[...new Set(sessionLaps.map((l) => l.category))]}
+                  categories={(["Platinum", "Gold", "Silver", "Bronze"] as const).filter(category => sessionLaps.some(lap => lap.category === category))}
                   selectedCategories={driverCategoryFilter}
                   setSelectedCategories={setDriverCategoryFilter}
                 />
               )}{" "}
-            {view === "Overview" && (newWorkspace ? <WorkspaceOverview laps={workspaceLaps} /> : (
+            {view === "Overview" && (newWorkspace ? <WorkspaceOverview races={raceCatalogue} driverCsv={driverCsv} /> : (
               <Overview
                 laps={sessionLaps}
                 metrics={metrics}
@@ -429,11 +440,11 @@ export default function Home() {
             {view === "Driver Performance" && (!newWorkspace || !!sessionLaps.length) && (
               <>
                 <DriverSelect
-                  drivers={[...new Set(sessionLaps.map((l) => l.driver))]}
+                  drivers={eligibleDriverNames}
                   driver={activeDriver}
                   setDriver={setDriver}
                 />
-                <label>
+                <label className="parallel-driver-toggle">
                   <input
                     type="checkbox"
                     checked={parallelOnly}
@@ -443,6 +454,7 @@ export default function Home() {
                 </label>
                 {parallelOnly && <p className="parallel-note">Rivals must share at least 30% of {activeDriver}'s total observed on-track time. Class/category filters apply; car/search filters are ignored to include rival cars. Timing-line estimate; pit dwell excluded where recorded. Outlaps without pit duration are omitted.</p>}
                 <Ranking
+                  streamlined={newWorkspace}
                   metrics={performanceMetrics}
                   focusDriver={activeDriver}
                   setFocusDriver={setDriver}
@@ -481,7 +493,7 @@ export default function Home() {
                 laps={dlaps}
                 allLaps={sessionLaps}
                 driver={activeDriver}
-                drivers={[...new Set(sessionLaps.map((l) => l.driver))]}
+                drivers={eligibleDriverNames}
                 setDriver={setDriver}
               />
             )}{" "}
@@ -489,7 +501,7 @@ export default function Home() {
               <DriverFocus
                 laps={laps}
                 events={events}
-                selectedEvents={summaryEvents}
+                selectedEvents={[...summaryEvents].sort(compareEventsByRound)}
                 setSelectedEvents={setSummaryEvents}
                 driver={activeDriver}
                 drivers={[...new Set(laps.map((l) => l.driver))]}
@@ -500,7 +512,7 @@ export default function Home() {
               <SeasonSummary
                 laps={laps}
                 events={events}
-                selectedEvents={summaryEvents}
+                selectedEvents={[...summaryEvents].sort(compareEventsByRound)}
                 setSelectedEvents={setSummaryEvents}
                 driver={activeDriver}
                 drivers={[...new Set(laps.map((l) => l.driver))]}
@@ -615,7 +627,7 @@ function Filters(p: any) {
           All
         </label>
         {p.categories.map((x: string) => (
-          <label key={x}>
+          <label key={x} className="category-filter-option" style={{ background: CONFIG.CATEGORY_COLOURS[x as keyof typeof CONFIG.CATEGORY_COLOURS], color: "#17202a" }}>
             <input
               type="checkbox"
               checked={p.selectedCategories.includes(x)}
@@ -638,7 +650,7 @@ function RaceSelector({ events, event, setEvent }: { events: string[]; event: st
   const series = eventChampionship(event);
   const year = event.match(/20\d{2}/)?.[0] || "";
   const years = [...new Set(events.filter(value => eventChampionship(value) === series).map(value => value.match(/20\d{2}/)?.[0]).filter((value): value is string => !!value))].sort().reverse();
-  const races = events.filter(value => eventChampionship(value) === series && value.includes(year));
+  const races = events.filter(value => eventChampionship(value) === series && value.includes(year)).sort(compareEventsByRound);
   const choose = (nextSeries: string, nextYear?: string) => {
     const matches = events.filter(value => eventChampionship(value) === nextSeries && (!nextYear || value.includes(nextYear)));
     if (matches[0]) setEvent(matches[0]);
@@ -762,6 +774,7 @@ function Distribution({
   if (!m.times.length) return <span>—</span>;
   const range = hi - lo || 1;
   return (
+    <div className="distribution">
     <div className="dist">
       {m.times.map((t, i) => (
         <i
@@ -773,8 +786,8 @@ function Distribution({
         />
       ))}
       <b style={{ left: `${((m.avgBest - lo) / range) * 94 + 3}%` }} />
-      <small>{fmt(lo, 1)}</small>
-      <small>{fmt(hi, 1)}</small>
+    </div>
+    <div className="distribution-scale"><small>{fmt(lo, 1)}</small><small>{fmt(hi, 1)}</small></div>
     </div>
   );
 }
@@ -810,9 +823,11 @@ function Ranking({
   sortAsc,
   setSort,
   compact = false,
+  streamlined = false,
   focusDriver = "",
   setFocusDriver,
 }: {
+  streamlined?: boolean;
   focusDriver?: string;
   setFocusDriver?: (driver: string) => void;
   metrics: DriverMetric[];
@@ -893,9 +908,9 @@ function Ranking({
             <H k="avgBest" c="AVG BEST N" t="Avg best" />
             {!compact && (
               <>
-                <H k="avgAll" c="AVG CLEAN" />
+                {!streamlined && <H k="avgAll" c="AVG CLEAN" />}
                 <H k="stdBest" c="σ BEST" />
-                <H k="madBest" c="MAD" t="MAD" />
+                {!streamlined && <H k="madBest" c="MAD" t="MAD" />}
                 <H
                   k="lapTimeDeg"
                   c="LAP TIME DEG"
@@ -970,9 +985,9 @@ function Ranking({
               {metricCell(m, "avgBest", fmt(m.avgBest))}
               {!compact && (
                 <>
-                  {metricCell(m, "avgAll", fmt(m.avgAll))}
+                  {!streamlined && metricCell(m, "avgAll", fmt(m.avgAll))}
                   {metricCell(m, "stdBest", num(m.stdBest, 3))}
-                  {metricCell(m, "madBest", num(m.madBest, 3))}
+                  {!streamlined && metricCell(m, "madBest", num(m.madBest, 3))}
                   {metricCell(m, "lapTimeDeg", num(m.lapTimeDeg, 3))}
                   <td>{num(m.cleanAirPct, 0)}%</td>
                   <td>{m.overtakes}</td>
@@ -982,7 +997,7 @@ function Ranking({
                   </td>
                 </>
               )}
-              <td>
+              <td className="paceDistributionCell">
                 <Distribution
                   m={m}
                   lo={classScales.get(m.className)?.[0] ?? m.best}
@@ -1158,15 +1173,15 @@ function EventPicker({
   const [series, setSeries] = useState("All");
   const [year, setYear] = useState(() => String(new Date().getFullYear()));
   const [query, setQuery] = useState("");
-  const years = [...new Set(events.map(event => event.match(/20\d{2}/)?.[0]).filter(Boolean))].sort().reverse();
+  const years = [...new Set(events.map(event => event.match(/20\d{2}/)?.[0]).filter((value): value is string => !!value))].sort((a,b)=>b.localeCompare(a,undefined,{numeric:true}));
   const visible = events.filter(event =>
     (series === "All" || eventChampionship(event) === series) &&
     (year === "All" || event.includes(year)) &&
     event.toLowerCase().includes(query.toLowerCase()),
-  );
+  ).sort(compareEventsByRound);
   const toggle = (event: string) => setSelectedEvents(selectedEvents.includes(event)
     ? selectedEvents.filter(value => value !== event)
-    : [...selectedEvents, event]);
+    : [...selectedEvents, event].sort(compareEventsByRound));
   return (
     <div className="eventPicker">
       <details>
@@ -1179,12 +1194,12 @@ function EventPicker({
           <option>All</option>{years.map(value => <option key={value}>{value}</option>)}
         </select></label>
         <label>SEARCH <input aria-label="Search races" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Circuit or race" /></label>
-        <button type="button" onClick={() => setSelectedEvents([...new Set([...selectedEvents, ...visible])])} disabled={!visible.length}>Add visible</button>
+        <button type="button" onClick={() => setSelectedEvents([...new Set([...selectedEvents, ...visible])].sort(compareEventsByRound))} disabled={!visible.length}>Add visible</button>
         <button type="button" onClick={() => setSelectedEvents(selectedEvents.filter(event => !visible.includes(event)))} disabled={!visible.some(event => selectedEvents.includes(event))}>Remove visible</button>
         <button type="button" onClick={() => setSelectedEvents([])} disabled={!selectedEvents.length}>Clear all</button>
       </div>
       <div className="selected-races" aria-label="Selected races">
-        {selectedEvents.map(event => <button type="button" key={event} onClick={() => toggle(event)} title="Remove race from comparison">{event} ×</button>)}
+        {[...selectedEvents].sort(compareEventsByRound).map(event => <button type="button" key={event} onClick={() => toggle(event)} title="Remove race from comparison">{event} ×</button>)}
       </div>
       <div className="event-picker-options">{visible.map((event) => (
         <label key={event} className={`event-badge ${eventTheme(event)}`}>

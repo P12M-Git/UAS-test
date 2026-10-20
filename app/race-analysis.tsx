@@ -261,7 +261,7 @@ export default function RaceAnalysis({
       )}
       {toggles(
         "CAR NUMBER",
-        [...new Set(laps.map((l) => l.carNumber))],
+        [...new Set(laps.map((l) => l.carNumber))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true})),
         cars,
         setCars,
       )}

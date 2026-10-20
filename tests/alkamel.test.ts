@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { alkamelUrl, discoverRaces, raceLinks, validRacePath } from "../src/alkamel";
+import { alkamelUrl, compareRacesByRound, discoverRaces, raceLinks, validRacePath } from "../src/alkamel";
 import { compareEventsByRound, eventLabel } from "../src/models/event-identity";
 
 test("finds race analysis CSV and ignores classifications and test sessions", () => {
@@ -39,6 +39,15 @@ test("ALMS retains both races in a weekend and uses its current file host", () =
 test("race menus order same-year events by round and then race number", () => {
   const events = ["ALMS, 03 Yas Marina Race 2, 2026", "ALMS, 02 Dubai Race 2, 2026", "ALMS, 02 Dubai Race 1, 2026"];
   assert.deepEqual(events.sort(compareEventsByRound), ["ALMS, 02 Dubai Race 1, 2026", "ALMS, 02 Dubai Race 2, 2026", "ALMS, 03 Yas Marina Race 2, 2026"]);
+});
+
+test("catalogue and selected race chips use numeric rounds instead of event names", () => {
+  const path = (round: string, name: string) => `Results/21_2026/${round}_${name}/01_European Le Mans Series/202601011200_Race/Hour 4/23_Analysis_Race.CSV`;
+  const races = [
+    { id: "round10", championship: "ELMS" as const, season: "2026", year: 2026, event: "A circuit", sourceFile: "", path: path("10", "A") },
+    { id: "round2", championship: "ELMS" as const, season: "2026", year: 2026, event: "Z circuit", sourceFile: "", path: path("02", "Z") },
+  ];
+  assert.deepEqual(races.sort(compareRacesByRound).map(race => race.id), ["round2", "round10"]);
 });
 
 test("ALMS discovers newly published race CSVs from its cloud manifest", async () => {

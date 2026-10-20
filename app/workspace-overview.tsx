@@ -1,12 +1,14 @@
-import type { Lap } from "../src/models/race";
-import { driverIdentityKey } from "../src/models/driver-identity";
+import { useMemo } from "react";
+import type { AlkamelRace } from "../src/alkamel";
+import { datasetScope } from "../src/analysis/dataset-scope";
 
-export default function WorkspaceOverview({ laps }: { laps: Lap[] }) {
+export default function WorkspaceOverview({ races, driverCsv }: { races: AlkamelRace[]; driverCsv: string }) {
+  const totals = useMemo(() => datasetScope(races, driverCsv), [races, driverCsv]);
   const scope = [
-    ["Races", new Set(laps.map(lap => lap.event)).size],
-    ["Years", new Set(laps.flatMap(lap => lap.event.match(/20\d{2}/)?.[0] || [])).size],
-    ["Categories", new Set(laps.map(lap => lap.className)).size],
-    ["Drivers", new Set(laps.map(lap => driverIdentityKey(lap.driver)).filter(Boolean)).size],
+    ["Races", totals.races],
+    ["Years", totals.years],
+    ["Driver categories", totals.categories],
+    ["Drivers", totals.drivers],
   ] as const;
   return <section className="workspace-scope" aria-label="Dataset scope">
     <h2>Dataset scope</h2>

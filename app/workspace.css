@@ -31,6 +31,7 @@ main.new-workspace.workspace-dark {
 .new-workspace input[type="checkbox"] { width:18px; height:18px; accent-color:var(--accent); }
 .new-workspace :is(.filters,.driverSelect) { gap:16px; }
 .new-workspace .filters { margin-top:16px; }
+.new-workspace .filters.has-analysed-driver { grid-template-columns:minmax(100px,.7fr) minmax(110px,.8fr) minmax(150px,1fr) minmax(160px,1fr) minmax(210px,1.4fr); align-items:end; }
 .new-workspace .categoryTicks { border-color:var(--line); background:var(--panel); flex-wrap:wrap; gap:12px; padding:12px; }
 .new-workspace .categoryTicks :is(label,legend) { color:var(--muted); }
 .new-workspace .categoryTicks .category-filter-option { padding:7px 10px; border-radius:4px; gap:8px; color:#17202a; }
@@ -42,19 +43,21 @@ main.new-workspace.workspace-dark {
 .new-workspace td { color:var(--text); border-color:var(--line); }
 .new-workspace tbody tr:hover { background:var(--panel-strong); }
 .new-workspace .categoryShade, .new-workspace .categoryShade :is(b,small) { color:#17202a; }
-.new-workspace .ranking .driver { display:flex; flex-direction:column; gap:6px; line-height:1.4; }
+.new-workspace .ranking .driver { display:flex; flex-direction:column; gap:3px; line-height:1.2; }
 .new-workspace .ranking .driver > span { display:none; }
-.new-workspace .ranking .driver > b { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; }
+.new-workspace .ranking .driver > b { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:6px; }
 .new-workspace .ranking .categoryShade { min-width:290px; white-space:normal; }
-.new-workspace .ranking .carNumber { height:auto; min-height:24px; min-width:28px; padding:3px 6px; line-height:1.25; flex:none; }
+.new-workspace .ranking .carNumber { height:auto; min-height:20px; min-width:24px; padding:1px 4px; line-height:1.2; flex:none; }
 .new-workspace .ranking th { letter-spacing:.04em; }
 .new-workspace .ranking :is(.chartHead,.paceDistributionCell) { min-width:420px; width:420px; }
-.new-workspace .ranking td { padding:14px 12px; }
-.new-workspace .ranking td:last-child { padding:14px 20px; }
-.new-workspace .ranking .dist { height:30px; }
-.new-workspace .distribution-scale small { position:static; color:var(--muted); }
-.new-workspace .trackTimeline { margin-top:16px; margin-bottom:22px; height:18px; }
-.new-workspace .trackTimeline small { top:16px; color:var(--muted); }
+.new-workspace .ranking td { padding:6px 10px; font-size:14px !important; }
+.new-workspace .ranking td:last-child { padding:6px 12px; }
+.new-workspace .ranking :is(.driver small,.categoryBadge,.carNumber) { font-size:12px !important; }
+.new-workspace .ranking .dist { height:18px; }
+.new-workspace .distribution-scale { margin-top:2px; line-height:1.1; }
+.new-workspace .distribution-scale small { position:static; color:var(--muted); font-size:11px !important; }
+.new-workspace .trackTimeline { margin-top:6px; margin-bottom:12px; height:9px; }
+.new-workspace .trackTimeline small { top:9px; color:var(--muted); font-size:10px !important; }
 .new-workspace .info { width:18px; height:18px; font-size:12px !important; }
 .new-workspace .trafficChart { background:var(--panel); }
 .new-workspace .scatter { background:var(--panel); }
@@ -89,7 +92,11 @@ main.new-workspace.workspace-dark {
 .workspace-scope dt { color:var(--muted); font-size:16px; }
 .workspace-scope dd { margin:6px 0 0; color:var(--text); font-size:36px; font-weight:700; }
 @media (max-width:800px) {
+  .new-workspace .filters.has-analysed-driver { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .workspace-race-controls { grid-template-columns:1fr; }
   .workspace-scope dl { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .new-workspace h1 { font-size:28px; }
+}
+@media (max-width:550px) {
+  .new-workspace .filters.has-analysed-driver { grid-template-columns:1fr; }
 }

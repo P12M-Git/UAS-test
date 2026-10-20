@@ -408,6 +408,9 @@ export default function Home() {
               view !== "Season Summary" && (
                 <Filters
                   hideRaceSelector={newWorkspace}
+                  drivers={newWorkspace && view === "Driver Performance" ? eligibleDriverNames : undefined}
+                  driver={activeDriver}
+                  setDriver={setDriver}
                   events={events}
                   event={selectedEvent}
                   setEvent={(value: string) => {
@@ -439,11 +442,11 @@ export default function Home() {
             ))}{" "}
             {view === "Driver Performance" && (!newWorkspace || !!sessionLaps.length) && (
               <>
-                <DriverSelect
+                {!newWorkspace && <DriverSelect
                   drivers={eligibleDriverNames}
                   driver={activeDriver}
                   setDriver={setDriver}
-                />
+                />}
                 <label className="parallel-driver-toggle">
                   <input
                     type="checkbox"
@@ -567,7 +570,7 @@ function Empty({ busy }: { busy: boolean }) {
 }
 function Filters(p: any) {
   return (
-    <div className="filters">
+    <div className={`filters${p.drivers ? " has-analysed-driver" : ""}`}>
       {!p.hideRaceSelector && <RaceSelector events={p.events} event={p.event} setEvent={p.setEvent} />}
       <label>
         CLASS
@@ -606,6 +609,12 @@ function Filters(p: any) {
           <option value="all">All clean laps</option>
         </select>
       </label>
+      {p.drivers && <label>
+        ANALYSED DRIVER
+        <select value={p.driver} onChange={e => p.setDriver(e.target.value)}>
+          {p.drivers.map((name: string) => <option key={name}>{name}</option>)}
+        </select>
+      </label>}
       <fieldset className="categoryTicks filterCategoryTicks">
         <legend>DRIVER CATEGORY</legend>
         <label>

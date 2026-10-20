@@ -981,6 +981,7 @@ tbody tr:hover {
 .seasonAggregate th, .seasonAggregate td { padding: 6px; text-align: center; }
 .load-status { font-weight: 700; letter-spacing: .06em; }
 .load-loaded { color: #26845c; }
+.load-cached { color: #26845c; }
 .load-failed { color: #c34d42; }
 .load-loading { color: #bd841d; }
 .load-pending { color: #69798a; }

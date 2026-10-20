@@ -8,8 +8,12 @@ Alkamel results indexes from 2022 onward and discovers each race's final
 `23_Analysis_Race*.CSV` (or IMSA `23_Time Cards_Race*.CSV`). A verified catalogue of historical links fills gaps
 when Alkamel's session-based index returns an incomplete event tree. A same-origin
 server route retrieves each CSV, and the browser parses the lap data incrementally.
+Processed races are saved in the browser's IndexedDB. On later visits, the app
+reuses saved races and downloads only newly discovered races or races whose final
+CSV path changed. A change to the driver categories CSV or parser cache version
+refreshes the affected cache. This storage is local to each browser and device.
 The **Alkamel** counter and **Database → Data / Session Info** show per-race
-pending, loading, loaded, or failed states and link back to the source CSV.
+pending, loading, saved, loaded, or failed states and link back to the source CSV.
 
 The `03_Classification_Race*.CSV` files contain final classification but no lap
 rows. The performance analyses therefore use each race's lap timing CSV.

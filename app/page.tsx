@@ -24,7 +24,10 @@ import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
 import type { AlkamelRace } from "../src/alkamel";
-type RaceLoad = AlkamelRace & { status: "pending" | "loading" | "loaded" | "failed"; laps?: number; error?: string };
+import { raceCacheVersion, readRaceCache, saveRaceCache } from "../src/race-cache";
+import type { RaceDataset } from "../src/models/race";
+type RaceLoad = AlkamelRace & { status: "pending" | "loading" | "loaded" | "cached" | "failed"; laps?: number; error?: string };
+const raceAvailable = (race: RaceLoad) => race.status === "loaded" || race.status === "cached";
 type View =
   | "Overview"
   | "Results"
@@ -126,6 +129,7 @@ export default function Home() {
     [sort, setSort] = useState<keyof DriverMetric>("avgBest"),
     [sortAsc, setSortAsc] = useState(true),
     [summaryEvents, setSummaryEvents] = useState<string[]>([]),
+    [cacheWarning, setCacheWarning] = useState(""),
     [raceLoads, setRaceLoads] = useState<RaceLoad[]>([]);
   const events = [...new Set(laps.map((l) => l.event))];
   const selectedEvent = eventFilter || events[0] || "";
@@ -192,18 +196,33 @@ export default function Home() {
       if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
     };
     (async () => {
-      const manifest = await fetch("/api/alkamel/races").then(async response => {
+      const manifest = await fetch("/api/alkamel/races", { cache: "no-store" }).then(async response => {
         if (!response.ok) throw new Error(`Alkamel index: HTTP ${response.status}`);
         return response.json() as Promise<{ races: AlkamelRace[] }>;
       });
+      const ratingsResponse = await fetch("/driver_categories_all_series_2022_2026.csv");
+      if (!ratingsResponse.ok) throw new Error(`Driver categories: HTTP ${ratingsResponse.status}`);
+      const ratings = await ratingsResponse.text();
+      const version = await raceCacheVersion(ratings);
+      let cached = new Map<string, RaceDataset>();
+      try {
+        cached = await readRaceCache(manifest.races, version);
+      } catch {
+        if (!cancelled) setCacheWarning("Local storage is unavailable; races will be downloaded again on your next visit.");
+      }
       if (cancelled) return;
-      setRaceLoads(manifest.races.map(r => ({ ...r, status: "pending" })));
+      const cachedDatasets = manifest.races.flatMap(r => cached.get(r.id) ? [cached.get(r.id)!] : []);
+      setLaps(cachedDatasets.flatMap(dataset => dataset.laps));
+      setDiagnostics(cachedDatasets.flatMap(dataset => dataset.diagnostics));
+      const firstCachedEvent = cachedDatasets[0]?.laps[0]?.event;
+      if (firstCachedEvent) setSummaryEvents([firstCachedEvent]);
+      setRaceLoads(manifest.races.map(r => ({ ...r, status: cached.has(r.id) ? "cached" : "pending", laps: cached.get(r.id)?.laps.length })));
       setBusy(false);
-      const ratings = await fetch("/driver_categories_all_series_2022_2026.csv").then(r => r.text());
+      const missing = manifest.races.filter(r => !cached.has(r.id));
       let next = 0;
       await Promise.all(Array.from({ length: 3 }, async () => {
-        while (next < manifest.races.length && !cancelled) {
-          const race = manifest.races[next++];
+        while (next < missing.length && !cancelled) {
+          const race = missing[next++];
           update(race.id, { status: "loading" });
           try {
             const response = await fetch(`/api/alkamel/csv?championship=${race.championship}&path=${encodeURIComponent(race.path)}`);
@@ -215,6 +234,12 @@ export default function Home() {
             if (!parsed.laps.length) throw new Error("No laps in CSV");
             if (cancelled) return;
             const categorised = applyDriverCategories(parsed.laps, ratings);
+            try {
+              await saveRaceCache(race, version, { laps: categorised, diagnostics: parsed.diagnostics });
+            } catch {
+              if (!cancelled) setCacheWarning("Some races could not be saved locally and may be downloaded again on your next visit.");
+            }
+            if (cancelled) return;
             setLaps(previous => previous.concat(categorised));
             setDiagnostics(previous => [...previous, ...parsed.diagnostics]);
             setSummaryEvents(previous => previous.length ? previous : [categorised[0].event]);
@@ -267,7 +292,7 @@ export default function Home() {
           <div className="actions">
             <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
             <button className="ghost" onClick={() => setView("Data / Session Info")}>
-              ALKAMEL {raceLoads.filter(r => r.status === "loaded").length}/{raceLoads.length}
+              ALKAMEL {raceLoads.filter(raceAvailable).length}/{raceLoads.length}
             </button>
             {view !== "Driver Category Database" && view !== "Results" && <button
               className="primary"
@@ -292,7 +317,7 @@ export default function Home() {
           <button role="tab" aria-selected={view==="Driver Category Database"} onClick={()=>setView("Driver Category Database")}>Driver Category Database</button>
         </div>}
         {view === "Driver Category Database" ? <DriverCategoryDatabase/> : view === "Data / Session Info" && !laps.length ? (
-          <DataInfo rows={[]} laps={[]} raceLoads={raceLoads} />
+          <DataInfo rows={[]} laps={[]} raceLoads={raceLoads} cacheWarning={cacheWarning} />
         ) : !laps.length ? (
           <Empty busy={busy || raceLoads.some(r => r.status === "loading" || r.status === "pending")} />
         ) : (
@@ -430,6 +455,7 @@ export default function Home() {
                 )}
                 laps={sessionLaps}
                 raceLoads={raceLoads}
+                cacheWarning={cacheWarning}
               />
               </>
             )}
@@ -2685,7 +2711,7 @@ function Categories({ rows }: { rows: ReturnType<typeof categoryMetrics> }) {
     </>
   );
 }
-function DataInfo({ rows, laps, raceLoads }: { rows: ParseDiagnostics[]; laps: Lap[]; raceLoads: RaceLoad[] }) {
+function DataInfo({ rows, laps, raceLoads, cacheWarning }: { rows: ParseDiagnostics[]; laps: Lap[]; raceLoads: RaceLoad[]; cacheWarning: string }) {
   const passes = laps.flatMap((l) =>
     l.overtakes.map((car) => ({
       lap: l.lapNumber,
@@ -2702,14 +2728,16 @@ function DataInfo({ rows, laps, raceLoads }: { rows: ParseDiagnostics[]; laps: L
   return (
     <>
       <SectionTitle n="05" title="Alkamel load status" sub="Race analysis CSVs discovered from the official results index, 2022 onward" />
-      <p>{raceLoads.filter(r => r.status === "loaded").length} / {raceLoads.length} races loaded · {raceLoads.filter(r => r.status === "failed").length} failed</p>
-      <p>{(["ELMS", "WEC", "ALMS", "IMSA"] as const).map(series => `${series}: ${raceLoads.filter(r => r.championship === series && r.status === "loaded").length}/${raceLoads.filter(r => r.championship === series).length}`).join(" · ")}</p>
+      <p>Saved races load from this browser. New races are downloaded automatically.</p>
+      {cacheWarning && <p className="alert">{cacheWarning}</p>}
+      <p>{raceLoads.filter(raceAvailable).length} / {raceLoads.length} races available · {raceLoads.filter(r => r.status === "cached").length} saved locally · {raceLoads.filter(r => r.status === "failed").length} failed</p>
+      <p>{(["ELMS", "WEC", "ALMS", "IMSA"] as const).map(series => `${series}: ${raceLoads.filter(r => r.championship === series && raceAvailable(r)).length}/${raceLoads.filter(r => r.championship === series).length}`).join(" · ")}</p>
       <div className="tableWrap">
         <table>
           <thead><tr><th>SERIES</th><th>SEASON</th><th>EVENT</th><th>STATUS</th><th>LAPS</th><th>DETAIL</th></tr></thead>
           <tbody>{raceLoads.map(r => <tr key={r.id}>
             <td>{r.championship}</td><td>{r.season}</td><td>{r.event}</td>
-            <td><span className={`load-status load-${r.status}`}>{r.status.toUpperCase()}</span></td>
+            <td><span className={`load-status load-${r.status}`}>{r.status === "cached" ? "SAVED" : r.status.toUpperCase()}</span></td>
             <td>{r.laps ?? "—"}</td>
             <td>{r.error || <a href={`https://${({ ELMS: "elms.alkamelsystems.com", WEC: "fiawec.alkamelsystems.com", ALMS: "alms.alkamelsystems.com", IMSA: "imsa.results.alkamelcloud.com" } as const)[r.championship]}/${r.path.split("/").map(encodeURIComponent).join("/")}`} target="_blank" rel="noreferrer">Alkamel CSV</a>}</td>
           </tr>)}</tbody>

@@ -17,7 +17,7 @@ test("production loads races without a configured persistent directory", async t
   const originalDirectory = process.env.RACE_CACHE_DIR;
   const originalEnvironment = process.env.NODE_ENV;
   delete process.env.RACE_CACHE_DIR;
-  process.env.NODE_ENV = "production";
+  Reflect.set(process.env, "NODE_ENV", "production");
   t.mock.method(globalThis, "fetch", async () => new Response(csv));
   try {
     const raceRequest = request();
@@ -31,8 +31,8 @@ test("production loads races without a configured persistent directory", async t
   } finally {
     if (originalDirectory === undefined) delete process.env.RACE_CACHE_DIR;
     else process.env.RACE_CACHE_DIR = originalDirectory;
-    if (originalEnvironment === undefined) delete process.env.NODE_ENV;
-    else process.env.NODE_ENV = originalEnvironment;
+    if (originalEnvironment === undefined) Reflect.deleteProperty(process.env, "NODE_ENV");
+    else Reflect.set(process.env, "NODE_ENV", originalEnvironment);
   }
 });
 

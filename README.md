@@ -1,5 +1,16 @@
 # ELMS Driver Performance
 
+## New workspace
+
+Use **ABRIR NUEVA WEB** to open the new Overview and Driver Performance views.
+The shared **Load races** dropdown selects races by championship and season;
+only the selected races are requested while this workspace is open. Click a ready
+race chip to activate it for Driver Performance. Selections stay in place when
+switching sections. Overview reports only selected, processed races: races,
+calendar years, car classes and distinct drivers (using known identity aliases).
+The workspace provides larger Calibri text and a light/dark theme switch;
+the theme preference is saved in the browser.
+
 ## Alkamel race loading
 
 On entry, the app reads the official ELMS, FIA WEC, Asian Le Mans Series, and

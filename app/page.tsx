@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CONFIG, type TopMode } from "../src/config";
 import type { Lap, ParseDiagnostics } from "../src/models/race";
 import {
@@ -15,7 +15,10 @@ import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
 import { lapImprovements } from "../src/analysis/lap-improvements";
-import { compareEventsByRound, eventChampionship, eventTheme } from "../src/models/event-identity";
+import { compareEventsByRound, eventChampionship, eventLabel, eventTheme } from "../src/models/event-identity";
+import WorkspaceRaces from "./workspace-races";
+import WorkspaceOverview from "./workspace-overview";
+import "./workspace.css";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
@@ -95,6 +98,23 @@ function download<T extends object>(name: string, rows: T[]) {
 }
 export default function Home() {
   const [newWorkspace, setNewWorkspace] = useState(false);
+  const [workspaceRaceIds, setWorkspaceRaceIds] = useState<string[]>([]);
+  const [workspaceActiveId, setWorkspaceActiveId] = useState("");
+  const [workspaceTheme, setWorkspaceTheme] = useState<"light" | "dark">("light");
+  const [raceCatalogue, setRaceCatalogue] = useState<AlkamelRace[]>([]);
+  const [cacheVersion, setCacheVersion] = useState("");
+  const knownRaces = useRef(new Set<string>());
+  useEffect(() => {
+    try {
+      const theme = localStorage.getItem("uraice-workspace-theme");
+      if (theme === "light" || theme === "dark") setWorkspaceTheme(theme);
+    } catch { /* Browser preferences are optional. */ }
+  }, []);
+  const changeTheme = () => {
+    const next = workspaceTheme === "light" ? "dark" : "light";
+    setWorkspaceTheme(next);
+    try { localStorage.setItem("uraice-workspace-theme", next); } catch { /* Browser preferences are optional. */ }
+  };
   const [username, setUsername] = useState<string | null>(null);
   useEffect(() => {
     const controller = new AbortController();
@@ -130,7 +150,13 @@ export default function Home() {
     [cacheWarning, setCacheWarning] = useState(""),
     [raceLoads, setRaceLoads] = useState<RaceLoad[]>([]);
   const events = [...new Set(laps.map((l) => l.event))].sort(compareEventsByRound);
-  const selectedEvent = eventFilter || events[0] || "";
+  const chosenWorkspaceRaces = raceLoads.filter(race => workspaceRaceIds.includes(race.id));
+  const activeWorkspaceRace = chosenWorkspaceRaces.find(race => race.id === workspaceActiveId && raceAvailable(race)) || chosenWorkspaceRaces.find(raceAvailable);
+  const selectedEvent = newWorkspace ? (activeWorkspaceRace ? eventLabel(activeWorkspaceRace.sourceFile) : "") : eventFilter || events[0] || "";
+  const workspaceLaps = useMemo(() => {
+    const chosen = new Set(raceCatalogue.filter(race => workspaceRaceIds.includes(race.id)).map(race => eventLabel(race.sourceFile)));
+    return laps.filter(lap => chosen.has(lap.event));
+  }, [laps, raceCatalogue, workspaceRaceIds]);
   const sessionLaps = useMemo(() => laps.filter((l) => l.event === selectedEvent), [laps, selectedEvent]);
   const allMetrics = useMemo(() => driverMetrics(sessionLaps, mode), [sessionLaps, mode]);
   const metrics = useMemo(
@@ -190,9 +216,6 @@ export default function Home() {
     teams = ["All", ...new Set(sessionLaps.map((l) => l.carNumber))];
   useEffect(() => {
     let cancelled = false;
-    const update = (id: string, patch: Partial<RaceLoad>) => {
-      if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
-    };
     (async () => {
       const manifest = await fetch("/api/alkamel/races", { cache: "no-store" }).then(async response => {
         if (!response.ok) throw new Error(`Alkamel index: HTTP ${response.status}`);
@@ -216,8 +239,24 @@ export default function Home() {
       if (firstCachedEvent) setSummaryEvents([firstCachedEvent]);
       if (firstCachedEvent) setResultEvents([firstCachedEvent]);
       setRaceLoads(manifest.races.map(r => ({ ...r, status: cached.has(r.id) ? "cached" : "pending", laps: cached.get(r.id)?.laps.length })));
+      knownRaces.current = new Set(cached.keys());
+      setRaceCatalogue(manifest.races);
+      setCacheVersion(version);
       setBusy(false);
-      const missing = manifest.races.filter(r => !cached.has(r.id));
+    })().catch(cause => { if (!cancelled) { setError(String(cause)); setBusy(false); } });
+    return () => { cancelled = true; };
+  }, []);
+  useEffect(() => {
+    if (!cacheVersion || !raceCatalogue.length) return;
+    let cancelled = false;
+    const controller = new AbortController();
+    const update = (id: string, patch: Partial<RaceLoad>) => {
+      if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
+    };
+    const wanted = newWorkspace ? raceCatalogue.filter(race => workspaceRaceIds.includes(race.id)) : raceCatalogue;
+    const saved = wanted.filter(race => knownRaces.current.has(race.id));
+    const missing = wanted.filter(race => !knownRaces.current.has(race.id));
+    (async () => {
       const processedUrl = (race: AlkamelRace) => `/api/alkamel/processed?championship=${race.championship}&path=${encodeURIComponent(race.path)}&sourceFile=${encodeURIComponent(race.sourceFile)}`;
       let next = 0;
       await Promise.all(Array.from({ length: 3 }, async () => {
@@ -225,7 +264,7 @@ export default function Home() {
           const race = missing[next++];
           update(race.id, { status: "loading" });
           try {
-            const response = await fetch(processedUrl(race));
+            const response = await fetch(processedUrl(race), { signal: controller.signal });
             if (!response.ok) {
               const body = await response.json().catch(() => ({}));
               throw new Error(body.error || `HTTP ${response.status}`);
@@ -236,11 +275,13 @@ export default function Home() {
             if (!dataset.laps.length) throw new Error("No laps in processed race");
             if (cancelled) return;
             try {
-              await saveRaceCache(race, version, dataset);
+              await saveRaceCache(race, cacheVersion, dataset);
             } catch {
               if (!cancelled) setCacheWarning("Some races could not be saved locally and may be downloaded again on your next visit.");
             }
             if (cancelled) return;
+            if (knownRaces.current.has(race.id)) continue;
+            knownRaces.current.add(race.id);
             setLaps(previous => previous.concat(dataset.laps));
             setDiagnostics(previous => [...previous, ...dataset.diagnostics]);
             setSummaryEvents(previous => previous.length ? previous : [dataset.laps[0].event]);
@@ -254,22 +295,25 @@ export default function Home() {
       // Existing browser caches also populate the persistent server store after deployment.
       let warmNext = 0;
       await Promise.all(Array.from({ length: 3 }, async () => {
-        const saved = manifest.races.filter(race => cached.has(race.id));
         while (warmNext < saved.length && !cancelled) {
           const race = saved[warmNext++];
           try {
-            const response = await fetch(processedUrl(race), { method: "HEAD", cache: "no-store" });
+            const response = await fetch(processedUrl(race), { method: "HEAD", cache: "no-store", signal: controller.signal });
             if (!response.ok && !cancelled) setCacheWarning("Shared race storage is unavailable; saved races are only available in this browser.");
           } catch {
             if (!cancelled) setCacheWarning("Shared race storage is unavailable; saved races are only available in this browser.");
           }
         }
       }));
-    })().catch(cause => { if (!cancelled) { setError(String(cause)); setBusy(false); } });
-    return () => { cancelled = true; };
-  }, []);
+    })().catch(cause => { if (!cancelled) setError(String(cause)); });
+    return () => {
+      cancelled = true;
+      controller.abort();
+      setRaceLoads(current => current.map(race => race.status === "loading" ? { ...race, status: "pending" } : race));
+    };
+  }, [newWorkspace, workspaceRaceIds, raceCatalogue, cacheVersion]);
   return (
-    <main>
+    <main className={newWorkspace ? `new-workspace workspace-${workspaceTheme}` : undefined}>
       <aside>
         <div className="brand">
           <div>
@@ -281,9 +325,9 @@ export default function Home() {
           {newWorkspace ? "← VOLVER A LA WEB ACTUAL" : "ABRIR NUEVA WEB →"}
         </button>
         <nav>
-          {(newWorkspace ? (["Overview"] as View[]) : views).map((v, i) => (
+          {(newWorkspace ? (["Overview", "Driver Performance"] as View[]) : views).map((v, i) => (
             <button
-              className={newWorkspace || view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
+              className={view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
               onClick={() => setView(v)}
               key={v}
             >
@@ -306,14 +350,15 @@ export default function Home() {
         <header>
           <div>
             <p className="eyebrow">{newWorkspace ? "DRIVER INSIDERS · NEW WORKSPACE" : "DRIVER INSIDERS - U.RAICE"}</p>
-            <h1>{newWorkspace ? "OVERVIEW" : ["Data / Session Info","Driver Category Database"].includes(view)?"DATABASE":view==="Traffic Performance"?"DRIVER PERFORMANCE":view.toUpperCase()}</h1>
+            <h1>{["Data / Session Info","Driver Category Database"].includes(view)?"DATABASE":view==="Traffic Performance"?"DRIVER PERFORMANCE":view.toUpperCase()}</h1>
           </div>
           <div className="actions">
+            {newWorkspace && <button type="button" className="ghost" onClick={changeTheme} aria-label={workspaceTheme === "light" ? "Switch to dark mode" : "Switch to light mode"}>{workspaceTheme === "light" ? "Dark mode" : "Light mode"}</button>}
             <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
             {!newWorkspace && <button className="ghost" onClick={() => setView("Data / Session Info")}>
               ALKAMEL {raceLoads.filter(raceAvailable).length}/{raceLoads.length}
             </button>}
-            {view !== "Driver Category Database" && view !== "Results" && <button
+            {!(newWorkspace && view === "Overview") && view !== "Driver Category Database" && view !== "Results" && <button
               className="primary"
               onClick={() =>
                 view.includes("Category")
@@ -328,7 +373,10 @@ export default function Home() {
         {error && <div className="alert">{error}</div>}
         {cacheWarning && view !== "Data / Session Info" && <div className="alert" role="status">{cacheWarning}</div>}
         {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
-        {["Driver Performance","Traffic Performance"].includes(view) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
+        {newWorkspace && <WorkspaceRaces races={raceLoads} selected={workspaceRaceIds} active={activeWorkspaceRace?.id || ""}
+          onSelect={setWorkspaceRaceIds} onActivate={id => { setWorkspaceActiveId(id); setDriver(""); setClassFilter("All"); setTeamFilter("All"); }} />}
+        {newWorkspace && view !== "Overview" && !sessionLaps.length && <p className="workspace-selection-note">Choose races from “Load races”, then click a ready event to view its drivers.</p>}
+        {["Driver Performance","Traffic Performance"].includes(view) && (!newWorkspace || !!sessionLaps.length) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
           <button role="tab" aria-selected={view==="Driver Performance"} onClick={()=>setView("Driver Performance")}>Pure Performance</button>
           <button role="tab" aria-selected={view==="Traffic Performance"} onClick={()=>setView("Traffic Performance")}>Traffic Performance</button>
         </div>}
@@ -338,16 +386,17 @@ export default function Home() {
         </div>}
         {view === "Driver Category Database" ? <DriverCategoryDatabase/> : view === "Data / Session Info" && !laps.length ? (
           <DataInfo rows={[]} laps={[]} raceLoads={raceLoads} cacheWarning={cacheWarning} />
-        ) : !laps.length ? (
+        ) : !laps.length && !newWorkspace ? (
           <Empty busy={busy || raceLoads.some(r => r.status === "loading" || r.status === "pending")} />
         ) : (
           <>
-            {view !== "Data / Session Info" &&
+            {(!newWorkspace || view !== "Overview" && !!sessionLaps.length) && view !== "Data / Session Info" &&
               view !== "Results" &&
               view !== "Driver Focus" &&
               view !== "Race Analysis" &&
               view !== "Season Summary" && (
                 <Filters
+                  hideRaceSelector={newWorkspace}
                   events={events}
                   event={selectedEvent}
                   setEvent={(value: string) => {
@@ -370,14 +419,14 @@ export default function Home() {
                   setSelectedCategories={setDriverCategoryFilter}
                 />
               )}{" "}
-            {view === "Overview" && (
+            {view === "Overview" && (newWorkspace ? <WorkspaceOverview laps={workspaceLaps} /> : (
               <Overview
                 laps={sessionLaps}
                 metrics={metrics}
                 events={[selectedEvent]}
               />
-            )}{" "}
-            {view === "Driver Performance" && (
+            ))}{" "}
+            {view === "Driver Performance" && (!newWorkspace || !!sessionLaps.length) && (
               <>
                 <DriverSelect
                   drivers={[...new Set(sessionLaps.map((l) => l.driver))]}
@@ -427,7 +476,7 @@ export default function Home() {
                 setDriver={setDriver}
               />
             )}{" "}
-            {view === "Traffic Performance" && (
+            {view === "Traffic Performance" && (!newWorkspace || !!sessionLaps.length) && (
               <Traffic
                 laps={dlaps}
                 allLaps={sessionLaps}
@@ -507,7 +556,7 @@ function Empty({ busy }: { busy: boolean }) {
 function Filters(p: any) {
   return (
     <div className="filters">
-      <RaceSelector events={p.events} event={p.event} setEvent={p.setEvent} />
+      {!p.hideRaceSelector && <RaceSelector events={p.events} event={p.event} setEvent={p.setEvent} />}
       <label>
         CLASS
         <select value={p.cf} onChange={(e) => p.setCf(e.target.value)}>

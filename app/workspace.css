@@ -1,0 +1,83 @@
+main.new-workspace {
+  --bg:#eef1f5; --panel:#fff; --panel-strong:#e2e9f1;
+  --text:#182536; --muted:#53647a; --line:#c5d0dd; --accent:#1d4a7b;
+  background:var(--bg); color:var(--text); font-size:16px;
+}
+main.new-workspace.workspace-dark {
+  --bg:#0e1520; --panel:#172130; --panel-strong:#243247;
+  --text:#edf3fa; --muted:#afbdd0; --line:#3a4c64; --accent:#9ac5ff;
+  color-scheme:dark;
+}
+.new-workspace .shell { color:var(--text); }
+.new-workspace > aside { background:var(--panel); border-color:var(--line); box-shadow:none; }
+.new-workspace aside :is(.brand b,.brand small,nav button,nav button span) { color:var(--text); }
+.new-workspace aside nav button.active, .new-workspace aside nav button:hover { background:var(--panel-strong); color:var(--text); border-color:var(--accent); }
+.new-workspace aside nav button.active span { color:var(--accent); }
+.new-workspace .shell > header { background:var(--panel); border-bottom:1px solid var(--line); align-items:center; }
+.new-workspace .actions { flex-wrap:wrap; align-items:center; }
+.new-workspace h1 { font-size:34px; font-weight:800; letter-spacing:.035em; }
+.new-workspace h2 { font-size:26px; font-weight:700; }
+.new-workspace h3 { font-size:22px; }
+.new-workspace :is(p,label,button,input,select,summary,td) { font-size:16px !important; }
+.new-workspace :is(small,legend,th,.eyebrow,.categoryBadge,.carNumber,.driverSelect label,.filters label) { font-size:14px !important; }
+.new-workspace .brand b { font-size:17px; }
+.new-workspace .welcome-user { text-align:center; margin:32px 0; font-size:30px; color:var(--text); }
+.new-workspace :is(.ghost,.workspace-switch,.section-tabs button) { color:var(--text); background:var(--panel); border:1px solid var(--line); }
+.new-workspace .primary { background:var(--panel-strong); color:var(--text); border-color:var(--line); }
+.new-workspace .section-tabs button[aria-selected="true"] { background:var(--panel-strong); border-bottom:3px solid var(--accent); }
+.new-workspace :is(input:not([type="checkbox"]),select) { padding:10px 12px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:5px; }
+.new-workspace input[type="checkbox"] { width:18px; height:18px; accent-color:var(--accent); }
+.new-workspace :is(.filters,.driverSelect) { gap:16px; }
+.new-workspace .filters { margin-top:16px; }
+.new-workspace .categoryTicks { border-color:var(--line); background:var(--panel); flex-wrap:wrap; gap:12px; padding:12px; }
+.new-workspace .categoryTicks :is(label,legend) { color:var(--muted); }
+.new-workspace .tableWrap { background:var(--panel); border-color:var(--line); }
+.new-workspace th { color:var(--muted); background:var(--panel-strong); }
+.new-workspace td { color:var(--text); border-color:var(--line); }
+.new-workspace tbody tr:hover { background:var(--panel-strong); }
+.new-workspace .categoryShade, .new-workspace .categoryShade :is(b,small) { color:#17202a; }
+.new-workspace .ranking .driver { line-height:1.4; }
+.new-workspace .ranking td { padding:14px 12px; }
+.new-workspace .ranking td:last-child { padding-bottom:38px; }
+.new-workspace .ranking .dist { height:30px; }
+.new-workspace .dist small { top:27px; color:var(--muted); }
+.new-workspace .trackTimeline { margin-top:24px; height:18px; }
+.new-workspace .trackTimeline small { top:16px; color:var(--muted); }
+.new-workspace .info { width:18px; height:18px; font-size:12px !important; }
+.new-workspace .trafficChart { background:var(--panel); }
+.new-workspace .scatter { background:var(--panel); }
+.new-workspace .trafficChart .driver b { color:var(--text); }
+.new-workspace .parallel-note { color:var(--muted); }
+.new-workspace.workspace-dark .fast { color:#ff9d9d; }
+.new-workspace.workspace-dark .positive { color:#89e1b8; }
+.new-workspace .alert { color:var(--text); background:var(--panel-strong); border-color:var(--line); }
+.workspace-races { margin:24px 0; }
+.workspace-race-dropdown { border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.workspace-race-dropdown > summary { padding:16px 18px; cursor:pointer; font-weight:700; }
+.workspace-race-dropdown > summary span { margin-left:14px; color:var(--muted); font-weight:400; }
+.workspace-race-controls { display:grid; grid-template-columns:1fr 1fr 2fr; gap:14px; padding:4px 18px 16px; }
+.workspace-race-controls label { display:flex; flex-direction:column; gap:7px; color:var(--muted); }
+.workspace-race-actions { display:flex; gap:10px; padding:0 18px 16px; }
+.workspace-race-actions button { padding:8px 12px; border:1px solid var(--line); background:var(--panel-strong); color:var(--text); border-radius:5px; cursor:pointer; }
+.workspace-race-options { max-height:340px; overflow:auto; border-top:1px solid var(--line); padding:8px 18px; }
+.workspace-race-options > label { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); cursor:pointer; }
+.workspace-race-options small { margin-left:auto; color:var(--muted); }
+.workspace-race-options .race-error { width:100%; color:#c34d42; }
+.workspace-loaded-races { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+.workspace-race-chip { display:flex; max-width:100%; }
+.workspace-race-chip button { padding:10px 12px; background:var(--panel); color:var(--text); border:1px solid var(--line); cursor:pointer; }
+.workspace-race-chip button:first-child { border-radius:5px 0 0 5px; text-align:left; }
+.workspace-race-chip button:last-child { border-radius:0 5px 5px 0; border-left:0; }
+.workspace-race-chip button[aria-pressed="true"] { background:var(--panel-strong); border-color:var(--accent); box-shadow:inset 0 -3px var(--accent); font-weight:700; }
+.workspace-race-chip button:disabled, .workspace-race-actions button:disabled { opacity:.6; cursor:default; }
+.workspace-selection-note { padding:20px; color:var(--muted); background:var(--panel); border:1px solid var(--line); }
+.workspace-scope { padding:28px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.workspace-scope h2 { margin:0 0 24px; }
+.workspace-scope dl { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; margin:0; }
+.workspace-scope dt { color:var(--muted); font-size:16px; }
+.workspace-scope dd { margin:6px 0 0; color:var(--text); font-size:36px; font-weight:700; }
+@media (max-width:800px) {
+  .workspace-race-controls { grid-template-columns:1fr; }
+  .workspace-scope dl { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .new-workspace h1 { font-size:28px; }
+}

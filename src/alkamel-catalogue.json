@@ -1,0 +1,1334 @@
+[
+  {
+    "id": "ALMS-01_2022-01_Dubai Autodrome-202202121630_Race 1",
+    "sourceFile": "2022 ALMS 01 Dubai Autodrome Race 1.csv",
+    "year": 2022,
+    "championship": "ALMS",
+    "path": "Results/01_2022/01_Dubai Autodrome/01_Asian Le Mans Series/202202121630_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Dubai Autodrome · Race 1",
+    "season": "2022"
+  },
+  {
+    "id": "ALMS-01_2022-01_Dubai Autodrome-202202131730_Race 2",
+    "sourceFile": "2022 ALMS 01 Dubai Autodrome Race 2.csv",
+    "year": 2022,
+    "championship": "ALMS",
+    "path": "Results/01_2022/01_Dubai Autodrome/01_Asian Le Mans Series/202202131730_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Dubai Autodrome · Race 2",
+    "season": "2022"
+  },
+  {
+    "id": "ALMS-01_2022-02_Yas Marina-202202191430_Race 1",
+    "sourceFile": "2022 ALMS 02 Yas Marina Race 1.csv",
+    "year": 2022,
+    "championship": "ALMS",
+    "path": "Results/01_2022/02_Yas Marina/04_Asian Le Mans Series/202202191430_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Yas Marina · Race 1",
+    "season": "2022"
+  },
+  {
+    "id": "ALMS-01_2022-02_Yas Marina-202202201630_Race 2",
+    "sourceFile": "2022 ALMS 02 Yas Marina Race 2.csv",
+    "year": 2022,
+    "championship": "ALMS",
+    "path": "Results/01_2022/02_Yas Marina/04_Asian Le Mans Series/202202201630_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Yas Marina · Race 2",
+    "season": "2022"
+  },
+  {
+    "id": "ELMS-17_2022-06_AUTODROMO DO ALGARVE-202210161300_Race",
+    "sourceFile": "2022 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2022,
+    "championship": "ELMS",
+    "path": "Results/17_2022/06_AUTODROMO DO ALGARVE/449_EUROPEAN LE MANS SERIES/202210161300_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2022"
+  },
+  {
+    "id": "ELMS-17_2022-03_AUTODROMO NAZIONALE DI MONZA-202207031130_Race",
+    "sourceFile": "2022 ELMS 03 AUTODROMO NAZIONALE DI MONZA Race.csv",
+    "year": 2022,
+    "championship": "ELMS",
+    "path": "Results/17_2022/03_AUTODROMO NAZIONALE DI MONZA/426_EUROPEAN LE MANS SERIES/202207031130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO NAZIONALE DI MONZA · Race",
+    "season": "2022"
+  },
+  {
+    "id": "ELMS-17_2022-04_BARCELONA-CATALUNYA-202208281145_Race",
+    "sourceFile": "2022 ELMS 04 BARCELONA CATALUNYA Race.csv",
+    "year": 2022,
+    "championship": "ELMS",
+    "path": "Results/17_2022/04_BARCELONA-CATALUNYA/433_EUROPEAN LE MANS SERIES/202208281145_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "BARCELONA CATALUNYA · Race",
+    "season": "2022"
+  },
+  {
+    "id": "ELMS-17_2022-02_IMOLA-202205151130_Race",
+    "sourceFile": "2022 ELMS 02 IMOLA Race.csv",
+    "year": 2022,
+    "championship": "ELMS",
+    "path": "Results/17_2022/02_IMOLA/414_EUROPEAN LE MANS SERIES/202205151130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "IMOLA · Race",
+    "season": "2022"
+  },
+  {
+    "id": "ELMS-17_2022-01_PAUL RICARD-202204171100_Race",
+    "sourceFile": "2022 ELMS 01 PAUL RICARD Race.csv",
+    "year": 2022,
+    "championship": "ELMS",
+    "path": "Results/17_2022/01_PAUL RICARD/405_EUROPEAN LE MANS SERIES/202204171100_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "PAUL RICARD · Race",
+    "season": "2022"
+  },
+  {
+    "id": "ELMS-17_2022-05_SPA FRANCORCHAMPS-202209251130_Race",
+    "sourceFile": "2022 ELMS 05 SPA FRANCORCHAMPS Race.csv",
+    "year": 2022,
+    "championship": "ELMS",
+    "path": "Results/17_2022/05_SPA FRANCORCHAMPS/445_EUROPEAN LE MANS SERIES/202209251130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2022"
+  },
+  {
+    "id": "IMSA-22_2022-10_Belle Isle Street Course-202206041510_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Belle Isle Street Course · Race",
+    "sourceFile": "2022 IMSA 10 Belle Isle Street Course Race.csv",
+    "path": "Results/22_2022/10_Belle Isle Street Course/01_IMSA WeatherTech SportsCar Championship/202206041510_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-13_Canadian Tire Motorsport Park-202207031505_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2022 IMSA 13 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/22_2022/13_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202207031505_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-02_Daytona International Speedway-202201291340_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Daytona International Speedway · Race",
+    "sourceFile": "2022 IMSA 02 Daytona International Speedway Race.csv",
+    "path": "Results/22_2022/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202201291340_Race/24_Hour 24/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-15_Lime Rock Park-202207161510_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Lime Rock Park · Race",
+    "sourceFile": "2022 IMSA 15 Lime Rock Park Race.csv",
+    "path": "Results/22_2022/15_Lime Rock Park/01_IMSA WeatherTech SportsCar Championship/202207161510_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-06_Long Beach Street Circuit-202204091405_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2022 IMSA 06 Long Beach Street Circuit Race.csv",
+    "path": "Results/22_2022/06_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202204091405_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-08_Mid-Ohio Sports Car Course-202205151410_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Mid Ohio Sports Car Course · Race",
+    "sourceFile": "2022 IMSA 08 Mid Ohio Sports Car Course Race.csv",
+    "path": "Results/22_2022/08_Mid-Ohio Sports Car Course/01_IMSA WeatherTech SportsCar Championship/202205151410_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-16_Road America-202208071040_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Road America · Race",
+    "sourceFile": "2022 IMSA 16 Road America Race.csv",
+    "path": "Results/22_2022/16_Road America/01_IMSA WeatherTech SportsCar Championship/202208071040_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-19_Road Atlanta-202210011210_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2022 IMSA 19 Road Atlanta Race.csv",
+    "path": "Results/22_2022/19_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202210011210_Race/10_Hour 10/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-01_ROAR Before the 24-202201231405_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "ROAR Before the 24 · Race",
+    "sourceFile": "2022 IMSA 01 ROAR Before the 24 Race.csv",
+    "path": "Results/22_2022/01_ROAR Before the 24/01_IMSA WeatherTech SportsCar Championship/202201231405_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-05_Sebring International Raceway-202203191010_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Sebring International Raceway · Race",
+    "sourceFile": "2022 IMSA 05 Sebring International Raceway Race.csv",
+    "path": "Results/22_2022/05_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202203191010_Race/12_Hour 12/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-17_VIRginia International Raceway-202208281410_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2022 IMSA 17 VIRginia International Raceway Race.csv",
+    "path": "Results/22_2022/17_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202208281410_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-11_Watkins Glen International-202206261040_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2022 IMSA 11 Watkins Glen International Race.csv",
+    "path": "Results/22_2022/11_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202206261040_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-22_2022-07_Weathertech Raceway Laguna Seca-202205011210_Race",
+    "championship": "IMSA",
+    "season": "2022",
+    "year": 2022,
+    "event": "Weathertech Raceway Laguna Seca · Race",
+    "sourceFile": "2022 IMSA 07 Weathertech Raceway Laguna Seca Race.csv",
+    "path": "Results/22_2022/07_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202205011210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "WEC-11_2022-04_AUTODROMO NAZIONALE DI MONZA-202207101200_Race",
+    "sourceFile": "2022 WEC 04 AUTODROMO NAZIONALE DI MONZA Race.csv",
+    "year": 2022,
+    "championship": "WEC",
+    "path": "Results/11_2022/04_AUTODROMO NAZIONALE DI MONZA/432_FIA WEC/202207101200_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "AUTODROMO NAZIONALE DI MONZA · Race",
+    "season": "2022"
+  },
+  {
+    "id": "WEC-11_2022-06_BAHRAIN INTERNATIONAL CIRCUIT-202211121400_Race",
+    "championship": "WEC",
+    "season": "2022",
+    "year": 2022,
+    "event": "BAHRAIN INTERNATIONAL CIRCUIT · Race",
+    "sourceFile": "2022 WEC 06 BAHRAIN INTERNATIONAL CIRCUIT Race.csv",
+    "path": "Results/11_2022/06_BAHRAIN INTERNATIONAL CIRCUIT/455_FIA WEC/202211121400_Race/Hour 8/23_Analysis_Race_Hour 8.CSV"
+  },
+  {
+    "id": "WEC-11_2022-05_FUJI SPEEDWAY-202209111100_Race",
+    "championship": "WEC",
+    "season": "2022",
+    "year": 2022,
+    "event": "FUJI SPEEDWAY · Race",
+    "sourceFile": "2022 WEC 05 FUJI SPEEDWAY Race.csv",
+    "path": "Results/11_2022/05_FUJI SPEEDWAY/440_FIA WEC/202209111100_Race/Hour 6/23_Analysis_Race_Hour 6.CSV"
+  },
+  {
+    "id": "WEC-11_2022-03_LE MANS-202206111600_Race",
+    "sourceFile": "2022 WEC 03 LE MANS Race.csv",
+    "year": 2022,
+    "championship": "WEC",
+    "path": "Results/11_2022/03_LE MANS/419_FIA WEC/202206111600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "event": "LE MANS · Race",
+    "season": "2022"
+  },
+  {
+    "id": "WEC-11_2022-01_SEBRING-202203181200_Race",
+    "sourceFile": "2022 WEC 01 SEBRING Race.csv",
+    "year": 2022,
+    "championship": "WEC",
+    "path": "Results/11_2022/01_SEBRING/402_FIA WEC/202203181200_Race/Final Results/23_Analysis_Race_Hour 8.CSV",
+    "event": "SEBRING · Race",
+    "season": "2022"
+  },
+  {
+    "id": "WEC-11_2022-02_SPA FRANCORCHAMPS-202205071300_Race",
+    "sourceFile": "2022 WEC 02 SPA FRANCORCHAMPS Race.csv",
+    "year": 2022,
+    "championship": "WEC",
+    "path": "Results/11_2022/02_SPA FRANCORCHAMPS/408_FIA WEC/202205071300_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2022"
+  },
+  {
+    "id": "ALMS-02_2023-01_Dubai Autodrome-202302111500_Race 1",
+    "sourceFile": "2023 ALMS 01 Dubai Autodrome Race 1.csv",
+    "year": 2023,
+    "championship": "ALMS",
+    "path": "Results/02_2023/01_Dubai Autodrome/09_Asian Le Mans Series/202302111500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Dubai Autodrome · Race 1",
+    "season": "2023"
+  },
+  {
+    "id": "ALMS-02_2023-01_Dubai Autodrome-202302121500_Race 2",
+    "sourceFile": "2023 ALMS 01 Dubai Autodrome Race 2.csv",
+    "year": 2023,
+    "championship": "ALMS",
+    "path": "Results/02_2023/01_Dubai Autodrome/09_Asian Le Mans Series/202302121500_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Dubai Autodrome · Race 2",
+    "season": "2023"
+  },
+  {
+    "id": "ALMS-03_2023-2024-01_Sepang-202312021400_Race 1",
+    "sourceFile": "2023 ALMS 01 Sepang Race 1.csv",
+    "year": 2023,
+    "championship": "ALMS",
+    "path": "Results/03_2023-2024/01_Sepang/14_Asian Le Mans Series/202312021400_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Sepang · Race 1",
+    "season": "2023-2024"
+  },
+  {
+    "id": "ALMS-03_2023-2024-01_Sepang-202312031400_Race 2",
+    "sourceFile": "2023 ALMS 01 Sepang Race 2.csv",
+    "year": 2023,
+    "championship": "ALMS",
+    "path": "Results/03_2023-2024/01_Sepang/14_Asian Le Mans Series/202312031400_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Sepang · Race 2",
+    "season": "2023-2024"
+  },
+  {
+    "id": "ALMS-02_2023-02_Yas Marina-202302181500_Race 1",
+    "sourceFile": "2023 ALMS 02 Yas Marina Race 1.csv",
+    "year": 2023,
+    "championship": "ALMS",
+    "path": "Results/02_2023/02_Yas Marina/11_Asian Le Mans Series/202302181500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Yas Marina · Race 1",
+    "season": "2023"
+  },
+  {
+    "id": "ALMS-02_2023-02_Yas Marina-202302191600_Race 2",
+    "sourceFile": "2023 ALMS 02 Yas Marina Race 2.csv",
+    "year": 2023,
+    "championship": "ALMS",
+    "path": "Results/02_2023/02_Yas Marina/11_Asian Le Mans Series/202302191600_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Yas Marina · Race 2",
+    "season": "2023"
+  },
+  {
+    "id": "ELMS-18_2023-05_AUTODROMO DO ALGARVE-202310201400_Race",
+    "sourceFile": "2023 ELMS 05 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2023,
+    "championship": "ELMS",
+    "path": "Results/18_2023/05_AUTODROMO DO ALGARVE/509_ELMS - 4 HOURS OF ALGARVE/202310201400_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2023"
+  },
+  {
+    "id": "ELMS-18_2023-05_AUTODROMO DO ALGARVE-202310221300_Race",
+    "sourceFile": "2023 ELMS 05 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2023,
+    "championship": "ELMS",
+    "path": "Results/18_2023/05_AUTODROMO DO ALGARVE/510_ELMS - 4 HOURS OF PORTIMAO/202310221300_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2023"
+  },
+  {
+    "id": "ELMS-18_2023-01_BARCELONA-CATALUNYA-202304231130_Race",
+    "sourceFile": "2023 ELMS 01 BARCELONA CATALUNYA Race.csv",
+    "year": 2023,
+    "championship": "ELMS",
+    "path": "Results/18_2023/01_BARCELONA-CATALUNYA/465_European Le Mans Series/202304231130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "BARCELONA CATALUNYA · Race",
+    "season": "2023"
+  },
+  {
+    "id": "ELMS-18_2023-03_CIRCUITO MOTORLAND ARAGON-202308261800_Race",
+    "sourceFile": "2023 ELMS 03 CIRCUITO MOTORLAND ARAGON Race.csv",
+    "year": 2023,
+    "championship": "ELMS",
+    "path": "Results/18_2023/03_CIRCUITO MOTORLAND ARAGON/493_European Le Mans Series/202308261800_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "CIRCUITO MOTORLAND ARAGON · Race",
+    "season": "2023"
+  },
+  {
+    "id": "ELMS-18_2023-02_PAUL RICARD-202307161130_Race",
+    "sourceFile": "2023 ELMS 02 PAUL RICARD Race.csv",
+    "year": 2023,
+    "championship": "ELMS",
+    "path": "Results/18_2023/02_PAUL RICARD/485_European Le Mans Series/202307161130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "PAUL RICARD · Race",
+    "season": "2023"
+  },
+  {
+    "id": "ELMS-18_2023-04_SPA FRANCORCHAMPS-202309241130_Race",
+    "sourceFile": "2023 ELMS 04 SPA FRANCORCHAMPS Race.csv",
+    "year": 2023,
+    "championship": "ELMS",
+    "path": "Results/18_2023/04_SPA FRANCORCHAMPS/499_European Le Mans Series/202309241130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2023"
+  },
+  {
+    "id": "IMSA-23_2023-13_Canadian Tire Motorsport Park-202307091205_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2023 IMSA 13 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/23_2023/13_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202307091205_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-02_Daytona International Speedway-202301281340_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Daytona International Speedway · Race",
+    "sourceFile": "2023 IMSA 02 Daytona International Speedway Race.csv",
+    "path": "Results/23_2023/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202301281340_Race/24_Hour 24/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-19_Indianapolis Motor Speedway RC-202309171310_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Indianapolis Motor Speedway RC · Race",
+    "sourceFile": "2023 IMSA 19 Indianapolis Motor Speedway RC Race.csv",
+    "path": "Results/23_2023/19_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202309171310_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-14_Lime Rock Park-202307221210_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Lime Rock Park · Race",
+    "sourceFile": "2023 IMSA 14 Lime Rock Park Race.csv",
+    "path": "Results/23_2023/14_Lime Rock Park/01_IMSA WeatherTech SportsCar Championship/202307221210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-08_Long Beach Street Circuit-202304151405_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2023 IMSA 08 Long Beach Street Circuit Race.csv",
+    "path": "Results/23_2023/08_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202304151405_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-17_Road America-202308061010_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Road America · Race",
+    "sourceFile": "2023 IMSA 17 Road America Race.csv",
+    "path": "Results/23_2023/17_Road America/01_IMSA WeatherTech SportsCar Championship/202308061010_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-21_Road Atlanta-202310141140_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2023 IMSA 21 Road Atlanta Race.csv",
+    "path": "Results/23_2023/21_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202310141140_Race/10_Hour 10/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-07_Sebring International Raceway-202303181010_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Sebring International Raceway · Race",
+    "sourceFile": "2023 IMSA 07 Sebring International Raceway Race.csv",
+    "path": "Results/23_2023/07_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202303181010_Race/12_Hour 12/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-18_VIRginia International Raceway-202308271410_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2023 IMSA 18 VIRginia International Raceway Race.csv",
+    "path": "Results/23_2023/18_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202308271410_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-12_Watkins Glen International-202306251040_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2023 IMSA 12 Watkins Glen International Race.csv",
+    "path": "Results/23_2023/12_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202306251040_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-23_2023-10_Weathertech Raceway Laguna Seca-202305141210_Race",
+    "championship": "IMSA",
+    "season": "2023",
+    "year": 2023,
+    "event": "Weathertech Raceway Laguna Seca · Race",
+    "sourceFile": "2023 IMSA 10 Weathertech Raceway Laguna Seca Race.csv",
+    "path": "Results/23_2023/10_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202305141210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "WEC-12_2023-02_AUTODROMO DO ALGARVE-202304161200_Race",
+    "sourceFile": "2023 WEC 02 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/02_AUTODROMO DO ALGARVE/461_FIA WEC/202304161200_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2023"
+  },
+  {
+    "id": "WEC-12_2023-05_AUTODROMO NAZIONALE DI MONZA-202307091230_Race",
+    "sourceFile": "2023 WEC 05 AUTODROMO NAZIONALE DI MONZA Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/05_AUTODROMO NAZIONALE DI MONZA/479_FIA WEC/202307091230_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "AUTODROMO NAZIONALE DI MONZA · Race",
+    "season": "2023"
+  },
+  {
+    "id": "WEC-12_2023-07_BAHRAIN INTERNATIONAL CIRCUIT-202311041400_Race",
+    "sourceFile": "2023 WEC 07 BAHRAIN INTERNATIONAL CIRCUIT Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/07_BAHRAIN INTERNATIONAL CIRCUIT/513_FIA WEC/202311041400_Race/Hour 8/23_Analysis_Race_Hour 8.CSV",
+    "event": "BAHRAIN INTERNATIONAL CIRCUIT · Race",
+    "season": "2023"
+  },
+  {
+    "id": "WEC-12_2023-06_FUJI SPEEDWAY-202309101100_Race",
+    "sourceFile": "2023 WEC 06 FUJI SPEEDWAY Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/06_FUJI SPEEDWAY/497_FIA WEC/202309101100_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "FUJI SPEEDWAY · Race",
+    "season": "2023"
+  },
+  {
+    "id": "WEC-12_2023-04_LE MANS-202306101600_Race",
+    "sourceFile": "2023 WEC 04 LE MANS Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/04_LE MANS/474_FIA WEC/202306101600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "event": "LE MANS · Race",
+    "season": "2023"
+  },
+  {
+    "id": "WEC-12_2023-01_SEBRING-202303171200_Race",
+    "sourceFile": "2023 WEC 01 SEBRING Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/01_SEBRING/460_FIA WEC/202303171200_Race/Hour 8/23_Analysis_Race_Hour 8.CSV",
+    "event": "SEBRING · Race",
+    "season": "2023"
+  },
+  {
+    "id": "WEC-12_2023-03_SPA FRANCORCHAMPS-202304291245_Race",
+    "sourceFile": "2023 WEC 03 SPA FRANCORCHAMPS Race.csv",
+    "year": 2023,
+    "championship": "WEC",
+    "path": "Results/12_2023/03_SPA FRANCORCHAMPS/469_FIA WEC/202304291245_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2023"
+  },
+  {
+    "id": "ALMS-03_2023-2024-02_Dubai Autodrome-202402041300_Race",
+    "sourceFile": "2024 ALMS 02 Dubai Autodrome Race.csv",
+    "year": 2024,
+    "championship": "ALMS",
+    "path": "Results/03_2023-2024/02_Dubai Autodrome/15_Asian Le Mans Series/202402041300_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "Dubai Autodrome · Race",
+    "season": "2023-2024"
+  },
+  {
+    "id": "ALMS-04_2024-2025-01_Sepang-202412071400_Race 1",
+    "sourceFile": "2024 ALMS 01 Sepang Race 1.csv",
+    "year": 2024,
+    "championship": "ALMS",
+    "path": "Results/04_2024-2025/01_Sepang/17_Asian Le Mans Series/202412071400_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Sepang · Race 1",
+    "season": "2024-2025"
+  },
+  {
+    "id": "ALMS-04_2024-2025-01_Sepang-202412081400_Race 2",
+    "sourceFile": "2024 ALMS 01 Sepang Race 2.csv",
+    "year": 2024,
+    "championship": "ALMS",
+    "path": "Results/04_2024-2025/01_Sepang/17_Asian Le Mans Series/202412081400_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Sepang · Race 2",
+    "season": "2024-2025"
+  },
+  {
+    "id": "ALMS-03_2023-2024-03_Yas Marina-202402101500_Race 1",
+    "sourceFile": "2024 ALMS 03 Yas Marina Race 1.csv",
+    "year": 2024,
+    "championship": "ALMS",
+    "path": "Results/03_2023-2024/03_Yas Marina/16_Asian Le Mans Series/202402101500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Yas Marina · Race 1",
+    "season": "2023-2024"
+  },
+  {
+    "id": "ALMS-03_2023-2024-03_Yas Marina-202402111600_Race 2",
+    "sourceFile": "2024 ALMS 03 Yas Marina Race 2.csv",
+    "year": 2024,
+    "championship": "ALMS",
+    "path": "Results/03_2023-2024/03_Yas Marina/16_Asian Le Mans Series/202402111600_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Yas Marina · Race 2",
+    "season": "2023-2024"
+  },
+  {
+    "id": "ELMS-19_2024-06_AUTODROMO DO ALGARVE-202410191430_Race",
+    "sourceFile": "2024 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2024,
+    "championship": "ELMS",
+    "path": "Results/19_2024/06_AUTODROMO DO ALGARVE/569_European Le Mans Series/202410191430_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2024"
+  },
+  {
+    "id": "ELMS-19_2024-01_BARCELONA-CATALUNYA-202404141130_Race",
+    "sourceFile": "2024 ELMS 01 BARCELONA CATALUNYA Race.csv",
+    "year": 2024,
+    "championship": "ELMS",
+    "path": "Results/19_2024/01_BARCELONA-CATALUNYA/522_European Le Mans Series/202404141130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "BARCELONA CATALUNYA · Race",
+    "season": "2024"
+  },
+  {
+    "id": "ELMS-19_2024-03_IMOLA-202407071130_Race",
+    "sourceFile": "2024 ELMS 03 IMOLA Race.csv",
+    "year": 2024,
+    "championship": "ELMS",
+    "path": "Results/19_2024/03_IMOLA/548_European Le Mans Series/202407071130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "IMOLA · Race",
+    "season": "2024"
+  },
+  {
+    "id": "ELMS-19_2024-05_MUGELLO-202409291130_Race",
+    "sourceFile": "2024 ELMS 05 MUGELLO Race.csv",
+    "year": 2024,
+    "championship": "ELMS",
+    "path": "Results/19_2024/05_MUGELLO/563_European Le Mans Series/202409291130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "MUGELLO · Race",
+    "season": "2024"
+  },
+  {
+    "id": "ELMS-19_2024-02_PAUL RICARD-202405051130_Race",
+    "sourceFile": "2024 ELMS 02 PAUL RICARD Race.csv",
+    "year": 2024,
+    "championship": "ELMS",
+    "path": "Results/19_2024/02_PAUL RICARD/531_European Le Mans Series/202405051130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "PAUL RICARD · Race",
+    "season": "2024"
+  },
+  {
+    "id": "ELMS-19_2024-04_SPA FRANCORCHAMPS-202408251130_Race",
+    "sourceFile": "2024 ELMS 04 SPA FRANCORCHAMPS Race.csv",
+    "year": 2024,
+    "championship": "ELMS",
+    "path": "Results/19_2024/04_SPA FRANCORCHAMPS/554_European Le Mans Series/202408251130_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2024"
+  },
+  {
+    "id": "IMSA-24_2024-13_Canadian Tire Motorsport Park-202407141105_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2024 IMSA 13 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/24_2024/13_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202407141105_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-02_Daytona International Speedway-202401271340_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Daytona International Speedway · Race",
+    "sourceFile": "2024 IMSA 02 Daytona International Speedway Race.csv",
+    "path": "Results/24_2024/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202401271340_Race/24_Hour 24/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-09_Detroit Street Course-202406011510_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Detroit Street Course · Race",
+    "sourceFile": "2024 IMSA 09 Detroit Street Course Race.csv",
+    "path": "Results/24_2024/09_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202406011510_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-06_Long Beach Street Circuit-202404201335_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2024 IMSA 06 Long Beach Street Circuit Race.csv",
+    "path": "Results/24_2024/06_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202404201335_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-14_Road America-202408041410_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Road America · Race",
+    "sourceFile": "2024 IMSA 14 Road America Race.csv",
+    "path": "Results/24_2024/14_Road America/01_IMSA WeatherTech SportsCar Championship/202408041410_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-19_Road Atlanta-202410121210_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2024 IMSA 19 Road Atlanta Race.csv",
+    "path": "Results/24_2024/19_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202410121210_Race/10_Hour 10/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-05_Sebring International Raceway-202403160940_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Sebring International Raceway · Race",
+    "sourceFile": "2024 IMSA 05 Sebring International Raceway Race.csv",
+    "path": "Results/24_2024/05_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202403160940_Race/12_Hour 12/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-17_Tire Rack.com Battle On The Bricks-202409221230_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Tire Rack.com Battle On The Bricks · Race",
+    "sourceFile": "2024 IMSA 17 Tire Rack.com Battle On The Bricks Race.csv",
+    "path": "Results/24_2024/17_Tire Rack.com Battle On The Bricks/01_IMSA WeatherTech SportsCar Championship/202409221230_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-15_VIRginia International Raceway-202408251210_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2024 IMSA 15 VIRginia International Raceway Race.csv",
+    "path": "Results/24_2024/15_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202408251210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-12_Watkins Glen International-202406231110_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2024 IMSA 12 Watkins Glen International Race.csv",
+    "path": "Results/24_2024/12_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202406231110_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-24_2024-08_Weathertech Raceway Laguna Seca-202405121210_Race",
+    "championship": "IMSA",
+    "season": "2024",
+    "year": 2024,
+    "event": "Weathertech Raceway Laguna Seca · Race",
+    "sourceFile": "2024 IMSA 08 Weathertech Raceway Laguna Seca Race.csv",
+    "path": "Results/24_2024/08_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202405121210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "WEC-13_2024-08_BAHRAIN INTERNATIONAL CIRCUIT-202411021400_Race",
+    "sourceFile": "2024 WEC 08 BAHRAIN INTERNATIONAL CIRCUIT Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/08_BAHRAIN INTERNATIONAL CIRCUIT/575_FIA WEC/202411021400_Race/Hour 8/23_Analysis_Race_Hour 8.CSV",
+    "event": "BAHRAIN INTERNATIONAL CIRCUIT · Race",
+    "season": "2024"
+  },
+  {
+    "id": "WEC-13_2024-06_CIRCUIT OF THE AMERICAS-202409011300_Race",
+    "sourceFile": "2024 WEC 06 CIRCUIT OF THE AMERICAS Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/06_CIRCUIT OF THE AMERICAS/558_FIA WEC/202409011300_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "CIRCUIT OF THE AMERICAS · Race",
+    "season": "2024"
+  },
+  {
+    "id": "WEC-13_2024-07_FUJI SPEEDWAY-202409151100_Race",
+    "sourceFile": "2024 WEC 07 FUJI SPEEDWAY Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/07_FUJI SPEEDWAY/559_FIA WEC/202409151100_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "FUJI SPEEDWAY · Race",
+    "season": "2024"
+  },
+  {
+    "id": "WEC-13_2024-02_IMOLA-202404211300_Race",
+    "sourceFile": "2024 WEC 02 IMOLA Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/02_IMOLA/526_FIA WEC/202404211300_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "IMOLA · Race",
+    "season": "2024"
+  },
+  {
+    "id": "WEC-13_2024-04_LE MANS-202406151600_Race",
+    "sourceFile": "2024 WEC 04 LE MANS Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/04_LE MANS/541_FIA WEC/202406151600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "event": "LE MANS · Race",
+    "season": "2024"
+  },
+  {
+    "id": "WEC-13_2024-01_LOSAIL-202403021100_Race",
+    "sourceFile": "2024 WEC 01 LOSAIL Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/01_LOSAIL/517_FIA WEC/202403021100_Race/10_Hour 10/23_Analysis_Race_Hour 10.CSV",
+    "event": "LOSAIL · Race",
+    "season": "2024"
+  },
+  {
+    "id": "WEC-13_2024-05_SAO PAULO-202407141130_Race",
+    "championship": "WEC",
+    "season": "2024",
+    "year": 2024,
+    "event": "SAO PAULO · Race",
+    "sourceFile": "2024 WEC 05 SAO PAULO Race.csv",
+    "path": "Results/13_2024/05_SAO PAULO/552_FIA WEC/202407141130_Race/Hour 6/23_Analysis_Race_Hour 6.CSV"
+  },
+  {
+    "id": "WEC-13_2024-03_SPA FRANCORCHAMPS-202405111300_Race",
+    "sourceFile": "2024 WEC 03 SPA FRANCORCHAMPS Race.csv",
+    "year": 2024,
+    "championship": "WEC",
+    "path": "Results/13_2024/03_SPA FRANCORCHAMPS/536_FIA WEC/202405111300_Race/Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2024"
+  },
+  {
+    "id": "ALMS-04_2024-2025-02_Dubai Autodrome-202502081410_Race 1",
+    "sourceFile": "2025 ALMS 02 Dubai Autodrome Race 1.csv",
+    "year": 2025,
+    "championship": "ALMS",
+    "path": "Results/04_2024-2025/02_Dubai Autodrome/19_Asian Le Mans Series/202502081410_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Dubai Autodrome · Race 1",
+    "season": "2024-2025"
+  },
+  {
+    "id": "ALMS-04_2024-2025-02_Dubai Autodrome-202502091410_Race 2",
+    "sourceFile": "2025 ALMS 02 Dubai Autodrome Race 2.csv",
+    "year": 2025,
+    "championship": "ALMS",
+    "path": "Results/04_2024-2025/02_Dubai Autodrome/19_Asian Le Mans Series/202502091410_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Dubai Autodrome · Race 2",
+    "season": "2024-2025"
+  },
+  {
+    "id": "ALMS-05_2025-2026-01_Sepang-202512131300_Race 1",
+    "sourceFile": "2025 ALMS 01 Sepang Race 1.csv",
+    "year": 2025,
+    "championship": "ALMS",
+    "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512131300_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Sepang · Race 1",
+    "season": "2025-2026"
+  },
+  {
+    "id": "ALMS-05_2025-2026-01_Sepang-202512141300_Race 2",
+    "sourceFile": "2025 ALMS 01 Sepang Race 2.csv",
+    "year": 2025,
+    "championship": "ALMS",
+    "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512141300_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Sepang · Race 2",
+    "season": "2025-2026"
+  },
+  {
+    "id": "ALMS-04_2024-2025-03_Yas Marina-202502151500_Race 1",
+    "sourceFile": "2025 ALMS 03 Yas Marina Race 1.csv",
+    "year": 2025,
+    "championship": "ALMS",
+    "path": "Results/04_2024-2025/03_Yas Marina/21_Asian Le Mans Series/202502151500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Yas Marina · Race 1",
+    "season": "2024-2025"
+  },
+  {
+    "id": "ALMS-04_2024-2025-03_Yas Marina-202502161630_Race 2",
+    "sourceFile": "2025 ALMS 03 Yas Marina Race 2.csv",
+    "year": 2025,
+    "championship": "ALMS",
+    "path": "Results/04_2024-2025/03_Yas Marina/21_Asian Le Mans Series/202502161630_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Yas Marina · Race 2",
+    "season": "2024-2025"
+  },
+  {
+    "id": "ELMS-20_2025-06_AUTODROMO DO ALGARVE-202510181430_Race",
+    "sourceFile": "2025 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2025,
+    "championship": "ELMS",
+    "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510181430_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2025"
+  },
+  {
+    "id": "ELMS-20_2025-01_BARCELONA-CATALUNYA-202504061200_Race",
+    "sourceFile": "2025 ELMS 01 BARCELONA CATALUNYA Race.csv",
+    "year": 2025,
+    "championship": "ELMS",
+    "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504061200_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "BARCELONA CATALUNYA · Race",
+    "season": "2025"
+  },
+  {
+    "id": "ELMS-20_2025-03_IMOLA-202507061200_Race",
+    "sourceFile": "2025 ELMS 03 IMOLA Race.csv",
+    "year": 2025,
+    "championship": "ELMS",
+    "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507061200_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "IMOLA · Race",
+    "season": "2025"
+  },
+  {
+    "id": "ELMS-20_2025-02_PAUL RICARD-202505041200_Race",
+    "sourceFile": "2025 ELMS 02 PAUL RICARD Race.csv",
+    "year": 2025,
+    "championship": "ELMS",
+    "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505041200_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "PAUL RICARD · Race",
+    "season": "2025"
+  },
+  {
+    "id": "ELMS-20_2025-05_SILVERSTONE-202509141100_Race",
+    "sourceFile": "2025 ELMS 05 SILVERSTONE Race.csv",
+    "year": 2025,
+    "championship": "ELMS",
+    "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509141100_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SILVERSTONE · Race",
+    "season": "2025"
+  },
+  {
+    "id": "ELMS-20_2025-04_SPA FRANCORCHAMPS-202508241300_Race",
+    "sourceFile": "2025 ELMS 04 SPA FRANCORCHAMPS Race.csv",
+    "year": 2025,
+    "championship": "ELMS",
+    "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508241300_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2025"
+  },
+  {
+    "id": "IMSA-25_2025-15_Canadian Tire Motorsport Park-202507131405_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2025 IMSA 15 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/25_2025/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202507131405_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-02_Daytona International Speedway-202501251340_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Daytona International Speedway · Race",
+    "sourceFile": "2025 IMSA 02 Daytona International Speedway Race.csv",
+    "path": "Results/25_2025/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202501251340_Race/24_Hour 24/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-11_Detroit Street Course-202505311640_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Detroit Street Course · Race",
+    "sourceFile": "2025 IMSA 11 Detroit Street Course Race.csv",
+    "path": "Results/25_2025/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202505311640_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-20_Indianapolis Motor Speedway RC-202509211140_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Indianapolis Motor Speedway RC · Race",
+    "sourceFile": "2025 IMSA 20 Indianapolis Motor Speedway RC Race.csv",
+    "path": "Results/25_2025/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202509211140_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-07_Long Beach Street Circuit-202504121405_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2025 IMSA 07 Long Beach Street Circuit Race.csv",
+    "path": "Results/25_2025/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202504121405_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-16_Road America-202508031310_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Road America · Race",
+    "sourceFile": "2025 IMSA 16 Road America Race.csv",
+    "path": "Results/25_2025/16_Road America/01_IMSA WeatherTech SportsCar Championship/202508031310_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-22_Road Atlanta-202510111210_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2025 IMSA 22 Road Atlanta Race.csv",
+    "path": "Results/25_2025/22_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202510111210_Race/10_Hour 10/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-06_Sebring International Raceway-202503151010_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Sebring International Raceway · Race",
+    "sourceFile": "2025 IMSA 06 Sebring International Raceway Race.csv",
+    "path": "Results/25_2025/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202503151010_Race/12_Hour 12/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-17_VIRginia International Raceway-202508241410_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2025 IMSA 17 VIRginia International Raceway Race.csv",
+    "path": "Results/25_2025/17_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202508241410_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-14_Watkins Glen International-202506221210_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2025 IMSA 14 Watkins Glen International Race.csv",
+    "path": "Results/25_2025/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202506221210_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-25_2025-10_Weathertech Raceway Laguna Seca-202505111210_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Weathertech Raceway Laguna Seca · Race",
+    "sourceFile": "2025 IMSA 10 Weathertech Raceway Laguna Seca Race.csv",
+    "path": "Results/25_2025/10_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202505111210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "WEC-14_2025-08_BAHRAIN INTERNATIONAL CIRCUIT-202511081400_Race",
+    "sourceFile": "2025 WEC 08 BAHRAIN INTERNATIONAL CIRCUIT Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511081400_Race/08_Hour 8/23_Analysis_Race_Hour 8.CSV",
+    "event": "BAHRAIN INTERNATIONAL CIRCUIT · Race",
+    "season": "2025"
+  },
+  {
+    "id": "WEC-14_2025-06_CIRCUIT OF THE AMERICAS-202509071330_Race",
+    "sourceFile": "2025 WEC 06 CIRCUIT OF THE AMERICAS Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509071330_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "CIRCUIT OF THE AMERICAS · Race",
+    "season": "2025"
+  },
+  {
+    "id": "WEC-14_2025-07_FUJI SPEEDWAY-202509281100_Race",
+    "championship": "WEC",
+    "season": "2025",
+    "year": 2025,
+    "event": "FUJI SPEEDWAY · Race",
+    "sourceFile": "2025 WEC 07 FUJI SPEEDWAY Race.csv",
+    "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509281100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV"
+  },
+  {
+    "id": "WEC-14_2025-02_IMOLA-202504201300_Race",
+    "sourceFile": "2025 WEC 02 IMOLA Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504201300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "IMOLA · Race",
+    "season": "2025"
+  },
+  {
+    "id": "WEC-14_2025-04_LE MANS-202506141600_Race",
+    "sourceFile": "2025 WEC 04 LE MANS Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506141600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "event": "LE MANS · Race",
+    "season": "2025"
+  },
+  {
+    "id": "WEC-14_2025-01_LOSAIL-202502281400_Race",
+    "sourceFile": "2025 WEC 01 LOSAIL Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502281400_Race/10_Hour 10/23_Analysis_Race_Hour 10.CSV",
+    "event": "LOSAIL · Race",
+    "season": "2025"
+  },
+  {
+    "id": "WEC-14_2025-05_SAO PAULO-202507131130_Race",
+    "sourceFile": "2025 WEC 05 SAO PAULO Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507131130_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SAO PAULO · Race",
+    "season": "2025"
+  },
+  {
+    "id": "WEC-14_2025-03_SPA FRANCORCHAMPS-202505101400_Race",
+    "sourceFile": "2025 WEC 03 SPA FRANCORCHAMPS Race.csv",
+    "year": 2025,
+    "championship": "WEC",
+    "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505101400_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2025"
+  },
+  {
+    "id": "ALMS-05_2025-2026-02_Dubai Autodrome-202601311410_Race 1",
+    "sourceFile": "2026 ALMS 02 Dubai Autodrome Race 1.csv",
+    "year": 2026,
+    "championship": "ALMS",
+    "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311410_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Dubai Autodrome · Race 1",
+    "season": "2025-2026"
+  },
+  {
+    "id": "ALMS-05_2025-2026-02_Dubai Autodrome-202602011410_Race 2",
+    "sourceFile": "2026 ALMS 02 Dubai Autodrome Race 2.csv",
+    "year": 2026,
+    "championship": "ALMS",
+    "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202602011410_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Dubai Autodrome · Race 2",
+    "season": "2025-2026"
+  },
+  {
+    "id": "ALMS-05_2025-2026-03_Yas Marina-202602071500_Race 1",
+    "sourceFile": "2026 ALMS 03 Yas Marina Race 1.csv",
+    "year": 2026,
+    "championship": "ALMS",
+    "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "event": "Yas Marina · Race 1",
+    "season": "2025-2026"
+  },
+  {
+    "id": "ALMS-05_2025-2026-03_Yas Marina-202602081630_Race 2",
+    "sourceFile": "2026 ALMS 03 Yas Marina Race 2.csv",
+    "year": 2026,
+    "championship": "ALMS",
+    "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602081630_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "event": "Yas Marina · Race 2",
+    "season": "2025-2026"
+  },
+  {
+    "id": "ELMS-21_2026-06_AUTODROMO DO ALGARVE-202610101430_Race",
+    "sourceFile": "2026 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "year": 2026,
+    "championship": "ELMS",
+    "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610101430_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "season": "2026"
+  },
+  {
+    "id": "ELMS-21_2026-01_BARCELONA-CATALUNYA-202604121200_Race",
+    "sourceFile": "2026 ELMS 01 BARCELONA CATALUNYA Race.csv",
+    "year": 2026,
+    "championship": "ELMS",
+    "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604121200_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "BARCELONA CATALUNYA · Race",
+    "season": "2026"
+  },
+  {
+    "id": "ELMS-21_2026-03_IMOLA-202607051300_Race",
+    "sourceFile": "2026 ELMS 03 IMOLA Race.csv",
+    "year": 2026,
+    "championship": "ELMS",
+    "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607051300_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "IMOLA · Race",
+    "season": "2026"
+  },
+  {
+    "id": "ELMS-21_2026-02_PAUL RICARD-202605031200_Race",
+    "sourceFile": "2026 ELMS 02 PAUL RICARD Race.csv",
+    "year": 2026,
+    "championship": "ELMS",
+    "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605031200_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "PAUL RICARD · Race",
+    "season": "2026"
+  },
+  {
+    "id": "ELMS-21_2026-05_SILVERSTONE-202609131200_Race",
+    "sourceFile": "2026 ELMS 05 SILVERSTONE Race.csv",
+    "year": 2026,
+    "championship": "ELMS",
+    "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609131200_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SILVERSTONE · Race",
+    "season": "2026"
+  },
+  {
+    "id": "ELMS-21_2026-04_SPA FRANCORCHAMPS-202608231300_Race",
+    "sourceFile": "2026 ELMS 04 SPA FRANCORCHAMPS Race.csv",
+    "year": 2026,
+    "championship": "ELMS",
+    "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608231300_Race/Hour 4/23_Analysis_Race.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2026"
+  },
+  {
+    "id": "IMSA-26_2026-15_Canadian Tire Motorsport Park-202607121405_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2026 IMSA 15 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/26_2026/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202607121405_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-02_Daytona International Speedway-202601241340_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Daytona International Speedway · Race",
+    "sourceFile": "2026 IMSA 02 Daytona International Speedway Race.csv",
+    "path": "Results/26_2026/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202601241340_Race/24_Hour 24/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-11_Detroit Street Course-202605301610_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Detroit Street Course · Race",
+    "sourceFile": "2026 IMSA 11 Detroit Street Course Race.csv",
+    "path": "Results/26_2026/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202605301610_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-20_Indianapolis Motor Speedway RC-202609201510_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Indianapolis Motor Speedway RC · Race",
+    "sourceFile": "2026 IMSA 20 Indianapolis Motor Speedway RC Race.csv",
+    "path": "Results/26_2026/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202609201510_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-07_Long Beach Street Circuit-202604181305_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2026 IMSA 07 Long Beach Street Circuit Race.csv",
+    "path": "Results/26_2026/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202604181305_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-16_Road America-202608021040_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Road America · Race",
+    "sourceFile": "2026 IMSA 16 Road America Race.csv",
+    "path": "Results/26_2026/16_Road America/01_IMSA WeatherTech SportsCar Championship/202608021040_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-21_Road Atlanta-202610031210_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2026 IMSA 21 Road Atlanta Race.csv",
+    "path": "Results/26_2026/21_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202610031210_Race/10_Hour 10/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-06_Sebring International Raceway-202603211010_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Sebring International Raceway · Race",
+    "sourceFile": "2026 IMSA 06 Sebring International Raceway Race.csv",
+    "path": "Results/26_2026/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202603211010_Race/12_Hour 12/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-18_VIRginia International Raceway-202608231210_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2026 IMSA 18 VIRginia International Raceway Race.csv",
+    "path": "Results/26_2026/18_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202608231210_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-14_Watkins Glen International-202606281210_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2026 IMSA 14 Watkins Glen International Race.csv",
+    "path": "Results/26_2026/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202606281210_Race/06_Hour 6/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "IMSA-26_2026-09_Weathertech Raceway Laguna Seca-202605031310_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Weathertech Raceway Laguna Seca · Race",
+    "sourceFile": "2026 IMSA 09 Weathertech Raceway Laguna Seca Race.csv",
+    "path": "Results/26_2026/09_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202605031310_Race/23_Time Cards_Race.CSV"
+  },
+  {
+    "id": "WEC-15_2026-07_BARCELONA-CATALUNYA-202610181200_Race",
+    "sourceFile": "2026 WEC 07 BARCELONA CATALUNYA Race.csv",
+    "year": 2026,
+    "championship": "WEC",
+    "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610181200_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "BARCELONA CATALUNYA · Race",
+    "season": "2026"
+  },
+  {
+    "id": "WEC-15_2026-05_CIRCUIT OF THE AMERICAS-202609061300_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "CIRCUIT OF THE AMERICAS · Race",
+    "sourceFile": "2026 WEC 05 CIRCUIT OF THE AMERICAS Race.csv",
+    "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609061300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV"
+  },
+  {
+    "id": "WEC-15_2026-06_FUJI SPEEDWAY-202609271100_Race",
+    "sourceFile": "2026 WEC 06 FUJI SPEEDWAY Race.csv",
+    "year": 2026,
+    "championship": "WEC",
+    "path": "Results/15_2026/06_FUJI SPEEDWAY/679_FIA WEC/202609271100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "FUJI SPEEDWAY · Race",
+    "season": "2026"
+  },
+  {
+    "id": "WEC-15_2026-01_IMOLA-202604191300_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "IMOLA · Race",
+    "sourceFile": "2026 WEC 01 IMOLA Race.csv",
+    "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604191300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV"
+  },
+  {
+    "id": "WEC-15_2026-03_LE MANS-202606131600_Race",
+    "sourceFile": "2026 WEC 03 LE MANS Race.csv",
+    "year": 2026,
+    "championship": "WEC",
+    "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606131600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "event": "LE MANS · Race",
+    "season": "2026"
+  },
+  {
+    "id": "WEC-15_2026-04_SAO PAULO-202607121130_Race",
+    "sourceFile": "2026 WEC 04 SAO PAULO Race.csv",
+    "year": 2026,
+    "championship": "WEC",
+    "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607121130_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SAO PAULO · Race",
+    "season": "2026"
+  },
+  {
+    "id": "WEC-15_2026-02_SPA FRANCORCHAMPS-202605091400_Race",
+    "sourceFile": "2026 WEC 02 SPA FRANCORCHAMPS Race.csv",
+    "year": 2026,
+    "championship": "WEC",
+    "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605091400_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "event": "SPA FRANCORCHAMPS · Race",
+    "season": "2026"
+  }
+]

@@ -421,7 +421,7 @@ export function applyDriverCategories(laps: Lap[], tsv: string): Lap[] {
     for(const row of rows){
       const season=Number(at(row,"season"));
       const category=normaliseDriverCategory(at(row,"fia_category_full")||at(row,"fia_category"));
-      if(![2025,2026].includes(season)||category==="Unknown")continue;
+      if(season<2022||category==="Unknown")continue;
       for(const name of [at(row,"driver_name"),at(row,"driver_name_normalized")])if(name)
         lookup.set(`${season}|${normalise(name)}`,category);
     }
@@ -433,7 +433,7 @@ export function applyDriverCategories(laps: Lap[], tsv: string): Lap[] {
     const resolved=new Map<string,Category>();
     return laps.map(l=>{
       const year=eventSeason(l);
-      if(year===null||year<2025)return {...l,category:"Unknown"};
+      if(year===null||year<2022)return {...l,category:"Unknown"};
       const cacheKey=`${year}|${normalise(l.driver)}`;
       if(!resolved.has(cacheKey)){
         const name=matchDriverCategoryKey(l.driver,yearKeys.get(year)||[]);

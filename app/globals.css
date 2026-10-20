@@ -871,6 +871,17 @@ aside button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .event-wec small { color:#633b1c !important; }
 .event-elms input { accent-color:#77b7ff; }
 .event-wec input { accent-color:#97500b; }
+.event-alms { background:#225744 !important; color:#fff !important; }
+.event-alms small { color:#dcf5e8 !important; }
+.event-alms input { accent-color:#6dd0a2; }
+.event-imsa { background:#532447 !important; color:#fff !important; }
+.event-imsa small { color:#f6dcef !important; }
+.event-imsa input { accent-color:#e890ca; }
+.event-picker-controls { display:flex; flex-wrap:wrap; align-items:end; gap:8px; margin:12px 0; }
+.event-picker-controls label { display:flex; flex-direction:column; gap:4px; min-width:120px; }
+.event-picker-controls input, .event-picker-controls select { min-height:36px; }
+.event-picker-options, .selected-races { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0; }
+.selected-races button { border:1px solid #7990a8; border-radius:4px; padding:5px 9px; background:#f4f7fa; }
 main {
   background-color: #e5e7ea;
   background-image:
@@ -968,3 +979,8 @@ tbody tr:hover {
 .seasonAggregate { margin-top: 32px; padding: 16px; border: 1px solid #bfc8d0; }
 .seasonAggregate table { min-width: 1000px; width: 100%; }
 .seasonAggregate th, .seasonAggregate td { padding: 6px; text-align: center; }
+.load-status { font-weight: 700; letter-spacing: .06em; }
+.load-loaded { color: #26845c; }
+.load-failed { color: #c34d42; }
+.load-loading { color: #bd841d; }
+.load-pending { color: #69798a; }

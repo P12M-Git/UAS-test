@@ -9,4 +9,6 @@ test("event names retain season and distinguish Le Mans regardless of file prefi
   assert.equal(eventLabel(file),"WEC, LM24, 2026");assert.equal(eventTheme(eventLabel(file)),"event-wec");
  }
  assert.equal(eventTheme("ELMS, Barcelona, 2026"),"event-elms");
+ assert.equal(eventTheme("ALMS, Yas Marina Race 2, 2026"),"event-alms");
+ assert.equal(eventTheme("IMSA, Daytona Race, 2026"),"event-imsa");
 });

@@ -1,9 +1,9 @@
 "use client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CONFIG, type TopMode } from "../src/config";
 import {
   applyDriverCategories,
-  parseFiles,
+  parseTimingCsv,
 } from "../src/parser/uraice_adapter";
 import type { Lap, ParseDiagnostics } from "../src/models/race";
 import {
@@ -19,11 +19,12 @@ import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
 import { lapImprovements } from "../src/analysis/lap-improvements";
-import { eventTheme } from "../src/models/event-identity";
+import { eventChampionship, eventTheme } from "../src/models/event-identity";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
-import { loadDefaultRaces, mergeRaceDatasets } from "../src/default-races";
+import type { AlkamelRace } from "../src/alkamel";
+type RaceLoad = AlkamelRace & { status: "pending" | "loading" | "loaded" | "failed"; laps?: number; error?: string };
 type View =
   | "Overview"
   | "Results"
@@ -125,7 +126,7 @@ export default function Home() {
     [sort, setSort] = useState<keyof DriverMetric>("avgBest"),
     [sortAsc, setSortAsc] = useState(true),
     [summaryEvents, setSummaryEvents] = useState<string[]>([]),
-    input = useRef<HTMLInputElement>(null);
+    [raceLoads, setRaceLoads] = useState<RaceLoad[]>([]);
   const events = [...new Set(laps.map((l) => l.event))];
   const selectedEvent = eventFilter || events[0] || "";
   const sessionLaps = useMemo(() => laps.filter((l) => l.event === selectedEvent), [laps, selectedEvent]);
@@ -187,37 +188,45 @@ export default function Home() {
     teams = ["All", ...new Set(sessionLaps.map((l) => l.carNumber))];
   useEffect(() => {
     let cancelled = false;
-    loadDefaultRaces().then(d => {
+    const update = (id: string, patch: Partial<RaceLoad>) => {
+      if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
+    };
+    (async () => {
+      const manifest = await fetch("/api/alkamel/races").then(async response => {
+        if (!response.ok) throw new Error(`Alkamel index: HTTP ${response.status}`);
+        return response.json() as Promise<{ races: AlkamelRace[] }>;
+      });
       if (cancelled) return;
-      setLaps(d.laps);
-      setDiagnostics(d.diagnostics);
-      setSummaryEvents([...new Set(d.laps.map(l => l.event))]);
-    }).catch(e => { if (!cancelled) setError(String(e)); })
-      .finally(() => { if (!cancelled) setBusy(false); });
+      setRaceLoads(manifest.races.map(r => ({ ...r, status: "pending" })));
+      setBusy(false);
+      const ratings = await fetch("/driver_categories_all_series_2022_2026.csv").then(r => r.text());
+      let next = 0;
+      await Promise.all(Array.from({ length: 3 }, async () => {
+        while (next < manifest.races.length && !cancelled) {
+          const race = manifest.races[next++];
+          update(race.id, { status: "loading" });
+          try {
+            const response = await fetch(`/api/alkamel/csv?championship=${race.championship}&path=${encodeURIComponent(race.path)}`);
+            if (!response.ok) {
+              const body = await response.json().catch(() => ({}));
+              throw new Error(body.error || `HTTP ${response.status}`);
+            }
+            const parsed = parseTimingCsv(await response.text(), race.sourceFile);
+            if (!parsed.laps.length) throw new Error("No laps in CSV");
+            if (cancelled) return;
+            const categorised = applyDriverCategories(parsed.laps, ratings);
+            setLaps(previous => previous.concat(categorised));
+            setDiagnostics(previous => [...previous, ...parsed.diagnostics]);
+            setSummaryEvents(previous => previous.length ? previous : [categorised[0].event]);
+            update(race.id, { status: "loaded", laps: parsed.laps.length });
+          } catch (cause) {
+            update(race.id, { status: "failed", error: cause instanceof Error ? cause.message : String(cause) });
+          }
+        }
+      }));
+    })().catch(cause => { if (!cancelled) { setError(String(cause)); setBusy(false); } });
     return () => { cancelled = true; };
   }, []);
-  async function load(files: File[]) {
-    if (busy || !files.length) return;
-    setBusy(true);
-    setError("");
-    try {
-      const d = await parseFiles(files);
-      const categoryText = await fetch("/driver_categories_by_season.csv").then((r) =>
-        r.text(),
-      );
-      const categorised = applyDriverCategories(d.laps, categoryText);
-      const merged = mergeRaceDatasets({ laps, diagnostics }, { laps: categorised, diagnostics: d.diagnostics });
-      setLaps(merged.laps);
-      setDiagnostics(merged.diagnostics);
-      setEventFilter(categorised[0]?.event || "");
-      setSummaryEvents([...new Set(merged.laps.map((l) => l.event))]);
-      setDriver(categorised[0]?.driver || "");
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Unable to parse files");
-    } finally {
-      setBusy(false);
-    }
-  }
   return (
     <main>
       <aside>
@@ -257,17 +266,9 @@ export default function Home() {
           </div>
           <div className="actions">
             <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
-            <button className="ghost" disabled={busy} onClick={() => input.current?.click()}>
-              ＋ ADD SESSIONS
+            <button className="ghost" onClick={() => setView("Data / Session Info")}>
+              ALKAMEL {raceLoads.filter(r => r.status === "loaded").length}/{raceLoads.length}
             </button>
-            <input
-              ref={input}
-              hidden
-              multiple
-              type="file"
-              accept=".csv,text/csv"
-              onChange={(e) => load([...(e.target.files || [])])}
-            />
             {view !== "Driver Category Database" && view !== "Results" && <button
               className="primary"
               onClick={() =>
@@ -290,8 +291,10 @@ export default function Home() {
           <button role="tab" aria-selected={view==="Data / Session Info"} onClick={()=>setView("Data / Session Info")}>Data / Session Info</button>
           <button role="tab" aria-selected={view==="Driver Category Database"} onClick={()=>setView("Driver Category Database")}>Driver Category Database</button>
         </div>}
-        {view === "Driver Category Database" ? <DriverCategoryDatabase/> : !laps.length ? (
-          <Empty busy={busy} open={() => input.current?.click()} />
+        {view === "Driver Category Database" ? <DriverCategoryDatabase/> : view === "Data / Session Info" && !laps.length ? (
+          <DataInfo rows={[]} laps={[]} raceLoads={raceLoads} />
+        ) : !laps.length ? (
+          <Empty busy={busy || raceLoads.some(r => r.status === "loading" || r.status === "pending")} />
         ) : (
           <>
             {view !== "Data / Session Info" &&
@@ -426,6 +429,7 @@ export default function Home() {
                   sessionLaps.some((l) => l.sourceFile === r.sourceFile),
                 )}
                 laps={sessionLaps}
+                raceLoads={raceLoads}
               />
               </>
             )}
@@ -435,19 +439,16 @@ export default function Home() {
     </main>
   );
 }
-function Empty({ busy, open }: { busy: boolean; open: () => void }) {
+function Empty({ busy }: { busy: boolean }) {
   return (
     <div className="empty">
       <div className="uploadIcon">↥</div>
       <p className="eyebrow">CANONICAL TIMING INGEST</p>
-      <h2>{busy ? "Reconstructing sessions…" : "Load race timing files"}</h2>
+      <h2>{busy ? "Loading races from Alkamel…" : "No races available"}</h2>
       <p>
-        Drop in one or more Al Kamel semicolon CSV files. Analysis remains in
-        your browser; no race data is uploaded.
+        Race timing is discovered automatically from Alkamel, starting with the 2022 season.
+        Open the database to see the status of every race.
       </p>
-      <button className="primary big" onClick={open} disabled={busy}>
-        SELECT CSV FILES
-      </button>
       <div className="pipeline">
         <span>PARSE</span>
         <i>→</i>
@@ -1054,25 +1055,46 @@ function EventPicker({
   selectedEvents: string[];
   setSelectedEvents: (x: string[]) => void;
 }) {
+  const [series, setSeries] = useState("All");
+  const [year, setYear] = useState(() => String(new Date().getFullYear()));
+  const [query, setQuery] = useState("");
+  const years = [...new Set(events.map(event => event.match(/20\d{2}/)?.[0]).filter(Boolean))].sort().reverse();
+  const visible = events.filter(event =>
+    (series === "All" || eventChampionship(event) === series) &&
+    (year === "All" || event.includes(year)) &&
+    event.toLowerCase().includes(query.toLowerCase()),
+  );
+  const toggle = (event: string) => setSelectedEvents(selectedEvents.includes(event)
+    ? selectedEvents.filter(value => value !== event)
+    : [...selectedEvents, event]);
   return (
     <div className="eventPicker">
-      <b>EVENTS INCLUDED</b>
-      {events.map((event) => (
+      <b>RACES TO COMPARE · {selectedEvents.length} SELECTED</b>
+      <div className="event-picker-controls">
+        <label>SERIES <select aria-label="Filter races by series" value={series} onChange={e => setSeries(e.target.value)}>
+          <option>All</option>{["ELMS", "WEC", "ALMS", "IMSA"].map(value => <option key={value}>{value}</option>)}
+        </select></label>
+        <label>YEAR <select aria-label="Filter races by year" value={year} onChange={e => setYear(e.target.value)}>
+          <option>All</option>{years.map(value => <option key={value}>{value}</option>)}
+        </select></label>
+        <label>SEARCH <input aria-label="Search races" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Circuit or race" /></label>
+        <button type="button" onClick={() => setSelectedEvents([...new Set([...selectedEvents, ...visible])])} disabled={!visible.length}>Add visible</button>
+        <button type="button" onClick={() => setSelectedEvents(selectedEvents.filter(event => !visible.includes(event)))} disabled={!visible.some(event => selectedEvents.includes(event))}>Remove visible</button>
+        <button type="button" onClick={() => setSelectedEvents([])} disabled={!selectedEvents.length}>Clear all</button>
+      </div>
+      <div className="selected-races" aria-label="Selected races">
+        {selectedEvents.map(event => <button type="button" key={event} onClick={() => toggle(event)} title="Remove race from comparison">{event} ×</button>)}
+      </div>
+      <div className="event-picker-options">{visible.map((event) => (
         <label key={event} className={`event-badge ${eventTheme(event)}`}>
           <input
             type="checkbox"
             checked={selectedEvents.includes(event)}
-            onChange={() =>
-              setSelectedEvents(
-                selectedEvents.includes(event)
-                  ? selectedEvents.filter((x) => x !== event)
-                  : [...selectedEvents, event],
-              )
-            }
+            onChange={() => toggle(event)}
           />
           {event}
         </label>
-      ))}
+      ))}{!visible.length && <p>No races match these filters.</p>}</div>
     </div>
   );
 }
@@ -2663,7 +2685,7 @@ function Categories({ rows }: { rows: ReturnType<typeof categoryMetrics> }) {
     </>
   );
 }
-function DataInfo({ rows, laps }: { rows: ParseDiagnostics[]; laps: Lap[] }) {
+function DataInfo({ rows, laps, raceLoads }: { rows: ParseDiagnostics[]; laps: Lap[]; raceLoads: RaceLoad[] }) {
   const passes = laps.flatMap((l) =>
     l.overtakes.map((car) => ({
       lap: l.lapNumber,
@@ -2679,6 +2701,20 @@ function DataInfo({ rows, laps }: { rows: ParseDiagnostics[]; laps: Lap[] }) {
   );
   return (
     <>
+      <SectionTitle n="05" title="Alkamel load status" sub="Race analysis CSVs discovered from the official results index, 2022 onward" />
+      <p>{raceLoads.filter(r => r.status === "loaded").length} / {raceLoads.length} races loaded · {raceLoads.filter(r => r.status === "failed").length} failed</p>
+      <p>{(["ELMS", "WEC", "ALMS", "IMSA"] as const).map(series => `${series}: ${raceLoads.filter(r => r.championship === series && r.status === "loaded").length}/${raceLoads.filter(r => r.championship === series).length}`).join(" · ")}</p>
+      <div className="tableWrap">
+        <table>
+          <thead><tr><th>SERIES</th><th>SEASON</th><th>EVENT</th><th>STATUS</th><th>LAPS</th><th>DETAIL</th></tr></thead>
+          <tbody>{raceLoads.map(r => <tr key={r.id}>
+            <td>{r.championship}</td><td>{r.season}</td><td>{r.event}</td>
+            <td><span className={`load-status load-${r.status}`}>{r.status.toUpperCase()}</span></td>
+            <td>{r.laps ?? "—"}</td>
+            <td>{r.error || <a href={`https://${({ ELMS: "elms.alkamelsystems.com", WEC: "fiawec.alkamelsystems.com", ALMS: "alms.alkamelsystems.com", IMSA: "imsa.results.alkamelcloud.com" } as const)[r.championship]}/${r.path.split("/").map(encodeURIComponent).join("/")}`} target="_blank" rel="noreferrer">Alkamel CSV</a>}</td>
+          </tr>)}</tbody>
+        </table>
+      </div>
       <SectionTitle
         n="06"
         title="Import diagnostics"

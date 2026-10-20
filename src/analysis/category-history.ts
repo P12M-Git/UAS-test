@@ -10,7 +10,7 @@ export function categoryHistory(csv:string){
   const years=new Set<number>();
   for(const row of rows){
     const year=Number(get(row,"season")),name=get(row,"driver_name");
-    if(!name||![2025,2026].includes(year))continue;
+    if(!name||year<2022||year>new Date().getUTCFullYear())continue;
     const key=categoryNameKey(get(row,"driver_name_normalized")||name);
     const driver=drivers.get(key)||{key,name,years:{}};
     driver.years[String(year)]=normaliseDriverCategory(get(row,"fia_category_full")||get(row,"fia_category"));

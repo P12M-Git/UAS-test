@@ -1,5 +1,30 @@
 # ELMS Driver Performance
 
+## Alkamel race loading
+
+On entry, the app reads the official ELMS, FIA WEC, Asian Le Mans Series, and
+IMSA WeatherTech SportsCar Championship
+Alkamel results indexes from 2022 onward and discovers each race's final
+`23_Analysis_Race*.CSV` (or IMSA `23_Time Cards_Race*.CSV`). A verified catalogue of historical links fills gaps
+when Alkamel's session-based index returns an incomplete event tree. A same-origin
+server route retrieves each CSV, and the browser parses the lap data incrementally.
+The **Alkamel** counter and **Database → Data / Session Info** show per-race
+pending, loading, loaded, or failed states and link back to the source CSV.
+
+The `03_Classification_Race*.CSV` files contain final classification but no lap
+rows. The performance analyses therefore use each race's lap timing CSV.
+Existing local CSVs remain as test fixtures; they are not loaded
+by the app on entry.
+
+`public/driver_categories_all_series_2022_2026.csv` contains an annual row for
+each driver found in the catalogued races, including the competition entered,
+category, and source. Run `python scripts/build-driver-categories.py` to rebuild
+it from Alkamel race results and the annual FIA list transcriptions linked in
+the CSV. The 2022 column uses the FIA list published in October 2021 as the
+preseason source. `Unknown` means no reliable category was found for that year;
+categories are never copied between years. The older
+`driver_categories_by_season.csv` is retained as a supplied supplement.
+
 The current application lives at the **repository root** (`app/`, `src/`).
 `Driver_Performance/` is an archived copy; do not select it as Render's root.
 

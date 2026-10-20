@@ -992,5 +992,10 @@ tbody tr:hover {
 .load-failed { color: #c34d42; }
 .load-loading { color: #bd841d; }
 .load-pending { color: #69798a; }
+.workspace-switch { width:100%; margin:0 0 22px; padding:12px 10px; border:1px solid #b7c2ce; background:#f5f7f9; color:#142b50; font-size:11px; font-weight:800; text-align:left; cursor:pointer; }
+.workspace-switch:hover { background:#e7edf4; }
+.new-overview { min-height:55vh; margin-top:28px; padding:36px; border:1px solid var(--line); background:var(--panel); }
+.new-overview h2 { margin:10px 0; font-size:28px; }
+.new-overview > p:last-child { color:var(--muted); font-size:14px; }
 /* Keep labels, tables, forms and charts on one typeface across every view. */
 main, main * { font-family: Calibri, Carlito, Arial, sans-serif !important; }

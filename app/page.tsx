@@ -94,6 +94,7 @@ function download<T extends object>(name: string, rows: T[]) {
   URL.revokeObjectURL(a.href);
 }
 export default function Home() {
+  const [newWorkspace, setNewWorkspace] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   useEffect(() => {
     const controller = new AbortController();
@@ -188,6 +189,7 @@ export default function Home() {
   const classes = ["All", ...new Set(sessionLaps.map((l) => l.className))],
     teams = ["All", ...new Set(sessionLaps.map((l) => l.carNumber))];
   useEffect(() => {
+    if (newWorkspace) return;
     let cancelled = false;
     const update = (id: string, patch: Partial<RaceLoad>) => {
       if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
@@ -265,7 +267,7 @@ export default function Home() {
       }));
     })().catch(cause => { if (!cancelled) { setError(String(cause)); setBusy(false); } });
     return () => { cancelled = true; };
-  }, []);
+  }, [newWorkspace]);
   return (
     <main>
       <aside>
@@ -275,10 +277,13 @@ export default function Home() {
             <small>© Pol RG</small>
           </div>
         </div>
+        <button className="workspace-switch" type="button" onClick={() => setNewWorkspace(current => !current)}>
+          {newWorkspace ? "← VOLVER A LA WEB ACTUAL" : "ABRIR NUEVA WEB →"}
+        </button>
         <nav>
-          {views.map((v, i) => (
+          {(newWorkspace ? (["Overview"] as View[]) : views).map((v, i) => (
             <button
-              className={view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
+              className={newWorkspace || view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
               onClick={() => setView(v)}
               key={v}
             >
@@ -287,7 +292,7 @@ export default function Home() {
             </button>
           ))}
         </nav>
-        <div className="method">
+        {!newWorkspace && <div className="method">
           {username && <div className="signed-in-user"><small>SIGNED IN AS</small><strong>{username}</strong></div>}
           <button className="ghost" onClick={()=>setView("Data / Session Info")}>DATABASE</button>
           <span>METHOD STATUS</span>
@@ -295,20 +300,20 @@ export default function Home() {
             <i /> U.RAICE ADAPTER
           </b>
           <small>Timing-line reconstruction · v1.0</small>
-        </div>
+        </div>}
       </aside>
       <section className="shell">
         <header>
           <div>
-            <p className="eyebrow">DRIVER INSIDERS - U.RAICE</p>
-            <h1>{["Data / Session Info","Driver Category Database"].includes(view)?"DATABASE":view==="Traffic Performance"?"DRIVER PERFORMANCE":view.toUpperCase()}</h1>
+            <p className="eyebrow">{newWorkspace ? "DRIVER INSIDERS · NEW WORKSPACE" : "DRIVER INSIDERS - U.RAICE"}</p>
+            <h1>{newWorkspace ? "OVERVIEW" : ["Data / Session Info","Driver Category Database"].includes(view)?"DATABASE":view==="Traffic Performance"?"DRIVER PERFORMANCE":view.toUpperCase()}</h1>
           </div>
           <div className="actions">
             <form action="/auth/logout" method="post"><button className="ghost" type="submit">SIGN OUT</button></form>
-            <button className="ghost" onClick={() => setView("Data / Session Info")}>
+            {!newWorkspace && <button className="ghost" onClick={() => setView("Data / Session Info")}>
               ALKAMEL {raceLoads.filter(raceAvailable).length}/{raceLoads.length}
-            </button>
-            {view !== "Driver Category Database" && view !== "Results" && <button
+            </button>}
+            {!newWorkspace && view !== "Driver Category Database" && view !== "Results" && <button
               className="primary"
               onClick={() =>
                 view.includes("Category")
@@ -320,6 +325,7 @@ export default function Home() {
             </button>}
           </div>
         </header>
+        {newWorkspace ? <NewOverview /> : <>
         {error && <div className="alert">{error}</div>}
         {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
         {["Driver Performance","Traffic Performance"].includes(view) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
@@ -472,9 +478,17 @@ export default function Home() {
             )}
           </>
         )}
+        </>}
       </section>
     </main>
   );
+}
+function NewOverview() {
+  return <section className="new-overview" aria-label="New workspace overview">
+    <p className="eyebrow">NEW WORKSPACE · 01</p>
+    <h2>Overview</h2>
+    <p>Un espacio limpio para construir la nueva web paso a paso.</p>
+  </section>;
 }
 function Empty({ busy }: { busy: boolean }) {
   return (

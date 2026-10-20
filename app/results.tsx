@@ -8,8 +8,8 @@ import {eventTheme} from "../src/models/event-identity";
 const colours:Record<string,string>={Platinum:"#a0aab7",Gold:"#f4cf63",Silver:"#d1d8df",Bronze:"#dca46d",Unknown:"#e2e5e9"};
 export default function Results({laps}:{laps:Lap[]}){
   const rounds=useMemo(()=>raceResults(laps),[laps]);
-  const [hidden,setHidden]=useState<string[]>([]),[focus,setFocus]=useState(""),[className,setClass]=useState("All"),[positionMode,setPositionMode]=useState("class"),[search,setSearch]=useState("");
-  const selected=rounds.filter(r=>!hidden.includes(r.key));
+  const [focus,setFocus]=useState(""),[className,setClass]=useState("All"),[positionMode,setPositionMode]=useState("class"),[search,setSearch]=useState("");
+  const selected=rounds;
   const allDrivers=[...new Map(rounds.flatMap(r=>r.drivers).map(d=>[d.identity,d])).values()].sort((a,b)=>a.driver.localeCompare(b.driver));
   const shown=allDrivers.filter(d=>d.identity===focus || selected.some(r=>r.drivers.some(x=>x.identity===d.identity&&(className==="All"||x.className===className)))&&d.driver.toLowerCase().includes(search.toLowerCase()));
   return <>
@@ -19,7 +19,6 @@ export default function Results({laps}:{laps:Lap[]}){
       <label>FOCUS DRIVER<select value={focus} onChange={e=>setFocus(e.target.value)}><option value="">None</option>{allDrivers.map(d=><option key={d.identity} value={d.identity}>{d.driver}</option>)}</select></label>
       <label>SEARCH<input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Driver name"/></label>
     </div>
-    <div className="section-tabs">{rounds.map(r=><label key={r.key} className={`event-badge ${eventTheme(r.event)}`}><input type="checkbox" checked={!hidden.includes(r.key)} onChange={e=>setHidden(old=>e.target.checked?old.filter(k=>k!==r.key):[...old,r.key])}/>{r.event} · {r.session}</label>)}</div>
     <p>Timing-derived results: completed laps, then elapsed time. All drivers of a car share its position. Penalties, disqualifications and official retirement status are not available in these CSVs. Pace and clean-lap filters do not apply.</p>
     {!selected.length?<p>Select at least one event.</p>:<div className="results-scroll"><table className="results-table"><thead><tr><th>DRIVER</th>{selected.map(r=><th key={r.key} className={eventTheme(r.event)}>{r.event}<br/><small>{r.session}</small></th>)}</tr></thead>
     <tbody>{shown.map(d=><tr key={d.identity} className={focus===d.identity?"results-focus":""}><td style={{background:focus===d.identity?"#dec4f2":colours[d.category]}}><button className="ghost" onClick={()=>setFocus(focus===d.identity?"":d.identity)}>{d.driver}</button></td>{selected.map(r=>{

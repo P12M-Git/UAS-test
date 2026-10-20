@@ -129,6 +129,7 @@ export default function Home() {
     [sort, setSort] = useState<keyof DriverMetric>("avgBest"),
     [sortAsc, setSortAsc] = useState(true),
     [summaryEvents, setSummaryEvents] = useState<string[]>([]),
+    [resultEvents, setResultEvents] = useState<string[]>([]),
     [cacheWarning, setCacheWarning] = useState(""),
     [raceLoads, setRaceLoads] = useState<RaceLoad[]>([]);
   const events = [...new Set(laps.map((l) => l.event))];
@@ -216,6 +217,7 @@ export default function Home() {
       setDiagnostics(cachedDatasets.flatMap(dataset => dataset.diagnostics));
       const firstCachedEvent = cachedDatasets[0]?.laps[0]?.event;
       if (firstCachedEvent) setSummaryEvents([firstCachedEvent]);
+      if (firstCachedEvent) setResultEvents([firstCachedEvent]);
       setRaceLoads(manifest.races.map(r => ({ ...r, status: cached.has(r.id) ? "cached" : "pending", laps: cached.get(r.id)?.laps.length })));
       setBusy(false);
       const missing = manifest.races.filter(r => !cached.has(r.id));
@@ -243,6 +245,7 @@ export default function Home() {
             setLaps(previous => previous.concat(categorised));
             setDiagnostics(previous => [...previous, ...parsed.diagnostics]);
             setSummaryEvents(previous => previous.length ? previous : [categorised[0].event]);
+            setResultEvents(previous => previous.length ? previous : [categorised[0].event]);
             update(race.id, { status: "loaded", laps: parsed.laps.length });
           } catch (cause) {
             update(race.id, { status: "failed", error: cause instanceof Error ? cause.message : String(cause) });
@@ -391,13 +394,7 @@ export default function Home() {
             )}{" "}
             {view === "Race Analysis" && (
               <>
-                <label>
-                  EVENT / RACE{" "}
-                  <div className="race-event-row" role="group" aria-label="Select race">
-                    {events.map(x=><button key={x} type="button" aria-pressed={selectedEvent===x}
-                      className={selectedEvent===x?eventTheme(x):""} onClick={()=>{setEventFilter(x);setDriver("");}}>{x}</button>)}
-                  </div>
-                </label>
+                <RaceSelector events={events} event={selectedEvent} setEvent={value => { setEventFilter(value); setDriver(""); }} />
                 <RaceAnalysis
                   laps={sessionLaps}
                   driver={activeDriver}
@@ -445,7 +442,10 @@ export default function Home() {
               />
             )}{" "}
             {view === "Category Benchmarks" && <Categories rows={cats} />}{" "}
-            {view === "Results" && <Results laps={laps}/>}
+            {view === "Results" && <>
+              <EventPicker events={events} selectedEvents={resultEvents} setSelectedEvents={setResultEvents} />
+              <Results laps={laps.filter(lap => resultEvents.includes(lap.event))}/>
+            </>}
             {view === "Data / Session Info" && (
               <>
               <label>EVENT / RACE<select value={selectedEvent} onChange={e=>setEventFilter(e.target.value)}>{events.map(e=><option key={e}>{e}</option>)}</select></label>
@@ -490,14 +490,7 @@ function Empty({ busy }: { busy: boolean }) {
 function Filters(p: any) {
   return (
     <div className="filters">
-      <label>
-        EVENT / RACE
-        <select value={p.event} onChange={(e) => p.setEvent(e.target.value)}>
-          {p.events.map((x: string) => (
-            <option key={x}>{x}</option>
-          ))}
-        </select>
-      </label>
+      <RaceSelector events={p.events} event={p.event} setEvent={p.setEvent} />
       <label>
         CLASS
         <select value={p.cf} onChange={(e) => p.setCf(e.target.value)}>
@@ -574,6 +567,21 @@ function Filters(p: any) {
       </fieldset>
     </div>
   );
+}
+function RaceSelector({ events, event, setEvent }: { events: string[]; event: string; setEvent: (value: string) => void }) {
+  const series = eventChampionship(event);
+  const year = event.match(/20\d{2}/)?.[0] || "";
+  const years = [...new Set(events.filter(value => eventChampionship(value) === series).map(value => value.match(/20\d{2}/)?.[0]).filter((value): value is string => !!value))].sort().reverse();
+  const races = events.filter(value => eventChampionship(value) === series && value.includes(year));
+  const choose = (nextSeries: string, nextYear?: string) => {
+    const matches = events.filter(value => eventChampionship(value) === nextSeries && (!nextYear || value.includes(nextYear)));
+    if (matches[0]) setEvent(matches[0]);
+  };
+  return <div className="race-selector" role="group" aria-label="Select race">
+    <label>COMPETITION<select aria-label="Competition" value={series} onChange={e => choose(e.target.value)}>{["ELMS", "WEC", "ALMS", "IMSA"].map(value => <option key={value}>{value}</option>)}</select></label>
+    <label>YEAR<select aria-label="Year" value={year} onChange={e => choose(series, e.target.value)}>{years.map(value => <option key={value}>{value}</option>)}</select></label>
+    <label>RACE<select aria-label="Race" value={event} onChange={e => setEvent(e.target.value)}>{races.map(value => <option key={value} value={value}>{value.replace(/^(ELMS|WEC|ALMS|IMSA)[, ]+/i, "").replace(/[, ]+20\d{2}$/, "")}</option>)}</select></label>
+  </div>;
 }
 function Overview({
   laps,
@@ -1095,7 +1103,8 @@ function EventPicker({
     : [...selectedEvents, event]);
   return (
     <div className="eventPicker">
-      <b>RACES TO COMPARE · {selectedEvents.length} SELECTED</b>
+      <details>
+      <summary>RACES TO COMPARE · {selectedEvents.length} SELECTED · Choose competition, year and races</summary>
       <div className="event-picker-controls">
         <label>SERIES <select aria-label="Filter races by series" value={series} onChange={e => setSeries(e.target.value)}>
           <option>All</option>{["ELMS", "WEC", "ALMS", "IMSA"].map(value => <option key={value}>{value}</option>)}
@@ -1121,6 +1130,7 @@ function EventPicker({
           {event}
         </label>
       ))}{!visible.length && <p>No races match these filters.</p>}</div>
+      </details>
     </div>
   );
 }

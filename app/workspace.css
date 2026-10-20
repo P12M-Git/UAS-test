@@ -43,21 +43,29 @@ main.new-workspace.workspace-dark {
 .new-workspace td { color:var(--text); border-color:var(--line); }
 .new-workspace tbody tr:hover { background:var(--panel-strong); }
 .new-workspace .categoryShade, .new-workspace .categoryShade :is(b,small) { color:#17202a; }
-.new-workspace .ranking .driver { display:flex; flex-direction:column; gap:3px; line-height:1.2; }
+.new-workspace .ranking .driver { display:flex; flex-direction:column; gap:1px; line-height:1.1; }
 .new-workspace .ranking .driver > span { display:none; }
-.new-workspace .ranking .driver > b { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:6px; }
+.new-workspace .ranking .driver > b { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:4px; }
 .new-workspace .ranking .categoryShade { min-width:290px; white-space:normal; }
-.new-workspace .ranking .carNumber { height:auto; min-height:20px; min-width:24px; padding:1px 4px; line-height:1.2; flex:none; }
+.new-workspace .ranking .carNumber { height:auto; min-height:18px; min-width:22px; padding:0 3px; line-height:1.15; flex:none; }
 .new-workspace .ranking th { letter-spacing:.04em; }
 .new-workspace .ranking :is(.chartHead,.paceDistributionCell) { min-width:420px; width:420px; }
-.new-workspace .ranking td { padding:6px 10px; font-size:14px !important; }
-.new-workspace .ranking td:last-child { padding:6px 12px; }
+.new-workspace .ranking td { padding:2px 8px; font-size:14px !important; }
+.new-workspace .ranking td:last-child { padding:2px 10px; }
 .new-workspace .ranking :is(.driver small,.categoryBadge,.carNumber) { font-size:12px !important; }
-.new-workspace .ranking .dist { height:18px; }
-.new-workspace .distribution-scale { margin-top:2px; line-height:1.1; }
-.new-workspace .distribution-scale small { position:static; color:var(--muted); font-size:11px !important; }
-.new-workspace .trackTimeline { margin-top:6px; margin-bottom:12px; height:9px; }
-.new-workspace .trackTimeline small { top:9px; color:var(--muted); font-size:10px !important; }
+.new-workspace .ranking .dist { height:12px; }
+.new-workspace .ranking .dist b { height:9px; bottom:2px; }
+.new-workspace .ranking .dist i { bottom:4px; }
+.new-workspace .distribution-scale { margin-top:0; line-height:1.1; }
+.new-workspace .distribution-scale small { position:static; color:var(--muted); font-size:10px !important; }
+.new-workspace .trackTimeline { margin-top:2px; margin-bottom:10px; height:5px; }
+.new-workspace .trackTimeline > i { bottom:1px; height:3px; }
+.new-workspace .trackTimeline small { top:5px; color:var(--muted); font-size:9px !important; line-height:1; }
+.new-workspace .performanceFocus :is(.distribution-scale small,.trackTimeline small) { color:#554466; }
+.new-workspace .performanceFocus .fast { color:#a51f2b !important; }
+.new-workspace .performanceFocus .positive { color:#146344 !important; }
+.new-workspace :is(.section-tabs button[aria-selected="true"],.workspace-race-chip button[aria-pressed="true"]) { background:#e8daf7; color:#2d2144; border-color:#a58bc5; box-shadow:inset 0 -2px #a58bc5; }
+.new-workspace aside nav button.active, .new-workspace aside nav button.active span { background:#e8daf7; color:#2d2144; border-color:#a58bc5; }
 .new-workspace .info { width:18px; height:18px; font-size:12px !important; }
 .new-workspace .trafficChart { background:var(--panel); }
 .new-workspace .scatter { background:var(--panel); }

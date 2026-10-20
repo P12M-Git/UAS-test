@@ -149,12 +149,12 @@
 }
 .performanceFocus > td,
 .performanceFocus .categoryShade {
-  background: #b148d1 !important;
-  color: white !important;
+  background: #e8daf7 !important;
+  color: #2d2144 !important;
 }
 .performanceFocus .driver b,
 .performanceFocus .driver small {
-  color: white !important;
+  color: #2d2144 !important;
 }
 .categoryShade {
   cursor: pointer;

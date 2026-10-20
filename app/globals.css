@@ -189,7 +189,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Carlito, Arial, sans-serif;
   font-size: 13px;
 }
 button,
@@ -418,7 +418,7 @@ h3 {
 .race-selector { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:12px 0; max-width:850px; }
 .filters .race-selector { grid-column:1/-1; margin:0; }
 .race-selector label { display:block; font-size:10px; font-weight:800; letter-spacing:.08em; color:var(--muted); }
-.race-selector select { display:block; width:100%; margin-top:7px; background:#111821; color:#e8edf2; border:1px solid var(--line); padding:9px 10px; }
+.race-selector select { display:block; width:100%; margin-top:7px; background:var(--panel); color:var(--text); border:1px solid var(--line); padding:9px 10px; }
 .eventPicker details { border:1px solid var(--line); padding:12px 16px; margin:12px 0; }
 .eventPicker summary { cursor:pointer; font-weight:800; }
 @media (max-width:650px) { .race-selector { grid-template-columns:1fr; } }
@@ -992,3 +992,5 @@ tbody tr:hover {
 .load-failed { color: #c34d42; }
 .load-loading { color: #bd841d; }
 .load-pending { color: #69798a; }
+/* Keep labels, tables, forms and charts on one typeface across every view. */
+main, main * { font-family: Calibri, Carlito, Arial, sans-serif !important; }

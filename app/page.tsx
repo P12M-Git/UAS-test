@@ -1,10 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { CONFIG, type TopMode } from "../src/config";
-import {
-  applyDriverCategories,
-  parseTimingCsv,
-} from "../src/parser/uraice_adapter";
 import type { Lap, ParseDiagnostics } from "../src/models/race";
 import {
   driverMetrics,
@@ -19,11 +15,11 @@ import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
 import { lapImprovements } from "../src/analysis/lap-improvements";
-import { eventChampionship, eventTheme } from "../src/models/event-identity";
+import { compareEventsByRound, eventChampionship, eventTheme } from "../src/models/event-identity";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
 import { trafficSample } from "../src/analysis/traffic";
-import type { AlkamelRace } from "../src/alkamel";
+import { alkamelUrl, type AlkamelRace } from "../src/alkamel";
 import { raceCacheVersion, readRaceCache, saveRaceCache } from "../src/race-cache";
 import type { RaceDataset } from "../src/models/race";
 type RaceLoad = AlkamelRace & { status: "pending" | "loading" | "loaded" | "cached" | "failed"; laps?: number; error?: string };
@@ -132,7 +128,7 @@ export default function Home() {
     [resultEvents, setResultEvents] = useState<string[]>([]),
     [cacheWarning, setCacheWarning] = useState(""),
     [raceLoads, setRaceLoads] = useState<RaceLoad[]>([]);
-  const events = [...new Set(laps.map((l) => l.event))];
+  const events = [...new Set(laps.map((l) => l.event))].sort(compareEventsByRound);
   const selectedEvent = eventFilter || events[0] || "";
   const sessionLaps = useMemo(() => laps.filter((l) => l.event === selectedEvent), [laps, selectedEvent]);
   const allMetrics = useMemo(() => driverMetrics(sessionLaps, mode), [sessionLaps, mode]);
@@ -221,34 +217,49 @@ export default function Home() {
       setRaceLoads(manifest.races.map(r => ({ ...r, status: cached.has(r.id) ? "cached" : "pending", laps: cached.get(r.id)?.laps.length })));
       setBusy(false);
       const missing = manifest.races.filter(r => !cached.has(r.id));
+      const processedUrl = (race: AlkamelRace) => `/api/alkamel/processed?championship=${race.championship}&path=${encodeURIComponent(race.path)}&sourceFile=${encodeURIComponent(race.sourceFile)}`;
       let next = 0;
       await Promise.all(Array.from({ length: 3 }, async () => {
         while (next < missing.length && !cancelled) {
           const race = missing[next++];
           update(race.id, { status: "loading" });
           try {
-            const response = await fetch(`/api/alkamel/csv?championship=${race.championship}&path=${encodeURIComponent(race.path)}`);
+            const response = await fetch(processedUrl(race));
             if (!response.ok) {
               const body = await response.json().catch(() => ({}));
               throw new Error(body.error || `HTTP ${response.status}`);
             }
-            const parsed = parseTimingCsv(await response.text(), race.sourceFile);
-            if (!parsed.laps.length) throw new Error("No laps in CSV");
+            const result = await response.json() as { dataset: RaceDataset; cached: boolean };
+            const dataset = result.dataset;
+            if (!dataset.laps.length) throw new Error("No laps in processed race");
             if (cancelled) return;
-            const categorised = applyDriverCategories(parsed.laps, ratings);
             try {
-              await saveRaceCache(race, version, { laps: categorised, diagnostics: parsed.diagnostics });
+              await saveRaceCache(race, version, dataset);
             } catch {
               if (!cancelled) setCacheWarning("Some races could not be saved locally and may be downloaded again on your next visit.");
             }
             if (cancelled) return;
-            setLaps(previous => previous.concat(categorised));
-            setDiagnostics(previous => [...previous, ...parsed.diagnostics]);
-            setSummaryEvents(previous => previous.length ? previous : [categorised[0].event]);
-            setResultEvents(previous => previous.length ? previous : [categorised[0].event]);
-            update(race.id, { status: "loaded", laps: parsed.laps.length });
+            setLaps(previous => previous.concat(dataset.laps));
+            setDiagnostics(previous => [...previous, ...dataset.diagnostics]);
+            setSummaryEvents(previous => previous.length ? previous : [dataset.laps[0].event]);
+            setResultEvents(previous => previous.length ? previous : [dataset.laps[0].event]);
+            update(race.id, { status: result.cached ? "cached" : "loaded", laps: dataset.laps.length });
           } catch (cause) {
             update(race.id, { status: "failed", error: cause instanceof Error ? cause.message : String(cause) });
+          }
+        }
+      }));
+      // Existing browser caches also populate the persistent server store after deployment.
+      let warmNext = 0;
+      await Promise.all(Array.from({ length: 3 }, async () => {
+        const saved = manifest.races.filter(race => cached.has(race.id));
+        while (warmNext < saved.length && !cancelled) {
+          const race = saved[warmNext++];
+          try {
+            const response = await fetch(processedUrl(race), { method: "HEAD", cache: "no-store" });
+            if (!response.ok && !cancelled) setCacheWarning("Shared race storage is unavailable; saved races are only available in this browser.");
+          } catch {
+            if (!cancelled) setCacheWarning("Shared race storage is unavailable; saved races are only available in this browser.");
           }
         }
       }));
@@ -2738,9 +2749,9 @@ function DataInfo({ rows, laps, raceLoads, cacheWarning }: { rows: ParseDiagnost
   return (
     <>
       <SectionTitle n="05" title="Alkamel load status" sub="Race analysis CSVs discovered from the official results index, 2022 onward" />
-      <p>Saved races load from this browser. New races are downloaded automatically.</p>
+      <p>Processed races are shared through server storage. This browser keeps an additional local copy.</p>
       {cacheWarning && <p className="alert">{cacheWarning}</p>}
-      <p>{raceLoads.filter(raceAvailable).length} / {raceLoads.length} races available · {raceLoads.filter(r => r.status === "cached").length} saved locally · {raceLoads.filter(r => r.status === "failed").length} failed</p>
+      <p>{raceLoads.filter(raceAvailable).length} / {raceLoads.length} races available · {raceLoads.filter(r => r.status === "cached").length} cached · {raceLoads.filter(r => r.status === "failed").length} failed</p>
       <p>{(["ELMS", "WEC", "ALMS", "IMSA"] as const).map(series => `${series}: ${raceLoads.filter(r => r.championship === series && raceAvailable(r)).length}/${raceLoads.filter(r => r.championship === series).length}`).join(" · ")}</p>
       <div className="tableWrap">
         <table>
@@ -2749,7 +2760,7 @@ function DataInfo({ rows, laps, raceLoads, cacheWarning }: { rows: ParseDiagnost
             <td>{r.championship}</td><td>{r.season}</td><td>{r.event}</td>
             <td><span className={`load-status load-${r.status}`}>{r.status === "cached" ? "SAVED" : r.status.toUpperCase()}</span></td>
             <td>{r.laps ?? "—"}</td>
-            <td>{r.error || <a href={`https://${({ ELMS: "elms.alkamelsystems.com", WEC: "fiawec.alkamelsystems.com", ALMS: "alms.alkamelsystems.com", IMSA: "imsa.results.alkamelcloud.com" } as const)[r.championship]}/${r.path.split("/").map(encodeURIComponent).join("/")}`} target="_blank" rel="noreferrer">Alkamel CSV</a>}</td>
+            <td>{r.error || <a href={alkamelUrl(r.championship, r.path)} target="_blank" rel="noreferrer">Alkamel CSV</a>}</td>
           </tr>)}</tbody>
         </table>
       </div>

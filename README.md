@@ -7,13 +7,18 @@ IMSA WeatherTech SportsCar Championship
 Alkamel results indexes from 2022 onward and discovers each race's final
 `23_Analysis_Race*.CSV` (or IMSA `23_Time Cards_Race*.CSV`). A verified catalogue of historical links fills gaps
 when Alkamel's session-based index returns an incomplete event tree. A same-origin
-server route retrieves each CSV, and the browser parses the lap data incrementally.
-Processed races are saved in the browser's IndexedDB. On later visits, the app
-reuses saved races and downloads only newly discovered races or races whose final
-CSV path changed. A change to the driver categories CSV or parser cache version
-refreshes the affected cache. This storage is local to each browser and device.
+server route retrieves each CSV, processes the lap data and stores the result.
+Processed races are stored on the server's persistent disk and reused across
+users, browsers and computers. IndexedDB is an additional browser cache. On later
+visits, the app downloads only newly discovered races or races whose final CSV
+path changed. A change to the driver categories CSV or parser cache version
+refreshes the affected cache. The Render service needs a persistent disk mounted
+at `/var/data` and `RACE_CACHE_DIR=/var/data/races`; see `render.yaml`. An
+existing dashboard-created Render service must have its disk and environment
+variable configured there too. Without that setting production returns a clear
+storage error instead of silently using an ephemeral cache.
 The **Alkamel** counter and **Database → Data / Session Info** show per-race
-pending, loading, saved, loaded, or failed states and link back to the source CSV.
+pending, loading, cached, loaded, or failed states and link back to the source CSV.
 
 The `03_Classification_Race*.CSV` files contain final classification but no lap
 rows. The performance analyses therefore use each race's lap timing CSV.

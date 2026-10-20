@@ -58,7 +58,7 @@ export function raceLinks(html: string, championship: Championship, season: stri
 }
 
 async function discoverLiveRaces(fetcher: typeof fetch): Promise<AlkamelRace[]> {
-  const championships = Object.keys(ALKAMEL_HOSTS) as Championship[];
+  const championships = (Object.keys(ALKAMEL_HOSTS) as Championship[]).filter(value => value !== "ALMS");
   const index = await Promise.all(championships.map(async championship => {
     try {
       const response = await fetchIndex(fetcher, pageUrl(championship));
@@ -95,7 +95,35 @@ async function discoverLiveRaces(fetcher: typeof fetch): Promise<AlkamelRace[]> 
       return [];
     }
   })));
-  return pages.flat();
+  return [...pages.flat(), ...await discoverAlmsRaces(fetcher)];
+}
+
+async function discoverAlmsRaces(fetcher: typeof fetch): Promise<AlkamelRace[]> {
+  const base = "https://files.alkamelcloud.com/";
+  try {
+    const response = await fetcher(`${base}alms/manifests/results.json`);
+    if (!response.ok) return [];
+    const index = await response.json() as { seasons?: { id: string; manifestUrl: string }[] };
+    const pages = await Promise.all((index.seasons || []).filter(season => /20(?:2[2-9]|[3-9]\d)/.test(season.id)).map(async season => {
+      try {
+        const result = await fetcher(new URL(season.manifestUrl, base));
+        if (!result.ok) return [];
+        const manifest = await result.json() as { folders?: unknown[] };
+        const paths: string[] = [];
+        const walk = (node: unknown): void => {
+          if (!node || typeof node !== "object") return;
+          const item = node as { url?: string; children?: unknown[] };
+          if (item.url && /23_Analysis_Race(?:%20| )[^/]*\.CSV$/i.test(item.url)) paths.push(item.url);
+          item.children?.forEach(walk);
+        };
+        manifest.folders?.forEach(walk);
+        const links = paths.map(path => `<a href="${decodeURIComponent(path).replace(/^alms\/results\//i, "Results/")}"></a>`).join("");
+        const events = [...new Set(paths.map(path => decodeURIComponent(path).split("/")[3]))];
+        return events.flatMap(event => raceLinks(links, "ALMS", season.id, event));
+      } catch { return []; }
+    }));
+    return pages.flat();
+  } catch { return []; }
 }
 
 export async function discoverRaces(fetcher: typeof fetch = fetch): Promise<AlkamelRace[]> {
@@ -120,6 +148,8 @@ export function validRacePath(path: string): boolean {
 export function alkamelUrl(championship: Championship, path: string): string {
   if (!ALKAMEL_HOSTS[championship] || !validRacePath(path) || !seriesDirectory[championship].test(path))
     throw new Error("Invalid Alkamel race path");
-  return new URL(path.split("/").map(encodeURIComponent).join("/"), pageUrl(championship)).toString();
+  const encoded = path.split("/").map(encodeURIComponent).join("/");
+  if (championship === "ALMS") return `https://files.alkamelcloud.com/alms/results/${encoded.slice("Results/".length)}`;
+  return new URL(encoded, pageUrl(championship)).toString();
 }
 

@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { alkamelUrl, discoverRaces, raceLinks, validRacePath } from "../src/alkamel";
-import { eventLabel } from "../src/models/event-identity";
+import { compareEventsByRound, eventLabel } from "../src/models/event-identity";
 
 test("finds race analysis CSV and ignores classifications and test sessions", () => {
   const base = "Results/21_2026/06_AUTODROMO%20DO%20ALGARVE/683_European%20Le%20Mans%20Series/202610101430_Race/Hour%204/";
@@ -25,15 +25,32 @@ test("WEC selects the latest race hour and excludes support races", () => {
   assert.equal(eventLabel(races[0].sourceFile).split(", ")[0], "WEC");
 });
 
-test("ALMS retains both races in a weekend and uses its own host", () => {
+test("ALMS retains both races in a weekend and uses its current file host", () => {
   const prefix = "Results/05_2025-2026/03_Yas%20Marina/28_Asian%20Le%20Mans%20Series/";
   const html = `<a href="${prefix}202602071500_Race%201/Hour%204/23_Analysis_Race%201.CSV"></a>
     <a href="${prefix}202602081630_Race%202/Hour%204/23_Analysis_Race%202.CSV"></a>`;
   const races = raceLinks(html, "ALMS", "05_2025-2026", "03_Yas Marina");
   assert.equal(races.length, 2);
   assert.equal(new Set(races.map(r => eventLabel(r.sourceFile))).size, 2);
-  assert.match(alkamelUrl("ALMS", races[0].path), /^https:\/\/alms\.alkamelsystems\.com\//);
+  assert.match(alkamelUrl("ALMS", races[0].path), /^https:\/\/files\.alkamelcloud\.com\/alms\/results\//);
   assert.throws(() => alkamelUrl("WEC", races[0].path));
+});
+
+test("race menus order same-year events by round and then race number", () => {
+  const events = ["ALMS, 03 Yas Marina Race 2, 2026", "ALMS, 02 Dubai Race 2, 2026", "ALMS, 02 Dubai Race 1, 2026"];
+  assert.deepEqual(events.sort(compareEventsByRound), ["ALMS, 02 Dubai Race 1, 2026", "ALMS, 02 Dubai Race 2, 2026", "ALMS, 03 Yas Marina Race 2, 2026"]);
+});
+
+test("ALMS discovers newly published race CSVs from its cloud manifest", async () => {
+  const path = "alms/results/05_2025-2026/04_New Circuit/30_Asian Le Mans Series/202602151200_Race 1/Hour 4/23_Analysis_Race 1.CSV";
+  const fetcher = async (input: RequestInfo | URL): Promise<Response> => {
+    const url = String(input);
+    if (url.endsWith("/alms/manifests/results.json")) return Response.json({ seasons: [{ id: "05_2025-2026", manifestUrl: "alms/manifests/results_05_2025-2026.json" }] });
+    if (url.endsWith("/alms/manifests/results_05_2025-2026.json")) return Response.json({ folders: [{ children: [{ url: path }] }] });
+    throw new Error("offline");
+  };
+  const races = await discoverRaces(fetcher as typeof fetch);
+  assert.ok(races.some(race => race.championship === "ALMS" && race.path.includes("04_New Circuit")));
 });
 
 test("verified catalogue covers all four series when an index is unavailable", async () => {

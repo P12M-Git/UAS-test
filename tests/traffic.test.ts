@@ -17,3 +17,21 @@ test("traffic uses each driver's own 105 percent cutoff, with common class bound
   assert.equal(trafficSample(rows, "GT3").yMin, 140);
   assert.deepEqual(trafficSample([], "LMP2"), {sample:[], yMin:0, yMax:1});
 });
+
+test("traffic Top 10 / Top 20 select each driver's fastest clean laps without falling back to ten", () => {
+  const rows = [
+    ...Array.from({ length: 15 }, (_, i) => lap("A", 100 + i / 10, { lapNumber: i + 2 })),
+    ...Array.from({ length: 25 }, (_, i) => lap("B", 110 + i / 10, { lapNumber: i + 2 })),
+    lap("A", 101, { clean: false, lapNumber: 99 }),
+  ];
+  const top10 = trafficSample(rows, "LMP2", 10);
+  const top20 = trafficSample(rows, "LMP2", 20);
+  const clean = trafficSample(rows, "LMP2", "all");
+  assert.equal(top10.sample.length, 20);
+  assert.equal(top20.sample.filter(l => l.driver === "A").length, 15);
+  assert.equal(top20.sample.filter(l => l.driver === "B").length, 20);
+  assert.equal(clean.sample.length, 40);
+  assert.ok(clean.sample.every(l => l.clean));
+  assert.equal(top10.yMin, clean.yMin);
+  assert.equal(top10.yMax, clean.yMax);
+});

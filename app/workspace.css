@@ -70,6 +70,11 @@ main.new-workspace.workspace-dark {
 .new-workspace .trafficChart { background:var(--panel); }
 .new-workspace .scatter { background:var(--panel); }
 .new-workspace .trafficChart .driver b { color:var(--text); }
+.new-workspace :is(.trafficChart,.trafficStdChart) { grid-template-columns:96px repeat(4,minmax(0,1fr)); height:340px; padding:20px 16px; background-color:var(--panel); border-color:var(--line); }
+.new-workspace :is(.yAxis,.stdYAxis) :is(b,span) { font-size:14px !important; color:var(--text); }
+.new-workspace :is(.trafficOverlayLegend,.trafficOverlayLegend span,.trafficGroup > span,.stdGroup > span) { font-size:15px !important; color:var(--muted); }
+.new-workspace :is(.trafficGroup > strong,.stdGroup > strong) { font-size:20px; color:var(--text); }
+.new-workspace .selectedCategory { margin-top:0; gap:10px; }
 .new-workspace .parallel-note { color:var(--muted); }
 .new-workspace.workspace-dark .fast { color:#ff9d9d; }
 .new-workspace.workspace-dark .positive { color:#89e1b8; }

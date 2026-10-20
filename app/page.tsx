@@ -154,7 +154,7 @@ export default function Home() {
   const activeWorkspaceRace = chosenWorkspaceRaces.find(race => race.id === workspaceActiveId && raceAvailable(race)) || chosenWorkspaceRaces.find(raceAvailable);
   const selectedEvent = newWorkspace ? (activeWorkspaceRace ? eventLabel(activeWorkspaceRace.sourceFile) : "") : eventFilter || events[0] || "";
   const sessionLaps = useMemo(() => laps.filter((l) => l.event === selectedEvent), [laps, selectedEvent]);
-  const allMetrics = useMemo(() => driverMetrics(sessionLaps, mode), [sessionLaps, mode]);
+  const allMetrics = useMemo(() => driverMetrics(sessionLaps, mode, !newWorkspace), [sessionLaps, mode, newWorkspace]);
   const metrics = useMemo(
     () =>
       allMetrics
@@ -408,7 +408,7 @@ export default function Home() {
               view !== "Season Summary" && (
                 <Filters
                   hideRaceSelector={newWorkspace}
-                  drivers={newWorkspace && view === "Driver Performance" ? eligibleDriverNames : undefined}
+                  drivers={newWorkspace && ["Driver Performance", "Traffic Performance"].includes(view) ? eligibleDriverNames : undefined}
                   driver={activeDriver}
                   setDriver={setDriver}
                   events={events}
@@ -493,6 +493,8 @@ export default function Home() {
             )}{" "}
             {view === "Traffic Performance" && (!newWorkspace || !!sessionLaps.length) && (
               <Traffic
+                streamlined={newWorkspace}
+                paceMode={newWorkspace ? mode : undefined}
                 laps={dlaps}
                 allLaps={sessionLaps}
                 driver={activeDriver}
@@ -604,9 +606,9 @@ function Filters(p: any) {
             p.setMode(e.target.value === "all" ? "all" : Number(e.target.value))
           }
         >
-          <option value={20}>Best 20 / fallback</option>
-          <option value={10}>Best 10</option>
-          <option value="all">All clean laps</option>
+          <option value={10}>Top 10</option>
+          <option value={20}>Top 20</option>
+          <option value="all">Clean laps</option>
         </select>
       </label>
       {p.drivers && <label>
@@ -1230,7 +1232,11 @@ function Traffic({
   driver,
   drivers,
   setDriver,
+  streamlined = false,
+  paceMode,
 }: {
+  streamlined?: boolean;
+  paceMode?: TopMode;
   laps: Lap[];
   allLaps: Lap[];
   driver: string;
@@ -1239,7 +1245,7 @@ function Traffic({
 }) {
   const selectedCategory = laps[0]?.category,
     selectedClass = laps[0]?.className || "LMP2",
-    { sample, yMin, yMax } = trafficSample(allLaps, selectedClass),
+    { sample, yMin, yMax } = trafficSample(allLaps, selectedClass, paceMode),
     selectedIds = new Set(laps.map(l => l.id)),
     green = sample.filter(l => selectedIds.has(l.id)),
     yPosition = (time: number) =>
@@ -1280,7 +1286,7 @@ function Traffic({
     Math.max(4, Math.min(96, 4 + (value / stdMax) * 92));
   return (
     <>
-      <DriverSelect {...{ drivers, driver, setDriver }} />
+      {!streamlined && <DriverSelect {...{ drivers, driver, setDriver }} />}
       <div className="selectedCategory">
         <CarNumber number={laps[0]?.carNumber || "—"} />
         <CategoryBadge category={laps[0]?.category || "Unknown"} />{" "}
@@ -1289,7 +1295,7 @@ function Traffic({
       <SectionTitle
         n="04"
         title="Pace through traffic"
-        sub="Valid green laps within 105% of each driver's own best clean lap; fixed class/event axis"
+        sub={`${paceMode === undefined ? "Valid green laps" : paceMode === "all" ? "Clean laps" : `Top ${paceMode} clean laps per driver`} within 105% of each driver's best clean lap; fixed class/event axis`}
       />
       <div className="trafficOverlayLegend">
         <span>
@@ -1379,7 +1385,7 @@ function Traffic({
       <SectionTitle
         n="04S"
         title="Traffic consistency — standard deviation"
-        sub="Same 0 / 1 / 2 / 3+ groups and the same 105% green-lap sample"
+        sub="Same 0 / 1 / 2 / 3+ overtaking groups and the same selected pace sample"
       />
       <div className="trafficOverlayLegend">
         <span>
@@ -1449,10 +1455,8 @@ function Traffic({
               <th>OVERTAKES</th>
               <th>N</th>
               <th>MEAN</th>
-              <th>MEDIAN</th>
-              <th>MIN</th>
-              <th>MAX</th>
-              <th>σ</th>
+              {!streamlined && <><th>MEDIAN</th><th>MIN</th><th>MAX</th></>}
+              <th>STD [s]</th>
             </tr>
           </thead>
           <tbody>
@@ -1469,16 +1473,14 @@ function Traffic({
                   {g.a.length}
                 </td>
                 <td>{fmt(mean(g.a))}</td>
-                <td>{fmt(median(g.a))}</td>
-                <td>{fmt(Math.min(...g.a))}</td>
-                <td>{fmt(Math.max(...g.a))}</td>
+                {!streamlined && <><td>{fmt(median(g.a))}</td><td>{fmt(Math.min(...g.a))}</td><td>{fmt(Math.max(...g.a))}</td></>}
                 <td>{num(std(g.a), 3)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <SectionTitle
+      {!streamlined && <><SectionTitle
         n="04A"
         title="Category traffic benchmark"
         sub={`${selectedClass} green laps within 105% of each driver's own best clean lap`}
@@ -1525,6 +1527,7 @@ function Traffic({
           </tbody>
         </table>
       </div>
+      </>}
     </>
   );
 }

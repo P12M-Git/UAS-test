@@ -17,9 +17,11 @@ export const mad = (v: number[]) => {
   const m = median(v);
   return median(v.map((x) => Math.abs(x - m)));
 };
-export const selectionCount = (n: number, m: TopMode) =>
+export const selectionCount = (n: number, m: TopMode, fallback = true) =>
   m === "all"
     ? n
+    : !fallback
+      ? Math.min(m, n)
     : m === 10
       ? Math.min(10, n)
       : n >= 20
@@ -73,7 +75,7 @@ export function performanceZ(l: Lap, all: Lap[]) {
     s = std(r);
   return !r.length || !s ? NaN : (mean(r) - l.lapTime!) / s;
 }
-export function driverMetrics(laps: Lap[], mode: TopMode): DriverMetric[] {
+export function driverMetrics(laps: Lap[], mode: TopMode, fallback = true): DriverMetric[] {
   const stints = buildStints(laps);
   const g = new Map<string, Lap[]>();
   laps.forEach((l) => {
@@ -97,7 +99,7 @@ export function driverMetrics(laps: Lap[], mode: TopMode): DriverMetric[] {
   return [...g].map(([key, r]) => {
     const clean = r.filter((l) => l.clean && l.lapTime !== null),
       times = clean.map((l) => l.lapTime!).sort((a, b) => a - b),
-      n = selectionCount(times.length, mode),
+      n = selectionCount(times.length, mode, fallback),
       bestTimes = times.slice(0, n),
       ordered = [...clean].sort((a, b) => a.lapTime! - b.lapTime!),
       zs = clean.map(zFor),

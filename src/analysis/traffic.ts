@@ -1,8 +1,9 @@
 import type { Lap } from "../models/race";
+import type { TopMode } from "../config";
 
 const driverKey = (l: Lap) => `${l.event}|${l.session}|${l.className}|${l.carNumber}|${l.driver}`;
 
-export function trafficSample(allLaps: Lap[], className: string) {
+export function trafficSample(allLaps: Lap[], className: string, paceMode?: TopMode) {
   const rows = allLaps.filter(l => l.className === className);
   const best = new Map<string, number>();
   for (const l of rows) {
@@ -17,5 +18,14 @@ export function trafficSample(allLaps: Lap[], className: string) {
   const values = [...best.values()];
   const low = values.length ? Math.floor(Math.min(...values, ...sample.map(l => l.lapTime!))) : 0;
   const high = values.length ? Math.ceil(Math.max(...values) * 1.05) : 1;
-  return { sample, yMin: low, yMax: Math.max(low + 1, high) };
+  if (paceMode === undefined) return { sample, yMin: low, yMax: Math.max(low + 1, high) };
+  const groups = new Map<string, Lap[]>();
+  for (const lap of sample.filter(lap => lap.clean)) {
+    const key = driverKey(lap);
+    const rows = groups.get(key) || [];
+    rows.push(lap);
+    groups.set(key, rows);
+  }
+  const selected = [...groups.values()].flatMap(rows => [...rows].sort((a,b)=>a.lapTime! - b.lapTime! || a.lapNumber - b.lapNumber).slice(0, paceMode === "all" ? rows.length : paceMode));
+  return { sample: selected, yMin: low, yMax: Math.max(low + 1, high) };
 }

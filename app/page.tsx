@@ -189,7 +189,6 @@ export default function Home() {
   const classes = ["All", ...new Set(sessionLaps.map((l) => l.className))],
     teams = ["All", ...new Set(sessionLaps.map((l) => l.carNumber))];
   useEffect(() => {
-    if (newWorkspace) return;
     let cancelled = false;
     const update = (id: string, patch: Partial<RaceLoad>) => {
       if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
@@ -231,7 +230,8 @@ export default function Home() {
               const body = await response.json().catch(() => ({}));
               throw new Error(body.error || `HTTP ${response.status}`);
             }
-            const result = await response.json() as { dataset: RaceDataset; cached: boolean };
+            const result = await response.json() as { dataset: RaceDataset; cached: boolean; storageWarning?: string };
+            if (result.storageWarning && !cancelled) setCacheWarning(result.storageWarning);
             const dataset = result.dataset;
             if (!dataset.laps.length) throw new Error("No laps in processed race");
             if (cancelled) return;
@@ -267,7 +267,7 @@ export default function Home() {
       }));
     })().catch(cause => { if (!cancelled) { setError(String(cause)); setBusy(false); } });
     return () => { cancelled = true; };
-  }, [newWorkspace]);
+  }, []);
   return (
     <main>
       <aside>
@@ -277,7 +277,7 @@ export default function Home() {
             <small>© Pol RG</small>
           </div>
         </div>
-        <button className="workspace-switch" type="button" onClick={() => setNewWorkspace(current => !current)}>
+        <button className="workspace-switch" type="button" onClick={() => { setNewWorkspace(current => !current); setView("Overview"); }}>
           {newWorkspace ? "← VOLVER A LA WEB ACTUAL" : "ABRIR NUEVA WEB →"}
         </button>
         <nav>
@@ -313,7 +313,7 @@ export default function Home() {
             {!newWorkspace && <button className="ghost" onClick={() => setView("Data / Session Info")}>
               ALKAMEL {raceLoads.filter(raceAvailable).length}/{raceLoads.length}
             </button>}
-            {!newWorkspace && view !== "Driver Category Database" && view !== "Results" && <button
+            {view !== "Driver Category Database" && view !== "Results" && <button
               className="primary"
               onClick={() =>
                 view.includes("Category")
@@ -325,8 +325,8 @@ export default function Home() {
             </button>}
           </div>
         </header>
-        {newWorkspace ? <NewOverview /> : <>
         {error && <div className="alert">{error}</div>}
+        {cacheWarning && view !== "Data / Session Info" && <div className="alert" role="status">{cacheWarning}</div>}
         {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
         {["Driver Performance","Traffic Performance"].includes(view) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
           <button role="tab" aria-selected={view==="Driver Performance"} onClick={()=>setView("Driver Performance")}>Pure Performance</button>
@@ -478,17 +478,9 @@ export default function Home() {
             )}
           </>
         )}
-        </>}
       </section>
     </main>
   );
-}
-function NewOverview() {
-  return <section className="new-overview" aria-label="New workspace overview">
-    <p className="eyebrow">NEW WORKSPACE · 01</p>
-    <h2>Overview</h2>
-    <p>Un espacio limpio para construir la nueva web paso a paso.</p>
-  </section>;
 }
 function Empty({ busy }: { busy: boolean }) {
   return (

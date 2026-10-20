@@ -15,8 +15,8 @@ path changed. A change to the driver categories CSV or parser cache version
 refreshes the affected cache. The Render service needs a persistent disk mounted
 at `/var/data` and `RACE_CACHE_DIR=/var/data/races`; see `render.yaml`. An
 existing dashboard-created Render service must have its disk and environment
-variable configured there too. Without that setting production returns a clear
-storage error instead of silently using an ephemeral cache.
+variable configured there too. Without that setting races still load using a
+temporary server cache, and the tracker explains that persistence is not configured.
 The **Alkamel** counter and **Database → Data / Session Info** show per-race
 pending, loading, cached, loaded, or failed states and link back to the source CSV.
 

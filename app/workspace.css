@@ -31,7 +31,18 @@ main.new-workspace.workspace-dark {
 .new-workspace input[type="checkbox"] { width:18px; height:18px; accent-color:var(--accent); }
 .new-workspace :is(.filters,.driverSelect) { gap:16px; }
 .new-workspace .filters { margin-top:16px; }
-.new-workspace .filters.has-analysed-driver { grid-template-columns:minmax(100px,.7fr) minmax(110px,.8fr) minmax(150px,1fr) minmax(160px,1fr) minmax(210px,1.4fr); align-items:end; }
+.new-workspace .filters.has-analysed-driver { grid-template-columns:minmax(100px,.7fr) minmax(110px,.8fr) minmax(160px,1fr) minmax(240px,1.6fr); align-items:end; }
+.analysed-driver-picker { min-width:0; position:relative; }
+.analysed-driver-picker > span { display:block; color:var(--muted); font-size:14px; font-weight:800; letter-spacing:1.4px; }
+.analysed-driver-picker > details { margin-top:7px; position:relative; }
+.analysed-driver-picker summary { cursor:pointer; padding:10px 32px 10px 12px; color:var(--text); background:var(--panel); border:1px solid var(--line); border-radius:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.analysed-driver-picker summary::after { content:"▾"; position:absolute; right:12px; top:10px; }
+.driver-picker-panel { position:absolute; z-index:50; top:calc(100% + 5px); left:0; width:100%; min-width:260px; padding:10px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; box-shadow:0 6px 24px #0003; }
+.driver-picker-panel input { width:100%; margin:0 0 8px; }
+.driver-picker-options { max-height:280px; overflow:auto; }
+.driver-picker-options > button { display:block; width:100%; padding:8px 10px; text-align:left; border:0; border-radius:3px; background:transparent; color:var(--text); cursor:pointer; }
+.driver-picker-options > button:hover, .driver-picker-options > button:focus-visible { background:var(--panel-strong); }
+.driver-picker-options > button[aria-selected="true"] { background:#e8daf7; color:#2d2144; font-weight:700; }
 .new-workspace .categoryTicks { border-color:var(--line); background:var(--panel); flex-wrap:wrap; gap:12px; padding:12px; }
 .new-workspace .categoryTicks :is(label,legend) { color:var(--muted); }
 .new-workspace .categoryTicks .category-filter-option { padding:7px 10px; border-radius:4px; gap:8px; color:#17202a; }

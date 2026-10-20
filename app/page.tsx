@@ -18,6 +18,8 @@ import { lapImprovements } from "../src/analysis/lap-improvements";
 import { compareEventsByRound, eventChampionship, eventLabel, eventTheme } from "../src/models/event-identity";
 import WorkspaceRaces from "./workspace-races";
 import WorkspaceOverview from "./workspace-overview";
+import DriverPicker from "./driver-picker";
+import { compareDriversBySurname } from "../src/models/driver-identity";
 import "./workspace.css";
 import { sharedTrackFraction } from "../src/analysis/stints";
 import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDriverMetrics, type SeasonLapCounts } from "../src/analysis/season-comparison";
@@ -163,9 +165,10 @@ export default function Home() {
             (classFilter === "All" || m.className === classFilter) &&
             (teamFilter === "All" || m.car === teamFilter) &&
             driverCategoryFilter.includes(m.category) &&
-            `${m.driver} ${m.car}`.toLowerCase().includes(search.toLowerCase()),
+            (newWorkspace || `${m.driver} ${m.car}`.toLowerCase().includes(search.toLowerCase())),
         )
         .sort((a, b) => {
+          if (sort === "driver") return (sortAsc ? 1 : -1) * compareDriversBySurname(a.driver, b.driver);
           const x = a[sort],
             y = b[sort];
           return typeof x === "number" && typeof y === "number"
@@ -180,17 +183,12 @@ export default function Home() {
       search,
       sort,
       sortAsc,
+      newWorkspace,
     ],
   );
   const eligibleDrivers = newWorkspace ? sessionLaps.filter(lap => lap.category !== "Unknown") : sessionLaps;
   const eligibleDriverNames = useMemo(() => {
-    const cars = new Map<string, string>();
-    for (const lap of sessionLaps) {
-      if (newWorkspace && lap.category === "Unknown") continue;
-      const previous = cars.get(lap.driver);
-      if (!previous || lap.carNumber.localeCompare(previous, undefined, { numeric: true }) < 0) cars.set(lap.driver, lap.carNumber);
-    }
-    return [...cars.keys()].sort((a,b)=>cars.get(a)!.localeCompare(cars.get(b)!,undefined,{numeric:true})||a.localeCompare(b));
+    return [...new Set(sessionLaps.filter(lap => !newWorkspace || lap.category !== "Unknown").map(lap => lap.driver))].sort(compareDriversBySurname);
   }, [sessionLaps, newWorkspace]);
   const activeDriver = eligibleDrivers.some(l => l.driver === driver) ? driver : eligibleDriverNames[0] || "";
   const dlaps = sessionLaps.filter((l) => l.driver === activeDriver);
@@ -213,6 +211,7 @@ export default function Home() {
           driverCategoryFilter.includes(m.category) &&
           (m.driver === activeDriver || parallelNames.has(`${m.driver}|${m.car}`)),
       ).sort((a, b) => {
+        if (sort === "driver") return (sortAsc ? 1 : -1) * compareDriversBySurname(a.driver, b.driver);
         const x = a[sort], y = b[sort];
         return (sortAsc ? 1 : -1) * (typeof x === "number" && typeof y === "number" ? x - y : String(x).localeCompare(String(y)));
       })
@@ -590,14 +589,14 @@ function Filters(p: any) {
           ))}
         </select>
       </label>
-      <label>
+      {!p.drivers && <label>
         DRIVER / CAR
         <input
           value={p.search}
           onChange={(e) => p.setSearch(e.target.value)}
           placeholder="Search…"
         />
-      </label>
+      </label>}
       <label>
         PACE SAMPLE
         <select
@@ -611,12 +610,7 @@ function Filters(p: any) {
           <option value="all">Clean laps</option>
         </select>
       </label>
-      {p.drivers && <label>
-        ANALYSED DRIVER
-        <select value={p.driver} onChange={e => p.setDriver(e.target.value)}>
-          {p.drivers.map((name: string) => <option key={name}>{name}</option>)}
-        </select>
-      </label>}
+      {p.drivers && <DriverPicker drivers={p.drivers} driver={p.driver} setDriver={p.setDriver} />}
       <fieldset className="categoryTicks filterCategoryTicks">
         <legend>DRIVER CATEGORY</legend>
         <label>
@@ -1164,7 +1158,7 @@ function DriverSelect({
       <label>
         ANALYSED DRIVER
         <select value={driver} onChange={(e) => setDriver(e.target.value)}>
-          {drivers.map((x) => (
+          {[...drivers].sort(compareDriversBySurname).map((x) => (
             <option key={x}>{x}</option>
           ))}
         </select>

@@ -21,6 +21,27 @@ export function driverIdentityKey(name:string):string {
   const key=normaliseDriverName(name);return aliases[key]||key;
 }
 
+/** Sorting only: keep the stored name and identity unchanged. */
+export function driverSurname(name: string): string {
+  if (name.includes(",")) return name.split(",")[0].trim();
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  while (words.length > 1 && /^(?:jr\.?|sr\.?|ii|iii|iv)$/i.test(words[words.length - 1])) words.pop();
+  if (!words.length) return "";
+  // Alkamel usually capitalises the surname, including compound surnames.
+  if (words.some(word => word !== word.toLocaleUpperCase())) {
+    const upper = words.findIndex((word, index) => index > 0 && word.length > 1 && /\p{L}/u.test(word) && word === word.toLocaleUpperCase());
+    if (upper > 0) return words.slice(upper).join(" ");
+  }
+  let first = words.length - 1;
+  while (first > 0 && /^(?:de|del|della|di|da|das|dos|do|van|von|der|den|ten|ter|le|la|du|des)$/i.test(words[first - 1])) first--;
+  return words.slice(first).join(" ");
+}
+
+export function compareDriversBySurname(a: string, b: string): number {
+  return driverSurname(a).localeCompare(driverSurname(b), undefined, { sensitivity: "base", numeric: true })
+    || a.localeCompare(b, undefined, { sensitivity: "base", numeric: true });
+}
+
 // Category lookup only: do not merge race identities based on a typo.
 // Accept one edit (including adjacent transposition), only with a unique match.
 export function matchDriverCategoryKey(name:string, candidates:Iterable<string>):string|undefined {

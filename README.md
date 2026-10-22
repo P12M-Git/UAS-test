@@ -3,8 +3,10 @@
 ## New workspace
 
 Use **ABRIR NUEVA WEB** to open the new Overview and Driver Performance views.
-The shared **Load races** dropdown selects races by championship and season;
-only the selected races are requested while this workspace is open. Click a ready
+The shared **Load races** dropdown selects races by championship and season.
+The entire library loads in the background in both workspaces; selected races
+receive priority and changing the selection or section does not cancel the queue.
+Click a ready
 race chip to activate it for Driver Performance. Selections stay in place when
 switching sections. Overview is a website-wide summary of the complete race
 catalogue and annual driver database: races, calendar years, driver categories

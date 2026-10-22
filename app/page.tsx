@@ -26,6 +26,7 @@ import { seasonComparison, absoluteSummaryDrivers, summaryLapCount, summaryDrive
 import { trafficSample } from "../src/analysis/traffic";
 import { alkamelUrl, type AlkamelRace } from "../src/alkamel";
 import { raceCacheVersion, readRaceCache, saveRaceCache } from "../src/race-cache";
+import { loadRaceLibrary } from "../src/race-load-queue";
 import type { RaceDataset } from "../src/models/race";
 type RaceLoad = AlkamelRace & { status: "pending" | "loading" | "loaded" | "cached" | "failed"; laps?: number; error?: string };
 const raceAvailable = (race: RaceLoad) => race.status === "loaded" || race.status === "cached";
@@ -107,6 +108,8 @@ export default function Home() {
   const [driverCsv, setDriverCsv] = useState("");
   const [cacheVersion, setCacheVersion] = useState("");
   const knownRaces = useRef(new Set<string>());
+  const priorityRaceIds = useRef<string[]>([]);
+  useEffect(() => { priorityRaceIds.current = workspaceRaceIds; }, [workspaceRaceIds]);
   useEffect(() => {
     try {
       const theme = localStorage.getItem("uraice-workspace-theme");
@@ -259,15 +262,12 @@ export default function Home() {
     const update = (id: string, patch: Partial<RaceLoad>) => {
       if (!cancelled) setRaceLoads(current => current.map(r => r.id === id ? { ...r, ...patch } : r));
     };
-    const wanted = newWorkspace ? raceCatalogue.filter(race => workspaceRaceIds.includes(race.id)) : raceCatalogue;
+    const wanted = raceCatalogue;
     const saved = wanted.filter(race => knownRaces.current.has(race.id));
     const missing = wanted.filter(race => !knownRaces.current.has(race.id));
     (async () => {
       const processedUrl = (race: AlkamelRace) => `/api/alkamel/processed?championship=${race.championship}&path=${encodeURIComponent(race.path)}&sourceFile=${encodeURIComponent(race.sourceFile)}`;
-      let next = 0;
-      await Promise.all(Array.from({ length: 3 }, async () => {
-        while (next < missing.length && !cancelled) {
-          const race = missing[next++];
+      await loadRaceLibrary({ races: missing, priority: () => priorityRaceIds.current, signal: controller.signal, load: async race => {
           update(race.id, { status: "loading" });
           try {
             const response = await fetch(processedUrl(race), { signal: controller.signal });
@@ -286,7 +286,7 @@ export default function Home() {
               if (!cancelled) setCacheWarning("Some races could not be saved locally and may be downloaded again on your next visit.");
             }
             if (cancelled) return;
-            if (knownRaces.current.has(race.id)) continue;
+            if (knownRaces.current.has(race.id)) return;
             knownRaces.current.add(race.id);
             setLaps(previous => previous.concat(dataset.laps));
             setDiagnostics(previous => [...previous, ...dataset.diagnostics]);
@@ -296,8 +296,7 @@ export default function Home() {
           } catch (cause) {
             update(race.id, { status: "failed", error: cause instanceof Error ? cause.message : String(cause) });
           }
-        }
-      }));
+      }});
       // Existing browser caches also populate the persistent server store after deployment.
       let warmNext = 0;
       await Promise.all(Array.from({ length: 3 }, async () => {
@@ -315,9 +314,8 @@ export default function Home() {
     return () => {
       cancelled = true;
       controller.abort();
-      setRaceLoads(current => current.map(race => race.status === "loading" ? { ...race, status: "pending" } : race));
     };
-  }, [newWorkspace, workspaceRaceIds, raceCatalogue, cacheVersion]);
+  }, [raceCatalogue, cacheVersion]);
   return (
     <main className={newWorkspace ? `new-workspace workspace-${workspaceTheme}` : undefined}>
       <aside>
@@ -381,9 +379,9 @@ export default function Home() {
           </div>
         </header>
         {error && <div className="alert">{error}</div>}
-        {cacheWarning && view !== "Data / Session Info" && <div className="alert" role="status">{cacheWarning}</div>}
+        {!newWorkspace && cacheWarning && view !== "Data / Session Info" && <div className="alert" role="status">{cacheWarning}</div>}
         {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
-        {newWorkspace && <WorkspaceRaces races={raceLoads} selected={workspaceRaceIds} active={activeWorkspaceRace?.id || ""}
+        {newWorkspace && <WorkspaceRaces races={raceLoads} selected={workspaceRaceIds} active={activeWorkspaceRace?.id || ""} storageWarning={cacheWarning}
           onSelect={setWorkspaceRaceIds} onActivate={id => { setWorkspaceActiveId(id); setDriver(""); setClassFilter("All"); setTeamFilter("All"); }} />}
         {newWorkspace && view !== "Overview" && !sessionLaps.length && <p className="workspace-selection-note">Choose races from “Load races”, then click a ready event to view its drivers.</p>}
         {["Driver Performance","Traffic Performance"].includes(view) && (!newWorkspace || !!sessionLaps.length) && <div className="section-tabs" role="tablist" aria-label="Driver performance">

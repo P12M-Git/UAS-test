@@ -5,12 +5,13 @@ import { eventLabel } from "../src/models/event-identity";
 
 export type WorkspaceRace = AlkamelRace & { status: string; error?: string };
 
-export default function WorkspaceRaces({ races, selected, active, onSelect, onActivate }: {
+export default function WorkspaceRaces({ races, selected, active, onSelect, onActivate, storageWarning }: {
   races: WorkspaceRace[];
   selected: string[];
   active: string;
   onSelect: (ids: string[]) => void;
   onActivate: (id: string) => void;
+  storageWarning?: string;
 }) {
   const [series, setSeries] = useState("ELMS");
   const [chosenYear, setYear] = useState("");
@@ -22,7 +23,15 @@ export default function WorkspaceRaces({ races, selected, active, onSelect, onAc
   const chosen = races.filter(race => selected.includes(race.id)).sort(compareRacesByRound);
   const available = (race: WorkspaceRace) => race.status === "loaded" || race.status === "cached";
   const toggle = (id: string) => onSelect(selected.includes(id) ? selected.filter(value => value !== id) : [...selected, id]);
+  const ready = races.filter(available).length;
+  const failed = races.filter(race => race.status === "failed").length;
   return <section className="workspace-races" aria-label="Race selection">
+    <p className="workspace-library-status" role="status">Race library: {ready} / {races.length} processed{ready + failed < races.length ? " · Loading remaining races…" : ""}{failed > 0 ? ` · ${failed} failed` : ""}</p>
+    {storageWarning && <details className="workspace-storage-notice">
+      <summary>{storageWarning.includes("temporary") ? "Storage: temporary" : "Storage notice"}</summary>
+      <p>{storageWarning}</p>
+      <p>This affects saving the cache; it does not block race loading.</p>
+    </details>}
     <details className="workspace-race-dropdown">
       <summary>Load races <span>{selected.length} selected</span></summary>
       <div className="workspace-race-controls">

@@ -1,4 +1,5 @@
 import { CONFIG } from "../config";
+import { reconstructSectorTraffic } from "../analysis/sector-traffic";
 import { eventLabel } from "../models/event-identity";
 import { driverIdentityKey, matchDriverCategoryKey } from "../models/driver-identity";
 import type {
@@ -147,6 +148,7 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
       .forEach((x, i) => {
         if (x.lapTime !== null) cumulative += x.lapTime;
         let elapsed = timeToSeconds(get(x.row,"ELAPSED"));
+        const elapsedReliable = elapsed !== null && Number.isFinite(elapsed);
         if (wrappedHours && elapsed!==null && elapsed<3600 && get(x.row,"ELAPSED").split(":").length===2) {
           const expected = previousElapsed===null ? cumulative : previousElapsed+(x.lapTime??0);
           elapsed += Math.max(0,Math.round((expected-elapsed)/3600))*3600;
@@ -209,6 +211,7 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
           s2: x.s2,
           s3: x.s3,
           elapsed,
+          elapsedReliable,
           position: null,
           classPosition: null,
           gapLeader: null,
@@ -245,6 +248,7 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
       });
   });
   reconstructOrderAndPasses(laps);
+  reconstructSectorTraffic(laps);
   const seen = new Set<string>();
   let duplicates = 0;
   laps.forEach((l) => {
@@ -320,15 +324,6 @@ function reconstructOrderAndPasses(laps: Lap[]) {
           : null;
       l.carAhead = i ? group[i - 1].carNumber : null;
       l.carBehind = i < group.length - 1 ? group[i + 1].carNumber : null;
-      l.cleanAir =
-        !l.clean || l.elapsed === null || !Number.isFinite(l.elapsed)
-          ? null
-          : i === 0
-            ? group.every(row=>row.elapsed!==null&&Number.isFinite(row.elapsed)) ? true : null
-            : l.gapAhead !== null
-              ? l.gapAhead > CONFIG.CLEAN_AIR_THRESHOLD_SECONDS
-              : null;
-      l.trafficCount = l.cleanAir === false ? 1 : 0;
     });
     const classes = new Map<string, Lap[]>();
     group.forEach((l) =>

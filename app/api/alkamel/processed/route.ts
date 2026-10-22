@@ -6,9 +6,10 @@ import { gzipSync, gunzipSync } from "node:zlib";
 import { alkamelUrl, type Championship } from "../../../../src/alkamel";
 import { applyDriverCategories, parseTimingCsv } from "../../../../src/parser/uraice_adapter";
 import type { RaceDataset } from "../../../../src/models/race";
+import { RACE_DATA_VERSION } from "../../../../src/models/data-version";
 
 export const runtime = "nodejs";
-const PARSER_VERSION = 1;
+const PARSER_VERSION = RACE_DATA_VERSION;
 type ProcessedRace = { dataset: RaceDataset; storageWarning?: string };
 const pending = new Map<string, Promise<ProcessedRace>>();
 

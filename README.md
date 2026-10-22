@@ -16,6 +16,23 @@ the theme preference is saved in the browser.
 
 ## Alkamel race loading
 
+Class Z compares selected clean laps against all clean laps of other drivers in
+the same race/session and vehicle class, irrespective of FIA driver rating.
+LMP2 Pro-Am shares the LMP2 reference; GT3/LMGT3/GTD vehicle labels share the GT3
+reference. Driver identity aliases are excluded from their own reference.
+
+Clean Air uses common-clock crossings at lap start, S1, S2 and the finish line.
+A gap strictly below 2 seconds at any checkpoint marks the lap as traffic.
+Reversed crossing order between consecutive sector loops also marks a passing
+encounter, even when the checkpoint gaps themselves exceed 2 seconds. This
+includes lapped cars and other classes; lap numbers do not need to match.
+Pit-lane transitions do not constitute passing evidence. Missing sector/clock
+coverage is unknown unless another checkpoint or pass confirms traffic.
+The percentage uses all clean laps with known classification, independently of
+Top 10/20, and sector gaps, encountered cars and reasons are retained per lap.
+Sector observations cannot establish an unobserved sub-2-second approach between
+loops without an order change. Shared cache data version 2 refreshes old parses.
+
 On entry, the app reads the official ELMS, FIA WEC, Asian Le Mans Series, and
 IMSA WeatherTech SportsCar Championship
 Alkamel results indexes from 2022 onward and discovers each race's final

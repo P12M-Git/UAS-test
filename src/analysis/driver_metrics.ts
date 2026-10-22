@@ -1,6 +1,8 @@
 import { CONFIG, type TopMode } from "../config";
 import type { Lap } from "../models/race";
 import { buildStints } from "./stints";
+import { carClassKey } from "../models/car-class";
+import { driverIdentityKey } from "../models/driver-identity";
 export const mean = (v: number[]) =>
   v.length ? v.reduce((a, b) => a + b, 0) / v.length : NaN;
 export const std = (v: number[]) => {
@@ -50,6 +52,7 @@ export interface DriverMetric {
   madBest: number;
   madAll: number;
   cleanAir: number;
+  cleanAirKnown: number;
   cleanAirPct: number;
   traffic: number;
   overtakes: number;
@@ -61,15 +64,23 @@ export interface DriverMetric {
   timeline: { start: number; end: number; neutralized: boolean }[];
 }
 export function performanceZ(l: Lap, all: Lap[]) {
+  if (l.lapTime === null || !Number.isFinite(l.lapTime)) return NaN;
+  const vehicleClass = carClassKey(l.className), driver = driverIdentityKey(l.driver);
+  const identities = new Map<string, string>();
+  const identity = (name: string) => {
+    let key = identities.get(name);
+    if (key === undefined) { key = driverIdentityKey(name); identities.set(name, key); }
+    return key;
+  };
   const r = all
       .filter(
         (x) =>
           x.event === l.event &&
-          x.className === l.className &&
-          x.category === l.category &&
-          x.driver !== l.driver &&
+          x.session === l.session &&
+          carClassKey(x.className) === vehicleClass &&
+          identity(x.driver) !== driver &&
           x.clean &&
-          x.lapTime !== null,
+          x.lapTime !== null && Number.isFinite(x.lapTime),
       )
       .map((x) => x.lapTime!),
     s = std(r);
@@ -84,13 +95,27 @@ export function driverMetrics(laps: Lap[], mode: TopMode, fallback = true): Driv
   });
   // Reference distribution is identical for every lap of a driver/cohort.
   // Compute it once instead of scanning the complete race for every lap.
+  const identities = new Map<string, string>();
+  const identity = (name: string) => {
+    let value = identities.get(name);
+    if (value === undefined) { value = driverIdentityKey(name); identities.set(name, value); }
+    return value;
+  };
+  const cohortKey = (lap: Lap) => JSON.stringify([lap.event, lap.session, carClassKey(lap.className)]);
+  const cohorts = new Map<string, { driver: string; time: number }[]>();
+  for (const lap of laps) {
+    if (!lap.clean || lap.lapTime === null || !Number.isFinite(lap.lapTime)) continue;
+    const key = cohortKey(lap), rows = cohorts.get(key) || [];
+    rows.push({ driver: identity(lap.driver), time: lap.lapTime });
+    cohorts.set(key, rows);
+  }
   const zReferences = new Map<string, { mean: number; std: number }>();
   const zFor = (l: Lap) => {
-    const key = `${l.event}|${l.className}|${l.category}|${l.driver}`;
+    const cohort = cohortKey(l), driver = identity(l.driver);
+    const key = JSON.stringify([cohort, driver]);
     let reference = zReferences.get(key);
     if (!reference) {
-      const times = laps.filter(x => x.event === l.event && x.className === l.className &&
-        x.category === l.category && x.driver !== l.driver && x.clean && x.lapTime !== null).map(x => x.lapTime!);
+      const times = (cohorts.get(cohort) || []).filter(row => row.driver !== driver).map(row => row.time);
       reference = { mean: mean(times), std: std(times) };
       zReferences.set(key, reference);
     }
@@ -125,6 +150,7 @@ export function driverMetrics(laps: Lap[], mode: TopMode, fallback = true): Driv
       madBest: mad(bestTimes),
       madAll: mad(times),
       cleanAir: clean.filter((l) => l.cleanAir).length,
+      cleanAirKnown: clean.filter(l => l.cleanAir !== null).length,
       cleanAirPct: clean.some(l=>l.cleanAir!==null)
         ? (100 * clean.filter((l) => l.cleanAir === true).length) / clean.filter(l=>l.cleanAir!==null).length
         : NaN,

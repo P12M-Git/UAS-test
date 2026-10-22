@@ -1,10 +1,11 @@
 import type { AlkamelRace } from "./alkamel";
 import type { RaceDataset } from "./models/race";
+import { RACE_DATA_VERSION } from "./models/data-version";
 
 const DATABASE = "uraice-processed-races";
 const STORE = "races";
 // Increment when the timing parser or lap model changes incompatibly.
-const PARSER_VERSION = 1;
+const PARSER_VERSION = RACE_DATA_VERSION;
 
 interface CachedRace {
   id: string;

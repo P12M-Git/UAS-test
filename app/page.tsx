@@ -55,8 +55,8 @@ const tips: Record<string, string> = {
     "Green-flag laps excluding race lap 1, pit-in laps, pit-out laps and invalid laps.",
   "Avg best": "Average of the driver's fastest N clean laps.",
   "Clean air":
-    `Clean laps with a gap greater than ${CONFIG.CLEAN_AIR_THRESHOLD_SECONDS.toFixed(1)} s to the car ahead, or no car ahead. Based on timing-line gaps; observations without a known gap are excluded.`,
-  Z: "Average standardised lap performance relative to other drivers in the same race/class. Positive is faster.",
+    `A lap has traffic if any sector checkpoint records a gap below ${CONFIG.CLEAN_AIR_THRESHOLD_SECONDS.toFixed(1)} s, or a sector order reversal identifies a pass. All car classes and lap numbers are included, including lapped cars. Unknown sector coverage is excluded from the percentage.`,
+  Z: "Selected lap pace relative to all other drivers in the same race/session and vehicle class (LMP2, LMP3, LMGT3), regardless of FIA driver rating. Positive is faster.",
   Overtakes:
     "Reconstructed order inversions, including lapped and multiclass cars; pit transitions are rejected.",
   MAD: "Raw median absolute deviation of lap times.",
@@ -697,7 +697,7 @@ function Overview({
         <div className="threshold">
           <span>CLEAN AIR THRESHOLD</span>
           <b>{CONFIG.CLEAN_AIR_THRESHOLD_SECONDS.toFixed(1)}s</b>
-          <small>at timing-line crossing</small>
+          <small>at any sector or passing encounter</small>
         </div>
       </div>
       <div className="cards">
@@ -923,7 +923,7 @@ function Ranking({
                 />
                 <H k="cleanAirPct" c="CLEAN AIR" t="Clean air" />
                 <H k="overtakes" c="OVERTAKES" t="Overtakes" />
-                <H k="zBest" c="CATEGORY Z" t="Z" />
+                <H k="zBest" c="CLASS Z" t="Z" />
               </>
             )}
             <th className="chartHead">
@@ -994,7 +994,7 @@ function Ranking({
                   {metricCell(m, "stdBest", num(m.stdBest, 3))}
                   {!streamlined && metricCell(m, "madBest", num(m.madBest, 3))}
                   {metricCell(m, "lapTimeDeg", num(m.lapTimeDeg, 3))}
-                  <td>{num(m.cleanAirPct, 0)}%</td>
+                  <td title={`${m.cleanAir} clear laps / ${m.cleanAirKnown} clean laps with known sector coverage`}>{num(m.cleanAirPct, 0)}%</td>
                   <td>{m.overtakes}</td>
                   <td className={m.zBest >= 0 ? "positive" : "negative"}>
                     {m.zBest >= 0 ? "+" : ""}
@@ -1738,7 +1738,7 @@ function DriverFocus({
           <span>CLEAN-AIR RATE</span>
           <strong>{num(selected.cleanAirPct, 0)}%</strong>
           <small>
-            {selected.cleanAir} / {selected.clean} laps
+            {selected.cleanAir} / {selected.cleanAirKnown} known laps
           </small>
         </div>
       </div>
@@ -2303,7 +2303,7 @@ function GeneralDriverSummary({
     },
     {
       id: "zScore",
-      label: "Category Z",
+      label: "Class Z",
       group: "PACE",
       value: (r) => r.selected?.zBest ?? NaN,
     },

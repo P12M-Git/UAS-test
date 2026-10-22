@@ -7,9 +7,9 @@ test("race lap 1 and pit-in/out laps are excluded",()=>{const d=parseTimingCsv(c
 test("green flag filtering recognises SF",()=>{const d=parseTimingCsv(csv([row(1,1,90,90,"A","SF"),row(1,2,120,210,"A","SF")]),"race.csv");assert.equal(d.laps[0].green,true);assert.equal(d.laps[1].green,false)});
 test("Best-20 fallback and manual Best-10",()=>{assert.equal(selectionCount(25,20),20);assert.equal(selectionCount(15,20),10);assert.equal(selectionCount(8,20),8);assert.equal(selectionCount(25,10),10)});
 test("population standard deviation and raw MAD",()=>{assert.equal(std([1,2,3]),Math.sqrt(2/3));assert.equal(mad([1,2,100]),1)});
-test("clean air threshold uses all-car timing order",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,101,"B"),row(1,2,90,190,"A"),row(2,2,93,194,"B")]),"race.csv");assert.equal(d.laps.find(l=>l.carNumber==="2"&&l.lapNumber===2)?.cleanAir,true)});
+test("a close lap-start encounter counts even when the finish-line gap clears",()=>{const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,101,"B"),row(1,2,90,190,"A"),row(2,2,93,194,"B")]),"race.csv");assert.equal(d.laps.find(l=>l.carNumber==="2"&&l.lapNumber===2)?.cleanAir,false)});
 test("clean-air leader counts as clear while a close follower does not",()=>{
- const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,101,"B"),row(1,2,90,190,"A"),row(2,2,90,192,"B")]),"race.csv");
+ const d=parseTimingCsv(csv([row(1,1,100,100,"A"),row(2,1,100,101,"B"),row(1,2,90,190,"A"),row(2,2,90,191,"B")]),"race.csv");
  assert.equal(d.laps.find(l=>l.driver==="A"&&l.lapNumber===2)!.cleanAir,true);
  assert.equal(driverMetrics(d.laps,20).find(m=>m.driver==="A")!.cleanAirPct,100);
  assert.equal(driverMetrics(d.laps,20).find(m=>m.driver==="B")!.cleanAirPct,0);

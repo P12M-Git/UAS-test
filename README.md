@@ -31,13 +31,15 @@ includes lapped cars and other classes; lap numbers do not need to match.
 Pit-lane transitions do not constitute passing evidence. Missing sector/clock
 coverage is unknown unless another checkpoint or pass confirms traffic.
 The percentage uses all clean laps with known classification, independently of
-Top 10/20, and sector gaps, encountered cars and reasons are retained per lap.
+Top 10/20. The parser records sector evidence; the shared/browser datasets retain
+the resulting classification, traffic count and reason, omitting the bulky working
+arrays of checkpoint gaps and encountered cars.
 Sector observations cannot establish an unobserved sub-2-second approach between
 loops without an order change. Shared cache data version 2 refreshes old parses.
 
 On entry, the app reads the official ELMS, FIA WEC, Asian Le Mans Series, and
 IMSA WeatherTech SportsCar Championship
-Alkamel results indexes from 2022 onward and discovers each race's final
+Alkamel results indexes from 2025 onward and discovers each race's final
 `23_Analysis_Race*.CSV` (or IMSA `23_Time Cards_Race*.CSV`). A verified catalogue of historical links fills gaps
 when Alkamel's session-based index returns an incomplete event tree. A same-origin
 server route retrieves each CSV, processes the lap data and stores the result.
@@ -50,6 +52,9 @@ at `/var/data` and `RACE_CACHE_DIR=/var/data/races`; see `render.yaml`. An
 existing dashboard-created Render service must have its disk and environment
 variable configured there too. Without that setting races still load using a
 temporary server cache, and the tracker explains that persistence is not configured.
+Downloads retry up to three times with a deadline covering the complete body.
+The browser processes one missing race at a time to limit peak memory for 24-hour
+races. A stalled local cache write cannot indefinitely hold the download queue.
 The **Alkamel** counter and **Database → Data / Session Info** show per-race
 pending, loading, cached, loaded, or failed states and link back to the source CSV.
 

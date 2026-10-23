@@ -3,6 +3,15 @@ import assert from "node:assert/strict";
 import { alkamelUrl, compareRacesByRound, discoverRaces, raceLinks, validRacePath } from "../src/alkamel";
 import { compareEventsByRound, eventLabel } from "../src/models/event-identity";
 
+test("calendar-year cutoff excludes 2024 but keeps 2025 races in an ALMS split season", () => {
+  const prefix = "Results/04_2024-2025/01_Sepang/01_Asian Le Mans Series/";
+  const html = `<a href="${prefix}202412071200_Race 1/Hour 4/23_Analysis_Race 1.CSV"></a>
+    <a href="${prefix}202502081200_Race 2/Hour 4/23_Analysis_Race 2.CSV"></a>`;
+  const races = raceLinks(html, "ALMS", "04_2024-2025", "01_Sepang");
+  assert.equal(races.length, 1);
+  assert.equal(races[0].year, 2025);
+});
+
 test("finds race analysis CSV and ignores classifications and test sessions", () => {
   const base = "Results/21_2026/06_AUTODROMO%20DO%20ALGARVE/683_European%20Le%20Mans%20Series/202610101430_Race/Hour%204/";
   const html = `<a href="${base}03_Classification_Race.CSV">classification</a>
@@ -65,11 +74,12 @@ test("ALMS discovers newly published race CSVs from its cloud manifest", async (
 test("verified catalogue covers all four series when an index is unavailable", async () => {
   const races = await discoverRaces(async () => { throw new Error("offline"); });
   assert.deepEqual(Object.fromEntries(["ELMS", "WEC", "ALMS"].map(series => [series, races.filter(r => r.championship === series).length])), {
-    ELMS: 30, WEC: 36, ALMS: 25,
+    ELMS: 12, WEC: 15, ALMS: 10,
   });
   assert.equal(new Set(races.map(r => r.id)).size, races.length);
   assert.ok(races.every(r => validRacePath(r.path)));
-  assert.equal(races.filter(r => r.championship === "IMSA").length, 57);
+  assert.equal(races.filter(r => r.championship === "IMSA").length, 22);
+  assert.ok(races.every(race => race.year >= 2025));
 });
 
 test("IMSA uses the WeatherTech time cards from the final race hour", () => {

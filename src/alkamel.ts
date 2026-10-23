@@ -48,7 +48,7 @@ export function raceLinks(html: string, championship: Championship, season: stri
     const raceDirectory = path.split("/").find(part => /^\d{12}_Race(?: \d+)?$/i.test(part));
     if (!raceDirectory) continue;
     const year = Number(raceDirectory.slice(0, 4));
-    if (year < 2022) continue;
+    if (year < 2025) continue;
     const id = `${championship}-${season}-${event}-${raceDirectory}`;
     const hour = Math.max(0, ...[...path.matchAll(/(?:Hour[ _]|_Hour )(\d+)/gi)].map(m => Number(m[1]))) * 2
       + (/Unofficial/i.test(path) ? 0 : 1);
@@ -75,7 +75,7 @@ async function discoverLiveRaces(fetcher: typeof fetch): Promise<AlkamelRace[]> 
       const seasonSelect = html.match(/<select\s+name="season"[^>]*>([\s\S]*?)<\/select>/i)?.[1] || "";
       const seasons = [...seasonSelect.matchAll(/<option\s+Value="([^"]+)"[^>]*>/gi)]
         .map(m => decode(m[1]))
-        .filter(value => Number(value.match(/^\d+_(\d{4})/)?.[1]) >= 2022);
+        .filter(value => Number(value.match(/^\d+_(\d{4})/)?.[1]) >= 2025);
       return { championship, seasons };
     } catch {
       return { championship, seasons: [] as string[] };
@@ -112,7 +112,10 @@ async function discoverAlmsRaces(fetcher: typeof fetch): Promise<AlkamelRace[]> 
     const response = await fetcher(`${base}alms/manifests/results.json`);
     if (!response.ok) return [];
     const index = await response.json() as { seasons?: { id: string; manifestUrl: string }[] };
-    const pages = await Promise.all((index.seasons || []).filter(season => /20(?:2[2-9]|[3-9]\d)/.test(season.id)).map(async season => {
+    // ALMS spans calendar years: retain 2024-2025 for its 2025 races.
+    const pages = await Promise.all((index.seasons || []).filter(season =>
+      Math.max(0, ...(season.id.match(/20\d{2}/g) || []).map(Number)) >= 2025
+    ).map(async season => {
       try {
         const result = await fetcher(new URL(season.manifestUrl, base));
         if (!result.ok) return [];
@@ -136,10 +139,13 @@ async function discoverAlmsRaces(fetcher: typeof fetch): Promise<AlkamelRace[]> 
 
 export async function discoverRaces(fetcher: typeof fetch = fetch): Promise<AlkamelRace[]> {
   const verified = catalogue as AlkamelRace[];
-  const live = await discoverLiveRaces(fetcher).catch(() => []);
+  const boundedFetch: typeof fetch = (input, init) => fetcher(input, {
+    ...init, signal: AbortSignal.timeout(8_000),
+  });
+  const live = await discoverLiveRaces(boundedFetch).catch(() => []);
   const races = new Map(verified.map(race => [race.id, race]));
   for (const race of live) {
-    if (!validRacePath(race.path)) continue;
+    if (race.year < 2025 || !validRacePath(race.path)) continue;
     const previous = races.get(race.id);
     const hour = (path: string) => Math.max(0, ...[...path.matchAll(/(?:Hour[ _]|_Hour )(\d+)/gi)].map(m => Number(m[1]))) * 2
       + (/Unofficial/i.test(path) ? 0 : 1);

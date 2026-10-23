@@ -7,6 +7,8 @@ import { alkamelUrl, type Championship } from "../../../../src/alkamel";
 import { applyDriverCategories, parseTimingCsv } from "../../../../src/parser/uraice_adapter";
 import type { RaceDataset } from "../../../../src/models/race";
 import { RACE_DATA_VERSION } from "../../../../src/models/data-version";
+import { download } from "../../../../src/reliable-download";
+import { compactRace } from "../../../../src/compact-race";
 
 export const runtime = "nodejs";
 const PARSER_VERSION = RACE_DATA_VERSION;
@@ -35,19 +37,17 @@ export async function GET(request: Request) {
     const key = createHash("sha256").update(JSON.stringify([PARSER_VERSION, championship, path, sourceFile, ratings])).digest("hex");
     const file = join(directory, `${key}.json.gz`);
     try {
-      const dataset = JSON.parse(gunzipSync(await readFile(file)).toString("utf8")) as RaceDataset;
+      const dataset = compactRace(JSON.parse(gunzipSync(await readFile(file)).toString("utf8")) as RaceDataset);
       if (dataset.laps?.length) return head ? new Response(null, { status: 200 }) : Response.json({ dataset, cached: true, storageWarning }, { headers: { "Cache-Control": "no-store" } });
     } catch { /* Missing, damaged or inaccessible cache entries are rebuilt from the source. */ }
     let job = pending.get(key);
     if (!job) {
       job = (async () => {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`Alkamel HTTP ${response.status}`);
-        const csv = await response.text();
+        const csv = await download(url, response => response.text(), { timeoutMs: 60_000 });
         if (!csv.includes("LAP_NUMBER") || !csv.includes("NUMBER")) throw new Error("Alkamel returned an unexpected CSV");
         const parsed = parseTimingCsv(csv, sourceFile);
         if (!parsed.laps.length) throw new Error("No laps in CSV");
-        const dataset: RaceDataset = { laps: applyDriverCategories(parsed.laps, ratings), diagnostics: parsed.diagnostics };
+        const dataset = compactRace({ laps: applyDriverCategories(parsed.laps, ratings), diagnostics: parsed.diagnostics });
         try {
           await mkdir(directory, { recursive: true });
           const temporary = join(directory, `${key}.${crypto.randomUUID()}.tmp`);

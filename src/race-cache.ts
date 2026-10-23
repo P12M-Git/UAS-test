@@ -1,6 +1,7 @@
 import type { AlkamelRace } from "./alkamel";
 import type { RaceDataset } from "./models/race";
 import { RACE_DATA_VERSION } from "./models/data-version";
+import { compactRace } from "./compact-race";
 
 const DATABASE = "uraice-processed-races";
 const STORE = "races";
@@ -36,19 +37,27 @@ export async function raceCacheVersion(categoryCsv: string): Promise<string> {
 
 export async function readRaceCache(races: AlkamelRace[], version: string): Promise<Map<string, RaceDataset>> {
   const db = await database();
-  const entries = await new Promise<CachedRace[]>((resolve, reject) => {
-    const request = db.transaction(STORE, "readonly").objectStore(STORE).getAll();
-    request.onsuccess = () => resolve(request.result as CachedRace[]);
-    request.onerror = () => reject(request.error || new Error("Could not read race cache"));
-  });
   const expected = new Map(races.map(race => [race.id, race.path]));
   const found = new Map<string, RaceDataset>();
   const stale: string[] = [];
-  for (const entry of entries) {
-    if (entry.version === version && expected.get(entry.id) === entry.path && entry.dataset?.laps?.length)
-      found.set(entry.id, entry.dataset);
-    else stale.push(entry.id);
-  }
+  // Read and compact one record at a time rather than cloning all historical
+  // sector audit arrays into memory before any of them can be released.
+  await new Promise<void>((resolve, reject) => {
+    const transaction = db.transaction(STORE, "readonly");
+    const request = transaction.objectStore(STORE).openCursor();
+    request.onsuccess = () => {
+      const cursor = request.result;
+      if (!cursor) return;
+      const entry = cursor.value as CachedRace;
+      if (entry.version === version && expected.get(entry.id) === entry.path && entry.dataset?.laps?.length)
+        found.set(entry.id, compactRace(entry.dataset));
+      else stale.push(entry.id);
+      cursor.continue();
+    };
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error || new Error("Could not read race cache"));
+    transaction.onabort = () => reject(transaction.error || new Error("Race cache read aborted"));
+  });
   if (stale.length) {
     const transaction = db.transaction(STORE, "readwrite");
     for (const id of stale) transaction.objectStore(STORE).delete(id);

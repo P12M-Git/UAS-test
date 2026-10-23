@@ -27,6 +27,7 @@ import { trafficSample } from "../src/analysis/traffic";
 import { alkamelUrl, type AlkamelRace } from "../src/alkamel";
 import { raceCacheVersion, readRaceCache, saveRaceCache } from "../src/race-cache";
 import { loadRaceLibrary } from "../src/race-load-queue";
+import { download as downloadRace, withDeadline } from "../src/reliable-download";
 import type { RaceDataset } from "../src/models/race";
 type RaceLoad = AlkamelRace & { status: "pending" | "loading" | "loaded" | "cached" | "failed"; laps?: number; error?: string };
 const raceAvailable = (race: RaceLoad) => race.status === "loaded" || race.status === "cached";
@@ -158,7 +159,15 @@ export default function Home() {
   const chosenWorkspaceRaces = raceLoads.filter(race => workspaceRaceIds.includes(race.id));
   const activeWorkspaceRace = chosenWorkspaceRaces.find(race => race.id === workspaceActiveId && raceAvailable(race)) || chosenWorkspaceRaces.find(raceAvailable);
   const selectedEvent = newWorkspace ? (activeWorkspaceRace ? eventLabel(activeWorkspaceRace.sourceFile) : "") : eventFilter || events[0] || "";
-  const sessionLaps = useMemo(() => laps.filter((l) => l.event === selectedEvent), [laps, selectedEvent]);
+  const selectedLapsCache = useRef<Lap[]>([]);
+  const sessionLaps = useMemo(() => {
+    const rows = laps.filter(l => l.event === selectedEvent);
+    const previous = selectedLapsCache.current;
+    // Appending a different race must not recalculate the active race's analysis.
+    if (rows.length === previous.length && rows.every((lap, index) => lap === previous[index])) return previous;
+    selectedLapsCache.current = rows;
+    return rows;
+  }, [laps, selectedEvent]);
   const allMetrics = useMemo(() => driverMetrics(sessionLaps, mode, !newWorkspace), [sessionLaps, mode, newWorkspace]);
   const metrics = useMemo(
     () =>
@@ -236,7 +245,7 @@ export default function Home() {
       const version = await raceCacheVersion(ratings);
       let cached = new Map<string, RaceDataset>();
       try {
-        cached = await readRaceCache(manifest.races, version);
+        cached = await withDeadline(readRaceCache(manifest.races, version), 120_000);
       } catch {
         if (!cancelled) setCacheWarning("Local storage is unavailable; races will be downloaded again on your next visit.");
       }
@@ -267,21 +276,16 @@ export default function Home() {
     const missing = wanted.filter(race => !knownRaces.current.has(race.id));
     (async () => {
       const processedUrl = (race: AlkamelRace) => `/api/alkamel/processed?championship=${race.championship}&path=${encodeURIComponent(race.path)}&sourceFile=${encodeURIComponent(race.sourceFile)}`;
-      await loadRaceLibrary({ races: missing, priority: () => priorityRaceIds.current, signal: controller.signal, load: async race => {
+      await loadRaceLibrary({ races: missing, concurrency: 1, priority: () => priorityRaceIds.current, signal: controller.signal, load: async race => {
           update(race.id, { status: "loading" });
           try {
-            const response = await fetch(processedUrl(race), { signal: controller.signal });
-            if (!response.ok) {
-              const body = await response.json().catch(() => ({}));
-              throw new Error(body.error || `HTTP ${response.status}`);
-            }
-            const result = await response.json() as { dataset: RaceDataset; cached: boolean; storageWarning?: string };
+            const result = await downloadRace(processedUrl(race), response => response.json() as Promise<{ dataset: RaceDataset; cached: boolean; storageWarning?: string }>, { signal: controller.signal, timeoutMs: 240_000 });
             if (result.storageWarning && !cancelled) setCacheWarning(result.storageWarning);
             const dataset = result.dataset;
             if (!dataset.laps.length) throw new Error("No laps in processed race");
             if (cancelled) return;
             try {
-              await saveRaceCache(race, cacheVersion, dataset);
+              await withDeadline(saveRaceCache(race, cacheVersion, dataset), 10_000);
             } catch {
               if (!cancelled) setCacheWarning("Some races could not be saved locally and may be downloaded again on your next visit.");
             }

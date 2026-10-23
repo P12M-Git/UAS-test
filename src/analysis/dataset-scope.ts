@@ -9,6 +9,7 @@ export function datasetScope(races: AlkamelRace[], driverCsv: string) {
   const drivers = new Set<string>();
   const categories = new Set<string>();
   for (const row of rows) {
+    if (Number(value(row, "season")) < 2025) continue;
     const name = value(row, "driver_name_normalized") || value(row, "driver_name");
     if (!name || value(row, "participated") === "no") continue;
     drivers.add(driverIdentityKey(name));

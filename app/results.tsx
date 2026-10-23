@@ -4,26 +4,29 @@ import type {Lap} from "../src/models/race";
 import {raceResults} from "../src/analysis/results";
 import {CONFIG} from "../src/config";
 import {compareEventsByRound,eventTheme} from "../src/models/event-identity";
+import {compareDriversBySurname} from "../src/models/driver-identity";
 
 const colours:Record<string,string>={...CONFIG.CATEGORY_COLOURS};
-export default function Results({laps}:{laps:Lap[]}){
+export default function Results({laps,compact=false}:{laps:Lap[];compact?:boolean}){
   const rounds=useMemo(()=>raceResults(laps).sort((a,b)=>compareEventsByRound(a.event,b.event)||a.session.localeCompare(b.session,undefined,{numeric:true})),[laps]);
-  const [focus,setFocus]=useState(""),[className,setClass]=useState("All"),[positionMode,setPositionMode]=useState("class"),[search,setSearch]=useState("");
+  const [focus,setFocus]=useState(""),[classFilter,setClass]=useState("All"),[positionMode,setPositionMode]=useState("class"),[search,setSearch]=useState("");
+  const classes=[...new Set(laps.map(l=>l.className))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  const className=classes.includes(classFilter)?classFilter:"All";
   const selected=rounds;
-  const allDrivers=[...new Map(rounds.flatMap(r=>r.drivers).map(d=>[d.identity,d])).values()].sort((a,b)=>a.driver.localeCompare(b.driver));
+  const allDrivers=[...new Map(rounds.flatMap(r=>r.drivers).map(d=>[d.identity,d])).values()].sort((a,b)=>compareDriversBySurname(a.driver,b.driver));
   const shown=allDrivers.filter(d=>d.identity===focus || selected.some(r=>r.drivers.some(x=>x.identity===d.identity&&(className==="All"||x.className===className)))&&d.driver.toLowerCase().includes(search.toLowerCase()));
-  return <>
+  return <section className={compact?"workspace-results":undefined}>
     <div className="filters">
-      <label>CLASS<select value={className} onChange={e=>setClass(e.target.value)}><option>All</option>{[...new Set(laps.map(l=>l.className))].sort().map(c=><option key={c}>{c}</option>)}</select></label>
+      <label>CLASS<select value={className} onChange={e=>setClass(e.target.value)}><option>All</option>{classes.map(c=><option key={c}>{c}</option>)}</select></label>
       <label>POSITION<select value={positionMode} onChange={e=>setPositionMode(e.target.value)}><option value="class">In class</option><option value="overall">Overall</option></select></label>
       <label>FOCUS DRIVER<select value={focus} onChange={e=>setFocus(e.target.value)}><option value="">None</option>{allDrivers.map(d=><option key={d.identity} value={d.identity}>{d.driver}</option>)}</select></label>
       <label>SEARCH<input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Driver name"/></label>
     </div>
-    <p>Timing-derived results: completed laps, then elapsed time. All drivers of a car share its position. Penalties, disqualifications and official retirement status are not available in these CSVs. Pace and clean-lap filters do not apply.</p>
+    <details className="results-method"><summary>Results from lap timing</summary><p>Completed laps, then elapsed time. All drivers of a car share its position. Penalties, disqualifications and official retirement status are not available in these CSVs. Pace and clean-lap filters do not apply.</p></details>
     {!selected.length?<p>Select at least one event.</p>:<div className="results-scroll"><table className="results-table"><thead><tr><th>DRIVER</th>{selected.map(r=><th key={r.key} className={eventTheme(r.event)}>{r.event}<br/><small>{r.session}</small></th>)}</tr></thead>
     <tbody>{shown.map(d=><tr key={d.identity} className={focus===d.identity?"results-focus":""}><td style={{background:focus===d.identity?"#dec4f2":colours[d.category]}}><button className="ghost" onClick={()=>setFocus(focus===d.identity?"":d.identity)}>{d.driver}</button></td>{selected.map(r=>{
       const entries=r.drivers.filter(x=>x.identity===d.identity&&(className==="All"||x.className===className));
       return <td key={r.key}>{entries.length?entries.map(x=>{const p=positionMode==="class"?x.classPosition:x.position;return <div key={x.car} title={`${x.team} · ${x.className} · ${x.laps} laps`}><span className="results-car" style={{background:CONFIG.CAR_COLOURS[x.car as keyof typeof CONFIG.CAR_COLOURS]||"#ddd"}}>#{x.car}</span> <strong className="result-position" style={{background:p===1?"#f2cc55":p===2?"#d2dae2":p===3?"#dba571":"#e2e7ed"}}>P{p}</strong><small> {x.laps} laps · {x.className}</small></div>}):"—"}</td>
     })}</tr>)}</tbody></table>{!shown.length&&<p>No drivers match these filters.</p>}</div>}
-  </>;
+  </section>;
 }

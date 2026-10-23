@@ -333,7 +333,7 @@ export default function Home() {
           {newWorkspace ? "← VOLVER A LA WEB ACTUAL" : "ABRIR NUEVA WEB →"}
         </button>
         <nav>
-          {(newWorkspace ? (["Overview", "Driver Performance"] as View[]) : views).map((v, i) => (
+          {(newWorkspace ? (["Overview", "Race Analysis", "Driver Performance", "Results"] as View[]) : views).map((v, i) => (
             <button
               className={view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
               onClick={() => setView(v)}
@@ -387,7 +387,7 @@ export default function Home() {
         {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
         {newWorkspace && <WorkspaceRaces races={raceLoads} selected={workspaceRaceIds} active={activeWorkspaceRace?.id || ""} storageWarning={cacheWarning}
           onSelect={setWorkspaceRaceIds} onActivate={id => { setWorkspaceActiveId(id); setDriver(""); setClassFilter("All"); setTeamFilter("All"); }} />}
-        {newWorkspace && view !== "Overview" && !sessionLaps.length && <p className="workspace-selection-note">Choose races from “Load races”, then click a ready event to view its drivers.</p>}
+        {newWorkspace && view !== "Overview" && !sessionLaps.length && <p className="workspace-selection-note">{view === "Results" ? "Choose races from “Load races” to compare their results." : "Choose races from “Load races”, then click a ready event to view its drivers."}</p>}
         {["Driver Performance","Traffic Performance"].includes(view) && (!newWorkspace || !!sessionLaps.length) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
           <button role="tab" aria-selected={view==="Driver Performance"} onClick={()=>setView("Driver Performance")}>Pure Performance</button>
           <button role="tab" aria-selected={view==="Traffic Performance"} onClick={()=>setView("Traffic Performance")}>Traffic Performance</button>
@@ -475,7 +475,7 @@ export default function Home() {
               </>
             )}{" "}
             {view === "Race Analysis" && (
-              <>
+              newWorkspace ? (!!sessionLaps.length && <WorkspaceLapAnalysis laps={sessionLaps} driver={activeDriver} setDriver={setDriver} />) : <>
                 <RaceSelector events={events} event={selectedEvent} setEvent={value => { setEventFilter(value); setDriver(""); }} />
                 <RaceAnalysis
                   laps={sessionLaps}
@@ -527,8 +527,10 @@ export default function Home() {
             )}{" "}
             {view === "Category Benchmarks" && <Categories rows={cats} />}{" "}
             {view === "Results" && <>
-              <EventPicker events={events} selectedEvents={resultEvents} setSelectedEvents={setResultEvents} />
-              <Results laps={laps.filter(lap => resultEvents.includes(lap.event))}/>
+              {!newWorkspace && <EventPicker events={events} selectedEvents={resultEvents} setSelectedEvents={setResultEvents} />}
+              {(!newWorkspace || !!sessionLaps.length) && <Results compact={newWorkspace} laps={laps.filter(lap => newWorkspace
+                ? chosenWorkspaceRaces.some(race => raceAvailable(race) && race.sourceFile === lap.sourceFile)
+                : resultEvents.includes(lap.event))}/>}
             </>}
             {view === "Data / Session Info" && (
               <>
@@ -556,7 +558,7 @@ function Empty({ busy }: { busy: boolean }) {
       <p className="eyebrow">CANONICAL TIMING INGEST</p>
       <h2>{busy ? "Loading races from Alkamel…" : "No races available"}</h2>
       <p>
-        Race timing is discovered automatically from Alkamel, starting with the 2022 season.
+        Race timing is discovered automatically from Alkamel, starting with the 2025 season.
         Open the database to see the status of every race.
       </p>
       <div className="pipeline">
@@ -1024,11 +1026,13 @@ function LapAnalysis({
   drivers,
   driver,
   setDriver,
+  compact = false,
 }: {
   laps: Lap[];
   drivers: string[];
   driver: string;
   setDriver: (x: string) => void;
+  compact?: boolean;
 }) {
   const improvements = useMemo(()=>lapImprovements(laps),[laps]);
   const usable = laps.filter((l) => l.lapTime !== null),
@@ -1037,10 +1041,11 @@ function LapAnalysis({
       .map((l) => l.lapTime!),
     lo = cleanTimes.length
       ? Math.min(...cleanTimes)
-      : Math.min(...usable.map((l) => l.lapTime!));
+      : usable.length ? Math.min(...usable.map((l) => l.lapTime!)) : 0;
+  const maxLap = Math.max(1, ...usable.map(lap => lap.lapNumber));
   return (
-    <>
-      <DriverSelect {...{ drivers, driver, setDriver }} />
+    <section className={compact ? "workspace-lap-analysis" : undefined}>
+      {!compact && <DriverSelect {...{ drivers, driver, setDriver }} />}
       <div className="selectedCategory">
         <CarNumber number={laps[0]?.carNumber || "—"} />
         <CategoryBadge category={laps[0]?.category || "Unknown"} />{" "}
@@ -1071,10 +1076,10 @@ function LapAnalysis({
                   ? "pit"
                   : l.cleanAir === false
                     ? "traffic"
-                    : "clean"
+                    : l.cleanAir === true ? "clean" : "unknown-air"
             }
             style={{
-              left: `${(l.lapNumber / Math.max(...usable.map((x) => x.lapNumber))) * 96 + 2}%`,
+              left: `${(l.lapNumber / maxLap) * 96 + 2}%`,
               bottom: `${Math.max(12, Math.min(90, ((l.lapTime! - lo) / 6) * 78 + 12))}%`,
             }}
           />
@@ -1097,6 +1102,7 @@ function LapAnalysis({
           <i className="caution" />
           Non-green
         </span>
+        <span><i className="unknown-air" />Unknown air</span>
       </div>
       <div className="tableWrap">
         <table>
@@ -1143,8 +1149,31 @@ function LapAnalysis({
           </tbody>
         </table>
       </div>
-    </>
+    </section>
   );
+}
+function WorkspaceLapAnalysis({ laps, driver, setDriver }: { laps: Lap[]; driver: string; setDriver: (value: string) => void }) {
+  const [vehicleClass, setVehicleClass] = useState("All");
+  const classes = [...new Set(laps.map(lap => lap.className))].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  const selectedClass = classes.includes(vehicleClass) ? vehicleClass : "All";
+  const candidates = laps.filter(lap => (selectedClass === "All" || lap.className === selectedClass) && lap.category !== "Unknown");
+  const drivers = [...new Set(candidates.map(lap => lap.driver))].sort(compareDriversBySurname);
+  const selectedDriver = drivers.includes(driver) ? driver : drivers[0] || "";
+  const driverLaps = useMemo(() => laps.filter(lap => lap.driver === selectedDriver)
+    .sort((a, b) => a.lapNumber - b.lapNumber || (a.elapsed ?? 0) - (b.elapsed ?? 0)), [laps, selectedDriver]);
+  return <section className="workspace-race-analysis">
+    <div className="section-tabs" role="tablist" aria-label="Race analysis">
+      <button role="tab" aria-selected="true">Lap Analysis</button>
+    </div>
+    <div className="workspace-lap-controls">
+      <label>Vehicle class<select value={selectedClass} onChange={event => setVehicleClass(event.target.value)}>
+        <option>All</option>{classes.map(value => <option key={value}>{value}</option>)}
+      </select></label>
+      <DriverPicker drivers={drivers} driver={selectedDriver} setDriver={setDriver} />
+    </div>
+    {driverLaps.length ? <LapAnalysis laps={driverLaps} drivers={drivers} driver={selectedDriver} setDriver={setDriver} compact />
+      : <p className="workspace-selection-note">No rated drivers are available for this selection.</p>}
+  </section>;
 }
 function DriverSelect({
   drivers,

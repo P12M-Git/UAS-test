@@ -16,6 +16,8 @@ import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
 import QualifyingAnalysis from "./qualifying-analysis";
 import WorkspaceSeasonSummary from "./workspace-season-summary";
+import {DriverCategory,ClassBadge} from "./driver-categories";
+import {formatTime,formatNumber,plotPercent} from "../src/models/number-format";
 import { lapImprovements } from "../src/analysis/lap-improvements";
 import { compareEventsByRound, eventChampionship, eventLabel, eventTheme } from "../src/models/event-identity";
 import WorkspaceRaces from "./workspace-races";
@@ -69,11 +71,8 @@ const tips: Record<string, string> = {
     "Reconstructed order inversions, including lapped and multiclass cars; pit transitions are rejected.",
   MAD: "Raw median absolute deviation of lap times.",
 };
-const fmt = (n: number | null | undefined, d = 3) =>
-  n == null || !Number.isFinite(n)
-    ? "—"
-    : `${Math.floor(n / 60)}:${(n % 60).toFixed(d).padStart(3 + d, "0")}`;
-const num = (n: number, d = 2) => (Number.isFinite(n) ? n.toFixed(d) : "—");
+const fmt = formatTime;
+const num = formatNumber;
 const lapHeat = (value: number, values: number[]) => {
   const valid = values.filter(Number.isFinite);
   const lo = Math.min(...valid);
@@ -493,7 +492,7 @@ export default function Home() {
                 />
               </>
             )}
-            {newWorkspace && view === "Qualy Analysis" && activeWorkspaceRace && <QualifyingAnalysis race={activeWorkspaceRace} />}
+            {newWorkspace && view === "Qualy Analysis" && activeWorkspaceRace && <QualifyingAnalysis race={activeWorkspaceRace} driverCsv={driverCsv} />}
             {view === "Lap Analysis" && (
               <LapAnalysis
                 laps={dlaps}
@@ -803,7 +802,7 @@ function Distribution({
           }}
         />
       ))}
-      <b style={{ left: `${((m.avgBest - lo) / range) * 94 + 3}%` }} />
+      {plotPercent(m.avgBest,lo,hi)!==null && <b title={`Average ${fmt(m.avgBest)}`} style={{ left: `${plotPercent(m.avgBest,lo,hi)}%` }} />}
     </div>
     <div className="distribution-scale"><small>{fmt(lo, 1)}</small><small>{fmt(hi, 1)}</small></div>
     </div>
@@ -918,7 +917,8 @@ function Ranking({
       <table className="ranking">
         <thead>
           <tr>
-            <th>#</th>
+            <th>P</th>
+            {streamlined&&<><th>#</th><H k="category" c="CATEGORY"/><H k="className" c="CLASS"/></>}
             <H k="driver" c="DRIVER" />
             <H k="clean" c="LAPS" t="Clean" />
             <th className="lapHeatHead">N</th>
@@ -951,12 +951,13 @@ function Ranking({
               className={m.driver === focusDriver ? "performanceFocus" : ""}
             >
               <td className="rank">{String(i + 1).padStart(2, "0")}</td>
+              {streamlined&&<><td><CarNumber number={m.car} context={m.key}/></td><td><DriverCategory category={m.category}/></td><td><ClassBadge name={m.className} proAm={m.proAm}/></td></>}
               <td
                 className="categoryShade"
                 onClick={() => setFocusDriver?.(m.driver)}
                 style={{
                   background:
-                    CONFIG.CATEGORY_COLOURS[
+                    streamlined ? "var(--panel)" : CONFIG.CATEGORY_COLOURS[
                       m.category as keyof typeof CONFIG.CATEGORY_COLOURS
                     ] || CONFIG.CATEGORY_COLOURS.Unknown,
                 }}
@@ -971,12 +972,11 @@ function Ranking({
                     }}
                   />
                   <b>
-                    <CarNumber number={m.car} context={m.key} /> <DriverName name={m.driver}/>{" "}
-                    <CategoryBadge category={m.category} />
+                    {!streamlined&&<CarNumber number={m.car} context={m.key} />} <DriverName name={m.driver}/>{" "}
+                    {!streamlined&&<CategoryBadge category={m.category} />}
                   </b>
                   <small>
-                    {m.team} · {m.className}{" "}
-                    {m.proAm && <em className="proAm">PRO/AM</em>}
+                    {m.team}{!streamlined&&<> · {m.className} {m.proAm && <em className="proAm">PRO/AM</em>}</>}
                   </small>
                 </div>
               </td>

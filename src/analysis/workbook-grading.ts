@@ -37,7 +37,7 @@ export function workbookGrading(input:GradingDriver[],focus:string,mode:GradingM
     metric("silverStd","Standard deviation Silver",silverStd),metric("silverLower","Interval 1 Silver",silverAvg-silverStd),metric("silverUpper","Interval 2 Silver",silverAvg+silverStd),
     metric("silverCorrected","AVG Silver corrected",silverCorr),metric("deltaSilverCorrected","Delta to AVG Silver corrected",value-silverCorr,"delta"),
     metric("std",`Standard deviation ${referenceCategory} / Platinum`,spread),metric("lower","Interval 1",avg-spread),metric("upper","Interval 2",avg+spread),
-    metric("corrected",`AVG ${pace} corrected ? ${referenceCategory} / Platinum`,allCorr),metric("deltaCorrected",`Delta to AVG ${pace} corrected`,value-allCorr,"delta"),
+    metric("corrected",`AVG ${pace} corrected · ${referenceCategory} / Platinum`,allCorr),metric("deltaCorrected",`Delta to AVG ${pace} corrected`,value-allCorr,"delta"),
     metric("teamCount","Number in Team",team.length||NaN,"count"),metric("teamAverage",`${pace} AVG in Team`,teamAvg),
     metric("deltaTeamAverage","Delta to AVG in Team",value-teamAvg,"delta"),metric("teamBest",`Fastest ${pace} in Team`,teamBest),
     metric("deltaTeamBest","Delta to fastest in Team",value-teamBest,"delta"),

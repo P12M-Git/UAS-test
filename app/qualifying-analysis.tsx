@@ -7,8 +7,11 @@ import {compareDriversBySurname} from "../src/models/driver-identity";
 import DriverPicker from "./driver-picker";
 import DriverName from "./driver-name";
 import {carColour,carTextColour} from "../src/models/car-colour";
-const time=(n:number|null|undefined)=>n===null||n===undefined||!Number.isFinite(n)?"—":`${Math.floor(n/60)}:${(n%60).toFixed(3).padStart(6,"0")}`;
-export default function QualifyingAnalysis({race}:{race:AlkamelRace}){
+import {formatTime as time} from "../src/models/number-format";
+import {DriverCategory,ClassBadge} from "./driver-categories";
+import {applyDriverCategories} from "../src/parser/uraice_adapter";
+import type {Lap} from "../src/models/race";
+export default function QualifyingAnalysis({race,driverCsv}:{race:AlkamelRace;driverCsv:string}){
   const sessions=race.qualifying||[];
   const [chosen,setChosen]=useState("");
   const session=sessions.find(s=>s.path===chosen)||sessions[0];
@@ -29,6 +32,7 @@ export default function QualifyingAnalysis({race}:{race:AlkamelRace}){
   },[path,race.championship,retry]);
   const laps=data?.path===path?data.laps:[];
   const results=useMemo(()=>qualifyingResults(laps),[laps]);
+  const ratings=useMemo(()=>new Map(applyDriverCategories(results.map(r=>({driver:r.driver,sourceFile:race.sourceFile,event:race.sourceFile}) as Lap),driverCsv).map(l=>[l.driver,l.category])),[results,race.sourceFile,driverCsv]);
   const classes=[...new Set(laps.map(l=>l.className))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
   const className=classes.includes(filter)?filter:"All";
   const rows=results.filter(r=>className==="All"||r.className===className);
@@ -48,9 +52,9 @@ export default function QualifyingAnalysis({race}:{race:AlkamelRace}){
     </div>
     {error?<p role="alert">Unable to load qualifying. <button onClick={()=>setRetry(n=>n+1)}>Retry</button></p>:data?.path!==path?<p role="status">Loading qualifying session…</p>:<>
       <details className="results-method"><summary>Timing and theoretical lap</summary><p>Best lap and sectors use recorded flying laps, excluding pit, explicitly deleted and yellow/red laps. Theoretical time adds the driver's best S1, S2 and S3 within this session. Potential is best lap minus theoretical. Purple sectors are fastest in the vehicle class. These timing-derived values do not apply post-session penalties or unmarked deletions.</p></details>
-      <div className="tableWrap"><table><thead><tr>{["POS / CLASS","#","DRIVER","BEST LAP","S1 · BEST LAP","S2 · BEST LAP","S3 · BEST LAP","BEST S1","BEST S2","BEST S3","THEORETICAL","POTENTIAL","LAPS"].map(h=><th key={h}>{h}</th>)}</tr></thead>
+      <div className="tableWrap"><table><thead><tr>{["POS","#","CATEGORY","CLASS","DRIVER","BEST LAP","S1 · BEST LAP","S2 · BEST LAP","S3 · BEST LAP","BEST S1","BEST S2","BEST S3","THEORETICAL","POTENTIAL","LAPS"].map(h=><th key={h}>{h}</th>)}</tr></thead>
         <tbody>{rows.map(r=><tr key={`${r.car}|${r.driver}`} className={r.driver===active?"qualifying-focus":""} onClick={()=>setDriver(r.driver)}>
-          <td>{r.best===null?"—":`P${results.filter(x=>x.className===r.className&&x.best!==null).indexOf(r)+1}`} · {r.className}</td><td><span className="carNumber" style={{background:carColour(r.car,race.sourceFile),color:carTextColour(carColour(r.car,race.sourceFile))}}>{r.car}</span></td>
+          <td>{r.best===null?"—":`P${results.filter(x=>x.className===r.className&&x.best!==null).indexOf(r)+1}`}</td><td><span className="carNumber" style={{background:carColour(r.car,race.sourceFile),color:carTextColour(carColour(r.car,race.sourceFile))}}>{r.car}</span></td><td><DriverCategory category={ratings.get(r.driver)||"Unknown"}/></td><td><ClassBadge name={r.className}/></td>
           <td><button className="ghost" onClick={()=>setDriver(r.driver)}><DriverName name={r.driver}/></button><small>{r.team}</small></td>
           <td><strong>{time(r.best)}</strong></td>{(["s1","s2","s3"] as const).map(key=><td key={key}>{time(r.bestLap?.[key])}</td>)}
           {(["bestS1","bestS2","bestS3"] as const).map(key=><td key={key} className={bestSector(r,key)?"qualifying-sector-best":""}>{time(r[key])}</td>)}

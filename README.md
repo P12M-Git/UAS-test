@@ -36,7 +36,11 @@ Race and Race 20 tabs and the shared selected events. Qualifying defaults to
 qualifying sessions without Hyperpole; individual sessions can be chosen per
 event. Race is absolute best valid lap, and Race 20 is the absolute fastest-20
 average with a full sample required. All 27 workbook metrics appear below each
-event's times, with per-event exclusions and optional plot/cutoff controls.
+event's times, grouped into the workbook's focus, averages, Top 10, sample,
+Silver correction, overall correction and team sections. Legacy Gold/Silver
+benchmark overlays have been removed. Category filters, per-event exclusions and
+the optional cutoff update both metrics and graph bounds. The selected driver
+has a highlighted plot row and outlined marker.
 `src/analysis/workbook-grading.ts` adapts the workbook metrics to the full class,
 without fixed row limits. STDEV is sample standard deviation; the category OR is
 applied per driver (Bronze/Platinum for Qualifying, Gold/Platinum for Race/Race 20).
@@ -49,6 +53,11 @@ Driver display uses **SURNAME**, Given name without changing identity keys.
 Car numbers use regular weight. The ALMS 2026–2027 LMP2 palette is scoped to that
 season, including newly discovered events, rather than reassigning other series'
 car colours.
+Driver tables separate car number, FIA category, vehicle class and name. Class
+badges are red for Hypercar, dark blue for LMP2, light blue for LMP2 Pro/Am and
+orange for GT3. Pace-average markers are finite and clamped to their distribution
+axes so outlying averages cannot expand the table's scroll area. Time formatting
+rounds before splitting minutes/seconds and suppresses negative zero in numbers.
 
 `scripts/update-alms-categories.ts` imports the official ALMS 2026–2027 race
 classification's DRIVER_LICENSE fields into annual category rows for the actual

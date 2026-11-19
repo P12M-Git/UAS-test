@@ -37,18 +37,26 @@ qualifying sessions without Hyperpole; individual sessions can be chosen per
 event. Race is absolute best valid lap, and Race 20 is the absolute fastest-20
 average with a full sample required. All 27 workbook metrics appear below each
 event's times, grouped into the workbook's focus, averages, Top 10, sample,
-Silver correction, overall correction and team sections. Legacy Gold/Silver
-benchmark overlays have been removed. Category filters, per-event exclusions and
+correction and team sections. Each metric has Overall and compact Silver,
+Gold/Platinum and Bronze columns; category-only rows are consolidated rather than
+replacing Overall. The graph shows the three corresponding category-average
+lines and an explicit legend with timed-driver counts. Lap counts use the Excel
+red/yellow/green colour scale, recalculated from the included drivers.
+Category filters, per-event exclusions and
 the optional cutoff update both metrics and graph bounds. The selected driver
 has a highlighted plot row and outlined marker.
-`src/analysis/workbook-grading.ts` adapts the workbook metrics to the full class,
-without fixed row limits. STDEV is sample standard deviation; the category OR is
-applied per driver (Bronze/Platinum for Qualifying, Gold/Platinum for Race/Race 20).
-Correction intervals retain the overall mean as their centre. Team metrics use
-all cars with the same published team name within the event/class, excluding
-unknown team names. Top 10 still requires ten numeric values. Workbook reference
-fixtures test the unchanged formulas; dedicated cases cover the corrected group
-and team calculations. Missing outputs are not silently converted to zero.
+`src/analysis/grading-comparison.ts` calculates the full class and the three
+category cohorts independently. Overall standard deviation uses the full class;
+each correction interval uses its column's own mean and sample STDEV. Team
+metrics use all cars with the same normalized published team name in the event
+and class. The expandable team section lists its actual cars and drivers, timed
+sample count and missing results. Averages give equal weight to timed drivers;
+missing Race 20 samples are not zero. Team identity can still be resolved from
+the event context if the focus driver is filtered out, but their delta remains
+unavailable. Unknown team names are not merged. Top 10 requires ten numeric
+values. Workbook reference fixtures retain coverage for unchanged formula
+definitions; dedicated tests cover Overall/category independence, real teams,
+heat colours and plot scaling.
 Driver display uses **SURNAME**, Given name without changing identity keys.
 Car numbers use regular weight. The ALMS 2026–2027 LMP2 palette is scoped to that
 season, including newly discovered events, rather than reassigning other series'

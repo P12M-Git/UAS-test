@@ -14,3 +14,8 @@ test("selected driver has a highlighted row and marker; excluded outlier no long
 test("an empty plot shows an empty state without invalid numerical coordinates",()=>{
  assert.match(render([]),/No included timed drivers/);assert.doesNotMatch(render([]),/NaN|Infinity/);
 });
+test("vertical means separate Silver and Bronze and combine Gold with Platinum",()=>{
+ const values=[{...rows[0],category:"Bronze"},{...rows[1],category:"Silver"},{...rows[2],category:"Gold"},{...rows[0],driver:"Platinum DRIVER",car:"4",category:"Platinum",value:200}];
+ const html=render(values);assert.equal((html.match(/class="category-average-line"/g)||[]).length,3);
+ assert.match(html,/Gold \/ Platinum average: 4:10.000/);assert.match(html,/Silver average: 1:50.000/);assert.match(html,/Bronze average: 1:40.000/);
+});

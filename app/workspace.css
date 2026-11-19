@@ -137,6 +137,22 @@ main.new-workspace.workspace-dark {
 .new-workspace .workspace-lap-analysis .sectionTitle h2 { font-size:22px; margin:0; }
 .workspace-lap-analysis .sectionTitle p { margin:3px 0 0; color:var(--muted); }
 .scatter .unknown-air, .legend .unknown-air { background:#a596b4; }
+.new-workspace .workspace-lap-analysis :is(.scatter,.legend) .clean { background:#22a65a; }
+.new-workspace .workspace-lap-analysis :is(.scatter,.legend) .traffic { background:#2989e6; }
+.new-workspace .workspace-lap-analysis :is(.scatter,.legend) .pit { background:#e34444; }
+.new-workspace .workspace-lap-analysis :is(.scatter,.legend) .caution { background:#f2cc34; }
+.new-workspace .workspace-lap-analysis :is(.scatter,.legend) .unknown-air { background:#9b95a6; }
+.workspace-qualifying .tableWrap { max-height:60vh; overflow:auto; border:1px solid var(--line); }
+.new-workspace .workspace-qualifying :is(td,th) { padding:6px 9px; white-space:nowrap; border-color:var(--line); background:var(--panel); color:var(--text); }
+.workspace-qualifying thead { position:sticky; top:0; z-index:1; }
+.new-workspace .workspace-qualifying th { background:var(--panel-strong); }
+.workspace-qualifying td small { display:block; color:var(--muted); }
+.new-workspace .workspace-qualifying td .ghost { padding:0; border:0; background:transparent; color:var(--text); }
+.new-workspace .workspace-qualifying .qualifying-focus td { background:var(--panel-strong); }
+.new-workspace .workspace-qualifying .qualifying-sector-best { color:#9755cf; font-weight:700; }
+.new-workspace.workspace-dark .workspace-qualifying .qualifying-sector-best { color:#ce9cfa; }
+.workspace-qualifying .results-method { margin:8px 0 12px; color:var(--muted); }
+.workspace-qualifying .workspace-lap-controls > label:first-child { flex:1; min-width:220px; }
 .new-workspace .workspace-lap-analysis .scatter { height:220px; margin:10px 0 6px; border-color:var(--line); }
 .workspace-lap-analysis .legend { margin:6px 0 12px; gap:16px; }
 .workspace-lap-analysis .tableWrap { max-height:480px; overflow:auto; border:1px solid var(--line); }

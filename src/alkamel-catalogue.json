@@ -1,120 +1,211 @@
 [
   {
-    "id": "ALMS-04_2024-2025-02_Dubai Autodrome-202502081410_Race 1",
-    "sourceFile": "2025 ALMS 02 Dubai Autodrome Race 1.csv",
-    "year": 2025,
-    "championship": "ALMS",
-    "path": "Results/04_2024-2025/02_Dubai Autodrome/19_Asian Le Mans Series/202502081410_Race 1/Hour 4/23_Analysis_Race 1.CSV",
-    "event": "Dubai Autodrome · Race 1",
-    "season": "2024-2025"
-  },
-  {
-    "id": "ALMS-04_2024-2025-02_Dubai Autodrome-202502091410_Race 2",
-    "sourceFile": "2025 ALMS 02 Dubai Autodrome Race 2.csv",
-    "year": 2025,
-    "championship": "ALMS",
-    "path": "Results/04_2024-2025/02_Dubai Autodrome/19_Asian Le Mans Series/202502091410_Race 2/Hour 4/23_Analysis_Race 2.CSV",
-    "event": "Dubai Autodrome · Race 2",
-    "season": "2024-2025"
-  },
-  {
     "id": "ALMS-05_2025-2026-01_Sepang-202512131300_Race 1",
-    "sourceFile": "2025 ALMS 01 Sepang Race 1.csv",
-    "year": 2025,
     "championship": "ALMS",
-    "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512131300_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "season": "2025-2026",
+    "year": 2025,
     "event": "Sepang · Race 1",
-    "season": "2025-2026"
+    "sourceFile": "2025 ALMS 01 Sepang Race 1.csv",
+    "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512131300_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT",
+        "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512130915_Qualifying GT/23_Analysis_Qualifying GT.CSV"
+      },
+      {
+        "name": "Qualifying LMP3",
+        "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512130940_Qualifying LMP3/23_Analysis_Qualifying LMP3.CSV"
+      },
+      {
+        "name": "Qualifying LMP2",
+        "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512131005_Qualifying LMP2/23_Analysis_Qualifying LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ALMS-05_2025-2026-01_Sepang-202512141300_Race 2",
-    "sourceFile": "2025 ALMS 01 Sepang Race 2.csv",
-    "year": 2025,
     "championship": "ALMS",
-    "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512141300_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "season": "2025-2026",
+    "year": 2025,
     "event": "Sepang · Race 2",
-    "season": "2025-2026"
-  },
-  {
-    "id": "ALMS-04_2024-2025-03_Yas Marina-202502151500_Race 1",
-    "sourceFile": "2025 ALMS 03 Yas Marina Race 1.csv",
-    "year": 2025,
-    "championship": "ALMS",
-    "path": "Results/04_2024-2025/03_Yas Marina/21_Asian Le Mans Series/202502151500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
-    "event": "Yas Marina · Race 1",
-    "season": "2024-2025"
-  },
-  {
-    "id": "ALMS-04_2024-2025-03_Yas Marina-202502161630_Race 2",
-    "sourceFile": "2025 ALMS 03 Yas Marina Race 2.csv",
-    "year": 2025,
-    "championship": "ALMS",
-    "path": "Results/04_2024-2025/03_Yas Marina/21_Asian Le Mans Series/202502161630_Race 2/Hour 4/23_Analysis_Race 2.CSV",
-    "event": "Yas Marina · Race 2",
-    "season": "2024-2025"
-  },
-  {
-    "id": "ELMS-20_2025-06_AUTODROMO DO ALGARVE-202510181430_Race",
-    "sourceFile": "2025 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
-    "year": 2025,
-    "championship": "ELMS",
-    "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510181430_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "AUTODROMO DO ALGARVE · Race",
-    "season": "2025"
+    "sourceFile": "2025 ALMS 01 Sepang Race 2.csv",
+    "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512141300_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT",
+        "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512130915_Qualifying GT/23_Analysis_Qualifying GT.CSV"
+      },
+      {
+        "name": "Qualifying LMP3",
+        "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512130940_Qualifying LMP3/23_Analysis_Qualifying LMP3.CSV"
+      },
+      {
+        "name": "Qualifying LMP2",
+        "path": "Results/05_2025-2026/01_Sepang/24_Asian Le Mans Series/202512131005_Qualifying LMP2/23_Analysis_Qualifying LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ELMS-20_2025-01_BARCELONA-CATALUNYA-202504061200_Race",
-    "sourceFile": "2025 ELMS 01 BARCELONA CATALUNYA Race.csv",
-    "year": 2025,
     "championship": "ELMS",
-    "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504061200_Race/Hour 4/23_Analysis_Race.CSV",
+    "season": "2025",
+    "year": 2025,
     "event": "BARCELONA CATALUNYA · Race",
-    "season": "2025"
-  },
-  {
-    "id": "ELMS-20_2025-03_IMOLA-202507061200_Race",
-    "sourceFile": "2025 ELMS 03 IMOLA Race.csv",
-    "year": 2025,
-    "championship": "ELMS",
-    "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507061200_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "IMOLA · Race",
-    "season": "2025"
+    "sourceFile": "2025 ELMS 01 BARCELONA CATALUNYA Race.csv",
+    "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504061200_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504051505_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504051530_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504051555_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/20_2025/01_BARCELONA-CATALUNYA/585_European Le Mans Series/202504051620_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ELMS-20_2025-02_PAUL RICARD-202505041200_Race",
-    "sourceFile": "2025 ELMS 02 PAUL RICARD Race.csv",
-    "year": 2025,
     "championship": "ELMS",
-    "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505041200_Race/Hour 4/23_Analysis_Race.CSV",
+    "season": "2025",
+    "year": 2025,
     "event": "PAUL RICARD · Race",
-    "season": "2025"
+    "sourceFile": "2025 ELMS 02 PAUL RICARD Race.csv",
+    "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505041200_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505031420_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505031445_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505031510_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/20_2025/02_PAUL RICARD/594_European Le Mans Series/202505031535_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
-    "id": "ELMS-20_2025-05_SILVERSTONE-202509141100_Race",
-    "sourceFile": "2025 ELMS 05 SILVERSTONE Race.csv",
-    "year": 2025,
+    "id": "ELMS-20_2025-03_IMOLA-202507061200_Race",
     "championship": "ELMS",
-    "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509141100_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "SILVERSTONE · Race",
-    "season": "2025"
+    "season": "2025",
+    "year": 2025,
+    "event": "IMOLA · Race",
+    "sourceFile": "2025 ELMS 03 IMOLA Race.csv",
+    "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507061200_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507051430_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507051500_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507051520_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/20_2025/03_IMOLA/607_European Le Mans Series/202507051545_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ELMS-20_2025-04_SPA FRANCORCHAMPS-202508241300_Race",
-    "sourceFile": "2025 ELMS 04 SPA FRANCORCHAMPS Race.csv",
-    "year": 2025,
     "championship": "ELMS",
-    "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508241300_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "SPA FRANCORCHAMPS · Race",
-    "season": "2025"
-  },
-  {
-    "id": "IMSA-25_2025-15_Canadian Tire Motorsport Park-202507131405_Race",
-    "championship": "IMSA",
     "season": "2025",
     "year": 2025,
-    "event": "Canadian Tire Motorsport Park · Race",
-    "sourceFile": "2025 IMSA 15 Canadian Tire Motorsport Park Race.csv",
-    "path": "Results/25_2025/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202507131405_Race/23_Time Cards_Race.CSV"
+    "event": "SPA FRANCORCHAMPS · Race",
+    "sourceFile": "2025 ELMS 04 SPA FRANCORCHAMPS Race.csv",
+    "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508241300_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508231230_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508231252_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508231314_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/20_2025/04_SPA FRANCORCHAMPS/617_European Le Mans Series/202508231336_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
+  },
+  {
+    "id": "ELMS-20_2025-05_SILVERSTONE-202509141100_Race",
+    "championship": "ELMS",
+    "season": "2025",
+    "year": 2025,
+    "event": "SILVERSTONE · Race",
+    "sourceFile": "2025 ELMS 05 SILVERSTONE Race.csv",
+    "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509141100_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509131420_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509131445_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509131510_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/20_2025/05_SILVERSTONE/623_European Le Mans Series/202509131535_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
+  },
+  {
+    "id": "ELMS-20_2025-06_AUTODROMO DO ALGARVE-202510181430_Race",
+    "championship": "ELMS",
+    "season": "2025",
+    "year": 2025,
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "sourceFile": "2025 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510181430_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510171515_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510171540_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510171605_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/20_2025/06_AUTODROMO DO ALGARVE/631_European Le Mans Series/202510171630_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "IMSA-25_2025-02_Daytona International Speedway-202501251340_Race",
@@ -123,52 +214,13 @@
     "year": 2025,
     "event": "Daytona International Speedway · Race",
     "sourceFile": "2025 IMSA 02 Daytona International Speedway Race.csv",
-    "path": "Results/25_2025/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202501251340_Race/24_Hour 24/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-25_2025-11_Detroit Street Course-202505311640_Race",
-    "championship": "IMSA",
-    "season": "2025",
-    "year": 2025,
-    "event": "Detroit Street Course · Race",
-    "sourceFile": "2025 IMSA 11 Detroit Street Course Race.csv",
-    "path": "Results/25_2025/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202505311640_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-25_2025-20_Indianapolis Motor Speedway RC-202509211140_Race",
-    "championship": "IMSA",
-    "season": "2025",
-    "year": 2025,
-    "event": "Indianapolis Motor Speedway RC · Race",
-    "sourceFile": "2025 IMSA 20 Indianapolis Motor Speedway RC Race.csv",
-    "path": "Results/25_2025/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202509211140_Race/06_Hour 6/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-25_2025-07_Long Beach Street Circuit-202504121405_Race",
-    "championship": "IMSA",
-    "season": "2025",
-    "year": 2025,
-    "event": "Long Beach Street Circuit · Race",
-    "sourceFile": "2025 IMSA 07 Long Beach Street Circuit Race.csv",
-    "path": "Results/25_2025/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202504121405_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-25_2025-16_Road America-202508031310_Race",
-    "championship": "IMSA",
-    "season": "2025",
-    "year": 2025,
-    "event": "Road America · Race",
-    "sourceFile": "2025 IMSA 16 Road America Race.csv",
-    "path": "Results/25_2025/16_Road America/01_IMSA WeatherTech SportsCar Championship/202508031310_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-25_2025-22_Road Atlanta-202510111210_Race",
-    "championship": "IMSA",
-    "season": "2025",
-    "year": 2025,
-    "event": "Road Atlanta · Race",
-    "sourceFile": "2025 IMSA 22 Road Atlanta Race.csv",
-    "path": "Results/25_2025/22_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202510111210_Race/10_Hour 10/23_Time Cards_Race.CSV"
+    "path": "Results/25_2025/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202501251340_Race/24_Hour 24/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202501231410_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
     "id": "IMSA-25_2025-06_Sebring International Raceway-202503151010_Race",
@@ -177,25 +229,28 @@
     "year": 2025,
     "event": "Sebring International Raceway · Race",
     "sourceFile": "2025 IMSA 06 Sebring International Raceway Race.csv",
-    "path": "Results/25_2025/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202503151010_Race/12_Hour 12/23_Time Cards_Race.CSV"
+    "path": "Results/25_2025/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202503151010_Race/12_Hour 12/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202503141125_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
-    "id": "IMSA-25_2025-17_VIRginia International Raceway-202508241410_Race",
+    "id": "IMSA-25_2025-07_Long Beach Street Circuit-202504121405_Race",
     "championship": "IMSA",
     "season": "2025",
     "year": 2025,
-    "event": "VIRginia International Raceway · Race",
-    "sourceFile": "2025 IMSA 17 VIRginia International Raceway Race.csv",
-    "path": "Results/25_2025/17_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202508241410_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-25_2025-14_Watkins Glen International-202506221210_Race",
-    "championship": "IMSA",
-    "season": "2025",
-    "year": 2025,
-    "event": "Watkins Glen International · Race",
-    "sourceFile": "2025 IMSA 14 Watkins Glen International Race.csv",
-    "path": "Results/25_2025/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202506221210_Race/06_Hour 6/23_Time Cards_Race.CSV"
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2025 IMSA 07 Long Beach Street Circuit Race.csv",
+    "path": "Results/25_2025/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202504121405_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202504111710_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
     "id": "IMSA-25_2025-10_Weathertech Raceway Laguna Seca-202505111210_Race",
@@ -204,25 +259,288 @@
     "year": 2025,
     "event": "Weathertech Raceway Laguna Seca · Race",
     "sourceFile": "2025 IMSA 10 Weathertech Raceway Laguna Seca Race.csv",
-    "path": "Results/25_2025/10_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202505111210_Race/23_Time Cards_Race.CSV"
+    "path": "Results/25_2025/10_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202505111210_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/10_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202505101515_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
-    "id": "WEC-14_2025-08_BAHRAIN INTERNATIONAL CIRCUIT-202511081400_Race",
-    "sourceFile": "2025 WEC 08 BAHRAIN INTERNATIONAL CIRCUIT Race.csv",
+    "id": "IMSA-25_2025-11_Detroit Street Course-202505311640_Race",
+    "championship": "IMSA",
+    "season": "2025",
     "year": 2025,
+    "event": "Detroit Street Course · Race",
+    "sourceFile": "2025 IMSA 11 Detroit Street Course Race.csv",
+    "path": "Results/25_2025/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202505311640_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202505301650_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-25_2025-14_Watkins Glen International-202506221210_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2025 IMSA 14 Watkins Glen International Race.csv",
+    "path": "Results/25_2025/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202506221210_Race/06_Hour 6/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202506211420_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-25_2025-15_Canadian Tire Motorsport Park-202507131405_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2025 IMSA 15 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/25_2025/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202507131405_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202507121600_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-25_2025-16_Road America-202508031310_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Road America · Race",
+    "sourceFile": "2025 IMSA 16 Road America Race.csv",
+    "path": "Results/25_2025/16_Road America/01_IMSA WeatherTech SportsCar Championship/202508031310_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/16_Road America/01_IMSA WeatherTech SportsCar Championship/202508021640_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-25_2025-17_VIRginia International Raceway-202508241410_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2025 IMSA 17 VIRginia International Raceway Race.csv",
+    "path": "Results/25_2025/17_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202508241410_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/17_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202508231655_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-25_2025-20_Indianapolis Motor Speedway RC-202509211140_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Indianapolis Motor Speedway RC · Race",
+    "sourceFile": "2025 IMSA 20 Indianapolis Motor Speedway RC Race.csv",
+    "path": "Results/25_2025/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202509211140_Race/06_Hour 6/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202509201515_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-25_2025-22_Road Atlanta-202510111210_Race",
+    "championship": "IMSA",
+    "season": "2025",
+    "year": 2025,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2025 IMSA 22 Road Atlanta Race.csv",
+    "path": "Results/25_2025/22_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202510111210_Race/10_Hour 10/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/25_2025/22_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202510101520_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-14_2025-01_LOSAIL-202502281400_Race",
     "championship": "WEC",
-    "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511081400_Race/08_Hour 8/23_Analysis_Race_Hour 8.CSV",
-    "event": "BAHRAIN INTERNATIONAL CIRCUIT · Race",
-    "season": "2025"
+    "season": "2025",
+    "year": 2025,
+    "event": "LOSAIL · Race",
+    "sourceFile": "2025 WEC 01 LOSAIL Race.csv",
+    "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502281400_Race/10_Hour 10/23_Analysis_Race_Hour 10.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502271700_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502271720_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502271740_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502271800_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-14_2025-02_IMOLA-202504201300_Race",
+    "championship": "WEC",
+    "season": "2025",
+    "year": 2025,
+    "event": "IMOLA · Race",
+    "sourceFile": "2025 WEC 02 IMOLA Race.csv",
+    "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504201300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504191430_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504191450_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504191510_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504191530_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-14_2025-03_SPA FRANCORCHAMPS-202505101400_Race",
+    "championship": "WEC",
+    "season": "2025",
+    "year": 2025,
+    "event": "SPA FRANCORCHAMPS · Race",
+    "sourceFile": "2025 WEC 03 SPA FRANCORCHAMPS Race.csv",
+    "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505101400_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505091440_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505091503_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505091525_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505091548_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-14_2025-04_LE MANS-202506141600_Race",
+    "championship": "WEC",
+    "season": "2025",
+    "year": 2025,
+    "event": "LE MANS · Race",
+    "sourceFile": "2025 WEC 04 LE MANS Race.csv",
+    "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506141600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMP2-LMGT3",
+        "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506111845_Qualifying LMP2-LMGT3/23_Analysis_Qualifying LMP2-LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506111930_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole 1 LMP2-LMGT3",
+        "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506122000_Hyperpole 1 LMP2-LMGT3/23_Analysis_Hyperpole 1 LMP2-LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole 2 LMP2-LMGT3",
+        "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506122035_Hyperpole 2 LMP2-LMGT3/23_Analysis_Hyperpole 2 LMP2-LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole 1 HYPERCAR",
+        "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506122105_Hyperpole 1 HYPERCAR/23_Analysis_Hyperpole 1 HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole 2 HYPERCAR",
+        "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506122140_Hyperpole 2 HYPERCAR/23_Analysis_Hyperpole 2 HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-14_2025-05_SAO PAULO-202507131130_Race",
+    "championship": "WEC",
+    "season": "2025",
+    "year": 2025,
+    "event": "SAO PAULO · Race",
+    "sourceFile": "2025 WEC 05 SAO PAULO Race.csv",
+    "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507131130_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507121445_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507121505_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507121525_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507121549_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
   },
   {
     "id": "WEC-14_2025-06_CIRCUIT OF THE AMERICAS-202509071330_Race",
-    "sourceFile": "2025 WEC 06 CIRCUIT OF THE AMERICAS Race.csv",
-    "year": 2025,
     "championship": "WEC",
-    "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509071330_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "season": "2025",
+    "year": 2025,
     "event": "CIRCUIT OF THE AMERICAS · Race",
-    "season": "2025"
+    "sourceFile": "2025 WEC 06 CIRCUIT OF THE AMERICAS Race.csv",
+    "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509071330_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509061500_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509061520_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509061540_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/06_CIRCUIT OF THE AMERICAS/620_FIA WEC/202509061600_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
   },
   {
     "id": "WEC-14_2025-07_FUJI SPEEDWAY-202509281100_Race",
@@ -231,151 +549,344 @@
     "year": 2025,
     "event": "FUJI SPEEDWAY · Race",
     "sourceFile": "2025 WEC 07 FUJI SPEEDWAY Race.csv",
-    "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509281100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV"
+    "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509281100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509271420_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509271440_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509271500_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/07_FUJI SPEEDWAY/626_FIA WEC/202509271520_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
   },
   {
-    "id": "WEC-14_2025-02_IMOLA-202504201300_Race",
-    "sourceFile": "2025 WEC 02 IMOLA Race.csv",
-    "year": 2025,
+    "id": "WEC-14_2025-08_BAHRAIN INTERNATIONAL CIRCUIT-202511081400_Race",
     "championship": "WEC",
-    "path": "Results/14_2025/02_IMOLA/589_FIA WEC/202504201300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
-    "event": "IMOLA · Race",
-    "season": "2025"
+    "season": "2025",
+    "year": 2025,
+    "event": "BAHRAIN INTERNATIONAL CIRCUIT · Race",
+    "sourceFile": "2025 WEC 08 BAHRAIN INTERNATIONAL CIRCUIT Race.csv",
+    "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511081400_Race/08_Hour 8/23_Analysis_Race_Hour 8.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511071600_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511071620_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511071640_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/14_2025/08_BAHRAIN INTERNATIONAL CIRCUIT/635_FIA WEC/202511071700_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
   },
   {
-    "id": "WEC-14_2025-04_LE MANS-202506141600_Race",
-    "sourceFile": "2025 WEC 04 LE MANS Race.csv",
-    "year": 2025,
-    "championship": "WEC",
-    "path": "Results/14_2025/04_LE MANS/600_FIA WEC/202506141600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
-    "event": "LE MANS · Race",
-    "season": "2025"
+    "id": "ALMS-06_2026-2027-01_Paul Ricard-202611141315_Race 1",
+    "championship": "ALMS",
+    "season": "2026-2027",
+    "year": 2026,
+    "event": "Paul Ricard · Race 1",
+    "sourceFile": "2026 ALMS 01 Paul Ricard Race 1.csv",
+    "path": "Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/202611141315_Race 1/04_Hour 4/23_Analysis_Race 1_Hour 4.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT3 - Race 1",
+        "path": "Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/202611131605_Qualifying GT3 - Race 1/23_Analysis_Qualifying GT3 - Race 1.CSV"
+      },
+      {
+        "name": "Qualifying Hypercar - LMP2 - Race 1",
+        "path": "Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/202611131650_Qualifying Hypercar - LMP2 - Race 1/23_Analysis_Qualifying Hypercar - LMP2 - Race 1.CSV"
+      }
+    ]
   },
   {
-    "id": "WEC-14_2025-01_LOSAIL-202502281400_Race",
-    "sourceFile": "2025 WEC 01 LOSAIL Race.csv",
-    "year": 2025,
-    "championship": "WEC",
-    "path": "Results/14_2025/01_LOSAIL/579_FIA WEC/202502281400_Race/10_Hour 10/23_Analysis_Race_Hour 10.CSV",
-    "event": "LOSAIL · Race",
-    "season": "2025"
-  },
-  {
-    "id": "WEC-14_2025-05_SAO PAULO-202507131130_Race",
-    "sourceFile": "2025 WEC 05 SAO PAULO Race.csv",
-    "year": 2025,
-    "championship": "WEC",
-    "path": "Results/14_2025/05_SAO PAULO/613_FIA WEC/202507131130_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
-    "event": "SAO PAULO · Race",
-    "season": "2025"
-  },
-  {
-    "id": "WEC-14_2025-03_SPA FRANCORCHAMPS-202505101400_Race",
-    "sourceFile": "2025 WEC 03 SPA FRANCORCHAMPS Race.csv",
-    "year": 2025,
-    "championship": "WEC",
-    "path": "Results/14_2025/03_SPA FRANCORCHAMPS/597_FIA WEC/202505101400_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
-    "event": "SPA FRANCORCHAMPS · Race",
-    "season": "2025"
+    "id": "ALMS-06_2026-2027-01_Paul Ricard-202611151315_Race 2",
+    "championship": "ALMS",
+    "season": "2026-2027",
+    "year": 2026,
+    "event": "Paul Ricard · Race 2",
+    "sourceFile": "2026 ALMS 01 Paul Ricard Race 2.csv",
+    "path": "Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/202611151315_Race 2/04_Hour 4/23_Analysis_Race 2_Hour 4.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT3 - Race 2",
+        "path": "Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/202611131625_Qualifying GT3 - Race 2/23_Analysis_Qualifying GT3 - Race 2.CSV"
+      },
+      {
+        "name": "Qualifying Hypercar - LMP2 - Race 2",
+        "path": "Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/202611131710_Qualifying Hypercar - LMP2 - Race 2/23_Analysis_Qualifying Hypercar - LMP2 - Race 2.CSV"
+      }
+    ]
   },
   {
     "id": "ALMS-05_2025-2026-02_Dubai Autodrome-202601311410_Race 1",
-    "sourceFile": "2026 ALMS 02 Dubai Autodrome Race 1.csv",
-    "year": 2026,
     "championship": "ALMS",
-    "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311410_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "season": "2025-2026",
+    "year": 2026,
     "event": "Dubai Autodrome · Race 1",
-    "season": "2025-2026"
+    "sourceFile": "2026 ALMS 02 Dubai Autodrome Race 1.csv",
+    "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311410_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT",
+        "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601310940_Qualifying GT/23_Analysis_Qualifying GT.CSV"
+      },
+      {
+        "name": "Qualifying LMP3",
+        "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311005_Qualifying LMP3/23_Analysis_Qualifying LMP3.CSV"
+      },
+      {
+        "name": "Qualifying LMP2",
+        "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311030_Qualifying LMP2/23_Analysis_Qualifying LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ALMS-05_2025-2026-02_Dubai Autodrome-202602011410_Race 2",
-    "sourceFile": "2026 ALMS 02 Dubai Autodrome Race 2.csv",
-    "year": 2026,
     "championship": "ALMS",
-    "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202602011410_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "season": "2025-2026",
+    "year": 2026,
     "event": "Dubai Autodrome · Race 2",
-    "season": "2025-2026"
+    "sourceFile": "2026 ALMS 02 Dubai Autodrome Race 2.csv",
+    "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202602011410_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT",
+        "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601310940_Qualifying GT/23_Analysis_Qualifying GT.CSV"
+      },
+      {
+        "name": "Qualifying LMP3",
+        "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311005_Qualifying LMP3/23_Analysis_Qualifying LMP3.CSV"
+      },
+      {
+        "name": "Qualifying LMP2",
+        "path": "Results/05_2025-2026/02_Dubai Autodrome/26_Asian Le Mans Series/202601311030_Qualifying LMP2/23_Analysis_Qualifying LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ALMS-05_2025-2026-03_Yas Marina-202602071500_Race 1",
-    "sourceFile": "2026 ALMS 03 Yas Marina Race 1.csv",
-    "year": 2026,
     "championship": "ALMS",
-    "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "season": "2025-2026",
+    "year": 2026,
     "event": "Yas Marina · Race 1",
-    "season": "2025-2026"
+    "sourceFile": "2026 ALMS 03 Yas Marina Race 1.csv",
+    "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071500_Race 1/Hour 4/23_Analysis_Race 1.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT",
+        "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071010_Qualifying GT/23_Analysis_Qualifying GT.CSV"
+      },
+      {
+        "name": "Qualifying LMP3",
+        "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071040_Qualifying LMP3/23_Analysis_Qualifying LMP3.CSV"
+      },
+      {
+        "name": "Qualifying LMP2",
+        "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071115_Qualifying LMP2/23_Analysis_Qualifying LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ALMS-05_2025-2026-03_Yas Marina-202602081630_Race 2",
-    "sourceFile": "2026 ALMS 03 Yas Marina Race 2.csv",
-    "year": 2026,
     "championship": "ALMS",
-    "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602081630_Race 2/Hour 4/23_Analysis_Race 2.CSV",
-    "event": "Yas Marina · Race 2",
-    "season": "2025-2026"
-  },
-  {
-    "id": "ELMS-21_2026-06_AUTODROMO DO ALGARVE-202610101430_Race",
-    "sourceFile": "2026 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "season": "2025-2026",
     "year": 2026,
-    "championship": "ELMS",
-    "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610101430_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "AUTODROMO DO ALGARVE · Race",
-    "season": "2026"
+    "event": "Yas Marina · Race 2",
+    "sourceFile": "2026 ALMS 03 Yas Marina Race 2.csv",
+    "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602081630_Race 2/Hour 4/23_Analysis_Race 2.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying GT",
+        "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071010_Qualifying GT/23_Analysis_Qualifying GT.CSV"
+      },
+      {
+        "name": "Qualifying LMP3",
+        "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071040_Qualifying LMP3/23_Analysis_Qualifying LMP3.CSV"
+      },
+      {
+        "name": "Qualifying LMP2",
+        "path": "Results/05_2025-2026/03_Yas Marina/28_Asian Le Mans Series/202602071115_Qualifying LMP2/23_Analysis_Qualifying LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ELMS-21_2026-01_BARCELONA-CATALUNYA-202604121200_Race",
-    "sourceFile": "2026 ELMS 01 BARCELONA CATALUNYA Race.csv",
-    "year": 2026,
     "championship": "ELMS",
-    "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604121200_Race/Hour 4/23_Analysis_Race.CSV",
+    "season": "2026",
+    "year": 2026,
     "event": "BARCELONA CATALUNYA · Race",
-    "season": "2026"
-  },
-  {
-    "id": "ELMS-21_2026-03_IMOLA-202607051300_Race",
-    "sourceFile": "2026 ELMS 03 IMOLA Race.csv",
-    "year": 2026,
-    "championship": "ELMS",
-    "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607051300_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "IMOLA · Race",
-    "season": "2026"
+    "sourceFile": "2026 ELMS 01 BARCELONA CATALUNYA Race.csv",
+    "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604121200_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604111505_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604111530_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604111555_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/21_2026/01_BARCELONA-CATALUNYA/640_European Le Mans Series/202604111620_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ELMS-21_2026-02_PAUL RICARD-202605031200_Race",
-    "sourceFile": "2026 ELMS 02 PAUL RICARD Race.csv",
-    "year": 2026,
     "championship": "ELMS",
-    "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605031200_Race/Hour 4/23_Analysis_Race.CSV",
+    "season": "2026",
+    "year": 2026,
     "event": "PAUL RICARD · Race",
-    "season": "2026"
+    "sourceFile": "2026 ELMS 02 PAUL RICARD Race.csv",
+    "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605031200_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605021510_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605021532_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605021554_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/21_2026/02_PAUL RICARD/650_European Le Mans Series/202605021616_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
-    "id": "ELMS-21_2026-05_SILVERSTONE-202609131200_Race",
-    "sourceFile": "2026 ELMS 05 SILVERSTONE Race.csv",
-    "year": 2026,
+    "id": "ELMS-21_2026-03_IMOLA-202607051300_Race",
     "championship": "ELMS",
-    "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609131200_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "SILVERSTONE · Race",
-    "season": "2026"
+    "season": "2026",
+    "year": 2026,
+    "event": "IMOLA · Race",
+    "sourceFile": "2026 ELMS 03 IMOLA Race.csv",
+    "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607051300_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607041455_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607041520_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607041545_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/21_2026/03_IMOLA/664_European Le Mans Series/202607041610_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "ELMS-21_2026-04_SPA FRANCORCHAMPS-202608231300_Race",
-    "sourceFile": "2026 ELMS 04 SPA FRANCORCHAMPS Race.csv",
-    "year": 2026,
     "championship": "ELMS",
-    "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608231300_Race/Hour 4/23_Analysis_Race.CSV",
-    "event": "SPA FRANCORCHAMPS · Race",
-    "season": "2026"
-  },
-  {
-    "id": "IMSA-26_2026-15_Canadian Tire Motorsport Park-202607121405_Race",
-    "championship": "IMSA",
     "season": "2026",
     "year": 2026,
-    "event": "Canadian Tire Motorsport Park · Race",
-    "sourceFile": "2026 IMSA 15 Canadian Tire Motorsport Park Race.csv",
-    "path": "Results/26_2026/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202607121405_Race/23_Time Cards_Race.CSV"
+    "event": "SPA FRANCORCHAMPS · Race",
+    "sourceFile": "2026 ELMS 04 SPA FRANCORCHAMPS Race.csv",
+    "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608231300_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608221230_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608221252_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608221314_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/21_2026/04_SPA FRANCORCHAMPS/668_European Le Mans Series/202608221336_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
+  },
+  {
+    "id": "ELMS-21_2026-05_SILVERSTONE-202609131200_Race",
+    "championship": "ELMS",
+    "season": "2026",
+    "year": 2026,
+    "event": "SILVERSTONE · Race",
+    "sourceFile": "2026 ELMS 05 SILVERSTONE Race.csv",
+    "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609131200_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609121508_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609121527_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609121547_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/21_2026/05_SILVERSTONE/676_European Le Mans Series/202609121617_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
+  },
+  {
+    "id": "ELMS-21_2026-06_AUTODROMO DO ALGARVE-202610101430_Race",
+    "championship": "ELMS",
+    "season": "2026",
+    "year": 2026,
+    "event": "AUTODROMO DO ALGARVE · Race",
+    "sourceFile": "2026 ELMS 06 AUTODROMO DO ALGARVE Race.csv",
+    "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610101430_Race/Hour 4/23_Analysis_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying Practice - LMGT3",
+        "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610091515_Qualifying Practice - LMGT3/23_Analysis_Qualifying Practice - LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP3",
+        "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610091540_Qualifying Practice - LMP3/23_Analysis_Qualifying Practice - LMP3.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2 Pro-Am",
+        "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610091605_Qualifying Practice - LMP2 Pro-Am/23_Analysis_Qualifying Practice - LMP2 Pro-Am.CSV"
+      },
+      {
+        "name": "Qualifying Practice - LMP2",
+        "path": "Results/21_2026/06_AUTODROMO DO ALGARVE/683_European Le Mans Series/202610091630_Qualifying Practice - LMP2/23_Analysis_Qualifying Practice - LMP2.CSV"
+      }
+    ]
   },
   {
     "id": "IMSA-26_2026-02_Daytona International Speedway-202601241340_Race",
@@ -384,52 +895,13 @@
     "year": 2026,
     "event": "Daytona International Speedway · Race",
     "sourceFile": "2026 IMSA 02 Daytona International Speedway Race.csv",
-    "path": "Results/26_2026/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202601241340_Race/24_Hour 24/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-26_2026-11_Detroit Street Course-202605301610_Race",
-    "championship": "IMSA",
-    "season": "2026",
-    "year": 2026,
-    "event": "Detroit Street Course · Race",
-    "sourceFile": "2026 IMSA 11 Detroit Street Course Race.csv",
-    "path": "Results/26_2026/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202605301610_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-26_2026-20_Indianapolis Motor Speedway RC-202609201510_Race",
-    "championship": "IMSA",
-    "season": "2026",
-    "year": 2026,
-    "event": "Indianapolis Motor Speedway RC · Race",
-    "sourceFile": "2026 IMSA 20 Indianapolis Motor Speedway RC Race.csv",
-    "path": "Results/26_2026/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202609201510_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-26_2026-07_Long Beach Street Circuit-202604181305_Race",
-    "championship": "IMSA",
-    "season": "2026",
-    "year": 2026,
-    "event": "Long Beach Street Circuit · Race",
-    "sourceFile": "2026 IMSA 07 Long Beach Street Circuit Race.csv",
-    "path": "Results/26_2026/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202604181305_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-26_2026-16_Road America-202608021040_Race",
-    "championship": "IMSA",
-    "season": "2026",
-    "year": 2026,
-    "event": "Road America · Race",
-    "sourceFile": "2026 IMSA 16 Road America Race.csv",
-    "path": "Results/26_2026/16_Road America/01_IMSA WeatherTech SportsCar Championship/202608021040_Race/06_Hour 6/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-26_2026-21_Road Atlanta-202610031210_Race",
-    "championship": "IMSA",
-    "season": "2026",
-    "year": 2026,
-    "event": "Road Atlanta · Race",
-    "sourceFile": "2026 IMSA 21 Road Atlanta Race.csv",
-    "path": "Results/26_2026/21_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202610031210_Race/10_Hour 10/23_Time Cards_Race.CSV"
+    "path": "Results/26_2026/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202601241340_Race/24_Hour 24/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/02_Daytona International Speedway/01_IMSA WeatherTech SportsCar Championship/202601221410_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
     "id": "IMSA-26_2026-06_Sebring International Raceway-202603211010_Race",
@@ -438,25 +910,28 @@
     "year": 2026,
     "event": "Sebring International Raceway · Race",
     "sourceFile": "2026 IMSA 06 Sebring International Raceway Race.csv",
-    "path": "Results/26_2026/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202603211010_Race/12_Hour 12/23_Time Cards_Race.CSV"
+    "path": "Results/26_2026/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202603211010_Race/12_Hour 12/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/06_Sebring International Raceway/01_IMSA WeatherTech SportsCar Championship/202603201125_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
-    "id": "IMSA-26_2026-18_VIRginia International Raceway-202608231210_Race",
+    "id": "IMSA-26_2026-07_Long Beach Street Circuit-202604181305_Race",
     "championship": "IMSA",
     "season": "2026",
     "year": 2026,
-    "event": "VIRginia International Raceway · Race",
-    "sourceFile": "2026 IMSA 18 VIRginia International Raceway Race.csv",
-    "path": "Results/26_2026/18_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202608231210_Race/23_Time Cards_Race.CSV"
-  },
-  {
-    "id": "IMSA-26_2026-14_Watkins Glen International-202606281210_Race",
-    "championship": "IMSA",
-    "season": "2026",
-    "year": 2026,
-    "event": "Watkins Glen International · Race",
-    "sourceFile": "2026 IMSA 14 Watkins Glen International Race.csv",
-    "path": "Results/26_2026/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202606281210_Race/06_Hour 6/23_Time Cards_Race.CSV"
+    "event": "Long Beach Street Circuit · Race",
+    "sourceFile": "2026 IMSA 07 Long Beach Street Circuit Race.csv",
+    "path": "Results/26_2026/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202604181305_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/07_Long Beach Street Circuit/01_IMSA WeatherTech SportsCar Championship/202604171725_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
     "id": "IMSA-26_2026-09_Weathertech Raceway Laguna Seca-202605031310_Race",
@@ -465,34 +940,118 @@
     "year": 2026,
     "event": "Weathertech Raceway Laguna Seca · Race",
     "sourceFile": "2026 IMSA 09 Weathertech Raceway Laguna Seca Race.csv",
-    "path": "Results/26_2026/09_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202605031310_Race/23_Time Cards_Race.CSV"
+    "path": "Results/26_2026/09_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202605031310_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/09_Weathertech Raceway Laguna Seca/01_IMSA WeatherTech SportsCar Championship/202605021515_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
-    "id": "WEC-15_2026-07_BARCELONA-CATALUNYA-202610181200_Race",
-    "sourceFile": "2026 WEC 07 BARCELONA CATALUNYA Race.csv",
-    "year": 2026,
-    "championship": "WEC",
-    "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610181200_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
-    "event": "BARCELONA CATALUNYA · Race",
-    "season": "2026"
-  },
-  {
-    "id": "WEC-15_2026-05_CIRCUIT OF THE AMERICAS-202609061300_Race",
-    "championship": "WEC",
+    "id": "IMSA-26_2026-11_Detroit Street Course-202605301610_Race",
+    "championship": "IMSA",
     "season": "2026",
     "year": 2026,
-    "event": "CIRCUIT OF THE AMERICAS · Race",
-    "sourceFile": "2026 WEC 05 CIRCUIT OF THE AMERICAS Race.csv",
-    "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609061300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV"
+    "event": "Detroit Street Course · Race",
+    "sourceFile": "2026 IMSA 11 Detroit Street Course Race.csv",
+    "path": "Results/26_2026/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202605301610_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/11_Detroit Street Course/01_IMSA WeatherTech SportsCar Championship/202605291650_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
-    "id": "WEC-15_2026-06_FUJI SPEEDWAY-202609271100_Race",
-    "sourceFile": "2026 WEC 06 FUJI SPEEDWAY Race.csv",
+    "id": "IMSA-26_2026-14_Watkins Glen International-202606281210_Race",
+    "championship": "IMSA",
+    "season": "2026",
     "year": 2026,
-    "championship": "WEC",
-    "path": "Results/15_2026/06_FUJI SPEEDWAY/679_FIA WEC/202609271100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
-    "event": "FUJI SPEEDWAY · Race",
-    "season": "2026"
+    "event": "Watkins Glen International · Race",
+    "sourceFile": "2026 IMSA 14 Watkins Glen International Race.csv",
+    "path": "Results/26_2026/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202606281210_Race/06_Hour 6/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/14_Watkins Glen International/01_IMSA WeatherTech SportsCar Championship/202606271820_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-26_2026-15_Canadian Tire Motorsport Park-202607121405_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Canadian Tire Motorsport Park · Race",
+    "sourceFile": "2026 IMSA 15 Canadian Tire Motorsport Park Race.csv",
+    "path": "Results/26_2026/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202607121405_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/15_Canadian Tire Motorsport Park/01_IMSA WeatherTech SportsCar Championship/202607111600_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-26_2026-16_Road America-202608021040_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Road America · Race",
+    "sourceFile": "2026 IMSA 16 Road America Race.csv",
+    "path": "Results/26_2026/16_Road America/01_IMSA WeatherTech SportsCar Championship/202608021040_Race/06_Hour 6/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/16_Road America/01_IMSA WeatherTech SportsCar Championship/202608011525_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-26_2026-18_VIRginia International Raceway-202608231210_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "VIRginia International Raceway · Race",
+    "sourceFile": "2026 IMSA 18 VIRginia International Raceway Race.csv",
+    "path": "Results/26_2026/18_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202608231210_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/18_VIRginia International Raceway/01_IMSA WeatherTech SportsCar Championship/202608221650_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-26_2026-20_Indianapolis Motor Speedway RC-202609201510_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Indianapolis Motor Speedway RC · Race",
+    "sourceFile": "2026 IMSA 20 Indianapolis Motor Speedway RC Race.csv",
+    "path": "Results/26_2026/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202609201510_Race/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/20_Indianapolis Motor Speedway RC/01_IMSA WeatherTech SportsCar Championship/202609191745_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
+  },
+  {
+    "id": "IMSA-26_2026-21_Road Atlanta-202610031210_Race",
+    "championship": "IMSA",
+    "season": "2026",
+    "year": 2026,
+    "event": "Road Atlanta · Race",
+    "sourceFile": "2026 IMSA 21 Road Atlanta Race.csv",
+    "path": "Results/26_2026/21_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202610031210_Race/10_Hour 10/23_Time Cards_Race.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying",
+        "path": "Results/26_2026/21_Road Atlanta/01_IMSA WeatherTech SportsCar Championship/202610021420_Qualifying/23_Time Cards_Qualifying.CSV"
+      }
+    ]
   },
   {
     "id": "WEC-15_2026-01_IMOLA-202604191300_Race",
@@ -501,33 +1060,204 @@
     "year": 2026,
     "event": "IMOLA · Race",
     "sourceFile": "2026 WEC 01 IMOLA Race.csv",
-    "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604191300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV"
-  },
-  {
-    "id": "WEC-15_2026-03_LE MANS-202606131600_Race",
-    "sourceFile": "2026 WEC 03 LE MANS Race.csv",
-    "year": 2026,
-    "championship": "WEC",
-    "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606131600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
-    "event": "LE MANS · Race",
-    "season": "2026"
-  },
-  {
-    "id": "WEC-15_2026-04_SAO PAULO-202607121130_Race",
-    "sourceFile": "2026 WEC 04 SAO PAULO Race.csv",
-    "year": 2026,
-    "championship": "WEC",
-    "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607121130_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
-    "event": "SAO PAULO · Race",
-    "season": "2026"
+    "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604191300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604181430_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604181450_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604181510_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/15_2026/01_IMOLA/645_FIA WEC/202604181530_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
   },
   {
     "id": "WEC-15_2026-02_SPA FRANCORCHAMPS-202605091400_Race",
-    "sourceFile": "2026 WEC 02 SPA FRANCORCHAMPS Race.csv",
-    "year": 2026,
     "championship": "WEC",
-    "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605091400_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "season": "2026",
+    "year": 2026,
     "event": "SPA FRANCORCHAMPS · Race",
-    "season": "2026"
+    "sourceFile": "2026 WEC 02 SPA FRANCORCHAMPS Race.csv",
+    "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605091400_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605081430_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605081455_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605081520_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/15_2026/02_SPA FRANCORCHAMPS/653_FIA WEC/202605081545_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-15_2026-03_LE MANS-202606131600_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "LE MANS · Race",
+    "sourceFile": "2026 WEC 03 LE MANS Race.csv",
+    "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606131600_Race/24_Hour 24/23_Analysis_Race_Hour 24.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMP2-LMGT3",
+        "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606101845_Qualifying LMP2-LMGT3/23_Analysis_Qualifying LMP2-LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606101930_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole 1 LMP2-LMGT3",
+        "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606112000_Hyperpole 1 LMP2-LMGT3/23_Analysis_Hyperpole 1 LMP2-LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole 2 LMP2-LMGT3",
+        "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606112035_Hyperpole 2 LMP2-LMGT3/23_Analysis_Hyperpole 2 LMP2-LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole 1 HYPERCAR",
+        "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606112105_Hyperpole 1 HYPERCAR/23_Analysis_Hyperpole 1 HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole 2 HYPERCAR",
+        "path": "Results/15_2026/03_LE MANS/657_FIA WEC/202606112140_Hyperpole 2 HYPERCAR/23_Analysis_Hyperpole 2 HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-15_2026-04_SAO PAULO-202607121130_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "SAO PAULO · Race",
+    "sourceFile": "2026 WEC 04 SAO PAULO Race.csv",
+    "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607121130_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607111430_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607111450_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607111510_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/15_2026/04_SAO PAULO/666_FIA WEC/202607111530_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-15_2026-05_CIRCUIT OF THE AMERICAS-202609061300_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "CIRCUIT OF THE AMERICAS · Race",
+    "sourceFile": "2026 WEC 05 CIRCUIT OF THE AMERICAS Race.csv",
+    "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609061300_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609051500_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609051520_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609051540_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/15_2026/05_CIRCUIT OF THE AMERICAS/673_FIA WEC/202609051600_Hyperpole HYPERCAR/23_Analysis_Hyperpole  HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-15_2026-06_FUJI SPEEDWAY-202609271100_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "FUJI SPEEDWAY · Race",
+    "sourceFile": "2026 WEC 06 FUJI SPEEDWAY Race.csv",
+    "path": "Results/15_2026/06_FUJI SPEEDWAY/679_FIA WEC/202609271100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": []
+  },
+  {
+    "id": "WEC-15_2026-07_BARCELONA-CATALUNYA-202610181200_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "BARCELONA CATALUNYA · Race",
+    "sourceFile": "2026 WEC 07 BARCELONA CATALUNYA Race.csv",
+    "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610181200_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610171150_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610171210_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610171555_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/15_2026/07_BARCELONA-CATALUNYA/688_FIA WEC/202610171615_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
+  },
+  {
+    "id": "WEC-15_2026-08_AUTODROMO NAZIONALE DI MONZA-202611081100_Race",
+    "championship": "WEC",
+    "season": "2026",
+    "year": 2026,
+    "event": "AUTODROMO NAZIONALE DI MONZA · Race",
+    "sourceFile": "2026 WEC 08 AUTODROMO NAZIONALE DI MONZA Race.csv",
+    "path": "Results/15_2026/08_AUTODROMO NAZIONALE DI MONZA/689_FIA WEC/202611081100_Race/06_Hour 6/23_Analysis_Race_Hour 6.CSV",
+    "qualifying": [
+      {
+        "name": "Qualifying LMGT3",
+        "path": "Results/15_2026/08_AUTODROMO NAZIONALE DI MONZA/689_FIA WEC/202611071420_Qualifying LMGT3/23_Analysis_Qualifying LMGT3.CSV"
+      },
+      {
+        "name": "Hyperpole LMGT3",
+        "path": "Results/15_2026/08_AUTODROMO NAZIONALE DI MONZA/689_FIA WEC/202611071448_Hyperpole LMGT3/23_Analysis_Hyperpole LMGT3.CSV"
+      },
+      {
+        "name": "Qualifying HYPERCAR",
+        "path": "Results/15_2026/08_AUTODROMO NAZIONALE DI MONZA/689_FIA WEC/202611071505_Qualifying HYPERCAR/23_Analysis_Qualifying HYPERCAR.CSV"
+      },
+      {
+        "name": "Hyperpole HYPERCAR",
+        "path": "Results/15_2026/08_AUTODROMO NAZIONALE DI MONZA/689_FIA WEC/202611071525_Hyperpole HYPERCAR/23_Analysis_Hyperpole HYPERCAR.CSV"
+      }
+    ]
   }
 ]

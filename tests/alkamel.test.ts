@@ -1,15 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { alkamelUrl, compareRacesByRound, discoverRaces, raceLinks, validRacePath } from "../src/alkamel";
+import { alkamelUrl, compareRacesByRound, discoverRaces, raceLinks, validRacePath, qualifyingLinks, qualifyingUrl } from "../src/alkamel";
 import { compareEventsByRound, eventLabel } from "../src/models/event-identity";
 
-test("calendar-year cutoff excludes 2024 but keeps 2025 races in an ALMS split season", () => {
+test("ALMS excludes the whole 2024-2025 season including its 2025 rounds", () => {
   const prefix = "Results/04_2024-2025/01_Sepang/01_Asian Le Mans Series/";
   const html = `<a href="${prefix}202412071200_Race 1/Hour 4/23_Analysis_Race 1.CSV"></a>
     <a href="${prefix}202502081200_Race 2/Hour 4/23_Analysis_Race 2.CSV"></a>`;
   const races = raceLinks(html, "ALMS", "04_2024-2025", "01_Sepang");
-  assert.equal(races.length, 1);
-  assert.equal(races[0].year, 2025);
+  assert.equal(races.length, 0);
 });
 
 test("finds race analysis CSV and ignores classifications and test sessions", () => {
@@ -74,7 +73,7 @@ test("ALMS discovers newly published race CSVs from its cloud manifest", async (
 test("verified catalogue covers all four series when an index is unavailable", async () => {
   const races = await discoverRaces(async () => { throw new Error("offline"); });
   assert.deepEqual(Object.fromEntries(["ELMS", "WEC", "ALMS"].map(series => [series, races.filter(r => r.championship === series).length])), {
-    ELMS: 12, WEC: 15, ALMS: 10,
+    ELMS: 12, WEC: 16, ALMS: 8,
   });
   assert.equal(new Set(races.map(r => r.id)).size, races.length);
   assert.ok(races.every(r => validRacePath(r.path)));
@@ -90,5 +89,16 @@ test("IMSA uses the WeatherTech time cards from the final race hour", () => {
   const races = raceLinks(html, "IMSA", "26_2026", "21_Road Atlanta");
   assert.equal(races.length, 1);
   assert.match(races[0].path, /Hour 10/);
-  assert.match(alkamelUrl("IMSA", races[0].path), /^https:\/\/imsa\.results\.alkamelcloud\.com\//);
+  assert.match(alkamelUrl("IMSA", races[0].path), /^https:\/\/files\.alkamelcloud\.com\/imsa\/results\//);
+});
+
+test("qualifying stays within the event, series and numbered ALMS race",()=>{
+  const prefix="Results/06_2026-2027/01_Paul Ricard/30_Asian Le Mans Series/";
+  const path=prefix+"202611141315_Race 1/Hour 4/23_Analysis_Race 1.CSV";
+  const link=(n:number)=>prefix+`202611131605_Qualifying GT3 - Race ${n}/23_Analysis_Qualifying GT3 - Race ${n}.CSV`;
+  const html=[link(1),link(2),link(1).replace("30_Asian Le Mans Series","31_Support"),link(1).replace("01_Paul Ricard","02_Other")].map(p=>`<a href="${p}"></a>`).join("");
+  assert.deepEqual(qualifyingLinks(html,{path}).map(s=>s.path),[link(1)]);
+  assert.match(qualifyingUrl("ALMS",link(1)),/^https:\/\/files\.alkamelcloud\.com\/alms\/results\//);
+  assert.throws(()=>qualifyingUrl("WEC",link(1)));
+  assert.throws(()=>qualifyingUrl("ALMS",link(1).replace("01_Paul Ricard","..")));
 });

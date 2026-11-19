@@ -2,7 +2,8 @@
 
 ## New workspace
 
-Use **ABRIR NUEVA WEB** to open the new Overview and Driver Performance views.
+Use **ABRIR NUEVA WEB** to open Overview, Race Analysis, Qualy Analysis,
+Driver Performance and Results.
 The shared **Load races** dropdown selects races by championship and season.
 The entire library loads in the background in both workspaces; selected races
 receive priority and changing the selection or section does not cancel the queue.
@@ -15,6 +16,24 @@ change these totals. Unknown categories are omitted from the driver category
 selector; no category is invented for an unrated driver.
 The workspace provides larger Calibri text and a light/dark theme switch;
 the theme preference is saved in the browser.
+**Add entire championship** adds every round in the selected competition/season,
+independently of the circuit search. ELMS, IMSA and WEC start in 2025; ALMS starts
+in 2025–2026 and includes subsequent seasons.
+
+Each event carries its own published qualifying/hyperpole CSV sessions. ALMS
+Race 1 and Race 2 use their corresponding qualifying sessions. Qualy Analysis
+loads a session on demand and caches it on the shared server disk. It shows best
+lap, sectors on that lap, personal best sectors, theoretical lap (sum of those
+sectors within the same driver/session), potential and chronological session laps.
+Missing sectors stay unavailable. Pit, explicitly deleted and yellow/red laps
+are excluded; deletions not flagged in the timing CSV cannot be inferred.
+An event without a qualifying CSV shows an explicit unavailable message.
+Race Analysis colours are green for clear air, blue for traffic, red for pit,
+yellow for non-green conditions, and grey/lilac for unknown air.
+
+`scripts/update-alms-categories.ts` imports the official ALMS 2026–2027 race
+classification's DRIVER_LICENSE fields into annual category rows for the actual
+calendar year raced. It does not project those ratings into future years.
 
 ## Alkamel race loading
 
@@ -39,7 +58,7 @@ loops without an order change. Shared cache data version 2 refreshes old parses.
 
 On entry, the app reads the official ELMS, FIA WEC, Asian Le Mans Series, and
 IMSA WeatherTech SportsCar Championship
-Alkamel results indexes from 2025 onward and discovers each race's final
+Alkamel cloud manifests and legacy indexes from 2025 onward and discovers each race's final
 `23_Analysis_Race*.CSV` (or IMSA `23_Time Cards_Race*.CSV`). A verified catalogue of historical links fills gaps
 when Alkamel's session-based index returns an incomplete event tree. A same-origin
 server route retrieves each CSV, processes the lap data and stores the result.

@@ -272,7 +272,7 @@ export function parseTimingCsv(text: string, sourceFile: string): RaceDataset {
   return { laps, diagnostics: [diagnostics] };
 }
 
-export function csvRecords(text: string): string[][] {
+export function csvRecords(text: string, delimiter = ","): string[][] {
   const rows: string[][] = [];
   let row: string[] = [],
     cell = "",
@@ -284,7 +284,7 @@ export function csvRecords(text: string): string[][] {
         cell += '"';
         i++;
       } else quoted = !quoted;
-    } else if (!quoted && (c === "," || c === "\n")) {
+    } else if (!quoted && (c === delimiter || c === "\n")) {
       row.push(tidy(cell));
       cell = "";
       if (c === "\n") {

@@ -14,6 +14,7 @@ import RaceAnalysis from "./race-analysis";
 import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
+import QualifyingAnalysis from "./qualifying-analysis";
 import { lapImprovements } from "../src/analysis/lap-improvements";
 import { compareEventsByRound, eventChampionship, eventLabel, eventTheme } from "../src/models/event-identity";
 import WorkspaceRaces from "./workspace-races";
@@ -35,6 +36,7 @@ type View =
   | "Overview"
   | "Results"
   | "Race Analysis"
+  | "Qualy Analysis"
   | "Driver Performance"
   | "Lap Analysis"
   | "Traffic Performance"
@@ -333,7 +335,7 @@ export default function Home() {
           {newWorkspace ? "← VOLVER A LA WEB ACTUAL" : "ABRIR NUEVA WEB →"}
         </button>
         <nav>
-          {(newWorkspace ? (["Overview", "Race Analysis", "Driver Performance", "Results"] as View[]) : views).map((v, i) => (
+          {(newWorkspace ? (["Overview", "Race Analysis", "Qualy Analysis", "Driver Performance", "Results"] as View[]) : views).map((v, i) => (
             <button
               className={view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
               onClick={() => setView(v)}
@@ -386,6 +388,7 @@ export default function Home() {
         {!newWorkspace && cacheWarning && view !== "Data / Session Info" && <div className="alert" role="status">{cacheWarning}</div>}
         {view === "Overview" && username && <h2 className="welcome-user">Welcome, {username}!</h2>}
         {newWorkspace && <WorkspaceRaces races={raceLoads} selected={workspaceRaceIds} active={activeWorkspaceRace?.id || ""} storageWarning={cacheWarning}
+          onQualifying={id=>{setWorkspaceActiveId(id);setView("Qualy Analysis");}}
           onSelect={setWorkspaceRaceIds} onActivate={id => { setWorkspaceActiveId(id); setDriver(""); setClassFilter("All"); setTeamFilter("All"); }} />}
         {newWorkspace && view !== "Overview" && !sessionLaps.length && <p className="workspace-selection-note">{view === "Results" ? "Choose races from “Load races” to compare their results." : "Choose races from “Load races”, then click a ready event to view its drivers."}</p>}
         {["Driver Performance","Traffic Performance"].includes(view) && (!newWorkspace || !!sessionLaps.length) && <div className="section-tabs" role="tablist" aria-label="Driver performance">
@@ -406,6 +409,7 @@ export default function Home() {
               view !== "Results" &&
               view !== "Driver Focus" &&
               view !== "Race Analysis" &&
+              view !== "Qualy Analysis" &&
               view !== "Season Summary" && (
                 <Filters
                   hideRaceSelector={newWorkspace}
@@ -484,6 +488,7 @@ export default function Home() {
                 />
               </>
             )}
+            {newWorkspace && view === "Qualy Analysis" && activeWorkspaceRace && <QualifyingAnalysis race={activeWorkspaceRace} />}
             {view === "Lap Analysis" && (
               <LapAnalysis
                 laps={dlaps}
@@ -1100,7 +1105,7 @@ function LapAnalysis({
         </span>
         <span>
           <i className="caution" />
-          Non-green
+          {compact ? "Yellow" : "Non-green"}
         </span>
         <span><i className="unknown-air" />Unknown air</span>
       </div>

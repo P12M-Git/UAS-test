@@ -23,7 +23,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Abdulla ALI AL-KHELAIFI,abdullaalialkhelaifi,,Unknown,,,,no
 2024,Abdulla ALI AL-KHELAIFI,abdullaalialkhelaifi,,Unknown,,,,no
 2025,Abdulla ALI AL-KHELAIFI,abdullaalialkhelaifi,,Unknown,ALMS,,,yes
-2026,Abdulla ALI AL-KHELAIFI,abdullaalialkhelaifi,,Unknown,ALMS|ELMS,,,yes
+2026,Abdulla ALI AL-KHELAIFI,abdullaalialkhelaifi,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Adam Adelson,adamadelson,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Adam Adelson,adamadelson,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Adam Adelson,adamadelson,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -58,7 +58,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Adrien CLOSMENIL,adrienclosmenil,,Unknown,,,,no
 2024,Adrien CLOSMENIL,adrienclosmenil,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Adrien CLOSMENIL,adrienclosmenil,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Adrien CLOSMENIL,adrienclosmenil,S,Silver,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Adrien CLOSMENIL,adrienclosmenil,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Ahmad AL HARTHY,ahmadalharthy,B,Bronze,ALMS|ELMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Ahmad AL HARTHY,ahmadalharthy,S,Silver,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Ahmad AL HARTHY,ahmadalharthy,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -158,7 +158,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Alessio ROVERA,alessiorovera,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Alessio ROVERA,alessiorovera,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Alessio ROVERA,alessiorovera,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Alessio ROVERA,alessiorovera,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Alessio ROVERA,alessiorovera,P,Platinum,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Alex AKA,alexaka,,Unknown,ALMS,,,yes
 2023,Alex AKA,alexaka,,Unknown,ALMS,,,yes
 2024,Alex AKA,alexaka,,Unknown,ALMS,,,yes
@@ -174,6 +174,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Alex BUKHANTSOV,alexbukhantsov,,Unknown,,,,no
 2025,Alex BUKHANTSOV,alexbukhantsov,,Unknown,ALMS,,,yes
 2026,Alex BUKHANTSOV,alexbukhantsov,,Unknown,ALMS,,,yes
+2026,Alex DEMIRDJIAN,alexdemirdjian,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Alex FONTANA,alexfontana,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Alex FONTANA,alexfontana,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Alex FONTANA,alexfontana,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -303,7 +304,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Ameerh NARAN,ameerhnaran,,Unknown,,,,no
 2024,Ameerh NARAN,ameerhnaran,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Ameerh NARAN,ameerhnaran,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Ameerh NARAN,ameerhnaran,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Ameerh NARAN,ameerhnaran,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Amir FEYZULIN,amirfeyzulin,,Unknown,,,,no
 2023,Amir FEYZULIN,amirfeyzulin,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Amir FEYZULIN,amirfeyzulin,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -313,12 +314,22 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Anders FJORDBACH,andersfjordbach,S,Silver,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Anders FJORDBACH,andersfjordbach,S,Silver,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Anders FJORDBACH,andersfjordbach,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Anders FJORDBACH,andersfjordbach,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Anders FJORDBACH,andersfjordbach,S,Silver,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Anderson TANOTO,andersontanoto,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Anderson TANOTO,andersontanoto,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Anderson TANOTO,andersontanoto,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Anderson TANOTO,andersontanoto,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Anderson TANOTO,andersontanoto,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2022,André LOTTERER,andrelotterer,P,Platinum,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
+2023,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
+2024,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
+2025,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
+2026,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2022,André NEGRÃO,andrenegrao,G,Gold,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
+2023,André NEGRÃO,andrenegrao,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
+2024,André NEGRÃO,andrenegrao,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
+2025,André NEGRÃO,andrenegrao,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
+2026,André NEGRÃO,andrenegrao,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
 2022,Andrea Bertolini,andreabertolini,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Andrea Bertolini,andreabertolini,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Andrea Bertolini,andreabertolini,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -389,16 +400,6 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Andrey MUKOVOZ,andreymukovoz,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Andrey MUKOVOZ,andreymukovoz,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Andrey MUKOVOZ,andreymukovoz,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,André LOTTERER,andrelotterer,P,Platinum,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
-2023,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
-2024,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
-2025,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,André LOTTERER,andrelotterer,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,André NEGRÃO,andrenegrao,G,Gold,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
-2023,André NEGRÃO,andrenegrao,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
-2024,André NEGRÃO,andrenegrao,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
-2025,André NEGRÃO,andrenegrao,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,André NEGRÃO,andrenegrao,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
 2022,Andy Lally,andylally,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Andy Lally,andylally,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Andy Lally,andylally,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -418,7 +419,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Anthony BARTONE,anthonybartone,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Anthony BARTONE,anthonybartone,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Anthony BARTONE,anthonybartone,S,Silver,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Anthony BARTONE,anthonybartone,S,Silver,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Anthony BARTONE,anthonybartone,S,Silver,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Anthony LIU,anthonyliu,,Unknown,,,,no
 2023,Anthony LIU,anthonyliu,,Unknown,ALMS,,,yes
 2024,Anthony LIU,anthonyliu,,Unknown,ALMS,,,yes
@@ -433,7 +434,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Anthony MCINTOSH,anthonymcintosh,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Anthony MCINTOSH,anthonymcintosh,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Anthony MCINTOSH,anthonymcintosh,B,Bronze,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Anthony MCINTOSH,anthonymcintosh,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Anthony MCINTOSH,anthonymcintosh,B,Bronze,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Anthony NOBLE,anthonynoble,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Anthony NOBLE,anthonynoble,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Anthony NOBLE,anthonynoble,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -448,7 +449,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Antoine Comeau,antoinecomeau,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Antoine Comeau,antoinecomeau,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Antoine Comeau,antoinecomeau,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Antoine Comeau,antoinecomeau,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Antoine Comeau,antoinecomeau,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Antoine DOQUIN,antoinedoquin,S,Silver,ALMS|ELMS|IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Antoine DOQUIN,antoinedoquin,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Antoine DOQUIN,antoinedoquin,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -468,7 +469,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Antonio Fuoco,antoniofuoco,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Antonio Fuoco,antoniofuoco,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Antonio Fuoco,antoniofuoco,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Antonio Fuoco,antoniofuoco,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Antonio Fuoco,antoniofuoco,P,Platinum,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Antonio Garcia,antoniogarcia,P,Platinum,IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Antonio Garcia,antoniogarcia,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Antonio Garcia,antoniogarcia,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -488,7 +489,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Antti RAMMO,anttirammo,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Antti RAMMO,anttirammo,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Antti RAMMO,anttirammo,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Antti RAMMO,anttirammo,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Antti RAMMO,anttirammo,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Ari Balogh,aribalogh,B,Bronze,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Ari Balogh,aribalogh,B,Bronze,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Ari Balogh,aribalogh,,Unknown,,,,no
@@ -498,12 +499,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Arjun MAINI,arjunmaini,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Arjun MAINI,arjunmaini,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Arjun MAINI,arjunmaini,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Arjun MAINI,arjunmaini,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Arjun MAINI,arjunmaini,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Arnold ROBIN,arnoldrobin,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Arnold ROBIN,arnoldrobin,B,Bronze,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Arnold ROBIN,arnoldrobin,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Arnold ROBIN,arnoldrobin,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Arnold ROBIN,arnoldrobin,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Arnold ROBIN,arnoldrobin,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Arthur LECLERC,arthurleclerc,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Arthur LECLERC,arthurleclerc,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Arthur LECLERC,arthurleclerc,G,Gold,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -519,6 +520,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Audunn GUDMUNDSSON,audunngudmundsson,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Audunn GUDMUNDSSON,audunngudmundsson,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Audunn GUDMUNDSSON,audunngudmundsson,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,August RABER,augustraber,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Augusto Farfus,augustofarfus,P,Platinum,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Augusto Farfus,augustofarfus,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Augusto Farfus,augustofarfus,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -673,7 +675,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Bijoy GARG,bijoygarg,S,Silver,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Bijoy GARG,bijoygarg,S,Silver,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Bijoy GARG,bijoygarg,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Bijoy GARG,bijoygarg,S,Silver,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Bijoy GARG,bijoygarg,S,Silver,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Bill Auberlen,billauberlen,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Bill Auberlen,billauberlen,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Bill Auberlen,billauberlen,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -708,7 +710,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Brendon LEITCH,brendonleitch,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Brendon LEITCH,brendonleitch,G,Gold,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Brendon LEITCH,brendonleitch,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Brendon LEITCH,brendonleitch,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Brendon LEITCH,brendonleitch,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Brenton GROVE,brentongrove,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Brenton GROVE,brentongrove,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Brenton GROVE,brentongrove,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -814,6 +816,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Charles CREWS,charlescrews,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Charles CREWS,charlescrews,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Charles CREWS,charlescrews,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Charles DAWSON,charlesdawson,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Charles FAGG,charlesfagg,,Unknown,WEC,,,yes
 2023,Charles FAGG,charlesfagg,,Unknown,,,,no
 2024,Charles FAGG,charlesfagg,,Unknown,,,,no
@@ -823,7 +826,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Charles MILESI,charlesmilesi,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Charles MILESI,charlesmilesi,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Charles MILESI,charlesmilesi,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Charles MILESI,charlesmilesi,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Charles MILESI,charlesmilesi,P,Platinum,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Charles Scardina,charlesscardina,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Charles Scardina,charlesscardina,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Charles Scardina,charlesscardina,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -844,6 +847,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Charlie FAGG,charliefagg,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Charlie FAGG,charliefagg,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Charlie FAGG,charliefagg,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Charlie WURZ,charliewurz,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Charly SAMANI,charlysamani,,Unknown,,,,no
 2023,Charly SAMANI,charlysamani,,Unknown,,,,no
 2024,Charly SAMANI,charlysamani,,Unknown,,,,no
@@ -863,7 +867,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Chris LULHAM,chrislulham,,Unknown,,,,no
 2024,Chris LULHAM,chrislulham,,Unknown,,,,no
 2025,Chris LULHAM,chrislulham,,Unknown,ALMS,,,yes
-2026,Chris LULHAM,chrislulham,,Unknown,ALMS,,,yes
+2026,Chris LULHAM,chrislulham,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Chris MCMURRY,chrismcmurry,,Unknown,,,,no
 2023,Chris MCMURRY,chrismcmurry,,Unknown,ALMS,,,yes
 2024,Chris MCMURRY,chrismcmurry,,Unknown,ALMS,,,yes
@@ -879,6 +883,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Chris VAN DER DRIFT,chrisvanderdrift,,Unknown,ALMS,,,yes
 2025,Chris VAN DER DRIFT,chrisvanderdrift,,Unknown,ALMS,,,yes
 2026,Chris VAN DER DRIFT,chrisvanderdrift,,Unknown,,,,no
+2026,Christan MANSELL,christanmansell,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Christian BOGLE,christianbogle,,Unknown,,,,no
 2023,Christian BOGLE,christianbogle,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Christian BOGLE,christianbogle,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -898,7 +903,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Christian RIED,christianried,B,Bronze,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Christian RIED,christianried,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Christian RIED,christianried,B,Bronze,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Christian RIED,christianried,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Christian RIED,christianried,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Christina NIELSEN,christinanielsen,B,Bronze,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Christina NIELSEN,christinanielsen,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Christina NIELSEN,christinanielsen,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -939,6 +944,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Chun Ting CHOU,chuntingchou,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Chun Ting CHOU,chuntingchou,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Chun Ting CHOU,chuntingchou,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Cian SHIELDS,cianshields,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Claude BOVET,claudebovet,,Unknown,,,,no
 2023,Claude BOVET,claudebovet,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Claude BOVET,claudebovet,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -979,6 +985,11 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Colton Herta,coltonherta,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Colton Herta,coltonherta,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Colton Herta,coltonherta,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2022,Côme LEDOGAR,comeledogar,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
+2023,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
+2025,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
+2026,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
 2022,Connor Bloum,connorbloum,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Connor Bloum,connorbloum,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Connor Bloum,connorbloum,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1024,11 +1035,6 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Custodio TOLEDO,custodiotoledo,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Custodio TOLEDO,custodiotoledo,B,Bronze,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Custodio TOLEDO,custodiotoledo,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,Côme LEDOGAR,comeledogar,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
-2023,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
-2025,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Côme LEDOGAR,comeledogar,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
 2022,Dakota Dickerson,dakotadickerson,S,Silver,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Dakota Dickerson,dakotadickerson,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Dakota Dickerson,dakotadickerson,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1128,7 +1134,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Darren LEUNG,darrenleung,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Darren LEUNG,darrenleung,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Darren LEUNG,darrenleung,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Darren LEUNG,darrenleung,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Darren LEUNG,darrenleung,B,Bronze,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Darren Turner,darrenturner,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Darren Turner,darrenturner,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Darren Turner,darrenturner,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1178,12 +1184,13 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,David PEREL,davidperel,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,David PEREL,davidperel,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,David PEREL,davidperel,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,David PEREL,davidperel,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,David PEREL,davidperel,S,Silver,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,David Pittard,davidpittard,S,Silver,IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,David Pittard,davidpittard,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,David Pittard,davidpittard,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,David Pittard,davidpittard,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,David Pittard,davidpittard,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,David SCHUMACHER,davidschumacher,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Davide RIGON,daviderigon,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Davide RIGON,daviderigon,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Davide RIGON,daviderigon,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1203,7 +1210,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Dennis MARSCHALL,dennismarschall,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Dennis MARSCHALL,dennismarschall,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Dennis MARSCHALL,dennismarschall,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Dennis MARSCHALL,dennismarschall,P,Platinum,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Dennis MARSCHALL,dennismarschall,G,Gold,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Dennis Olsen,dennisolsen,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Dennis Olsen,dennisolsen,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Dennis Olsen,dennisolsen,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1293,7 +1300,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Dustin BLATTNER,dustinblattner,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Dustin BLATTNER,dustinblattner,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Dustin BLATTNER,dustinblattner,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Dustin BLATTNER,dustinblattner,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Dustin BLATTNER,dustinblattner,B,Bronze,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Dustin Scott BLATTNER,dustinscottblattner,,Unknown,,,,no
 2023,Dustin Scott BLATTNER,dustinscottblattner,,Unknown,,,,no
 2024,Dustin Scott BLATTNER,dustinscottblattner,,Unknown,ALMS,,,yes
@@ -1353,7 +1360,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Eduardo Barrichello,eduardobarrichello,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Eduardo Barrichello,eduardobarrichello,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Eduardo Barrichello,eduardobarrichello,S,Silver,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Eduardo Barrichello,eduardobarrichello,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Eduardo Barrichello,eduardobarrichello,S,Silver,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Edward Cheever,edwardcheever,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Edward Cheever,edwardcheever,,Unknown,,,,no
 2024,Edward Cheever,edwardcheever,,Unknown,,,,no
@@ -1403,7 +1410,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Enzo TRULLI,enzotrulli,,Unknown,,,,no
 2024,Enzo TRULLI,enzotrulli,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Enzo TRULLI,enzotrulli,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Enzo TRULLI,enzotrulli,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Enzo TRULLI,enzotrulli,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Eric Filgueiras,ericfilgueiras,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Eric Filgueiras,ericfilgueiras,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Eric Filgueiras,ericfilgueiras,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1453,7 +1460,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Esteban MASSON,estebanmasson,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Esteban MASSON,estebanmasson,G,Gold,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Esteban MASSON,estebanmasson,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Esteban MASSON,estebanmasson,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Esteban MASSON,estebanmasson,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Fabian DUFFIEUX,fabianduffieux,,Unknown,,,,no
 2023,Fabian DUFFIEUX,fabianduffieux,,Unknown,,,,no
 2024,Fabian DUFFIEUX,fabianduffieux,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1463,7 +1470,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Fabian Schiller,fabianschiller,G,Gold,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Fabian Schiller,fabianschiller,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Fabian Schiller,fabianschiller,G,Gold,ALMS|ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Fabian Schiller,fabianschiller,G,Gold,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Fabian Schiller,fabianschiller,G,Gold,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Fabien LAVERGNE,fabienlavergne,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Fabien LAVERGNE,fabienlavergne,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Fabien LAVERGNE,fabienlavergne,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1483,7 +1490,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Fabio SCHERER,fabioscherer,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Fabio SCHERER,fabioscherer,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Fabio SCHERER,fabioscherer,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Fabio SCHERER,fabioscherer,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Fabio SCHERER,fabioscherer,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Fabrice ROSSELLO,fabricerossello,B,Bronze,ALMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Fabrice ROSSELLO,fabricerossello,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Fabrice ROSSELLO,fabricerossello,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1528,7 +1535,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Ferdinand HABSBURG,ferdinandhabsburg,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Ferdinand HABSBURG,ferdinandhabsburg,G,Gold,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Ferdinand HABSBURG,ferdinandhabsburg,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Ferdinand HABSBURG,ferdinandhabsburg,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Ferdinand HABSBURG,ferdinandhabsburg,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Ferdinand Habsburg-Lothringen,ferdinandhabsburglothringen,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Ferdinand Habsburg-Lothringen,ferdinandhabsburglothringen,,Unknown,ALMS,,,yes
 2024,Ferdinand Habsburg-Lothringen,ferdinandhabsburglothringen,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
@@ -1559,6 +1566,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Finn GEHRSITZ,finngehrsitz,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Finn GEHRSITZ,finngehrsitz,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Finn GEHRSITZ,finngehrsitz,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Finn WIEBELHAUS,finnwiebelhaus,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Florian LATORRE,florianlatorre,S,Silver,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Florian LATORRE,florianlatorre,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Florian LATORRE,florianlatorre,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1569,6 +1577,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Florian SCHOLZE,florianscholze,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Florian SCHOLZE,florianscholze,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Florian SCHOLZE,florianscholze,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Flynt SCHURING,flyntschuring,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Fran RUEDA,franrueda,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Fran RUEDA,franrueda,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Fran RUEDA,franrueda,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1588,7 +1597,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Francesco PIOVANETTI,francescopiovanetti,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Francesco PIOVANETTI,francescopiovanetti,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Francesco PIOVANETTI,francescopiovanetti,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Francesco PIOVANETTI,francescopiovanetti,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Francesco PIOVANETTI,francescopiovanetti,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Francesco Pizzi,francescopizzi,,Unknown,,,,no
 2023,Francesco Pizzi,francescopizzi,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Francesco Pizzi,francescopizzi,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1673,12 +1682,17 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Freddie TOMLINSON,freddietomlinson,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Freddie TOMLINSON,freddietomlinson,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Freddie TOMLINSON,freddietomlinson,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Freddie TOMLINSON,freddietomlinson,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Freddie TOMLINSON,freddietomlinson,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Frederic JOUSSET,fredericjousset,,Unknown,,,,no
 2023,Frederic JOUSSET,fredericjousset,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Frederic JOUSSET,fredericjousset,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Frederic JOUSSET,fredericjousset,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Frederic JOUSSET,fredericjousset,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2022,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
+2023,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
+2024,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
+2025,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
+2026,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Frederic Vervisch,fredericvervisch,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Frederic Vervisch,fredericvervisch,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Frederic Vervisch,fredericvervisch,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1693,7 +1707,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Frederik SCHANDORFF,frederikschandorff,G,Gold,ALMS|ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Frederik SCHANDORFF,frederikschandorff,G,Gold,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Frederik SCHANDORFF,frederikschandorff,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Frederik SCHANDORFF,frederikschandorff,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Frederik SCHANDORFF,frederikschandorff,G,Gold,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Frederik VESTI,frederikvesti,,Unknown,,,,no
 2023,Frederik VESTI,frederikvesti,,Unknown,,,,no
 2024,Frederik VESTI,frederikvesti,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1709,11 +1723,6 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Frits Van Eerd,fritsvaneerd,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Frits Van Eerd,fritsvaneerd,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Frits Van Eerd,fritsvaneerd,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
-2022,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
-2023,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
-2024,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
-2025,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Frédéric MAKOWIECKI,fredericmakowiecki,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Gabby Chaves,gabbychaves,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Gabby Chaves,gabbychaves,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Gabby Chaves,gabbychaves,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
@@ -1743,7 +1752,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Gabriele PIANA,gabrielepiana,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Gabriele PIANA,gabrielepiana,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Gabriele PIANA,gabrielepiana,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Gabriele PIANA,gabrielepiana,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Gabriele PIANA,gabrielepiana,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Gabriele RINDONE,gabrielerindone,,Unknown,ALMS,,,yes
 2023,Gabriele RINDONE,gabrielerindone,,Unknown,,,,no
 2024,Gabriele RINDONE,gabrielerindone,,Unknown,,,,no
@@ -1778,7 +1787,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,George Kurtz,georgekurtz,B,Bronze,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,George Kurtz,georgekurtz,B,Bronze,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,George Kurtz,georgekurtz,B,Bronze,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,George Kurtz,georgekurtz,B,Bronze,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,George Kurtz,georgekurtz,B,Bronze,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,George NAKAS,georgenakas,,Unknown,,,,no
 2023,George NAKAS,georgenakas,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,George NAKAS,georgenakas,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1793,7 +1802,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Georgios KOLOVOS,georgioskolovos,,Unknown,,,,no
 2024,Georgios KOLOVOS,georgioskolovos,,Unknown,ALMS|ELMS,,,yes
 2025,Georgios KOLOVOS,georgioskolovos,B,Bronze,ALMS|ELMS,supplied category database,,yes
-2026,Georgios KOLOVOS,georgioskolovos,B,Bronze,ALMS|ELMS,supplied category database,,yes
+2026,Georgios KOLOVOS,georgioskolovos,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Gerry Kraut,gerrykraut,B,Bronze,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Gerry Kraut,gerrykraut,B,Bronze,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Gerry Kraut,gerrykraut,,Unknown,IMSA,,,yes
@@ -1813,12 +1822,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Giacomo Altoe,giacomoaltoe,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Giacomo Altoe,giacomoaltoe,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Giacomo Altoe,giacomoaltoe,G,Gold,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Giacomo Altoe,giacomoaltoe,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Giacomo Altoe,giacomoaltoe,G,Gold,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Giacomo PETROBELLI,giacomopetrobelli,B,Bronze,ELMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Giacomo PETROBELLI,giacomopetrobelli,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Giacomo PETROBELLI,giacomopetrobelli,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Giacomo PETROBELLI,giacomopetrobelli,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Giacomo PETROBELLI,giacomopetrobelli,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Giacomo PETROBELLI,giacomopetrobelli,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Giammarco LEVORATO,giammarcolevorato,,Unknown,,,,no
 2023,Giammarco LEVORATO,giammarcolevorato,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Giammarco LEVORATO,giammarcolevorato,S,Silver,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1834,6 +1843,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Giancarlo FISICHELLA,giancarlofisichella,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Giancarlo FISICHELLA,giancarlofisichella,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Giancarlo FISICHELLA,giancarlofisichella,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Gianmarco PRADEL,gianmarcopradel,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Gianmaria BRUNI,gianmariabruni,P,Platinum,ELMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Gianmaria BRUNI,gianmariabruni,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Gianmaria BRUNI,gianmariabruni,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1858,7 +1868,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Giorgio RODA,giorgioroda,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Giorgio RODA,giorgioroda,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Giorgio RODA,giorgioroda,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Giorgio RODA,giorgioroda,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Giorgio RODA,giorgioroda,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Giorgio Sernagiotto,giorgiosernagiotto,S,Silver,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Giorgio Sernagiotto,giorgiosernagiotto,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Giorgio Sernagiotto,giorgiosernagiotto,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1888,7 +1898,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Gray NEWELL,graynewell,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Gray NEWELL,graynewell,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Gray NEWELL,graynewell,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Gray NEWELL,graynewell,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Gray NEWELL,graynewell,B,Bronze,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Gregoire SAUCY,gregoiresaucy,,Unknown,,,,no
 2023,Gregoire SAUCY,gregoiresaucy,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Gregoire SAUCY,gregoiresaucy,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -1899,6 +1909,11 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Gregory BENNETT,gregorybennett,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Gregory BENNETT,gregorybennett,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Gregory BENNETT,gregorybennett,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2022,Grégory DE SYBOURG,gregorydesybourg,,Unknown,,,,no
+2023,Grégory DE SYBOURG,gregorydesybourg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Grégory DE SYBOURG,gregorydesybourg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
+2025,Grégory DE SYBOURG,gregorydesybourg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
+2026,Grégory DE SYBOURG,gregorydesybourg,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Gregory HUFFAKER II,gregoryhuffakerii,,Unknown,,,,no
 2023,Gregory HUFFAKER II,gregoryhuffakerii,,Unknown,ELMS,,,yes
 2024,Gregory HUFFAKER II,gregoryhuffakerii,,Unknown,,,,no
@@ -1914,11 +1929,6 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Griffin PEEBLES,griffinpeebles,,Unknown,,,,no
 2025,Griffin PEEBLES,griffinpeebles,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Griffin PEEBLES,griffinpeebles,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,Grégory DE SYBOURG,gregorydesybourg,,Unknown,,,,no
-2023,Grégory DE SYBOURG,gregorydesybourg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Grégory DE SYBOURG,gregorydesybourg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
-2025,Grégory DE SYBOURG,gregorydesybourg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Grégory DE SYBOURG,gregorydesybourg,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Guilherme de Oliveira,guilhermedeoliveira,,Unknown,,,,no
 2023,Guilherme de Oliveira,guilhermedeoliveira,S,Silver,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Guilherme de Oliveira,guilhermedeoliveira,,Unknown,,,,no
@@ -1954,6 +1964,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Gustavo MENEZES,gustavomenezes,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Gustavo MENEZES,gustavomenezes,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Gustavo MENEZES,gustavomenezes,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Guy ALBAG,guyalbag,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Guy Cosmo,guycosmo,S,Silver,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Guy Cosmo,guycosmo,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Guy Cosmo,guycosmo,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -1978,7 +1989,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Harry KING,harryking,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Harry KING,harryking,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Harry KING,harryking,G,Gold,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Harry KING,harryking,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Harry KING,harryking,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Harry Tincknell,harrytincknell,P,Platinum,IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Harry Tincknell,harrytincknell,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Harry Tincknell,harrytincknell,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2063,12 +2074,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Horst FELBERMAYR,horstfelbermayrjr,,Unknown,ELMS,,,yes
 2024,Horst FELBERMAYR,horstfelbermayrjr,,Unknown,,,,no
 2025,Horst FELBERMAYR,horstfelbermayrjr,B,Bronze,ALMS|ELMS,supplied category database,,yes
-2026,Horst FELBERMAYR,horstfelbermayrjr,B,Bronze,ALMS|ELMS,supplied category database,,yes
+2026,Horst FELBERMAYR,horstfelbermayrjr,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Horst Felix FELBERMAYR,horstfelixfelbermayr,,Unknown,,,,no
 2023,Horst Felix FELBERMAYR,horstfelixfelbermayr,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Horst Felix FELBERMAYR,horstfelixfelbermayr,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Horst Felix FELBERMAYR,horstfelixfelbermayr,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Horst Felix FELBERMAYR,horstfelixfelbermayr,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Horst Felix FELBERMAYR,horstfelixfelbermayr,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Horst Jr FELBERMAYR,horstjrfelbermayr,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Horst Jr FELBERMAYR,horstjrfelbermayr,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Horst Jr FELBERMAYR,horstjrfelbermayr,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2078,7 +2089,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Hubert HAUPT,huberthaupt,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Hubert HAUPT,huberthaupt,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Hubert HAUPT,huberthaupt,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Hubert HAUPT,huberthaupt,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Hubert HAUPT,huberthaupt,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Hugh Plumb,hughplumb,B,Bronze,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Hugh Plumb,hughplumb,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Hugh Plumb,hughplumb,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2088,7 +2099,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Hugo SCHWARZE,hugoschwarze,,Unknown,,,,no
 2024,Hugo SCHWARZE,hugoschwarze,,Unknown,,,,no
 2025,Hugo SCHWARZE,hugoschwarze,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Hugo SCHWARZE,hugoschwarze,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Hugo SCHWARZE,hugoschwarze,S,Silver,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Huilin HAN,huilinhan,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Huilin HAN,huilinhan,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Huilin HAN,huilinhan,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2098,7 +2109,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Hunter McElrea,huntermcelrea,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Hunter McElrea,huntermcelrea,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Hunter McElrea,huntermcelrea,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Hunter McElrea,huntermcelrea,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Hunter McElrea,huntermcelrea,S,Silver,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Huub VAN EIJNDHOVEN,huubvaneijndhoven,,Unknown,,,,no
 2023,Huub VAN EIJNDHOVEN,huubvaneijndhoven,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Huub VAN EIJNDHOVEN,huubvaneijndhoven,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2108,12 +2119,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Ian AGUILERA,ianaguilera,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Ian AGUILERA,ianaguilera,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Ian AGUILERA,ianaguilera,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Ian AGUILERA,ianaguilera,S,Silver,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Ian AGUILERA,ianaguilera,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Ian James,ianjames,S,Silver,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Ian James,ianjames,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Ian James,ianjames,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Ian James,ianjames,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Ian James,ianjames,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Ian James,ianjames,B,Bronze,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Ian LOGGIE,ianloggie,,Unknown,,,,no
 2023,Ian LOGGIE,ianloggie,,Unknown,ALMS,,,yes
 2024,Ian LOGGIE,ianloggie,,Unknown,ALMS,,,yes
@@ -2153,7 +2164,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jacek ZIELONKA,jacekzielonka,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Jacek ZIELONKA,jacekzielonka,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Jacek ZIELONKA,jacekzielonka,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Jacek ZIELONKA,jacekzielonka,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Jacek ZIELONKA,jacekzielonka,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jack AITKEN,jackaitken,G,Gold,ELMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Jack AITKEN,jackaitken,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Jack AITKEN,jackaitken,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2163,7 +2174,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jack DOOHAN,jackdoohan,,Unknown,,,,no
 2024,Jack DOOHAN,jackdoohan,,Unknown,,,,no
 2025,Jack DOOHAN,jackdoohan,,Unknown,,,,no
-2026,Jack DOOHAN,jackdoohan,P,Platinum,ELMS|WEC,supplied category database,,yes
+2026,Jack DOOHAN,jackdoohan,P,Platinum,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jack Hawksworth,jackhawksworth,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Jack Hawksworth,jackhawksworth,G,Gold,ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Jack Hawksworth,jackhawksworth,G,Gold,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2399,6 +2410,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Jean-Ludovic FOUBERT,jeanludovicfoubert,,Unknown,ELMS,,,yes
 2025,Jean-Ludovic FOUBERT,jeanludovicfoubert,B,Bronze,ELMS,supplied category database,,yes
 2026,Jean-Ludovic FOUBERT,jeanludovicfoubert,,Unknown,,,,no
+2026,Jef MACHIELS,jefmachiels,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jeff Segal,jeffsegal,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Jeff Segal,jeffsegal,,Unknown,,,,no
 2024,Jeff Segal,jeffsegal,,Unknown,,,,no
@@ -2433,7 +2445,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jens Reno MOLLER,jensrenomoller,,Unknown,,,,no
 2024,Jens Reno MOLLER,jensrenomoller,,Unknown,,,,no
 2025,Jens Reno MOLLER,jensrenomoller,,Unknown,ALMS,,,yes
-2026,Jens Reno MOLLER,jensrenomoller,B,Bronze,ALMS,supplied category database,,yes
+2026,Jens Reno MOLLER,jensrenomoller,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jens Reno MØLLER,jensrenomller,,Unknown,,,,no
 2023,Jens Reno MØLLER,jensrenomller,,Unknown,WEC,,,yes
 2024,Jens Reno MØLLER,jensrenomller,,Unknown,,,,no
@@ -2453,7 +2465,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jeremy CLARKE,jeremyclarke,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Jeremy CLARKE,jeremyclarke,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Jeremy CLARKE,jeremyclarke,B,Bronze,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Jeremy CLARKE,jeremyclarke,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Jeremy CLARKE,jeremyclarke,B,Bronze,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jeroen BLEEKEMOLEN,jeroenbleekemolen,G,Gold,ELMS|IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Jeroen BLEEKEMOLEN,jeroenbleekemolen,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Jeroen BLEEKEMOLEN,jeroenbleekemolen,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2504,6 +2516,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Joel Miller,joelmiller,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Joel Miller,joelmiller,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Joel Miller,joelmiller,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Joel MONEGRO,joelmonegro,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Joel STURM,joelsturm,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Joel STURM,joelsturm,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Joel STURM,joelsturm,G,Gold,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2603,7 +2616,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jonas RIED,jonasried,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Jonas RIED,jonasried,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Jonas RIED,jonasried,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Jonas RIED,jonasried,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Jonas RIED,jonasried,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jonathan ABERDEIN,jonathanaberdein,G,Gold,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Jonathan ABERDEIN,jonathanaberdein,G,Gold,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Jonathan ABERDEIN,jonathanaberdein,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2613,12 +2626,13 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jonathan ADAM,jonathanadam,P,Platinum,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Jonathan ADAM,jonathanadam,P,Platinum,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Jonathan ADAM,jonathanadam,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Jonathan ADAM,jonathanadam,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Jonathan ADAM,jonathanadam,P,Platinum,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jonathan Bomarito,jonathanbomarito,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Jonathan Bomarito,jonathanbomarito,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Jonathan Bomarito,jonathanbomarito,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Jonathan Bomarito,jonathanbomarito,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Jonathan Bomarito,jonathanbomarito,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Jonathan BROWNE,jonathanbrowne,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jonathan HUI,jonathanhui,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Jonathan HUI,jonathanhui,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Jonathan HUI,jonathanhui,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2643,7 +2657,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Jonny EDGAR,jonnyedgar,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Jonny EDGAR,jonnyedgar,S,Silver,ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Jonny EDGAR,jonnyedgar,S,Silver,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Jonny EDGAR,jonnyedgar,S,Silver,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Jonny EDGAR,jonnyedgar,S,Silver,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Jono LESTER,jonolester,,Unknown,,,,no
 2023,Jono LESTER,jonolester,,Unknown,,,,no
 2024,Jono LESTER,jonolester,,Unknown,ALMS,,,yes
@@ -2689,6 +2703,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Josef Newgarden,josefnewgarden,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Josef Newgarden,josefnewgarden,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Josef Newgarden,josefnewgarden,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Joseph LOAKE,josephloake,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Josh Burdon,joshburdon,S,Silver,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Josh Burdon,joshburdon,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Josh Burdon,joshburdon,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2743,12 +2758,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Julian HANSES,julianhanses,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Julian HANSES,julianhanses,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Julian HANSES,julianhanses,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Julian HANSES,julianhanses,S,Silver,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Julian HANSES,julianhanses,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Julien Andlauer,julienandlauer,G,Gold,IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Julien Andlauer,julienandlauer,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Julien Andlauer,julienandlauer,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Julien Andlauer,julienandlauer,G,Gold,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Julien Andlauer,julienandlauer,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Julien Andlauer,julienandlauer,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Julien CANAL,juliencanal,S,Silver,ELMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Julien CANAL,juliencanal,S,Silver,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Julien CANAL,juliencanal,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2864,6 +2879,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Kevin WEEDA,kevinweeda,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Kevin WEEDA,kevinweeda,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Kevin WEEDA,kevinweeda,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Kiern JEWISS,kiernjewiss,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Kiyoto FUJINAMI,kiyotofujinami,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Kiyoto FUJINAMI,kiyotofujinami,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Kiyoto FUJINAMI,kiyotofujinami,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -2873,12 +2889,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Klaus BACHLER,klausbachler,P,Platinum,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Klaus BACHLER,klausbachler,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Klaus BACHLER,klausbachler,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Klaus BACHLER,klausbachler,P,Platinum,ALMS|ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Klaus BACHLER,klausbachler,P,Platinum,ALMS|ELMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Kobe PAUWELS,kobepauwels,,Unknown,,,,no
 2023,Kobe PAUWELS,kobepauwels,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Kobe PAUWELS,kobepauwels,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Kobe PAUWELS,kobepauwels,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Kobe PAUWELS,kobepauwels,S,Silver,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Kobe PAUWELS,kobepauwels,S,Silver,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Kriton LENTOUDIS,kritonlentoudis,,Unknown,,,,no
 2023,Kriton LENTOUDIS,kritonlentoudis,,Unknown,ELMS,,,yes
 2024,Kriton LENTOUDIS,kritonlentoudis,,Unknown,ALMS|ELMS,,,yes
@@ -2918,7 +2934,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Lance Bergstein,lancebergstein,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Lance Bergstein,lancebergstein,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Lance Bergstein,lancebergstein,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Lance Bergstein,lancebergstein,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Lance Bergstein,lancebergstein,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Lance Willsey,lancewillsey,B,Bronze,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Lance Willsey,lancewillsey,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Lance Willsey,lancewillsey,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2948,12 +2964,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Laurents HORR,laurentshorr,G,Gold,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Laurents HORR,laurentshorr,G,Gold,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Laurents HORR,laurentshorr,G,Gold,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Laurents HORR,laurentshorr,G,Gold,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Laurents HORR,laurentshorr,G,Gold,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Laurin HEINRICH,laurinheinrich,,Unknown,,,,no
 2023,Laurin HEINRICH,laurinheinrich,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Laurin HEINRICH,laurinheinrich,G,Gold,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Laurin HEINRICH,laurinheinrich,G,Gold,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Laurin HEINRICH,laurinheinrich,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Laurin HEINRICH,laurinheinrich,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Lazlo TOTH,lazlototh,,Unknown,,,,no
 2023,Lazlo TOTH,lazlototh,,Unknown,ALMS,,,yes
 2024,Lazlo TOTH,lazlototh,,Unknown,,,,no
@@ -2968,7 +2984,8 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Lenny RIED,lennyried,,Unknown,,,,no
 2024,Lenny RIED,lennyried,,Unknown,,,,no
 2025,Lenny RIED,lennyried,,Unknown,ALMS,,,yes
-2026,Lenny RIED,lennyried,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Lenny RIED,lennyried,S,Silver,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
+2026,Leo ROBINSON,leorobinson,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Leonard WEISS,leonardweiss,S,Silver,ALMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Leonard WEISS,leonardweiss,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Leonard WEISS,leonardweiss,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -2979,6 +2996,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Leonardo COLAVITA,leonardocolavita,,Unknown,,,,no
 2025,Leonardo COLAVITA,leonardocolavita,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Leonardo COLAVITA,leonardocolavita,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Leonardo MONCINI,leonardomoncini,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Leonardo Pulcini,leonardopulcini,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Leonardo Pulcini,leonardopulcini,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Leonardo Pulcini,leonardopulcini,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3063,7 +3081,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Louis DELETRAZ,louisdeletraz,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Louis DELETRAZ,louisdeletraz,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Louis DELETRAZ,louisdeletraz,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Louis DELETRAZ,louisdeletraz,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Louis DELETRAZ,louisdeletraz,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Louis IGLESIAS,louisiglesias,,Unknown,,,,no
 2023,Louis IGLESIAS,louisiglesias,,Unknown,,,,no
 2024,Louis IGLESIAS,louisiglesias,,Unknown,,,,no
@@ -3088,7 +3106,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Louis STERN,louisstern,,Unknown,,,,no
 2024,Louis STERN,louisstern,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Louis STERN,louisstern,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Louis STERN,louisstern,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Louis STERN,louisstern,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Lu WEI,luwei,,Unknown,,,,no
 2023,Lu WEI,luwei,,Unknown,,,,no
 2024,Lu WEI,luwei,,Unknown,ALMS,,,yes
@@ -3113,7 +3131,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Luca Stolz,lucastolz,P,Platinum,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Luca Stolz,lucastolz,P,Platinum,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Luca Stolz,lucastolz,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Luca Stolz,lucastolz,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Luca Stolz,lucastolz,P,Platinum,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Lucas Auer,lucasauer,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Lucas Auer,lucasauer,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Lucas Auer,lucasauer,P,Platinum,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3143,7 +3161,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Luis Perez Companc,luisperezcompanc,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Luis Perez Companc,luisperezcompanc,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Luis Perez Companc,luisperezcompanc,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Luis Perez Companc,luisperezcompanc,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Luis Perez Companc,luisperezcompanc,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Lukas DUNNER,lukasdunner,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Lukas DUNNER,lukasdunner,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Lukas DUNNER,lukasdunner,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3168,7 +3186,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Malthe JAKOBSEN,malthejakobsen,G,Gold,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Malthe JAKOBSEN,malthejakobsen,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Malthe JAKOBSEN,malthejakobsen,G,Gold,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Malthe JAKOBSEN,malthejakobsen,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Malthe JAKOBSEN,malthejakobsen,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Manny Franco,mannyfranco,,Unknown,,,,no
 2023,Manny Franco,mannyfranco,,Unknown,,,,no
 2024,Manny Franco,mannyfranco,S,Silver,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
@@ -3208,7 +3226,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Marco PULCINI,marcopulcini,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Marco PULCINI,marcopulcini,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Marco PULCINI,marcopulcini,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Marco PULCINI,marcopulcini,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Marco PULCINI,marcopulcini,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Marco SEEFRIED,marcoseefried,S,Silver,ALMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Marco SEEFRIED,marcoseefried,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Marco SEEFRIED,marcoseefried,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -3328,7 +3346,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Marvin Dienst,marvindienst,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Marvin Dienst,marvindienst,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Marvin Dienst,marvindienst,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Marvin Dienst,marvindienst,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Marvin Dienst,marvindienst,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Marvin KIRCHHOFER,marvinkirchhofer,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Marvin KIRCHHOFER,marvinkirchhofer,P,Platinum,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Marvin KIRCHHOFER,marvinkirchhofer,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3383,12 +3401,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Mathieu Jaminet,mathieujaminet,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Mathieu Jaminet,mathieujaminet,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Mathieu Jaminet,mathieujaminet,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Mathieu Jaminet,mathieujaminet,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Mathieu Jaminet,mathieujaminet,P,Platinum,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Mathys JAUBERT,mathysjaubert,,Unknown,,,,no
 2023,Mathys JAUBERT,mathysjaubert,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Mathys JAUBERT,mathysjaubert,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Mathys JAUBERT,mathysjaubert,S,Silver,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Mathys JAUBERT,mathysjaubert,S,Silver,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Mathys JAUBERT,mathysjaubert,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Matias Perez Companc,matiasperezcompanc,,Unknown,,,,no
 2023,Matias Perez Companc,matiasperezcompanc,,Unknown,,,,no
 2024,Matias Perez Companc,matiasperezcompanc,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -3414,6 +3432,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Matt Campbell,mattcampbell,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Matt Campbell,mattcampbell,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Matt Campbell,mattcampbell,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Matt KURZEJEWSKI,mattkurzejewski,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Matt McMurry,mattmcmurry,,Unknown,,,,no
 2023,Matt McMurry,mattmcmurry,S,Silver,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Matt McMurry,mattmcmurry,,Unknown,,,,no
@@ -3483,12 +3502,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Matthieu VAXIVIERE,matthieuvaxiviere,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Matthieu VAXIVIERE,matthieuvaxiviere,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Matthieu VAXIVIERE,matthieuvaxiviere,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Matthieu VAXIVIERE,matthieuvaxiviere,G,Gold,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Matthieu VAXIVIERE,matthieuvaxiviere,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Mattia DRUDI,mattiadrudi,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Mattia DRUDI,mattiadrudi,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Mattia DRUDI,mattiadrudi,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Mattia DRUDI,mattiadrudi,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Mattia DRUDI,mattiadrudi,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Mattia DRUDI,mattiadrudi,P,Platinum,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Matus RYBA,matusryba,,Unknown,,,,no
 2023,Matus RYBA,matusryba,,Unknown,,,,no
 2024,Matus RYBA,matusryba,,Unknown,,,,no
@@ -3504,6 +3523,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Max Esterson,maxesterson,,Unknown,,,,no
 2025,Max Esterson,maxesterson,,Unknown,IMSA,,,yes
 2026,Max Esterson,maxesterson,,Unknown,IMSA,,,yes
+2026,Max GARCIA,maxgarcia,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Max Hanratty,maxhanratty,S,Silver,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Max Hanratty,maxhanratty,,Unknown,,,,no
 2024,Max Hanratty,maxhanratty,,Unknown,,,,no
@@ -3513,7 +3533,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Max Hesse,maxhesse,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Max Hesse,maxhesse,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Max Hesse,maxhesse,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Max Hesse,maxhesse,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Max Hesse,maxhesse,G,Gold,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Max KOEBOLT,maxkoebolt,S,Silver,ELMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Max KOEBOLT,maxkoebolt,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Max KOEBOLT,maxkoebolt,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -3523,7 +3543,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Max MORITZ,maxmoritz,,Unknown,,,,no
 2024,Max MORITZ,maxmoritz,,Unknown,,,,no
 2025,Max MORITZ,maxmoritz,,Unknown,,,,no
-2026,Max MORITZ,maxmoritz,B,Bronze,ELMS,supplied category database,,yes
+2026,Max MORITZ,maxmoritz,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Max VAN DER SNEL,maxvandersnel,,Unknown,,,,no
 2023,Max VAN DER SNEL,maxvandersnel,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Max VAN DER SNEL,maxvandersnel,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -3533,7 +3553,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Maxime Martin,maximemartin,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Maxime Martin,maximemartin,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Maxime Martin,maximemartin,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Maxime Martin,maximemartin,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Maxime Martin,maximemartin,P,Platinum,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Maxime OOSTEN,maximeoosten,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Maxime OOSTEN,maximeoosten,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Maxime OOSTEN,maximeoosten,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -3628,12 +3648,13 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Michael JENSEN,michaeljensen,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Michael JENSEN,michaeljensen,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Michael JENSEN,michaeljensen,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Michael JENSEN,michaeljensen,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Michael JENSEN,michaeljensen,B,Bronze,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Michael O'BRIEN,michaelobrien,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Michael O'BRIEN,michaelobrien,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Michael O'BRIEN,michaelobrien,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Michael O'BRIEN,michaelobrien,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Michael O'BRIEN,michaelobrien,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Michael TOSI,michaeltosi,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Michael WAINWRIGHT,michaelwainwright,B,Bronze,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Michael WAINWRIGHT,michaelwainwright,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Michael WAINWRIGHT,michaelwainwright,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3698,12 +3719,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Mikkel Gaarde PEDERSEN,mikkelgaardepedersen,,Unknown,,,,no
 2024,Mikkel Gaarde PEDERSEN,mikkelgaardepedersen,,Unknown,,,,no
 2025,Mikkel Gaarde PEDERSEN,mikkelgaardepedersen,S,Silver,ELMS,supplied category database,,yes
-2026,Mikkel Gaarde PEDERSEN,mikkelgaardepedersen,S,Silver,ELMS,supplied category database,,yes
+2026,Mikkel Gaarde PEDERSEN,mikkelgaardepedersen,S,Silver,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Mikkel JENSEN,mikkeljensen,G,Gold,ALMS|ELMS|IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Mikkel JENSEN,mikkeljensen,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Mikkel JENSEN,mikkeljensen,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Mikkel JENSEN,mikkeljensen,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Mikkel JENSEN,mikkeljensen,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Mikkel JENSEN,mikkeljensen,P,Platinum,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Mikkel KRISTENSEN,mikkelkristensen,,Unknown,,,,no
 2023,Mikkel KRISTENSEN,mikkelkristensen,,Unknown,,,,no
 2024,Mikkel KRISTENSEN,mikkelkristensen,,Unknown,ALMS,,,yes
@@ -3833,7 +3854,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Nicholas YELLOLY,nickyelloly,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Nicholas YELLOLY,nickyelloly,P,Platinum,ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Nicholas YELLOLY,nickyelloly,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Nicholas YELLOLY,nickyelloly,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Nicholas YELLOLY,nickyelloly,P,Platinum,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Nick ADCOCK,nickadcock,,Unknown,ALMS|ELMS,,,yes
 2023,Nick ADCOCK,nickadcock,,Unknown,ALMS|ELMS,,,yes
 2024,Nick ADCOCK,nickadcock,,Unknown,ALMS|ELMS,,,yes
@@ -3873,7 +3894,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Nicklas NIELSEN,nicklasnielsen,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Nicklas NIELSEN,nicklasnielsen,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Nicklas NIELSEN,nicklasnielsen,P,Platinum,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Nicklas NIELSEN,nicklasnielsen,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Nicklas NIELSEN,nicklasnielsen,P,Platinum,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Nicky CATSBURG,nickycatsburg,P,Platinum,ALMS|IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Nicky CATSBURG,nickycatsburg,P,Platinum,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Nicky CATSBURG,nickycatsburg,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3913,7 +3934,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Nicola Lacorte,nicolalacorte,,Unknown,,,,no
 2024,Nicola Lacorte,nicolalacorte,,Unknown,,,,no
 2025,Nicola Lacorte,nicolalacorte,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Nicola Lacorte,nicolalacorte,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Nicola Lacorte,nicolalacorte,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Nicola MARINANGELI,nicolamarinangeli,,Unknown,,,,no
 2023,Nicola MARINANGELI,nicolamarinangeli,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Nicola MARINANGELI,nicolamarinangeli,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -3954,16 +3975,17 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Nicolas PINO,nicolaspino,S,Silver,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Nicolas PINO,nicolaspino,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Nicolas PINO,nicolaspino,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Nicolas STATI,nicolasstati,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Nicolas VARRONE,nicolasvarrone,S,Silver,ELMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Nicolas VARRONE,nicolasvarrone,G,Gold,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Nicolas VARRONE,nicolasvarrone,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Nicolas VARRONE,nicolasvarrone,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Nicolas VARRONE,nicolasvarrone,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Nicolas VARRONE,nicolasvarrone,G,Gold,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Niels KOOLEN,nielskoolen,,Unknown,,,,no
 2023,Niels KOOLEN,nielskoolen,,Unknown,,,,no
 2024,Niels KOOLEN,nielskoolen,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Niels KOOLEN,nielskoolen,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Niels KOOLEN,nielskoolen,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Niels KOOLEN,nielskoolen,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Nigel SCHOONDERWOERD,nigelschoonderwoerd,,Unknown,,,,no
 2023,Nigel SCHOONDERWOERD,nigelschoonderwoerd,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Nigel SCHOONDERWOERD,nigelschoonderwoerd,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4054,6 +4076,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Orey Fidani,oreyfidani,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Orey Fidani,oreyfidani,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Orey Fidani,oreyfidani,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Oscar Lee RYNDZIEWCZ,oscarleeryndziewcz,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Oscar TUNJO,oscartunjo,S,Silver,ELMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Oscar TUNJO,oscartunjo,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Oscar TUNJO,oscartunjo,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4078,7 +4101,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Parker Thompson,parkerthompson,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Parker Thompson,parkerthompson,S,Silver,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Parker Thompson,parkerthompson,S,Silver,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Parker Thompson,parkerthompson,S,Silver,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Parker Thompson,parkerthompson,S,Silver,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Pascal Wehrlein,pascalwehrlein,,Unknown,,,,no
 2023,Pascal Wehrlein,pascalwehrlein,,Unknown,,,,no
 2024,Pascal Wehrlein,pascalwehrlein,,Unknown,,,,no
@@ -4173,7 +4196,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Peter DEMPSEY,peterdempsey,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Peter DEMPSEY,peterdempsey,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Peter DEMPSEY,peterdempsey,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Peter DEMPSEY,peterdempsey,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Peter DEMPSEY,peterdempsey,B,Bronze,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Peter KOX,peterkox,S,Silver,ALMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Peter KOX,peterkox,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Peter KOX,peterkox,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4193,12 +4216,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Phil FAYER,philfayer,,Unknown,,,,no
 2024,Phil FAYER,philfayer,,Unknown,,,,no
 2025,Phil FAYER,philfayer,,Unknown,ALMS|IMSA,,,yes
-2026,Phil FAYER,philfayer,,Unknown,ALMS|IMSA,,,yes
+2026,Phil FAYER,philfayer,B,Bronze,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Phil Hanson,philhanson,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2023,Phil Hanson,philhanson,,Unknown,,,,no
 2024,Phil Hanson,philhanson,G,Gold,IMSA,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2025,Phil Hanson,philhanson,,Unknown,,,,no
-2026,Phil Hanson,philhanson,,Unknown,,,,no
+2026,Phil Hanson,philhanson,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Philip Ellis,philipellis,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Philip Ellis,philipellis,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Philip Ellis,philipellis,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4218,7 +4241,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Philip LINDBERG,philiplindberg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Philip LINDBERG,philiplindberg,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Philip LINDBERG,philiplindberg,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Philip LINDBERG,philiplindberg,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Philip LINDBERG,philiplindberg,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Philipp Eng,philippeng,P,Platinum,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Philipp Eng,philippeng,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Philipp Eng,philippeng,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4284,6 +4307,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Quentin ANTONEL,quentinantonel,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Quentin ANTONEL,quentinantonel,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Quentin ANTONEL,quentinantonel,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Rafa DURAN,rafaduran,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Raffaele GIAMMARIA,raffaelegiammaria,S,Silver,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Raffaele GIAMMARIA,raffaelegiammaria,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Raffaele GIAMMARIA,raffaelegiammaria,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4308,7 +4332,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Ralf BOHN,ralfbohn,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Ralf BOHN,ralfbohn,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Ralf BOHN,ralfbohn,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Ralf BOHN,ralfbohn,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Ralf BOHN,ralfbohn,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Ralph MEICHTRY,ralphmeichtry,,Unknown,,,,no
 2023,Ralph MEICHTRY,ralphmeichtry,,Unknown,,,,no
 2024,Ralph MEICHTRY,ralphmeichtry,,Unknown,,,,no
@@ -4319,6 +4343,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Raphaël NARAC,raphaelnarac,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Raphaël NARAC,raphaelnarac,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Raphaël NARAC,raphaelnarac,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Raphael RENNHOFER,raphaelrennhofer,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Rasmus Lindh,rasmuslindh,S,Silver,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Rasmus Lindh,rasmuslindh,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Rasmus Lindh,rasmuslindh,S,Silver,ELMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4388,7 +4413,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Richard LIETZ,richardlietz,P,Platinum,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Richard LIETZ,richardlietz,P,Platinum,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Richard LIETZ,richardlietz,P,Platinum,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Richard LIETZ,richardlietz,P,Platinum,ALMS|ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Richard LIETZ,richardlietz,P,Platinum,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Richard VERSCHOOR,richardverschoor,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Richard VERSCHOOR,richardverschoor,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Richard VERSCHOOR,richardverschoor,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4418,7 +4443,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Rinat SALIKHOV,rinatsalikhov,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Rinat SALIKHOV,rinatsalikhov,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Rinat SALIKHOV,rinatsalikhov,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Rinat SALIKHOV,rinatsalikhov,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Rinat SALIKHOV,rinatsalikhov,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Rino MASTRONARDI,rinomastronardi,S,Silver,ALMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Rino MASTRONARDI,rinomastronardi,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Rino MASTRONARDI,rinomastronardi,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4454,6 +4479,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Robby Foley,robbyfoley,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Robby Foley,robbyfoley,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Robby Foley,robbyfoley,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Robert DE HAAN,robertdehaan,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Robert KUBICA,robertkubica,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Robert KUBICA,robertkubica,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Robert KUBICA,robertkubica,P,Platinum,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4493,7 +4519,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Roberto Lacorte,robertolacorte,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Roberto Lacorte,robertolacorte,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Roberto Lacorte,robertolacorte,B,Bronze,ALMS|IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Roberto Lacorte,robertolacorte,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Roberto Lacorte,robertolacorte,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Robin FRIJNS,robinfrijns,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Robin FRIJNS,robinfrijns,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Robin FRIJNS,robinfrijns,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4538,7 +4564,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Roman De Angelis,romandeangelis,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Roman De Angelis,romandeangelis,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Roman De Angelis,romandeangelis,G,Gold,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Roman De Angelis,romandeangelis,G,Gold,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Roman De Angelis,romandeangelis,G,Gold,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Roman Senna DE ANGELIS,romansennadeangelis,,Unknown,,,,no
 2023,Roman Senna DE ANGELIS,romansennadeangelis,,Unknown,,,,no
 2024,Roman Senna DE ANGELIS,romansennadeangelis,,Unknown,WEC,,,yes
@@ -4703,7 +4729,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Scott Huffaker,scotthuffaker,S,Silver,IMSA|WEC,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Scott Huffaker,scotthuffaker,G,Gold,IMSA|WEC,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2025,Scott Huffaker,scotthuffaker,G,Gold,,supplied category database,,no
-2026,Scott Huffaker,scotthuffaker,G,Gold,ELMS,supplied category database,,yes
+2026,Scott Huffaker,scotthuffaker,G,Gold,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Scott McLaughlin,scottmclaughlin,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Scott McLaughlin,scottmclaughlin,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Scott McLaughlin,scottmclaughlin,P,Platinum,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4754,11 +4780,26 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Sebastian PRIAULX,sebastianpriaulx,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Sebastian PRIAULX,sebastianpriaulx,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Sebastian PRIAULX,sebastianpriaulx,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2022,Sébastien BAUD,sebastienbaud,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
+2023,Sébastien BAUD,sebastienbaud,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Sébastien BAUD,sebastienbaud,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
+2025,Sébastien BAUD,sebastienbaud,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
+2026,Sébastien BAUD,sebastienbaud,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Sebastien Bourdais,sebastienbourdais,P,Platinum,IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Sebastien Bourdais,sebastienbourdais,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Sebastien Bourdais,sebastienbourdais,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Sebastien Bourdais,sebastienbourdais,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Sebastien Bourdais,sebastienbourdais,P,Platinum,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2022,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
+2023,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
+2024,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
+2025,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
+2026,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2022,Sébastien OGIER,sebastienogier,,Unknown,WEC,,,yes
+2023,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
+2025,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
+2026,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
 2022,Sebastien PAGE,sebastienpage,B,Bronze,ALMS|ELMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Sebastien PAGE,sebastienpage,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Sebastien PAGE,sebastienpage,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4829,6 +4870,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Shigekazu WAKISAKA,shigekazuwakisaka,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Shigekazu WAKISAKA,shigekazuwakisaka,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
 2026,Shigekazu WAKISAKA,shigekazuwakisaka,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Simon BIRCH,simonbirch,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Simon Mann,simonmann,S,Silver,IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Simon Mann,simonmann,S,Silver,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Simon Mann,simonmann,S,Silver,ALMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -4894,6 +4936,21 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Stephane KOX,stephanekox,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Stephane KOX,stephanekox,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Stephane KOX,stephanekox,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2022,Stéphane LEMERET,stephanelemeret,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
+2023,Stéphane LEMERET,stephanelemeret,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Stéphane LEMERET,stephanelemeret,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
+2025,Stéphane LEMERET,stephanelemeret,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
+2026,Stéphane LEMERET,stephanelemeret,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2022,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
+2023,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Stéphane RICHELMI,stephanerichelmi,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
+2025,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
+2026,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2022,Stéphane TRIBAUDINI,stephanetribaudini,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
+2023,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
+2024,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
+2025,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
+2026,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Stephen GROVE,stephengrove,B,Bronze,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Stephen GROVE,stephengrove,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Stephen GROVE,stephengrove,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4913,7 +4970,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Steve JANS,stevejans,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Steve JANS,stevejans,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Steve JANS,stevejans,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Steve JANS,stevejans,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Steve JANS,stevejans,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Steven PALETTE,stevenpalette,S,Silver,ALMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Steven PALETTE,stevenpalette,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Steven PALETTE,stevenpalette,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -4923,7 +4980,8 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Steven Thomas,steventhomas,B,Bronze,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Steven Thomas,steventhomas,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Steven Thomas,steventhomas,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Steven Thomas,steventhomas,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Steven Thomas,steventhomas,B,Bronze,ALMS|ELMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
+2026,Sting Ray ROBB,stingrayrobb,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Stoffel VANDOORNE,stoffelvandoorne,,Unknown,,,,no
 2023,Stoffel VANDOORNE,stoffelvandoorne,,Unknown,WEC,,,yes
 2024,Stoffel VANDOORNE,stoffelvandoorne,,Unknown,WEC,,,yes
@@ -4939,46 +4997,18 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Stuart Wiltshire,stuartwiltshire,B,Bronze,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Stuart Wiltshire,stuartwiltshire,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Stuart Wiltshire,stuartwiltshire,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
-2022,Stéphane LEMERET,stephanelemeret,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
-2023,Stéphane LEMERET,stephanelemeret,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Stéphane LEMERET,stephanelemeret,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
-2025,Stéphane LEMERET,stephanelemeret,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Stéphane LEMERET,stephanelemeret,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
-2022,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
-2023,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Stéphane RICHELMI,stephanerichelmi,G,Gold,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
-2025,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Stéphane RICHELMI,stephanerichelmi,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
-2022,Stéphane TRIBAUDINI,stephanetribaudini,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
-2023,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
-2025,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Stéphane TRIBAUDINI,stephanetribaudini,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Sven Müller,svenmuller,G,Gold,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Sven Müller,svenmuller,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Sven Müller,svenmuller,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Sven Müller,svenmuller,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Sven Müller,svenmuller,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,Sébastien BAUD,sebastienbaud,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
-2023,Sébastien BAUD,sebastienbaud,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Sébastien BAUD,sebastienbaud,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
-2025,Sébastien BAUD,sebastienbaud,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Sébastien BAUD,sebastienbaud,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
-2023,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
-2024,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
-2025,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Sébastien BUEMI,sebastienbuemi,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,Sébastien OGIER,sebastienogier,,Unknown,WEC,,,yes
-2023,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
-2024,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
-2025,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Sébastien OGIER,sebastienogier,P,Platinum,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Tadasuke MAKINO,tadasukemakino,G,Gold,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Takeshi KIMURA,takeshikimura,B,Bronze,ELMS|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Takeshi KIMURA,takeshikimura,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Takeshi KIMURA,takeshikimura,B,Bronze,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Takeshi KIMURA,takeshikimura,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Takeshi KIMURA,takeshikimura,B,Bronze,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Takeshi KIMURA,takeshikimura,B,Bronze,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
+2026,Takuro SHINOHARA,takuroshinohara,S,Silver,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Tanart SATHIENTHIRAKUL,tanartsathienthirakul,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Tanart SATHIENTHIRAKUL,tanartsathienthirakul,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Tanart SATHIENTHIRAKUL,tanartsathienthirakul,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -5009,11 +5039,16 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Theo MICOURIS,theomicouris,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Theo MICOURIS,theomicouris,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Theo MICOURIS,theomicouris,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2022,Théo POURCHAIRE,theopourchaire,,Unknown,,,,no
+2023,Théo POURCHAIRE,theopourchaire,,Unknown,,,,no
+2024,Théo POURCHAIRE,theopourchaire,,Unknown,,,,no
+2025,Théo POURCHAIRE,theopourchaire,P,Platinum,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
+2026,Théo POURCHAIRE,theopourchaire,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Theodor JENSEN,theodorjensen,,Unknown,,,,no
 2023,Theodor JENSEN,theodorjensen,,Unknown,,,,no
 2024,Theodor JENSEN,theodorjensen,S,Silver,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Theodor JENSEN,theodorjensen,S,Silver,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Theodor JENSEN,theodorjensen,S,Silver,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Theodor JENSEN,theodorjensen,S,Silver,ALMS|ELMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Thierry Vermeulen,thierryvermeulen,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Thierry Vermeulen,thierryvermeulen,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Thierry Vermeulen,thierryvermeulen,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -5023,7 +5058,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Thomas FLEMING,thomasfleming,,Unknown,,,,no
 2024,Thomas FLEMING,thomasfleming,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Thomas FLEMING,thomasfleming,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Thomas FLEMING,thomasfleming,S,Silver,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Thomas FLEMING,thomasfleming,S,Silver,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Thomas FLOHR,thomasflohr,B,Bronze,WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Thomas FLOHR,thomasflohr,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Thomas FLOHR,thomasflohr,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -5038,7 +5073,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Thomas KIEFER,thomaskiefer,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Thomas KIEFER,thomaskiefer,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Thomas KIEFER,thomaskiefer,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Thomas KIEFER,thomaskiefer,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Thomas KIEFER,thomaskiefer,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Thomas LAURENT,thomaslaurent,G,Gold,ELMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Thomas LAURENT,thomaslaurent,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Thomas LAURENT,thomaslaurent,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -5064,11 +5099,6 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2024,Thomas SARGENT,thomassargent,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Thomas SARGENT,thomassargent,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
 2026,Thomas SARGENT,thomassargent,S,Silver,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
-2022,Théo POURCHAIRE,theopourchaire,,Unknown,,,,no
-2023,Théo POURCHAIRE,theopourchaire,,Unknown,,,,no
-2024,Théo POURCHAIRE,theopourchaire,,Unknown,,,,no
-2025,Théo POURCHAIRE,theopourchaire,P,Platinum,ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Théo POURCHAIRE,theopourchaire,P,Platinum,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
 2022,Tijmen VAN DER HELM,tijmenvanderhelm,S,Silver,ELMS|IMSA|WEC,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Tijmen VAN DER HELM,tijmenvanderhelm,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Tijmen VAN DER HELM,tijmenvanderhelm,G,Gold,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
@@ -5168,12 +5198,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Tom Sargent,tomsargent,,Unknown,,,,no
 2024,Tom Sargent,tomsargent,,Unknown,,,,no
 2025,Tom Sargent,tomsargent,,Unknown,IMSA,,,yes
-2026,Tom Sargent,tomsargent,S,Silver,IMSA,supplied category database,,yes
+2026,Tom Sargent,tomsargent,S,Silver,ALMS|IMSA,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Tom VAN ROMPUY,tomvanrompuy,,Unknown,ELMS,,,yes
 2023,Tom VAN ROMPUY,tomvanrompuy,B,Bronze,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Tom VAN ROMPUY,tomvanrompuy,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Tom VAN ROMPUY,tomvanrompuy,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Tom VAN ROMPUY,tomvanrompuy,B,Bronze,ALMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Tom VAN ROMPUY,tomvanrompuy,B,Bronze,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Tomi VEIJALAINEN,tomiveijalainen,,Unknown,ALMS,,,yes
 2023,Tomi VEIJALAINEN,tomiveijalainen,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Tomi VEIJALAINEN,tomiveijalainen,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -5213,7 +5243,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Torsten KRATZ,torstenkratz,B,Bronze,ALMS|ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Torsten KRATZ,torstenkratz,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Torsten KRATZ,torstenkratz,B,Bronze,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Torsten KRATZ,torstenkratz,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,no
+2026,Torsten KRATZ,torstenkratz,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Townsend Bell,townsendbell,G,Gold,IMSA,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Townsend Bell,townsendbell,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Townsend Bell,townsendbell,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -5268,7 +5298,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Valentin HASSE CLOT,valentinhasseclot,G,Gold,ALMS|ELMS|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Valentin HASSE CLOT,valentinhasseclot,G,Gold,ELMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Valentin HASSE CLOT,valentinhasseclot,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Valentin HASSE CLOT,valentinhasseclot,G,Gold,ELMS|IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Valentin HASSE CLOT,valentinhasseclot,G,Gold,ALMS|ELMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Valentin PIERBURG,valentinpierburg,B,Bronze,ALMS,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,yes
 2023,Valentin PIERBURG,valentinpierburg,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Valentin PIERBURG,valentinpierburg,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -5308,7 +5338,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Victor MARTINS,victormartins,,Unknown,,,,no
 2024,Victor MARTINS,victormartins,,Unknown,,,,no
 2025,Victor MARTINS,victormartins,G,Gold,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,no
-2026,Victor MARTINS,victormartins,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Victor MARTINS,victormartins,G,Gold,ALMS|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Viktor SHAYTAR,viktorshaytar,,Unknown,,,,no
 2023,Viktor SHAYTAR,viktorshaytar,,Unknown,,,,no
 2024,Viktor SHAYTAR,viktorshaytar,,Unknown,ALMS,,,yes
@@ -5388,12 +5418,12 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Yifei YE,yifeiye,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Yifei YE,yifeiye,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,yes
 2025,Yifei YE,yifeiye,G,Gold,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Yifei YE,yifeiye,G,Gold,IMSA|WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Yifei YE,yifeiye,G,Gold,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Yorikatsu TSUJIKO,yorikatsutsujiko,,Unknown,,,,no
 2023,Yorikatsu TSUJIKO,yorikatsutsujiko,B,Bronze,WEC,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Yorikatsu TSUJIKO,yorikatsutsujiko,B,Bronze,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
 2025,Yorikatsu TSUJIKO,yorikatsutsujiko,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2025,yes
-2026,Yorikatsu TSUJIKO,yorikatsutsujiko,B,Bronze,ALMS,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2026,yes
+2026,Yorikatsu TSUJIKO,yorikatsutsujiko,B,Bronze,ALMS,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Yu Kanamaru,yukanamaru,S,Silver,,FIA 2021 list used for 2022,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2022,no
 2023,Yu Kanamaru,yukanamaru,S,Silver,IMSA,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,yes
 2024,Yu Kanamaru,yukanamaru,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no
@@ -5413,7 +5443,7 @@ season,driver_name,driver_name_normalized,fia_category,fia_category_full,series,
 2023,Zacharie ROBICHON,zacharierobichon,S,Silver,ELMS|IMSA|WEC,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2024,Zacharie ROBICHON,zacharierobichon,S,Silver,IMSA|WEC,IMSA official race results,https://imsa.results.alkamelcloud.com/,yes
 2025,Zacharie ROBICHON,zacharierobichon,,Unknown,IMSA|WEC,,,yes
-2026,Zacharie ROBICHON,zacharierobichon,,Unknown,IMSA|WEC,,,yes
+2026,Zacharie ROBICHON,zacharierobichon,S,Silver,ALMS|IMSA|WEC,ALMS 2026-2027 official classification DRIVER_LICENSE,https://files.alkamelcloud.com/alms/results/06_2026-2027/01_Paul%20Ricard/30_Asian%20Le%20Mans%20Series/202611151315_Race%202/04_Hour%204/03_Classification_Race%202_Hour%204.CSV,yes
 2022,Zachary Vanier,zacharyvanier,,Unknown,,,,no
 2023,Zachary Vanier,zacharyvanier,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2023,no
 2024,Zachary Vanier,zacharyvanier,S,Silver,,FIA annual list transcription,https://www.mysuperlicence.com/drivers.php?download_fia_csv=2024,no

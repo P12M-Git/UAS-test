@@ -5,12 +5,13 @@ import { eventLabel } from "../src/models/event-identity";
 
 export type WorkspaceRace = AlkamelRace & { status: string; error?: string };
 
-export default function WorkspaceRaces({ races, selected, active, onSelect, onActivate, storageWarning }: {
+export default function WorkspaceRaces({ races, selected, active, onSelect, onActivate, onQualifying, storageWarning }: {
   races: WorkspaceRace[];
   selected: string[];
   active: string;
   onSelect: (ids: string[]) => void;
   onActivate: (id: string) => void;
+  onQualifying?: (id: string) => void;
   storageWarning?: string;
 }) {
   const [series, setSeries] = useState("ELMS");
@@ -40,12 +41,14 @@ export default function WorkspaceRaces({ races, selected, active, onSelect, onAc
         <label>Race<input type="search" placeholder="Search circuit" value={search} onChange={e => setSearch(e.target.value)} /></label>
       </div>
       <div className="workspace-race-actions">
+        <button type="button" disabled={!races.some(race=>race.championship===series && race.season===year)} onClick={()=>onSelect([...new Set([...selected,...races.filter(race=>race.championship===series && race.season===year).map(race=>race.id)])])}>Add entire championship · {year}</button>
         <button type="button" disabled={!visible.length} onClick={() => onSelect([...new Set([...selected, ...visible.map(race => race.id)])])}>Add shown races</button>
         <button type="button" disabled={!selected.length} onClick={() => onSelect([])}>Clear selection</button>
       </div>
       <div className="workspace-race-options">{visible.map(race => <label key={race.id}>
         <input type="checkbox" checked={selected.includes(race.id)} onChange={() => toggle(race.id)} />
         <span>{race.event}</span>
+        {!!race.qualifying?.length && <small>{race.qualifying.length} qualy sessions</small>}
         {selected.includes(race.id) && <small>{available(race) ? "Ready" : race.status === "failed" ? "Failed" : "Loading"}</small>}
         {race.error && selected.includes(race.id) && <small className="race-error">{race.error}</small>}
       </label>)}{!visible.length && <p>{races.length ? "No races match these filters." : "Finding available races…"}</p>}</div>
@@ -55,6 +58,7 @@ export default function WorkspaceRaces({ races, selected, active, onSelect, onAc
         <button type="button" aria-pressed={active === race.id} disabled={!available(race)} onClick={() => onActivate(race.id)}>
           {eventLabel(race.sourceFile)}{!available(race) && ` · ${race.status === "failed" ? "Failed" : "Loading…"}`}
         </button>
+        {!!race.qualifying?.length && onQualifying && <button type="button" disabled={!available(race)} onClick={()=>onQualifying(race.id)} aria-label={`Qualifying for ${eventLabel(race.sourceFile)}`}>Qualy</button>}
         <button type="button" aria-label={`Remove ${eventLabel(race.sourceFile)}`} onClick={() => toggle(race.id)}>×</button>
       </div>)}
     </div>}

@@ -15,11 +15,15 @@ import SeasonAggregate from "./season-aggregate";
 import DriverCategoryDatabase from "./driver-category-database";
 import Results from "./results";
 import QualifyingAnalysis from "./qualifying-analysis";
+import WorkspaceSeasonSummary from "./workspace-season-summary";
 import { lapImprovements } from "../src/analysis/lap-improvements";
 import { compareEventsByRound, eventChampionship, eventLabel, eventTheme } from "../src/models/event-identity";
 import WorkspaceRaces from "./workspace-races";
 import WorkspaceOverview from "./workspace-overview";
 import DriverPicker from "./driver-picker";
+import DriverName from "./driver-name";
+import {displayDriverName} from "../src/models/display-driver";
+import {carColour,carTextColour,registerColourRaces} from "../src/models/car-colour";
 import { compareDriversBySurname } from "../src/models/driver-identity";
 import "./workspace.css";
 import { sharedTrackFraction } from "../src/analysis/stints";
@@ -241,6 +245,7 @@ export default function Home() {
         return response.json() as Promise<{ races: AlkamelRace[] }>;
       });
       const ratingsResponse = await fetch("/driver_categories_all_series_2022_2026.csv");
+      registerColourRaces(manifest.races);
       if (!ratingsResponse.ok) throw new Error(`Driver categories: HTTP ${ratingsResponse.status}`);
       const ratings = await ratingsResponse.text();
       if (!cancelled) setDriverCsv(ratings);
@@ -335,7 +340,7 @@ export default function Home() {
           {newWorkspace ? "← VOLVER A LA WEB ACTUAL" : "ABRIR NUEVA WEB →"}
         </button>
         <nav>
-          {(newWorkspace ? (["Overview", "Race Analysis", "Qualy Analysis", "Driver Performance", "Results"] as View[]) : views).map((v, i) => (
+          {(newWorkspace ? (["Overview", "Race Analysis", "Qualy Analysis", "Driver Performance", "Season Summary", "Results"] as View[]) : views).map((v, i) => (
             <button
               className={view === v || v === "Driver Performance" && view === "Traffic Performance" ? "active" : ""}
               onClick={() => setView(v)}
@@ -460,7 +465,7 @@ export default function Home() {
                   />
                   COMPARE WITH PARALLEL DRIVERS (≥30%)
                 </label>
-                {parallelOnly && <p className="parallel-note">Rivals must share at least 30% of {activeDriver}'s total observed on-track time. Class/category filters apply; car/search filters are ignored to include rival cars. Timing-line estimate; pit dwell excluded where recorded. Outlaps without pit duration are omitted.</p>}
+                {parallelOnly && <p className="parallel-note">Rivals must share at least 30% of <DriverName name={activeDriver}/>'s total observed on-track time. Class/category filters apply; car/search filters are ignored to include rival cars. Timing-line estimate; pit dwell excluded where recorded. Outlaps without pit duration are omitted.</p>}
                 <Ranking
                   streamlined={newWorkspace}
                   metrics={performanceMetrics}
@@ -520,7 +525,7 @@ export default function Home() {
               />
             )}{" "}
             {view === "Season Summary" && (
-              <SeasonSummary
+              newWorkspace ? <WorkspaceSeasonSummary races={chosenWorkspaceRaces.filter(raceAvailable)} laps={laps.filter(lap=>chosenWorkspaceRaces.some(race=>raceAvailable(race)&&race.sourceFile===lap.sourceFile))} driverCsv={driverCsv} driver={driver} setDriver={setDriver}/> : <SeasonSummary
                 laps={laps}
                 events={events}
                 selectedEvents={[...summaryEvents].sort(compareEventsByRound)}
@@ -767,11 +772,10 @@ function CategoryBadge({ category }: { category: string }) {
     </span>
   );
 }
-function CarNumber({ number }: { number: string }) {
-  const colour =
-    CONFIG.CAR_COLOURS[number as keyof typeof CONFIG.CAR_COLOURS] || "#7f8993";
+function CarNumber({ number,context="" }: { number: string;context?:string }) {
+  const colour = carColour(number,context);
   return (
-    <span className="carNumber" style={{ background: colour }}>
+    <span className="carNumber" style={{ background: colour,color:carTextColour(colour),fontWeight:400 }}>
       {number}
     </span>
   );
@@ -967,7 +971,7 @@ function Ranking({
                     }}
                   />
                   <b>
-                    <CarNumber number={m.car} /> {m.driver}{" "}
+                    <CarNumber number={m.car} context={m.key} /> <DriverName name={m.driver}/>{" "}
                     <CategoryBadge category={m.category} />
                   </b>
                   <small>
@@ -1052,7 +1056,7 @@ function LapAnalysis({
     <section className={compact ? "workspace-lap-analysis" : undefined}>
       {!compact && <DriverSelect {...{ drivers, driver, setDriver }} />}
       <div className="selectedCategory">
-        <CarNumber number={laps[0]?.carNumber || "—"} />
+        <CarNumber number={laps[0]?.carNumber || "—"} context={laps[0]?.sourceFile} />
         <CategoryBadge category={laps[0]?.category || "Unknown"} />{" "}
         {laps[0]?.proAm && <em className="proAm">LMP2 PRO/AM</em>}
       </div>
@@ -1195,7 +1199,7 @@ function DriverSelect({
         ANALYSED DRIVER
         <select value={driver} onChange={(e) => setDriver(e.target.value)}>
           {[...drivers].sort(compareDriversBySurname).map((x) => (
-            <option key={x}>{x}</option>
+            <option key={x} value={x}>{displayDriverName(x)}</option>
           ))}
         </select>
       </label>
@@ -1318,7 +1322,7 @@ function Traffic({
     <>
       {!streamlined && <DriverSelect {...{ drivers, driver, setDriver }} />}
       <div className="selectedCategory">
-        <CarNumber number={laps[0]?.carNumber || "—"} />
+        <CarNumber number={laps[0]?.carNumber || "—"} context={laps[0]?.sourceFile} />
         <CategoryBadge category={laps[0]?.category || "Unknown"} />{" "}
         {laps[0]?.proAm && <em className="proAm">LMP2 PRO/AM</em>}
       </div>
@@ -1627,7 +1631,7 @@ function DriverFocus({
         <div>
           <p className="eyebrow">DRIVER FOCUS · LMP2 BENCHMARK</p>
           <h2>
-            <CarNumber number={selected.car} /> {selected.driver}{" "}
+            <CarNumber number={selected.car} context={selected.key} /> <DriverName name={selected.driver}/>{" "}
             <CategoryBadge category={selected.category} />
           </h2>
           <p>
@@ -2512,7 +2516,7 @@ function GeneralDriverSummary({
     <div className="driverSummarySection">
       <div className="focusModalHeader">
         <h2>
-          <CarNumber number={selectedLap?.carNumber || "—"} /> {driver} —
+          <CarNumber number={selectedLap?.carNumber || "—"} context={selectedLap?.sourceFile} /> <DriverName name={driver}/> —
           GENERAL SUMMARY
         </h2>
         <label>

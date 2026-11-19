@@ -3,7 +3,7 @@
 ## New workspace
 
 Use **ABRIR NUEVA WEB** to open Overview, Race Analysis, Qualy Analysis,
-Driver Performance and Results.
+Driver Performance, Season Summary and Results.
 The shared **Load races** dropdown selects races by championship and season.
 The entire library loads in the background in both workspaces; selected races
 receive priority and changing the selection or section does not cancel the queue.
@@ -30,6 +30,25 @@ are excluded; deletions not flagged in the timing CSV cannot be inferred.
 An event without a qualifying CSV shows an explicit unavailable message.
 Race Analysis colours are green for clear air, blue for traffic, red for pit,
 yellow for non-green conditions, and grey/lilac for unknown air.
+
+New Season Summary contains only the event-comparison layout, with Qualifying,
+Race and Race 20 tabs and the shared selected events. Qualifying defaults to
+qualifying sessions without Hyperpole; individual sessions can be chosen per
+event. Race is absolute best valid lap, and Race 20 is the absolute fastest-20
+average with a full sample required. All 27 workbook metrics appear below each
+event's times, with per-event exclusions and optional plot/cutoff controls.
+`src/analysis/workbook-grading.ts` adapts the workbook metrics to the full class,
+without fixed row limits. STDEV is sample standard deviation; the category OR is
+applied per driver (Bronze/Platinum for Qualifying, Gold/Platinum for Race/Race 20).
+Correction intervals retain the overall mean as their centre. Team metrics use
+all cars with the same published team name within the event/class, excluding
+unknown team names. Top 10 still requires ten numeric values. Workbook reference
+fixtures test the unchanged formulas; dedicated cases cover the corrected group
+and team calculations. Missing outputs are not silently converted to zero.
+Driver display uses **SURNAME**, Given name without changing identity keys.
+Car numbers use regular weight. The ALMS 2026–2027 LMP2 palette is scoped to that
+season, including newly discovered events, rather than reassigning other series'
+car colours.
 
 `scripts/update-alms-categories.ts` imports the official ALMS 2026–2027 race
 classification's DRIVER_LICENSE fields into annual category rows for the actual

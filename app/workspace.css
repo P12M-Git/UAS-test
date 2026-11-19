@@ -3,6 +3,34 @@ main.new-workspace {
   --text:#182536; --muted:#53647a; --line:#c5d0dd; --accent:#1d4a7b;
   background:var(--bg); color:var(--text); font-size:16px;
 }
+.new-workspace .driver-display { font-weight:400 !important; }
+.new-workspace .driver-display strong { font-weight:700 !important; }
+.new-workspace :is(.carNumber,.results-car) { font-weight:400 !important; text-shadow:none !important; }
+.results-focus-picker { min-width:0; position:relative; }
+.results-focus-picker > .ghost { position:absolute; right:0; top:-18px; padding:0 3px; border:0; font-size:12px !important; }
+.workspace-season-summary .results-method { margin:8px 0 16px; color:var(--muted); }
+.workspace-season-summary .categoryTicks { display:flex; flex-wrap:wrap; gap:6px; padding:6px; border-color:var(--line); }
+.workspace-season-summary .categoryTicks label { display:flex; gap:4px; align-items:center; padding:3px 6px; border-radius:3px; }
+.new-workspace .workspace-comparison-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,540px),1fr)); gap:16px; align-items:start; }
+.workspace-comparison-event { min-width:0; padding:14px; background:var(--panel); border:1px solid var(--line); border-radius:6px; }
+.new-workspace .workspace-comparison-event h3 { margin:0 0 10px; font-size:19px; }
+.workspace-comparison-event > label { display:flex; align-items:center; gap:8px; }
+.workspace-comparison-event > label select { min-width:0; max-width:100%; flex:1; }
+.workspace-comparison-event .tableWrap { max-height:440px; overflow:auto; margin:10px 0; }
+.new-workspace .workspace-comparison-event :is(th,td) { padding:5px 7px; background:var(--panel); color:var(--text); border-color:var(--line); }
+.workspace-comparison-event thead { position:sticky; top:0; z-index:1; }
+.new-workspace .workspace-comparison-event thead th { background:var(--panel-strong); }
+.workspace-comparison-event td button { background:transparent; color:#182536; border:0; padding:2px; text-align:left; cursor:pointer; }
+.workspace-comparison-event .comparison-excluded { opacity:.4; }
+.new-workspace .workspace-comparison-event .comparison-focus td:not(:nth-child(2)) { background:var(--panel-strong); }
+.workspace-comparison-event .workbook-metrics { width:100%; margin-top:12px; }
+.new-workspace .workbook-metrics th { text-align:left; font-weight:400; }
+.workspace-comparison-event .workbook-metrics td { white-space:nowrap; text-align:right; font-variant-numeric:tabular-nums; }
+.workspace-season-summary .comparison-plot { display:block; width:100%; margin:10px 0; overflow:visible; }
+.workspace-season-summary .comparison-plot-scroll { max-height:380px; overflow:auto; margin:8px 0; }
+.workspace-season-summary .comparison-plot text { fill:var(--text); font:14px Calibri,Arial,sans-serif; }
+.new-workspace .workbook-metrics .summaryBetter { color:#16864a; }
+.new-workspace .workbook-metrics .summaryWorse { color:#c13c47; }
 main.new-workspace.workspace-dark {
   --bg:#0e1520; --panel:#172130; --panel-strong:#243247;
   --text:#edf3fa; --muted:#afbdd0; --line:#3a4c64; --accent:#9ac5ff;

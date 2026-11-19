@@ -1,0 +1,2186 @@
+[
+  {
+    "sheet": "Qualifying",
+    "event": "27 ALMS R01 RICA",
+    "mode": "Qualifying",
+    "focus": "Antoine COMEAU",
+    "rows": [
+      {
+        "driver": "Giorgio RODA",
+        "car": "22",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "22",
+        "value": 113.16,
+        "total": null
+      },
+      {
+        "driver": "Georgios KOLOVOS",
+        "car": "11",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "11",
+        "value": 113.381,
+        "total": null
+      },
+      {
+        "driver": "Torsten KRATZ",
+        "car": "43",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "43",
+        "value": 113.932,
+        "total": null
+      },
+      {
+        "driver": "Antti RAMMO",
+        "car": "30",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "30",
+        "value": 113.94900000000001,
+        "total": null
+      },
+      {
+        "driver": "Tom VAN ROMPUY",
+        "car": "3",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "3",
+        "value": 114.31700000000001,
+        "total": null
+      },
+      {
+        "driver": "Jeremy CLARKE",
+        "car": "83",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "83",
+        "value": 114.38999999999999,
+        "total": null
+      },
+      {
+        "driver": "Steven THOMAS",
+        "car": "24",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "24",
+        "value": 114.53800000000001,
+        "total": null
+      },
+      {
+        "driver": "Jens Reno MOLLER",
+        "car": "20",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "20",
+        "value": 114.638,
+        "total": null
+      },
+      {
+        "driver": "Michael JENSEN",
+        "car": "25",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "25",
+        "value": 114.72399999999999,
+        "total": null
+      },
+      {
+        "driver": "George KURTZ",
+        "car": "4",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "4",
+        "value": 114.914,
+        "total": null
+      },
+      {
+        "driver": "Phil FAYER",
+        "car": "2",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "2",
+        "value": 115.136,
+        "total": null
+      },
+      {
+        "driver": "Jacek ZIELONKA",
+        "car": "16",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "16",
+        "value": 115.59700000000001,
+        "total": null
+      },
+      {
+        "driver": "Alex DIMIRDJIAN",
+        "car": "55",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "55",
+        "value": 116.039,
+        "total": null
+      },
+      {
+        "driver": "Louis STERN",
+        "car": "37",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "37",
+        "value": 116.34700000000002,
+        "total": null
+      },
+      {
+        "driver": "Horst FELBERMAYR",
+        "car": "66",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "66",
+        "value": 116.72100000000002,
+        "total": null
+      },
+      {
+        "driver": "Antoine COMEAU",
+        "car": "34",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "34",
+        "value": 122.458,
+        "total": null
+      }
+    ],
+    "expected": {
+      "focus": 122.458,
+      "silverAvg": null,
+      "average": 115.2650625,
+      "deltaSilver": null,
+      "deltaAverage": 7.192937500000004,
+      "silverTop10": null,
+      "top10": 114.1943,
+      "deltaSilverTop10": null,
+      "deltaTop10": 8.263699999999996,
+      "deltaFastest": 9.298000000000002,
+      "silverCount": 0,
+      "driverCount": 16,
+      "silverStd": null,
+      "silverLower": null,
+      "silverUpper": null,
+      "silverCorrected": null,
+      "deltaSilverCorrected": null,
+      "std": 2.1640539878893974,
+      "lower": 113.1010085121106,
+      "upper": 117.4291164878894,
+      "corrected": 114.78553333333333,
+      "deltaCorrected": 7.6724666666666606,
+      "teamCount": 1,
+      "teamAverage": 122.458,
+      "deltaTeamAverage": 0,
+      "teamBest": 122.458,
+      "deltaTeamBest": 0
+    }
+  },
+  {
+    "sheet": "Qualifying",
+    "event": "27 ALMS R02 RICA",
+    "mode": "Qualifying",
+    "focus": "Antoine COMEAU",
+    "rows": [
+      {
+        "driver": "Georgios KOLOVOS",
+        "car": "11",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "11",
+        "value": 111.955,
+        "total": null
+      },
+      {
+        "driver": "Giorgio RODA",
+        "car": "22",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "22",
+        "value": 112.17,
+        "total": null
+      },
+      {
+        "driver": "Antti RAMMO",
+        "car": "30",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "30",
+        "value": 112.492,
+        "total": null
+      },
+      {
+        "driver": "Torsten KRATZ",
+        "car": "43",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "43",
+        "value": 113.107,
+        "total": null
+      },
+      {
+        "driver": "Jeremy CLARKE",
+        "car": "83",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "83",
+        "value": 113.126,
+        "total": null
+      },
+      {
+        "driver": "Jens Reno MOLLER",
+        "car": "20",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "20",
+        "value": 113.273,
+        "total": null
+      },
+      {
+        "driver": "Michael JENSEN",
+        "car": "25",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "25",
+        "value": 113.279,
+        "total": null
+      },
+      {
+        "driver": "Steven THOMAS",
+        "car": "24",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "24",
+        "value": 113.413,
+        "total": null
+      },
+      {
+        "driver": "Tom VAN ROMPUY",
+        "car": "3",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "3",
+        "value": 113.50900000000001,
+        "total": null
+      },
+      {
+        "driver": "Phil FAYER",
+        "car": "2",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "2",
+        "value": 113.836,
+        "total": null
+      },
+      {
+        "driver": "Jacek ZIELONKA",
+        "car": "16",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "16",
+        "value": 114.116,
+        "total": null
+      },
+      {
+        "driver": "George KURTZ",
+        "car": "4",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "4",
+        "value": 114.563,
+        "total": null
+      },
+      {
+        "driver": "Horst FELBERMAYR",
+        "car": "66",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "66",
+        "value": 115.12400000000001,
+        "total": null
+      },
+      {
+        "driver": "Louis STERN",
+        "car": "37",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "37",
+        "value": 115.18200000000002,
+        "total": null
+      },
+      {
+        "driver": "Alex DIMIRDJIAN",
+        "car": "55",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "55",
+        "value": 115.544,
+        "total": null
+      },
+      {
+        "driver": "Antoine COMEAU",
+        "car": "34",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "34",
+        "value": 116.88900000000001,
+        "total": null
+      }
+    ],
+    "expected": {
+      "focus": 116.88900000000001,
+      "silverAvg": null,
+      "average": 113.84862500000003,
+      "deltaSilver": null,
+      "deltaAverage": 3.040374999999984,
+      "silverTop10": null,
+      "top10": 113.016,
+      "deltaSilverTop10": null,
+      "deltaTop10": 3.8730000000000055,
+      "deltaFastest": 4.934000000000012,
+      "silverCount": 0,
+      "driverCount": 16,
+      "silverStd": null,
+      "silverLower": null,
+      "silverUpper": null,
+      "silverCorrected": null,
+      "deltaSilverCorrected": null,
+      "std": 1.3261920863886976,
+      "lower": 112.52243291361133,
+      "upper": 115.17481708638873,
+      "corrected": 113.7346,
+      "deltaCorrected": 3.154400000000008,
+      "teamCount": 1,
+      "teamAverage": 116.88900000000001,
+      "deltaTeamAverage": 0,
+      "teamBest": 116.88900000000001,
+      "deltaTeamBest": 0
+    }
+  },
+  {
+    "sheet": "Race_Best",
+    "event": "27 ALMS R01 RICA",
+    "mode": "Race",
+    "focus": "Antoine COMEAU",
+    "rows": [
+      {
+        "driver": "Victor MARTINS",
+        "car": "11",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "11",
+        "value": 134.093,
+        "total": 37
+      },
+      {
+        "driver": "Malthe JAKOBSEN",
+        "car": "25",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "25",
+        "value": 134.612,
+        "total": 38
+      },
+      {
+        "driver": "Giorgio RODA",
+        "car": "22",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "22",
+        "value": 134.847,
+        "total": 26
+      },
+      {
+        "driver": "Mikkel JENSEN",
+        "car": "2",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "2",
+        "value": 134.893,
+        "total": 39
+      },
+      {
+        "driver": "Laurin HEINRICH",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 134.898,
+        "total": 36
+      },
+      {
+        "driver": "Leo ROBINSON",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 135.143,
+        "total": 43
+      },
+      {
+        "driver": "Charlie WURZ",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 135.449,
+        "total": 36
+      },
+      {
+        "driver": "Julien ANDLAUER",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 135.519,
+        "total": 37
+      },
+      {
+        "driver": "Jack DOOHAN",
+        "car": "55",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "55",
+        "value": 135.613,
+        "total": 38
+      },
+      {
+        "driver": "Antti RAMMO",
+        "car": "30",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "30",
+        "value": 135.85,
+        "total": 26
+      },
+      {
+        "driver": "Adrien CLOSMENIL",
+        "car": "37",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "37",
+        "value": 135.933,
+        "total": 39
+      },
+      {
+        "driver": "Max GARCIA",
+        "car": "24",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "24",
+        "value": 135.998,
+        "total": 35
+      },
+      {
+        "driver": "Sting Ray ROBB",
+        "car": "22",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "22",
+        "value": 136.052,
+        "total": 26
+      },
+      {
+        "driver": "Nicholas YELLOLY",
+        "car": "43",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "43",
+        "value": 136.209,
+        "total": 35
+      },
+      {
+        "driver": "Laurents HORR",
+        "car": "3",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "3",
+        "value": 136.526,
+        "total": 37
+      },
+      {
+        "driver": "August RABER",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 136.671,
+        "total": 28
+      },
+      {
+        "driver": "Hunter MCELREA",
+        "car": "2",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "2",
+        "value": 136.716,
+        "total": 24
+      },
+      {
+        "driver": "Gianmarco PRADEL",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 136.772,
+        "total": 38
+      },
+      {
+        "driver": "Ferdinand HABSBURG",
+        "car": "66",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "66",
+        "value": 136.825,
+        "total": 37
+      },
+      {
+        "driver": "Ian AGUILERA",
+        "car": "22",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "22",
+        "value": 136.86,
+        "total": 41
+      },
+      {
+        "driver": "Georgios KOLOVOS",
+        "car": "11",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "11",
+        "value": 136.988,
+        "total": 26
+      },
+      {
+        "driver": "Phil FAYER",
+        "car": "2",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "2",
+        "value": 137.018,
+        "total": 26
+      },
+      {
+        "driver": "Torsten KRATZ",
+        "car": "43",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "43",
+        "value": 137.025,
+        "total": 25
+      },
+      {
+        "driver": "Hugo SCHWARZE",
+        "car": "3",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "3",
+        "value": 137.05,
+        "total": 31
+      },
+      {
+        "driver": "Matthieu VAXIVIERE",
+        "car": "37",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "37",
+        "value": 137.181,
+        "total": 29
+      },
+      {
+        "driver": "Tom VAN ROMPUY",
+        "car": "3",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "3",
+        "value": 137.288,
+        "total": 25
+      },
+      {
+        "driver": "Cian SHIELDS",
+        "car": "43",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "43",
+        "value": 137.444,
+        "total": 33
+      },
+      {
+        "driver": "Horst FELBERMAYR",
+        "car": "66",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "66",
+        "value": 137.532,
+        "total": 27
+      },
+      {
+        "driver": "Horst Felix FELBERMAYR",
+        "car": "66",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "66",
+        "value": 137.812,
+        "total": 28
+      },
+      {
+        "driver": "Louis DELETRAZ",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 137.824,
+        "total": 32
+      },
+      {
+        "driver": "Jeremy CLARKE",
+        "car": "83",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "83",
+        "value": 137.835,
+        "total": 25
+      },
+      {
+        "driver": "Scott HUFFAKER",
+        "car": "24",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "24",
+        "value": 138.008,
+        "total": 32
+      },
+      {
+        "driver": "Louis STERN",
+        "car": "37",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "37",
+        "value": 138.022,
+        "total": 25
+      },
+      {
+        "driver": "Niels KOOLEN",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 138.075,
+        "total": 38
+      },
+      {
+        "driver": "Jens Reno MOLLER",
+        "car": "20",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "20",
+        "value": 138.22899999999998,
+        "total": 26
+      },
+      {
+        "driver": "Phil HANSON",
+        "car": "55",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "55",
+        "value": 138.245,
+        "total": 29
+      },
+      {
+        "driver": "Michael JENSEN",
+        "car": "25",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "25",
+        "value": 138.516,
+        "total": 25
+      },
+      {
+        "driver": "George KURTZ",
+        "car": "4",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "4",
+        "value": 138.525,
+        "total": 25
+      },
+      {
+        "driver": "Enzo TRULLI",
+        "car": "25",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "25",
+        "value": 138.799,
+        "total": 30
+      },
+      {
+        "driver": "Jacek ZIELONKA",
+        "car": "16",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "16",
+        "value": 139.298,
+        "total": 26
+      },
+      {
+        "driver": "Theodor JENSEN",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 139.403,
+        "total": 31
+      },
+      {
+        "driver": "Alex DIMIRDJIAN",
+        "car": "55",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "55",
+        "value": 139.48,
+        "total": 26
+      },
+      {
+        "driver": "Steven THOMAS",
+        "car": "24",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "24",
+        "value": 139.702,
+        "total": 26
+      },
+      {
+        "driver": "Nicolas VARRONE",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 139.938,
+        "total": 31
+      },
+      {
+        "driver": "Bijoy GARG",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 139.97899999999998,
+        "total": 28
+      },
+      {
+        "driver": "Jonathan BROWNE",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 140.329,
+        "total": 24
+      },
+      {
+        "driver": "Charles MILESI",
+        "car": "11",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "11",
+        "value": 140.781,
+        "total": 30
+      },
+      {
+        "driver": "Antoine COMEAU",
+        "car": "34",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "34",
+        "value": 140.906,
+        "total": 25
+      }
+    ],
+    "expected": {
+      "focus": 140.906,
+      "silverAvg": 137.4020625,
+      "average": 137.3481458333333,
+      "deltaSilver": 3.5039375000000046,
+      "deltaAverage": 3.5578541666667247,
+      "silverTop10": 136.4036,
+      "top10": 135.0917,
+      "deltaSilverTop10": 4.502399999999996,
+      "deltaTop10": 5.814300000000017,
+      "deltaFastest": 6.813000000000017,
+      "silverCount": 14,
+      "driverCount": 48,
+      "silverStd": 1.563173117678694,
+      "silverLower": 135.8388893823213,
+      "silverUpper": 138.9652356176787,
+      "silverCorrected": 137.10272727272726,
+      "deltaSilverCorrected": 3.8032727272727493,
+      "std": 1.7055890227280295,
+      "lower": 135.64255681060527,
+      "upper": 139.0537348560613,
+      "corrected": 137.26093333333333,
+      "deltaCorrected": 3.6450666666666853,
+      "teamCount": 3,
+      "teamAverage": 139.65333333333334,
+      "deltaTeamAverage": 1.25266666666667,
+      "teamBest": 138.075,
+      "deltaTeamBest": 2.8310000000000173
+    }
+  },
+  {
+    "sheet": "Race_Best",
+    "event": "27 ALMS R02 RICA",
+    "mode": "Race",
+    "focus": "Antoine COMEAU",
+    "rows": [
+      {
+        "driver": "Nicolas VARRONE",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 112.807,
+        "total": 50
+      },
+      {
+        "driver": "Charlie WURZ",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 113.31700000000001,
+        "total": 51
+      },
+      {
+        "driver": "Victor MARTINS",
+        "car": "11",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "11",
+        "value": 113.37899999999998,
+        "total": 46
+      },
+      {
+        "driver": "Charles MILESI",
+        "car": "11",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "11",
+        "value": 113.51400000000001,
+        "total": 37
+      },
+      {
+        "driver": "Max GARCIA",
+        "car": "24",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "24",
+        "value": 113.58300000000001,
+        "total": 44
+      },
+      {
+        "driver": "Malthe JAKOBSEN",
+        "car": "25",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "25",
+        "value": 113.68,
+        "total": 44
+      },
+      {
+        "driver": "Jonathan BROWNE",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 113.80199999999999,
+        "total": 43
+      },
+      {
+        "driver": "Adrien CLOSMENIL",
+        "car": "37",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "37",
+        "value": 113.837,
+        "total": 45
+      },
+      {
+        "driver": "Julien ANDLAUER",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 113.89099999999998,
+        "total": 38
+      },
+      {
+        "driver": "Ferdinand HABSBURG",
+        "car": "66",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "66",
+        "value": 113.934,
+        "total": 48
+      },
+      {
+        "driver": "Laurin HEINRICH",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 113.97999999999999,
+        "total": 52
+      },
+      {
+        "driver": "Sting Ray ROBB",
+        "car": "22",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "22",
+        "value": 113.985,
+        "total": 47
+      },
+      {
+        "driver": "Enzo TRULLI",
+        "car": "25",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "25",
+        "value": 114.136,
+        "total": 45
+      },
+      {
+        "driver": "Mikkel JENSEN",
+        "car": "2",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "2",
+        "value": 114.15899999999999,
+        "total": 36
+      },
+      {
+        "driver": "Louis DELETRAZ",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 114.186,
+        "total": 37
+      },
+      {
+        "driver": "Ian AGUILERA",
+        "car": "22",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "22",
+        "value": 114.19200000000001,
+        "total": 35
+      },
+      {
+        "driver": "Matthieu VAXIVIERE",
+        "car": "37",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "37",
+        "value": 114.27199999999999,
+        "total": 42
+      },
+      {
+        "driver": "Nicholas YELLOLY",
+        "car": "43",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "43",
+        "value": 114.32599999999998,
+        "total": 38
+      },
+      {
+        "driver": "Theodor JENSEN",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 114.345,
+        "total": 32
+      },
+      {
+        "driver": "Bijoy GARG",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 114.38900000000001,
+        "total": 44
+      },
+      {
+        "driver": "Horst Felix FELBERMAYR",
+        "car": "66",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "66",
+        "value": 114.55,
+        "total": 38
+      },
+      {
+        "driver": "Hunter MCELREA",
+        "car": "2",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "2",
+        "value": 114.622,
+        "total": 48
+      },
+      {
+        "driver": "Gianmarco PRADEL",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 114.642,
+        "total": 32
+      },
+      {
+        "driver": "Antti RAMMO",
+        "car": "30",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "30",
+        "value": 114.807,
+        "total": 25
+      },
+      {
+        "driver": "Scott HUFFAKER",
+        "car": "24",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "24",
+        "value": 114.84899999999998,
+        "total": 41
+      },
+      {
+        "driver": "August RABER",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 114.949,
+        "total": 46
+      },
+      {
+        "driver": "Laurents HORR",
+        "car": "3",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "3",
+        "value": 115.005,
+        "total": 41
+      },
+      {
+        "driver": "Hugo SCHWARZE",
+        "car": "3",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "3",
+        "value": 115.189,
+        "total": 46
+      },
+      {
+        "driver": "Leo ROBINSON",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 115.274,
+        "total": 46
+      },
+      {
+        "driver": "Niels KOOLEN",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 115.335,
+        "total": 45
+      },
+      {
+        "driver": "Giorgio RODA",
+        "car": "22",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "22",
+        "value": 115.362,
+        "total": 27
+      },
+      {
+        "driver": "Cian SHIELDS",
+        "car": "43",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "43",
+        "value": 115.669,
+        "total": 50
+      },
+      {
+        "driver": "Georgios KOLOVOS",
+        "car": "11",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "11",
+        "value": 115.786,
+        "total": 26
+      },
+      {
+        "driver": "Tom VAN ROMPUY",
+        "car": "3",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "3",
+        "value": 115.962,
+        "total": 22
+      },
+      {
+        "driver": "Steven THOMAS",
+        "car": "24",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "24",
+        "value": 116.79500000000002,
+        "total": 24
+      },
+      {
+        "driver": "Jens Reno MOLLER",
+        "car": "20",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "20",
+        "value": 116.821,
+        "total": 25
+      },
+      {
+        "driver": "Phil FAYER",
+        "car": "2",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "2",
+        "value": 117.11699999999999,
+        "total": 25
+      },
+      {
+        "driver": "Michael JENSEN",
+        "car": "25",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "25",
+        "value": 117.705,
+        "total": 20
+      },
+      {
+        "driver": "Jeremy CLARKE",
+        "car": "83",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "83",
+        "value": 117.989,
+        "total": 21
+      },
+      {
+        "driver": "Horst FELBERMAYR",
+        "car": "66",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "66",
+        "value": 117.99000000000001,
+        "total": 23
+      },
+      {
+        "driver": "Louis STERN",
+        "car": "37",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "37",
+        "value": 118.26200000000001,
+        "total": 22
+      },
+      {
+        "driver": "Torsten KRATZ",
+        "car": "43",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "43",
+        "value": 118.744,
+        "total": 20
+      },
+      {
+        "driver": "Jacek ZIELONKA",
+        "car": "16",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "16",
+        "value": 119.72100000000002,
+        "total": 19
+      },
+      {
+        "driver": "George KURTZ",
+        "car": "4",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "4",
+        "value": 120.30499999999999,
+        "total": 20
+      },
+      {
+        "driver": "Antoine COMEAU",
+        "car": "34",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "34",
+        "value": 120.90099999999998,
+        "total": 19
+      }
+    ],
+    "expected": {
+      "focus": 120.90099999999998,
+      "silverAvg": 114.48943750000001,
+      "average": 115.3792222222222,
+      "deltaSilver": 6.411562499999981,
+      "deltaAverage": 5.521777777777793,
+      "silverTop10": 114.0773,
+      "top10": 113.5744,
+      "deltaSilverTop10": 6.823699999999986,
+      "deltaTop10": 7.326599999999991,
+      "deltaFastest": 8.09399999999998,
+      "silverCount": 16,
+      "driverCount": 45,
+      "silverStd": 0.6735876056609086,
+      "silverLower": 113.8158498943391,
+      "silverUpper": 115.16302510566092,
+      "silverCorrected": 114.4068888888889,
+      "deltaSilverCorrected": 6.494111111111089,
+      "std": 1.9687320202802545,
+      "lower": 113.41049020194194,
+      "upper": 117.34795424250245,
+      "corrected": 114.73367647058822,
+      "deltaCorrected": 6.167323529411763,
+      "teamCount": 3,
+      "teamAverage": 116.875,
+      "deltaTeamAverage": 4.025999999999982,
+      "teamBest": 114.38900000000001,
+      "deltaTeamBest": 6.511999999999972
+    }
+  },
+  {
+    "sheet": "Race_20Lap",
+    "event": "27 ALMS R01 RICA",
+    "mode": "Race 20",
+    "focus": "Antoine COMEAU",
+    "rows": [
+      {
+        "driver": "Victor MARTINS",
+        "car": "11",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "11",
+        "value": 135.72899999999998,
+        "total": 37
+      },
+      {
+        "driver": "Malthe JAKOBSEN",
+        "car": "25",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "25",
+        "value": 136.234,
+        "total": 38
+      },
+      {
+        "driver": "Laurin HEINRICH",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 136.281,
+        "total": 36
+      },
+      {
+        "driver": "Mikkel JENSEN",
+        "car": "2",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "2",
+        "value": 136.436,
+        "total": 39
+      },
+      {
+        "driver": "Leo ROBINSON",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 136.786,
+        "total": 43
+      },
+      {
+        "driver": "Jack DOOHAN",
+        "car": "55",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "55",
+        "value": 137.121,
+        "total": 38
+      },
+      {
+        "driver": "Adrien CLOSMENIL",
+        "car": "37",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "37",
+        "value": 137.249,
+        "total": 39
+      },
+      {
+        "driver": "Julien ANDLAUER",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 137.273,
+        "total": 37
+      },
+      {
+        "driver": "Giorgio RODA",
+        "car": "22",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "22",
+        "value": 137.768,
+        "total": 26
+      },
+      {
+        "driver": "Ferdinand HABSBURG",
+        "car": "66",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "66",
+        "value": 137.801,
+        "total": 37
+      },
+      {
+        "driver": "Charlie WURZ",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 138.15800000000002,
+        "total": 36
+      },
+      {
+        "driver": "Nicholas YELLOLY",
+        "car": "43",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "43",
+        "value": 138.178,
+        "total": 35
+      },
+      {
+        "driver": "Max GARCIA",
+        "car": "24",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "24",
+        "value": 138.415,
+        "total": 35
+      },
+      {
+        "driver": "Ian AGUILERA",
+        "car": "22",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "22",
+        "value": 138.596,
+        "total": 41
+      },
+      {
+        "driver": "Laurents HORR",
+        "car": "3",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "3",
+        "value": 138.841,
+        "total": 37
+      },
+      {
+        "driver": "Gianmarco PRADEL",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 139.059,
+        "total": 38
+      },
+      {
+        "driver": "Hugo SCHWARZE",
+        "car": "3",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "3",
+        "value": 139.456,
+        "total": 31
+      },
+      {
+        "driver": "Antti RAMMO",
+        "car": "30",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "30",
+        "value": 139.707,
+        "total": 26
+      },
+      {
+        "driver": "Georgios KOLOVOS",
+        "car": "11",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "11",
+        "value": 139.754,
+        "total": 26
+      },
+      {
+        "driver": "Niels KOOLEN",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 139.957,
+        "total": 38
+      },
+      {
+        "driver": "Phil FAYER",
+        "car": "2",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "2",
+        "value": 140.007,
+        "total": 26
+      },
+      {
+        "driver": "Torsten KRATZ",
+        "car": "43",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "43",
+        "value": 140.03,
+        "total": 25
+      },
+      {
+        "driver": "Cian SHIELDS",
+        "car": "43",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "43",
+        "value": 140.049,
+        "total": 33
+      },
+      {
+        "driver": "Michael JENSEN",
+        "car": "25",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "25",
+        "value": 140.154,
+        "total": 25
+      },
+      {
+        "driver": "Horst FELBERMAYR",
+        "car": "66",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "66",
+        "value": 140.331,
+        "total": 27
+      },
+      {
+        "driver": "Jens Reno MOLLER",
+        "car": "20",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "20",
+        "value": 140.37,
+        "total": 26
+      },
+      {
+        "driver": "Louis STERN",
+        "car": "37",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "37",
+        "value": 140.629,
+        "total": 25
+      },
+      {
+        "driver": "Jeremy CLARKE",
+        "car": "83",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "83",
+        "value": 140.654,
+        "total": 25
+      },
+      {
+        "driver": "George KURTZ",
+        "car": "4",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "4",
+        "value": 140.79500000000002,
+        "total": 25
+      },
+      {
+        "driver": "Tom VAN ROMPUY",
+        "car": "3",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "3",
+        "value": 140.95,
+        "total": 25
+      },
+      {
+        "driver": "Alex DIMIRDJIAN",
+        "car": "55",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "55",
+        "value": 141.142,
+        "total": 26
+      },
+      {
+        "driver": "Matthieu VAXIVIERE",
+        "car": "37",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "37",
+        "value": 141.191,
+        "total": 29
+      },
+      {
+        "driver": "Jacek ZIELONKA",
+        "car": "16",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "16",
+        "value": 141.31,
+        "total": 26
+      },
+      {
+        "driver": "Steven THOMAS",
+        "car": "24",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "24",
+        "value": 141.48,
+        "total": 26
+      },
+      {
+        "driver": "Scott HUFFAKER",
+        "car": "24",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "24",
+        "value": 141.489,
+        "total": 32
+      },
+      {
+        "driver": "Theodor JENSEN",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 141.524,
+        "total": 31
+      },
+      {
+        "driver": "Enzo TRULLI",
+        "car": "25",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "25",
+        "value": 141.651,
+        "total": 30
+      },
+      {
+        "driver": "Louis DELETRAZ",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 142.019,
+        "total": 32
+      },
+      {
+        "driver": "Phil HANSON",
+        "car": "55",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "55",
+        "value": 142.61599999999999,
+        "total": 29
+      },
+      {
+        "driver": "Nicolas VARRONE",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 142.762,
+        "total": 31
+      },
+      {
+        "driver": "Charles MILESI",
+        "car": "11",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "11",
+        "value": 143.685,
+        "total": 30
+      },
+      {
+        "driver": "August RABER",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 145.147,
+        "total": 28
+      },
+      {
+        "driver": "Horst Felix FELBERMAYR",
+        "car": "66",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "66",
+        "value": 145.348,
+        "total": 28
+      },
+      {
+        "driver": "Bijoy GARG",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 145.572,
+        "total": 28
+      },
+      {
+        "driver": "Antoine COMEAU",
+        "car": "34",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "34",
+        "value": 147.234,
+        "total": 25
+      },
+      {
+        "driver": "Jonathan BROWNE",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 148.51,
+        "total": 24
+      },
+      {
+        "driver": "Sting Ray ROBB",
+        "car": "22",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "22",
+        "value": 151.982,
+        "total": 26
+      },
+      {
+        "driver": "Hunter MCELREA",
+        "car": "2",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "2",
+        "value": 162.848,
+        "total": 24
+      }
+    ],
+    "expected": {
+      "focus": 147.234,
+      "silverAvg": 142.39531250000002,
+      "average": 141.04745833333334,
+      "deltaSilver": 4.8386875,
+      "deltaAverage": 6.186541666666672,
+      "silverTop10": 138.92489999999998,
+      "top10": 136.8678,
+      "deltaSilverTop10": 8.30910000000002,
+      "deltaTop10": 10.366200000000019,
+      "deltaFastest": 11.505000000000024,
+      "silverCount": 14,
+      "driverCount": 48,
+      "silverStd": 6.433241771908885,
+      "silverLower": 135.96207072809113,
+      "silverUpper": 148.8285542719089,
+      "silverCorrected": 141.0318,
+      "deltaSilverCorrected": 6.2021999999999995,
+      "std": 4.586628242677276,
+      "lower": 136.46083009065606,
+      "upper": 145.63408657601062,
+      "corrected": 140.3756,
+      "deltaCorrected": 6.858400000000012,
+      "teamCount": 3,
+      "teamAverage": 144.25433333333334,
+      "deltaTeamAverage": 2.979666666666674,
+      "teamBest": 139.957,
+      "deltaTeamBest": 7.277000000000015
+    }
+  },
+  {
+    "sheet": "Race_20Lap",
+    "event": "27 ALMS R02 RICA",
+    "mode": "Race 20",
+    "focus": "Antoine COMEAU",
+    "rows": [
+      {
+        "driver": "Ian AGUILERA",
+        "car": "22",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "22",
+        "value": 114.875,
+        "total": 35
+      },
+      {
+        "driver": "Julien ANDLAUER",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 114.93,
+        "total": 38
+      },
+      {
+        "driver": "Malthe JAKOBSEN",
+        "car": "25",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "25",
+        "value": 115.08,
+        "total": 44
+      },
+      {
+        "driver": "Victor MARTINS",
+        "car": "11",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "11",
+        "value": 115.11099999999999,
+        "total": 46
+      },
+      {
+        "driver": "Matthieu VAXIVIERE",
+        "car": "37",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "37",
+        "value": 115.152,
+        "total": 42
+      },
+      {
+        "driver": "Ferdinand HABSBURG",
+        "car": "66",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "66",
+        "value": 115.175,
+        "total": 48
+      },
+      {
+        "driver": "Adrien CLOSMENIL",
+        "car": "37",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "37",
+        "value": 115.18299999999999,
+        "total": 45
+      },
+      {
+        "driver": "Louis DELETRAZ",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 115.221,
+        "total": 37
+      },
+      {
+        "driver": "Mikkel JENSEN",
+        "car": "2",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "2",
+        "value": 115.457,
+        "total": 36
+      },
+      {
+        "driver": "Laurin HEINRICH",
+        "car": "4",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "4",
+        "value": 115.519,
+        "total": 52
+      },
+      {
+        "driver": "Laurents HORR",
+        "car": "3",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "3",
+        "value": 115.77699999999999,
+        "total": 41
+      },
+      {
+        "driver": "August RABER",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 115.82900000000001,
+        "total": 46
+      },
+      {
+        "driver": "Bijoy GARG",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 115.844,
+        "total": 44
+      },
+      {
+        "driver": "Nicholas YELLOLY",
+        "car": "43",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "43",
+        "value": 115.87100000000001,
+        "total": 38
+      },
+      {
+        "driver": "Charles MILESI",
+        "car": "11",
+        "category": "Platinum",
+        "className": "LMP2",
+        "team": "11",
+        "value": 115.957,
+        "total": 37
+      },
+      {
+        "driver": "Scott HUFFAKER",
+        "car": "24",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "24",
+        "value": 115.97200000000001,
+        "total": 41
+      },
+      {
+        "driver": "Enzo TRULLI",
+        "car": "25",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "25",
+        "value": 116.05799999999999,
+        "total": 45
+      },
+      {
+        "driver": "Charlie WURZ",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 116.07300000000001,
+        "total": 51
+      },
+      {
+        "driver": "Hunter MCELREA",
+        "car": "2",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "2",
+        "value": 116.14599999999999,
+        "total": 48
+      },
+      {
+        "driver": "Sting Ray ROBB",
+        "car": "22",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "22",
+        "value": 116.205,
+        "total": 47
+      },
+      {
+        "driver": "Theodor JENSEN",
+        "car": "20",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "20",
+        "value": 116.22200000000001,
+        "total": 32
+      },
+      {
+        "driver": "Hugo SCHWARZE",
+        "car": "3",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "3",
+        "value": 116.241,
+        "total": 46
+      },
+      {
+        "driver": "Nicolas VARRONE",
+        "car": "83",
+        "category": "Gold",
+        "className": "LMP2",
+        "team": "83",
+        "value": 116.338,
+        "total": 50
+      },
+      {
+        "driver": "Jonathan BROWNE",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 116.564,
+        "total": 43
+      },
+      {
+        "driver": "Max GARCIA",
+        "car": "24",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "24",
+        "value": 116.566,
+        "total": 44
+      },
+      {
+        "driver": "Horst Felix FELBERMAYR",
+        "car": "66",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "66",
+        "value": 116.58399999999999,
+        "total": 38
+      },
+      {
+        "driver": "Leo ROBINSON",
+        "car": "16",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "16",
+        "value": 116.665,
+        "total": 46
+      },
+      {
+        "driver": "Gianmarco PRADEL",
+        "car": "30",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "30",
+        "value": 117.09500000000001,
+        "total": 32
+      },
+      {
+        "driver": "Niels KOOLEN",
+        "car": "34",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "34",
+        "value": 117.16999999999999,
+        "total": 45
+      },
+      {
+        "driver": "Cian SHIELDS",
+        "car": "43",
+        "category": "Silver",
+        "className": "LMP2",
+        "team": "43",
+        "value": 117.53399999999999,
+        "total": 50
+      },
+      {
+        "driver": "Antti RAMMO",
+        "car": "30",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "30",
+        "value": 128.001,
+        "total": 25
+      },
+      {
+        "driver": "Torsten KRATZ",
+        "car": "43",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "43",
+        "value": 140.03,
+        "total": 20
+      },
+      {
+        "driver": "Michael JENSEN",
+        "car": "25",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "25",
+        "value": 140.154,
+        "total": 20
+      },
+      {
+        "driver": "George KURTZ",
+        "car": "4",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "4",
+        "value": 140.79500000000002,
+        "total": 20
+      },
+      {
+        "driver": "Jacek ZIELONKA",
+        "car": "16",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "16",
+        "value": 141.31,
+        "total": 19
+      },
+      {
+        "driver": "Giorgio RODA",
+        "car": "22",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "22",
+        "value": 142.438,
+        "total": 27
+      },
+      {
+        "driver": "Antoine COMEAU",
+        "car": "34",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "34",
+        "value": 147.234,
+        "total": 19
+      },
+      {
+        "driver": "Georgios KOLOVOS",
+        "car": "11",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "11",
+        "value": 150.065,
+        "total": 26
+      },
+      {
+        "driver": "Phil FAYER",
+        "car": "2",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "2",
+        "value": 155.921,
+        "total": 25
+      },
+      {
+        "driver": "Jens Reno MOLLER",
+        "car": "20",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "20",
+        "value": 158.269,
+        "total": 25
+      },
+      {
+        "driver": "Steven THOMAS",
+        "car": "24",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "24",
+        "value": 164.835,
+        "total": 24
+      },
+      {
+        "driver": "Horst FELBERMAYR",
+        "car": "66",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "66",
+        "value": 171.47399999999996,
+        "total": 23
+      },
+      {
+        "driver": "Tom VAN ROMPUY",
+        "car": "3",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "3",
+        "value": 178.40800000000002,
+        "total": 22
+      },
+      {
+        "driver": "Louis STERN",
+        "car": "37",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "37",
+        "value": 180.80900000000003,
+        "total": 22
+      },
+      {
+        "driver": "Jeremy CLARKE",
+        "car": "83",
+        "category": "Bronze",
+        "className": "LMP2",
+        "team": "83",
+        "value": 186.902,
+        "total": 21
+      }
+    ],
+    "expected": {
+      "focus": 147.234,
+      "silverAvg": 116.29056249999998,
+      "average": 129.00131111111116,
+      "deltaSilver": 30.943437500000023,
+      "deltaAverage": 18.232688888888838,
+      "silverTop10": 115.9035,
+      "top10": 115.1703,
+      "deltaSilverTop10": 31.33050000000001,
+      "deltaTop10": 32.063700000000004,
+      "deltaFastest": 32.35900000000001,
+      "silverCount": 16,
+      "driverCount": 45,
+      "silverStd": 0.6887696246447956,
+      "silverLower": 115.60179287535519,
+      "silverUpper": 116.97933212464477,
+      "silverCorrected": 116.25381818181819,
+      "deltaSilverCorrected": 30.980181818181823,
+      "std": 21.19569590401666,
+      "lower": 107.8056152070945,
+      "upper": 150.19700701512784,
+      "corrected": 121.27476315789475,
+      "deltaCorrected": 25.95923684210526,
+      "teamCount": 3,
+      "teamAverage": 126.74933333333333,
+      "deltaTeamAverage": 20.484666666666683,
+      "teamBest": 115.844,
+      "deltaTeamBest": 31.390000000000015
+    }
+  }
+]

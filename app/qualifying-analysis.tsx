@@ -5,6 +5,8 @@ import {qualifyingResults,type QualifyingLap} from "../src/analysis/qualifying";
 import {download} from "../src/reliable-download";
 import {compareDriversBySurname} from "../src/models/driver-identity";
 import DriverPicker from "./driver-picker";
+import DriverName from "./driver-name";
+import {carColour,carTextColour} from "../src/models/car-colour";
 const time=(n:number|null|undefined)=>n===null||n===undefined||!Number.isFinite(n)?"—":`${Math.floor(n/60)}:${(n%60).toFixed(3).padStart(6,"0")}`;
 export default function QualifyingAnalysis({race}:{race:AlkamelRace}){
   const sessions=race.qualifying||[];
@@ -48,14 +50,14 @@ export default function QualifyingAnalysis({race}:{race:AlkamelRace}){
       <details className="results-method"><summary>Timing and theoretical lap</summary><p>Best lap and sectors use recorded flying laps, excluding pit, explicitly deleted and yellow/red laps. Theoretical time adds the driver's best S1, S2 and S3 within this session. Potential is best lap minus theoretical. Purple sectors are fastest in the vehicle class. These timing-derived values do not apply post-session penalties or unmarked deletions.</p></details>
       <div className="tableWrap"><table><thead><tr>{["POS / CLASS","#","DRIVER","BEST LAP","S1 · BEST LAP","S2 · BEST LAP","S3 · BEST LAP","BEST S1","BEST S2","BEST S3","THEORETICAL","POTENTIAL","LAPS"].map(h=><th key={h}>{h}</th>)}</tr></thead>
         <tbody>{rows.map(r=><tr key={`${r.car}|${r.driver}`} className={r.driver===active?"qualifying-focus":""} onClick={()=>setDriver(r.driver)}>
-          <td>{r.best===null?"—":`P${results.filter(x=>x.className===r.className&&x.best!==null).indexOf(r)+1}`} · {r.className}</td><td>{r.car}</td>
-          <td><button className="ghost" onClick={()=>setDriver(r.driver)}>{r.driver}</button><small>{r.team}</small></td>
+          <td>{r.best===null?"—":`P${results.filter(x=>x.className===r.className&&x.best!==null).indexOf(r)+1}`} · {r.className}</td><td><span className="carNumber" style={{background:carColour(r.car,race.sourceFile),color:carTextColour(carColour(r.car,race.sourceFile))}}>{r.car}</span></td>
+          <td><button className="ghost" onClick={()=>setDriver(r.driver)}><DriverName name={r.driver}/></button><small>{r.team}</small></td>
           <td><strong>{time(r.best)}</strong></td>{(["s1","s2","s3"] as const).map(key=><td key={key}>{time(r.bestLap?.[key])}</td>)}
           {(["bestS1","bestS2","bestS3"] as const).map(key=><td key={key} className={bestSector(r,key)?"qualifying-sector-best":""}>{time(r[key])}</td>)}
           <td>{time(r.theoretical)}</td><td>{r.potential===null?"—":`${r.potential.toFixed(3)}s`}</td><td>{r.validLaps} / {r.laps}</td>
         </tr>)}</tbody></table></div>
       {!rows.length&&<p>No timed drivers in this session.</p>}
-      {!!detail.length&&<><h3>{active} · session laps</h3><div className="tableWrap"><table><thead><tr>{["LAP","#","SESSION TIME","LAP TIME","S1","S2","S3","TIMED LAP","FLAG"].map(h=><th key={h}>{h}</th>)}</tr></thead><tbody>{detail.map(l=><tr key={`${l.car}-${l.lap}`}><td>{l.lap}</td><td>{l.car}</td><td>{time(l.elapsed)}</td><td>{time(l.time)}</td><td>{time(l.s1)}</td><td>{time(l.s2)}</td><td>{time(l.s3)}</td><td>{l.valid?"YES":"EXCLUDED"}</td><td>{l.flag||"—"}</td></tr>)}</tbody></table></div></>}
+      {!!detail.length&&<><h3><DriverName name={active}/> · session laps</h3><div className="tableWrap"><table><thead><tr>{["LAP","#","SESSION TIME","LAP TIME","S1","S2","S3","TIMED LAP","FLAG"].map(h=><th key={h}>{h}</th>)}</tr></thead><tbody>{detail.map(l=><tr key={`${l.car}-${l.lap}`}><td>{l.lap}</td><td>{l.car}</td><td>{time(l.elapsed)}</td><td>{time(l.time)}</td><td>{time(l.s1)}</td><td>{time(l.s2)}</td><td>{time(l.s3)}</td><td>{l.valid?"YES":"EXCLUDED"}</td><td>{l.flag||"—"}</td></tr>)}</tbody></table></div></>}
     </>}
   </section>;
 }
